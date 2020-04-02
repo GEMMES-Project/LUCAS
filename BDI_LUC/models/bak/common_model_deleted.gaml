@@ -6,10 +6,10 @@
  
 model common_model
 
-global {  
+global { 
 	//khai bao bien theo kieu tap tin
-	file land_parcel_file<-file('../includes/LU_Myxuyen2005/landuse_myxuyen_2005_region.shp');			// //definition file variable of parcel layer
-	file river_file <- file('../includes/basemaps/rivers_myxuyen_region.shp');				//definition file variable of river layer
+	file land_parcel_file<-file('../includes/farmer_parcel/land_use_parcels.shp');			// //definition file variable of parcel layer
+	file river_file <- file('../includes/environmental/river_thanhphu.shp');				//definition file variable of river layer
 	file legend_symbol_file <- file("../includes/legend/legends_rectangle.shp");			//definition file variable of layer  boundery layer
 	file txt_file <- file("../includes/legend/legends_text_point.shp");						//definition file variable of legend  layer text
 
@@ -23,7 +23,7 @@ global {
 		'BHK'::rgb(153,0,0),
 		'LNK'::rgb(153,0,0)+50,
 		'LNC':: rgb(255,102,178),
-		'LTM'::#deepskyblue,
+		'LTM'::rgb(88,32,198),
 		'LUK'::rgb(153,153,0),
 		'LUC'::#yellow,
 		'OTHER_LU'::rgb(0,102,0),
@@ -69,27 +69,20 @@ global {
 		create legend  from: legend_symbol_file with: [legend_str::string(read('Legend_cod'))]{
 			color <- LUT[legend_str] ;
 		}
-		create legend_text_point  from: text_file with: [legend_text::string(read('Legend_tex'))];
+		create legend_text_point  from: txt_file with: [legend_text::string(read('Legend_tex'))];
 		create river from: river_file;
 		
 		do other_init;
 		// save the header of the CSV file
-//		save "Order,FKappaBDI, ADP_BDI"   to: "../includes/results/result_MCDM.csv" type: csv;
+//		save "Order,FKappaBDI, ADP_BDI"   to: "../includes/results/result_MultiCriteria.csv" type: csv;
 	}
 	action create_parcel;																// will be ovewrite in the model of Farmer 
 	
 	action other_init ;																	//init other agent, will be overwrite by Farmer 			
 //	comment for explore parameters for the model Multicriteria 
-	reflex end_simulation when: (cycle =10 and not mode_batch ){//   time = end_simulation{//
-		write ("\nFuzzy-Kappa BDI - LS+ price ..."+cycle);	      
-
-		do call_fuzzy_kappa;
-		write "FK="+ kappa + ",PAD="+ pad ;	
-		save modelID+ ","+kappa + ", " + pad   to: "../includes/results/result_B.csv" type: csv;
-		//save parcels to:"../includes/land_parcelMarkov2010.shp" type:"shp"; 							// save agents to shapefile
-		do pause;
+	reflex end_simulation when: (cycle =10 and not mode_batch){//   time = end_simulation{//
 		write " End of simulation";
-		
+		do pause;		
 	}
 	// write the result of simulation 
 	

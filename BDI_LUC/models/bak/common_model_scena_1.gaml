@@ -6,7 +6,7 @@
  
 model common_model
 
-global { 
+global {  
 	//khai bao bien theo kieu tap tin
 	file land_parcel_file<-file('../includes/LU_Myxuyen2005/landuse_myxuyen_2005_region.shp');			// //definition file variable of parcel layer
 	file river_file <- file('../includes/basemaps/rivers_myxuyen_region.shp');				//definition file variable of river layer
@@ -69,7 +69,7 @@ global {
 		create legend  from: legend_symbol_file with: [legend_str::string(read('Legend_cod'))]{
 			color <- LUT[legend_str] ;
 		}
-		create legend_text_point  from: text_file with: [legend_text::string(read('Legend_tex'))];
+		create legend_text_point  from: txt_file with: [legend_text::string(read('Legend_tex'))];
 		create river from: river_file;
 		
 		do other_init;
@@ -153,10 +153,9 @@ global {
 }
 species landunit_parcel{
 	int landunit_id;
-	string SALINITY;
 	rgb color <- rgb(rnd(255),rnd(255),rnd(255)) update:rgb(rnd(255),rnd(255),rnd(255))  ;
 	aspect default{
-		draw shape color:#lightblue-(int(SALINITY)*20);
+		draw shape color:color;
 	}
 }
    
