@@ -6,6 +6,7 @@
 ***/
 model Global
 import "Parameters.gaml"
+import "Functions.gaml"
 import "species/LandParcel.gaml"
 import "species/Legend.gaml"
 import "species/River.gaml"
@@ -27,20 +28,22 @@ global {
 		do other_init;
 		// save the header of the CSV file
 		//		save "Order,FKappaBDI, ADP_BDI"   to: "../includes/results/result_MCDM.csv" type: csv;
+		gridsSize <- getGridsSize(netcdf_sample);
+		timesAxisSize <- netcdf_sample getTimeAxisSize grid_num;
 	}
 
 	action create_parcel; // will be ovewrite in the model of Farmer 
 	action other_init; //init other agent, will be overwrite by Farmer 			
 	//	comment for explore parameters for the model Multicriteria 
-	reflex end_simulation when: (cycle = 10 and not mode_batch) { //   time = end_simulation{//
-		write ("\nFuzzy-Kappa BDI - LS+ price ..." + cycle);
-		do call_fuzzy_kappa;
-		write "FK=" + kappa + ",PAD=" + pad;
-		save modelID + "," + kappa + ", " + pad to: "../includes/results/result_B.csv" type: csv;
-		//save parcels to:"../includes/land_parcelMarkov2010.shp" type:"shp"; 							// save agents to shapefile
-		do pause;
-		write " End of simulation";
-	}
+//	reflex end_simulation when: (cycle = 10 and not mode_batch) { //   time = end_simulation{//
+//		write ("\nFuzzy-Kappa BDI - LS+ price ..." + cycle);
+//		do call_fuzzy_kappa;
+//		write "FK=" + kappa + ",PAD=" + pad;
+//		save modelID + "," + kappa + ", " + pad to: "../includes/results/result_B.csv" type: csv;
+//		//save parcels to:"../includes/land_parcelMarkov2010.shp" type:"shp"; 							// save agents to shapefile
+//		do pause;
+//		write " End of simulation";
+//	}
 	// write the result of simulation 
 
 

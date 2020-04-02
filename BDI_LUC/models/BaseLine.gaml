@@ -6,11 +6,37 @@
 model common_model
 
 import "Global.gaml"
-import "Parameters.gaml"
 import "species/FarmerBDI.gaml"
+import "species/Cell.gaml"
 import "species/LandUnitParcel.gaml"
 
 global {
+
+	reflex s {
+		matrix<int> m <- (matrix<int>(netcdf_sample readDataSlice (grid_num, times, 0, -1, -1)));
+		ask Cell {
+			grid_value <- float(m at {grid_x, grid_y});
+			color <- rgb(grid_value);
+		}
+
+		times <- times + 1;
+		if (times > timesAxisSize - 1) {
+			times <- 0;
+		}
+
+		grid_num <- grid_num + 1;
+		if (grid_num > gridsSize - 1) {
+			grid_num <- 0;
+			timesAxisSize <- netcdf_sample getTimeAxisSize grid_num;
+		}
+		
+		ask Cell{
+			ask FarmerBDI overlapping self{
+				land_suitability<-myself.grid_value;
+			}
+		}
+
+	}
 
 	action create_parcel {
 		do build_suitability_map;
@@ -28,12 +54,15 @@ global {
 			//temp
 			landuse <- landuse_init;
 			probabilistic_choice <- false;
+			income <- world.compute_profit(landuse, LS_map, land_unit);
+		}
+
+		ask FarmerBDI {
 			neighbours <- (FarmerBDI at_distance distance_neighbours) where (each.landuse_init != "OTHER_LU");
-			income <- compute_profit(landuse);
 		}
 		//		create landunit_parcel from: land_unit_file with: [landunit_id::int(read('LANDUNIT'))]; 		
 		create LandUnitParcel from: land_unit_file with: [landunit_id::int(read('lu2005'))];
-		do get_landUnit; // set land_unit for the parcel
+		do set_landUnit; // set land_unit for the parcel
 
 	}
 
@@ -89,17 +118,17 @@ global {
 
 	}
 
-	action get_landUnit {
+	action set_landUnit {
 	//		get land_unit id from land unit agent to the parcel
 		loop lunit_obj over: LandUnitParcel { //loop for the land unit object  - declared in the common model  
-			ask FarmerBDI overlapping lunit_obj { // select the land parcel object that overlap with land unit object
-				land_unit <- lunit_obj.landunit_id; // set land_unit of the parcel
+			ask FarmerBDI at lunit_obj.location { // select the land parcel object that overlap with land unit object
+				land_unit <- lunit_obj.landunit_id > 0 ? lunit_obj.landunit_id : land_unit; // set land_unit of the parcel
 				//				write land_unit_code;
 			}
 
 		}
 
-		save FarmerBDI to: "../includes/test_gan_land_unit.shp" type: "shp";
+		//		save FarmerBDI to: "../includes/test_gan_land_unit.shp" type: "shp";
 	}
 	// calculate area 
 	reflex calcul_area {

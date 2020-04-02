@@ -19,9 +19,9 @@ global {
 
 experiment Farmer_exp type: gui { //parent:M_F_interface
 	output {
-		display simResult type: opengl {			
+		display simResult type: opengl background:#black{			
 			image file: "../includes/satellite.png" refresh: false;
-		
+			grid Cell transparency:0.5;
 			species River aspect: default refresh: false;
 			species FarmerBDI aspect: default;
 

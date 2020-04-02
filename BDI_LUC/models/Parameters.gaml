@@ -10,6 +10,7 @@ import "species/FarmerBDI.gaml"
 
 global {
 //khai bao bien theo kieu tap tin
+	file netcdf_sample <- file("../includes/temperature/ENS_mm_rcp45.2015_2050_MKD_pr.nc");
 	file land_parcel_file <- file('../includes/LU_Myxuyen2005/landuse_myxuyen_2005_region_3commune.shp'); // //definition file variable of parcel layer
 	file river_file <- file('../includes/basemaps/rivers_myxuyen_region_3commune.shp'); //definition file variable of river layer
 	file legend_symbol_file <- file("../includes/legend/legends_rectangle.shp"); //definition file variable of layer  boundery layer
@@ -46,7 +47,9 @@ global {
 	float pad; // variable for Fuzzy Kappa
 	list<string> categories; //List of categories  
 	list<LandParcel> parcels; //List of parcels
-	geometry shape <- envelope(land_parcel_file); //definition simulation environment - boundery of the parcel file
+//	geometry shape <- envelope(land_parcel_file); //definition simulation environment - boundery of the parcel file
+	geometry shape<-to_GAMA_CRS(envelope(netcdf_sample),"4326");
+	
 	string modelID <- "ID";
 	
 	map<int,map<string,list<float>>> transitions;
@@ -90,4 +93,12 @@ global {
 	int pl_income; 											//people will change to the highest income
 	int pl_no_intention;  										// people dont have intention
 	int pl_stay ;
+	
+	
+	
+	int times <- 1;
+	int grid_num <- 0;
+	int gridsSize <- 0;
+	int timesAxisSize <- 0;
+	
 }
