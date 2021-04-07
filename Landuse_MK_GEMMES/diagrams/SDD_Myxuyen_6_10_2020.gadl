@@ -1,0 +1,1040 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:al="http://eclipse.org/graphiti/mm/algorithms" xmlns:gama="http://gama/1.0" xmlns:pi="http://eclipse.org/graphiti/mm/pictograms">
+  <pi:Diagram visible="true" gridUnit="10" diagramTypeId="gamaDiagram" name="SDD_MX_6_10_20" snapToGrid="true" pictogramLinks="/0/@children.0/@link /0/@children.0/@children.1/@link /0/@children.0/@children.2/@link /0/@children.0/@children.3/@link /0/@children.1/@link /0/@children.1/@children.1/@link /0/@children.1/@children.2/@link /0/@connections.0/@link /0/@children.2/@link /0/@children.2/@children.0/@link /0/@children.2/@children.1/@link /0/@connections.1/@link /0/@children.3/@link /0/@children.3/@children.1/@link /0/@children.3/@children.2/@link /0/@children.3/@children.3/@link /0/@connections.2/@link /0/@children.4/@link /0/@children.4/@children.0/@link /0/@children.4/@children.1/@link /0/@connections.3/@link /0/@children.5/@link /0/@children.5/@children.0/@link /0/@children.5/@children.1/@link /0/@connections.4/@link /0/@children.6/@link /0/@children.6/@children.0/@link /0/@children.6/@children.1/@link /0/@connections.5/@link /0/@children.7/@link /0/@children.7/@children.0/@link /0/@children.7/@children.1/@link /0/@connections.6/@link /0/@children.8/@link /0/@children.8/@children.1/@link /0/@children.8/@children.2/@link /0/@children.8/@children.3/@link /0/@connections.7/@link /0/@children.9/@link /0/@children.9/@children.1/@link /0/@children.9/@children.2/@link /0/@children.9/@children.3/@link /0/@connections.8/@link /0/@children.10/@link /0/@children.10/@children.1/@link /0/@children.10/@children.2/@link /0/@children.10/@children.3/@link /0/@connections.9/@link /0/@children.11/@link /0/@children.11/@children.1/@link /0/@children.11/@children.2/@link /0/@children.11/@children.3/@link /0/@connections.10/@link /0/@children.12/@link /0/@children.12/@children.0/@link /0/@children.12/@children.1/@link /0/@connections.11/@link /0/@children.13/@link /0/@children.13/@children.0/@link /0/@children.13/@children.1/@link /0/@connections.12/@link /0/@children.14/@link /0/@children.14/@children.0/@link /0/@children.14/@children.1/@link /0/@connections.13/@link /0/@children.15/@link /0/@children.15/@children.0/@link /0/@children.15/@children.1/@link /0/@connections.14/@link /0/@children.16/@link /0/@children.16/@children.0/@link /0/@children.16/@children.1/@link /0/@connections.15/@link /0/@children.17/@link /0/@children.17/@children.0/@link /0/@children.17/@children.1/@link /0/@connections.16/@link /0/@children.18/@link /0/@children.18/@children.0/@link /0/@children.18/@children.1/@link /0/@connections.17/@link /0/@children.19/@link /0/@children.19/@children.0/@link /0/@children.19/@children.1/@link /0/@connections.18/@link /0/@children.20/@link /0/@children.20/@children.1/@link /0/@children.20/@children.2/@link /0/@children.20/@children.3/@link /0/@connections.19/@link /0/@children.21/@link /0/@children.21/@children.0/@link /0/@children.21/@children.1/@link /0/@connections.20/@link /0/@children.22/@link /0/@children.22/@children.1/@link /0/@children.22/@children.2/@link /0/@children.22/@children.3/@link /0/@connections.21/@link /0/@children.23/@link /0/@children.23/@children.1/@link /0/@children.23/@children.2/@link /0/@connections.22/@link /0/@children.24/@link /0/@children.24/@children.0/@link /0/@children.24/@children.1/@link /0/@connections.23/@link /0/@children.25/@link /0/@children.25/@children.0/@link /0/@children.25/@children.1/@link /0/@connections.24/@link /0/@children.26/@link /0/@children.26/@children.0/@link /0/@children.26/@children.1/@link /0/@connections.25/@link" version="0.15.0">
+    <graphicsAlgorithm xsi:type="al:Rectangle" background="/0/@colors.1" foreground="/0/@colors.0" lineWidth="1" transparency="0.0" width="1000" height="1000"/>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:RoundedRectangle" background="/0/@colors.3" foreground="/0/@colors.2" lineWidth="2" transparency="0.0" width="205" height="422" x="75" y="20" cornerHeight="5" cornerWidth="5"/>
+      <link businessObjects="/1"/>
+      <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.0 /0/@connections.2 /0/@connections.4 /0/@connections.5 /0/@connections.7 /0/@connections.8 /0/@connections.9 /0/@connections.10 /0/@connections.11 /0/@connections.12 /0/@connections.18 /0/@connections.19 /0/@connections.20 /0/@connections.21 /0/@connections.22 /0/@connections.23 /0/@connections.25"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.4" lineWidth="2" filled="false" transparency="0.0">
+          <points y="20"/>
+          <points x="204" y="20"/>
+        </graphicsAlgorithm>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="205" height="20" font="/0/@fonts.1" horizontalAlignment="ALIGNMENT_CENTER" value="world"/>
+        <link businessObjects="/1"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="205" height="685" x="5" y="25" font="/0/@fonts.2" verticalAlignment="ALIGNMENT_TOP" value="file cell_file&#xA;geometry shape&#xA;list&lt;cell_dat> active_cell&#xA;float tong_luc&#xA;float tong_tsl&#xA;float tong_bhk&#xA;file song_file&#xA;file duong_file&#xA;file dvdd_file&#xA;file bandodebao&#xA;matrix matran_khokhan&#xA;file khokhanchuyendoi_file&#xA;matrix matran_thichnghi&#xA;file thichnghidatdai_file&#xA;float w_lancan&#xA;list tieuchi&#xA;float v_kappa&#xA;file cell_dat_2010_file&#xA;list&lt;cell_dat_2010> active_cell_dat2010&#xA;file xa_file&#xA;float tong_lnk&#xA;float tong_luk&#xA;float tong_khac&#xA;float dt_luc&#xA;float dt_luk&#xA;float dt_lnk&#xA;float dt_bhk&#xA;float dt_tsl&#xA;float dt_khac&#xA;float w_khokhan&#xA;float w_thichnghi&#xA;float tong_lua_tom&#xA;float w_loinhuan&#xA;"/>
+        <link businessObjects="/1"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="30" height="15" x="5" y="3" id="idees.gama.subspecieslink" stretchH="false" stretchV="false" proportional="false"/>
+        <link businessObjects="/1"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:RoundedRectangle" background="/0/@colors.5" foreground="/0/@colors.2" lineWidth="2" transparency="0.0" width="150" height="50" x="268" y="-90" cornerHeight="5" cornerWidth="5"/>
+      <link businessObjects="/2"/>
+      <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.1 /0/@connections.6" incomingConnections="/0/@connections.0"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.4" lineWidth="2" filled="false" transparency="0.0">
+          <points y="20"/>
+          <points x="150" y="20"/>
+        </graphicsAlgorithm>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="150" height="20" font="/0/@fonts.1" horizontalAlignment="ALIGNMENT_CENTER" value="my_GUI_xp"/>
+        <link businessObjects="/2"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="15" height="15" x="5" y="3" id="idees.gama.guixplink" stretchH="false" stretchV="false" proportional="false"/>
+        <link businessObjects="/2"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Ellipse" background="/0/@colors.6" foreground="/0/@colors.2" lineWidth="2" transparency="0.0" width="140" height="50" x="539" y="-103"/>
+      <link businessObjects="/4"/>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.1"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="140" height="50" font="/0/@fonts.2" horizontalAlignment="ALIGNMENT_CENTER" value="Landuse_Sim"/>
+        <link businessObjects="/4"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="15" height="15" x="10" y="17" id="idees.gama.displaylink" stretchH="false" stretchV="false" proportional="false"/>
+        <link businessObjects="/4"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:RoundedRectangle" background="/0/@colors.8" foreground="/0/@colors.2" lineWidth="2" transparency="0.0" width="220" height="292" x="320" y="29" cornerHeight="5" cornerWidth="5"/>
+      <link businessObjects="/6"/>
+      <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.3 /0/@connections.13 /0/@connections.14 /0/@connections.15 /0/@connections.16 /0/@connections.17" incomingConnections="/0/@connections.2"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.4" lineWidth="2" filled="false" transparency="0.0">
+          <points y="20"/>
+          <points x="220" y="20"/>
+        </graphicsAlgorithm>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="220" height="20" font="/0/@fonts.1" horizontalAlignment="ALIGNMENT_CENTER" value="cell_dat"/>
+        <link businessObjects="/6"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="220" height="285" x="5" y="25" font="/0/@fonts.2" verticalAlignment="ALIGNMENT_TOP" value="int landuse&#xA;float chiso_luk_lancan&#xA;float chiso_luc_lancan&#xA;float chiso_bhk_lancan&#xA;float chiso_tsl_lancan&#xA;float chiso_lnk_lancan&#xA;float chiso_khac_lancan&#xA;int landuse_obs&#xA;int madvdd&#xA;float chiso_lua_tom_lancan&#xA;float chiso_thichnghi_lua_tom&#xA;float chiso_khokhan_lua_tom&#xA;rgb color&#xA;"/>
+        <link businessObjects="/6"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="30" height="15" x="5" y="3" id="idees.gama.subgridlink" stretchH="false" stretchV="false" proportional="false"/>
+        <link businessObjects="/6"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Ellipse" background="/0/@colors.10" foreground="/0/@colors.2" lineWidth="2" transparency="0.0" width="150" height="50" x="630" y="150"/>
+      <link businessObjects="/9"/>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.3"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="150" height="50" font="/0/@fonts.2" horizontalAlignment="ALIGNMENT_CENTER" value="to_mau"/>
+        <link businessObjects="/9"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="15" height="15" x="10" y="17" id="idees.gama.actionlink" stretchH="false" stretchV="false" proportional="false"/>
+        <link businessObjects="/9"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Ellipse" background="/0/@colors.10" foreground="/0/@colors.2" lineWidth="2" transparency="0.0" width="150" height="50" x="124" y="-110"/>
+      <link businessObjects="/11"/>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.4"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="150" height="50" font="/0/@fonts.2" horizontalAlignment="ALIGNMENT_CENTER" value="tinhtongdt"/>
+        <link businessObjects="/11"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="15" height="15" x="10" y="17" id="idees.gama.actionlink" stretchH="false" stretchV="false" proportional="false"/>
+        <link businessObjects="/11"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Ellipse" background="/0/@colors.13" foreground="/0/@colors.2" lineWidth="2" transparency="0.0" width="150" height="50" x="-120" y="-70"/>
+      <link businessObjects="/13"/>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.5"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="150" height="50" font="/0/@fonts.2" horizontalAlignment="ALIGNMENT_CENTER" value="main_reflex"/>
+        <link businessObjects="/13"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="15" height="15" x="10" y="17" id="idees.gama.reflexlink" stretchH="false" stretchV="false" proportional="false"/>
+        <link businessObjects="/13"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Ellipse" background="/0/@colors.6" foreground="/0/@colors.2" lineWidth="2" transparency="0.0" width="140" height="50" x="550" y="-41"/>
+      <link businessObjects="/15"/>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.6"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="140" height="50" font="/0/@fonts.2" horizontalAlignment="ALIGNMENT_CENTER" value="Landuse_area_ha"/>
+        <link businessObjects="/15"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="15" height="15" x="10" y="17" id="idees.gama.displaylink" stretchH="false" stretchV="false" proportional="false"/>
+        <link businessObjects="/15"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:RoundedRectangle" background="/0/@colors.15" foreground="/0/@colors.2" lineWidth="2" transparency="0.0" width="150" height="100" x="-300" y="-54" cornerHeight="5" cornerWidth="5"/>
+      <link businessObjects="/18"/>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.7"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.4" lineWidth="2" filled="false" transparency="0.0">
+          <points y="20"/>
+          <points x="150" y="20"/>
+        </graphicsAlgorithm>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="150" height="20" font="/0/@fonts.1" horizontalAlignment="ALIGNMENT_CENTER" value="song"/>
+        <link businessObjects="/18"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="150" height="65" x="5" y="25" font="/0/@fonts.2" verticalAlignment="ALIGNMENT_TOP" value="int id&#xA;rgb color&#xA;"/>
+        <link businessObjects="/18"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="30" height="15" x="5" y="3" id="idees.gama.subspecieslink" stretchH="false" stretchV="false" proportional="false"/>
+        <link businessObjects="/18"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:RoundedRectangle" background="/0/@colors.15" foreground="/0/@colors.2" lineWidth="2" transparency="0.0" width="159" height="100" x="-305" y="290" cornerHeight="5" cornerWidth="5"/>
+      <link businessObjects="/20"/>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.8"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.4" lineWidth="2" filled="false" transparency="0.0">
+          <points y="20"/>
+          <points x="159" y="20"/>
+        </graphicsAlgorithm>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="159" height="20" font="/0/@fonts.1" horizontalAlignment="ALIGNMENT_CENTER" value="donvidatdai"/>
+        <link businessObjects="/20"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="159" height="65" x="5" y="25" font="/0/@fonts.2" verticalAlignment="ALIGNMENT_TOP" value="int dvdd&#xA;rgb color&#xA;"/>
+        <link businessObjects="/20"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="30" height="15" x="5" y="3" id="idees.gama.subspecieslink" stretchH="false" stretchV="false" proportional="false"/>
+        <link businessObjects="/20"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:RoundedRectangle" background="/0/@colors.15" foreground="/0/@colors.2" lineWidth="2" transparency="0.0" width="150" height="100" x="-300" y="59" cornerHeight="5" cornerWidth="5"/>
+      <link businessObjects="/22"/>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.9"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.4" lineWidth="2" filled="false" transparency="0.0">
+          <points y="20"/>
+          <points x="150" y="20"/>
+        </graphicsAlgorithm>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="150" height="20" font="/0/@fonts.1" horizontalAlignment="ALIGNMENT_CENTER" value="duong"/>
+        <link businessObjects="/22"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="150" height="65" x="5" y="25" font="/0/@fonts.2" verticalAlignment="ALIGNMENT_TOP" value="int id&#xA;rgb color&#xA;"/>
+        <link businessObjects="/22"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="30" height="15" x="5" y="3" id="idees.gama.subspecieslink" stretchH="false" stretchV="false" proportional="false"/>
+        <link businessObjects="/22"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:RoundedRectangle" background="/0/@colors.15" foreground="/0/@colors.2" lineWidth="2" transparency="0.0" width="150" height="100" x="-300" y="175" cornerHeight="5" cornerWidth="5"/>
+      <link businessObjects="/26"/>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.10"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.4" lineWidth="2" filled="false" transparency="0.0">
+          <points y="20"/>
+          <points x="150" y="20"/>
+        </graphicsAlgorithm>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="150" height="20" font="/0/@fonts.1" horizontalAlignment="ALIGNMENT_CENTER" value="vungbaode"/>
+        <link businessObjects="/26"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="150" height="65" x="5" y="25" font="/0/@fonts.2" verticalAlignment="ALIGNMENT_TOP" value="int de&#xA;rgb color&#xA;"/>
+        <link businessObjects="/26"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="30" height="15" x="5" y="3" id="idees.gama.subspecieslink" stretchH="false" stretchV="false" proportional="false"/>
+        <link businessObjects="/26"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Ellipse" background="/0/@colors.10" foreground="/0/@colors.2" lineWidth="2" transparency="0.0" width="150" height="50" x="-130" y="495"/>
+      <link businessObjects="/28"/>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.11"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="150" height="50" font="/0/@fonts.2" horizontalAlignment="ALIGNMENT_CENTER" value="docmatran_khokhan"/>
+        <link businessObjects="/28"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="15" height="15" x="10" y="17" id="idees.gama.actionlink" stretchH="false" stretchV="false" proportional="false"/>
+        <link businessObjects="/28"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Ellipse" background="/0/@colors.10" foreground="/0/@colors.2" lineWidth="2" transparency="0.0" width="150" height="50" x="29" y="465"/>
+      <link businessObjects="/30"/>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.12"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="150" height="50" font="/0/@fonts.2" horizontalAlignment="ALIGNMENT_CENTER" value="docmatran_thichnghi"/>
+        <link businessObjects="/30"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="15" height="15" x="10" y="17" id="idees.gama.actionlink" stretchH="false" stretchV="false" proportional="false"/>
+        <link businessObjects="/30"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Ellipse" background="/0/@colors.10" foreground="/0/@colors.2" lineWidth="2" transparency="0.0" width="150" height="50" x="658" y="259"/>
+      <link businessObjects="/32"/>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.13"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="150" height="50" font="/0/@fonts.2" horizontalAlignment="ALIGNMENT_CENTER" value="tinh_chiso_lancan"/>
+        <link businessObjects="/32"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="15" height="15" x="10" y="17" id="idees.gama.actionlink" stretchH="false" stretchV="false" proportional="false"/>
+        <link businessObjects="/32"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Ellipse" background="/0/@colors.10" foreground="/0/@colors.2" lineWidth="2" transparency="0.0" width="150" height="50" x="630" y="350"/>
+      <link businessObjects="/34"/>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.14"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="150" height="50" font="/0/@fonts.2" horizontalAlignment="ALIGNMENT_CENTER" value="xet_thichnghi"/>
+        <link businessObjects="/34"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="15" height="15" x="10" y="17" id="idees.gama.actionlink" stretchH="false" stretchV="false" proportional="false"/>
+        <link businessObjects="/34"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Ellipse" background="/0/@colors.10" foreground="/0/@colors.2" lineWidth="2" transparency="0.0" width="150" height="50" x="659" y="441"/>
+      <link businessObjects="/36"/>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.15"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="150" height="50" font="/0/@fonts.2" horizontalAlignment="ALIGNMENT_CENTER" value="xet_khokhanchuyendoi"/>
+        <link businessObjects="/36"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="15" height="15" x="10" y="17" id="idees.gama.actionlink" stretchH="false" stretchV="false" proportional="false"/>
+        <link businessObjects="/36"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Ellipse" background="/0/@colors.10" foreground="/0/@colors.2" lineWidth="2" transparency="0.0" width="150" height="50" x="609" y="510"/>
+      <link businessObjects="/38"/>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.16"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="150" height="50" font="/0/@fonts.2" horizontalAlignment="ALIGNMENT_CENTER" value="luachonksd"/>
+        <link businessObjects="/38"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="15" height="15" x="10" y="17" id="idees.gama.actionlink" stretchH="false" stretchV="false" proportional="false"/>
+        <link businessObjects="/38"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Ellipse" background="/0/@colors.10" foreground="/0/@colors.2" lineWidth="2" transparency="0.0" width="150" height="50" x="481" y="465"/>
+      <link businessObjects="/40"/>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.17"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="150" height="50" font="/0/@fonts.2" horizontalAlignment="ALIGNMENT_CENTER" value="landuse_eval"/>
+        <link businessObjects="/40"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="15" height="15" x="10" y="17" id="idees.gama.actionlink" stretchH="false" stretchV="false" proportional="false"/>
+        <link businessObjects="/40"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Ellipse" background="/0/@colors.10" foreground="/0/@colors.2" lineWidth="2" transparency="0.0" width="150" height="50" x="200" y="486"/>
+      <link businessObjects="/42"/>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.18"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="150" height="50" font="/0/@fonts.2" horizontalAlignment="ALIGNMENT_CENTER" value="tinh_kappa"/>
+        <link businessObjects="/42"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="15" height="15" x="10" y="17" id="idees.gama.actionlink" stretchH="false" stretchV="false" proportional="false"/>
+        <link businessObjects="/42"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:RoundedRectangle" background="/0/@colors.8" foreground="/0/@colors.2" lineWidth="2" transparency="0.0" width="220" height="100" x="290" y="580" cornerHeight="5" cornerWidth="5"/>
+      <link businessObjects="/44"/>
+      <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.24" incomingConnections="/0/@connections.19"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.4" lineWidth="2" filled="false" transparency="0.0">
+          <points y="20"/>
+          <points x="220" y="20"/>
+        </graphicsAlgorithm>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="220" height="20" font="/0/@fonts.1" horizontalAlignment="ALIGNMENT_CENTER" value="cell_dat_2010"/>
+        <link businessObjects="/44"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="220" height="65" x="5" y="25" font="/0/@fonts.2" verticalAlignment="ALIGNMENT_TOP" value="int landuse&#xA;rgb color&#xA;"/>
+        <link businessObjects="/44"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="30" height="15" x="5" y="3" id="idees.gama.subgridlink" stretchH="false" stretchV="false" proportional="false"/>
+        <link businessObjects="/44"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Ellipse" background="/0/@colors.10" foreground="/0/@colors.2" lineWidth="2" transparency="0.0" width="150" height="50" x="-1" y="-83"/>
+      <link businessObjects="/46"/>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.20"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="150" height="50" font="/0/@fonts.2" horizontalAlignment="ALIGNMENT_CENTER" value="tinh_dtmx"/>
+        <link businessObjects="/46"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="15" height="15" x="10" y="17" id="idees.gama.actionlink" stretchH="false" stretchV="false" proportional="false"/>
+        <link businessObjects="/46"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:RoundedRectangle" background="/0/@colors.15" foreground="/0/@colors.2" lineWidth="2" transparency="0.0" width="156" height="256" x="-303" y="403" cornerHeight="5" cornerWidth="5"/>
+      <link businessObjects="/48"/>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.21"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.4" lineWidth="2" filled="false" transparency="0.0">
+          <points y="20"/>
+          <points x="156" y="20"/>
+        </graphicsAlgorithm>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="156" height="20" font="/0/@fonts.1" horizontalAlignment="ALIGNMENT_CENTER" value="xa"/>
+        <link businessObjects="/48"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="156" height="185" x="5" y="25" font="/0/@fonts.2" verticalAlignment="ALIGNMENT_TOP" value="string tenxa&#xA;float tong_luc_xa&#xA;float tong_luk_xa&#xA;float tong_bhk_xa&#xA;float tong_khac_xa&#xA;float tong_tsl_xa&#xA;float tong_lnk_xa&#xA;float tong_lua_tom_xa&#xA;"/>
+        <link businessObjects="/48"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="30" height="15" x="5" y="3" id="idees.gama.subspecieslink" stretchH="false" stretchV="false" proportional="false"/>
+        <link businessObjects="/48"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:RoundedRectangle" background="/0/@colors.5" foreground="/0/@colors.2" lineWidth="2" transparency="0.0" width="150" height="50" x="-210" y="-110" cornerHeight="5" cornerWidth="5"/>
+      <link businessObjects="/50"/>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.22"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.4" lineWidth="2" filled="false" transparency="0.0">
+          <points y="20"/>
+          <points x="150" y="20"/>
+        </graphicsAlgorithm>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="150" height="20" font="/0/@fonts.1" horizontalAlignment="ALIGNMENT_CENTER" value="can_chinh"/>
+        <link businessObjects="/50"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="15" height="15" x="5" y="3" id="idees.gama.guixplink" stretchH="false" stretchV="false" proportional="false"/>
+        <link businessObjects="/50"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Ellipse" background="/0/@colors.10" foreground="/0/@colors.2" lineWidth="2" transparency="0.0" width="150" height="50" x="60" y="531"/>
+      <link businessObjects="/55"/>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.23"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="150" height="50" font="/0/@fonts.2" horizontalAlignment="ALIGNMENT_CENTER" value="gan_dvdd"/>
+        <link businessObjects="/55"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="15" height="15" x="10" y="17" id="idees.gama.actionlink" stretchH="false" stretchV="false" proportional="false"/>
+        <link businessObjects="/55"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Ellipse" background="/0/@colors.10" foreground="/0/@colors.2" lineWidth="2" transparency="0.0" width="150" height="50" x="92" y="620"/>
+      <link businessObjects="/57"/>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.24"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="150" height="50" font="/0/@fonts.2" horizontalAlignment="ALIGNMENT_CENTER" value="tomau"/>
+        <link businessObjects="/57"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="15" height="15" x="10" y="17" id="idees.gama.actionlink" stretchH="false" stretchV="false" proportional="false"/>
+        <link businessObjects="/57"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Ellipse" background="/0/@colors.10" foreground="/0/@colors.2" lineWidth="2" transparency="0.0" width="150" height="50" x="305" y="398"/>
+      <link businessObjects="/59"/>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.25"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="150" height="50" font="/0/@fonts.2" horizontalAlignment="ALIGNMENT_CENTER" value="gan_cell_hc"/>
+        <link businessObjects="/59"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="15" height="15" x="10" y="17" id="idees.gama.actionlink" stretchH="false" stretchV="false" proportional="false"/>
+        <link businessObjects="/59"/>
+      </children>
+    </children>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.0/@anchors.0" end="/0/@children.1/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.4" lineWidth="2" filled="false" transparency="0.0"/>
+      <link businessObjects="/3"/>
+    </connections>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.1/@anchors.0" end="/0/@children.2/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.7" lineWidth="3" filled="false" transparency="0.0"/>
+      <link businessObjects="/5"/>
+    </connections>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.0/@anchors.0" end="/0/@children.3/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.9" lineWidth="4" filled="false" transparency="0.0"/>
+      <link businessObjects="/7"/>
+      <connectionDecorators visible="true" locationRelative="true" location="1.0">
+        <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.9" lineWidth="4" filled="false" transparency="0.0">
+          <points x="-15" y="10"/>
+          <points/>
+          <points x="-15" y="-10"/>
+        </graphicsAlgorithm>
+      </connectionDecorators>
+    </connections>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.3/@anchors.0" end="/0/@children.4/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.11" lineWidth="3" filled="false" transparency="0.0"/>
+      <link businessObjects="/10"/>
+    </connections>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.0/@anchors.0" end="/0/@children.5/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.11" lineWidth="3" filled="false" transparency="0.0"/>
+      <link businessObjects="/12"/>
+    </connections>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.0/@anchors.0" end="/0/@children.6/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.14" lineWidth="3" filled="false" transparency="0.0"/>
+      <link businessObjects="/14"/>
+    </connections>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.1/@anchors.0" end="/0/@children.7/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.7" lineWidth="3" filled="false" transparency="0.0"/>
+      <link businessObjects="/16"/>
+    </connections>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.0/@anchors.0" end="/0/@children.8/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.9" lineWidth="4" filled="false" transparency="0.0"/>
+      <link businessObjects="/19"/>
+      <connectionDecorators visible="true" locationRelative="true" location="1.0">
+        <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.9" lineWidth="4" filled="false" transparency="0.0">
+          <points x="-15" y="10"/>
+          <points/>
+          <points x="-15" y="-10"/>
+        </graphicsAlgorithm>
+      </connectionDecorators>
+    </connections>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.0/@anchors.0" end="/0/@children.9/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.9" lineWidth="4" filled="false" transparency="0.0"/>
+      <link businessObjects="/21"/>
+      <connectionDecorators visible="true" locationRelative="true" location="1.0">
+        <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.9" lineWidth="4" filled="false" transparency="0.0">
+          <points x="-15" y="10"/>
+          <points/>
+          <points x="-15" y="-10"/>
+        </graphicsAlgorithm>
+      </connectionDecorators>
+    </connections>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.0/@anchors.0" end="/0/@children.10/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.9" lineWidth="4" filled="false" transparency="0.0"/>
+      <link businessObjects="/23"/>
+      <connectionDecorators visible="true" locationRelative="true" location="1.0">
+        <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.9" lineWidth="4" filled="false" transparency="0.0">
+          <points x="-15" y="10"/>
+          <points/>
+          <points x="-15" y="-10"/>
+        </graphicsAlgorithm>
+      </connectionDecorators>
+    </connections>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.0/@anchors.0" end="/0/@children.11/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.9" lineWidth="4" filled="false" transparency="0.0"/>
+      <link businessObjects="/27"/>
+      <connectionDecorators visible="true" locationRelative="true" location="1.0">
+        <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.9" lineWidth="4" filled="false" transparency="0.0">
+          <points x="-15" y="10"/>
+          <points/>
+          <points x="-15" y="-10"/>
+        </graphicsAlgorithm>
+      </connectionDecorators>
+    </connections>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.0/@anchors.0" end="/0/@children.12/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.11" lineWidth="3" filled="false" transparency="0.0"/>
+      <link businessObjects="/29"/>
+    </connections>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.0/@anchors.0" end="/0/@children.13/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.11" lineWidth="3" filled="false" transparency="0.0"/>
+      <link businessObjects="/31"/>
+    </connections>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.3/@anchors.0" end="/0/@children.14/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.11" lineWidth="3" filled="false" transparency="0.0"/>
+      <link businessObjects="/33"/>
+      <connectionDecorators visible="true" active="true" locationRelative="true" location="0.5">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" x="10" value="has the action"/>
+      </connectionDecorators>
+    </connections>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.3/@anchors.0" end="/0/@children.15/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.11" lineWidth="3" filled="false" transparency="0.0"/>
+      <link businessObjects="/35"/>
+      <connectionDecorators visible="true" active="true" locationRelative="true" location="0.5">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" x="10" value="has the action"/>
+      </connectionDecorators>
+    </connections>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.3/@anchors.0" end="/0/@children.16/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.11" lineWidth="3" filled="false" transparency="0.0"/>
+      <link businessObjects="/37"/>
+      <connectionDecorators visible="true" active="true" locationRelative="true" location="0.5">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" x="10" value="has the action"/>
+      </connectionDecorators>
+    </connections>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.3/@anchors.0" end="/0/@children.17/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.11" lineWidth="3" filled="false" transparency="0.0"/>
+      <link businessObjects="/39"/>
+      <connectionDecorators visible="true" active="true" locationRelative="true" location="0.5">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" x="10" value="has the action"/>
+      </connectionDecorators>
+    </connections>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.3/@anchors.0" end="/0/@children.18/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.11" lineWidth="3" filled="false" transparency="0.0"/>
+      <link businessObjects="/41"/>
+      <connectionDecorators visible="true" active="true" locationRelative="true" location="0.5">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" x="10" value="has the action"/>
+      </connectionDecorators>
+    </connections>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.0/@anchors.0" end="/0/@children.19/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.11" lineWidth="3" filled="false" transparency="0.0"/>
+      <link businessObjects="/43"/>
+      <connectionDecorators visible="true" active="true" locationRelative="true" location="0.5">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" x="10" value="has the action"/>
+      </connectionDecorators>
+    </connections>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.0/@anchors.0" end="/0/@children.20/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.9" lineWidth="4" filled="false" transparency="0.0"/>
+      <link businessObjects="/45"/>
+      <connectionDecorators visible="true" active="true" locationRelative="true" location="0.5">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" x="10" value="is macro agent of"/>
+      </connectionDecorators>
+      <connectionDecorators visible="true" locationRelative="true" location="1.0">
+        <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.9" lineWidth="4" filled="false" transparency="0.0">
+          <points x="-15" y="10"/>
+          <points/>
+          <points x="-15" y="-10"/>
+        </graphicsAlgorithm>
+      </connectionDecorators>
+    </connections>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.0/@anchors.0" end="/0/@children.21/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.11" lineWidth="3" filled="false" transparency="0.0"/>
+      <link businessObjects="/47"/>
+      <connectionDecorators visible="true" active="true" locationRelative="true" location="0.5">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" x="10" value="has the action"/>
+      </connectionDecorators>
+    </connections>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.0/@anchors.0" end="/0/@children.22/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.9" lineWidth="4" filled="false" transparency="0.0"/>
+      <link businessObjects="/49"/>
+      <connectionDecorators visible="true" active="true" locationRelative="true" location="0.5">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" x="10" value="is macro agent of"/>
+      </connectionDecorators>
+      <connectionDecorators visible="true" locationRelative="true" location="1.0">
+        <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.9" lineWidth="4" filled="false" transparency="0.0">
+          <points x="-15" y="10"/>
+          <points/>
+          <points x="-15" y="-10"/>
+        </graphicsAlgorithm>
+      </connectionDecorators>
+    </connections>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.0/@anchors.0" end="/0/@children.23/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.4" lineWidth="2" filled="false" transparency="0.0"/>
+      <link businessObjects="/51"/>
+      <connectionDecorators visible="true" active="true" locationRelative="true" location="0.5">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" x="10" value="possible experiment"/>
+      </connectionDecorators>
+    </connections>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.0/@anchors.0" end="/0/@children.24/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.11" lineWidth="3" filled="false" transparency="0.0"/>
+      <link businessObjects="/56"/>
+      <connectionDecorators visible="true" active="true" locationRelative="true" location="0.5">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" x="10" value="has the action"/>
+      </connectionDecorators>
+    </connections>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.20/@anchors.0" end="/0/@children.25/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.11" lineWidth="3" filled="false" transparency="0.0"/>
+      <link businessObjects="/58"/>
+      <connectionDecorators visible="true" active="true" locationRelative="true" location="0.5">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" x="10" value="has the action"/>
+      </connectionDecorators>
+    </connections>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.0/@anchors.0" end="/0/@children.26/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.11" lineWidth="3" filled="false" transparency="0.0"/>
+      <link businessObjects="/60"/>
+      <connectionDecorators visible="true" active="true" locationRelative="true" location="0.5">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" x="10" value="has the action"/>
+      </connectionDecorators>
+    </connections>
+    <colors red="227" green="238" blue="249"/>
+    <colors red="255" green="255" blue="255"/>
+    <colors green="255"/>
+    <colors red="255" green="255" blue="210"/>
+    <colors/>
+    <colors red="135" green="206" blue="250"/>
+    <colors red="127" green="255"/>
+    <colors red="96" green="255" blue="96"/>
+    <colors red="255" green="204" blue="150"/>
+    <colors red="255" green="153" blue="51"/>
+    <colors red="255" green="204" blue="153"/>
+    <colors red="252" green="207" blue="153"/>
+    <colors red="255"/>
+    <colors red="221" green="160" blue="221"/>
+    <colors blue="255"/>
+    <colors red="255" green="255" blue="150"/>
+    <colors red="152" green="251" blue="152"/>
+    <fonts name="Arial" size="8"/>
+    <fonts name="Arial" size="12" bold="true"/>
+    <fonts name="Arial" size="12"/>
+  </pi:Diagram>
+  <gama:EWorldAgent name="world" experimentLinks="/3 /51" actionLinks="/12 /29 /31 /43 /47 /56 /60" reflexLinks="/14" microSpeciesLinks="/7 /19 /21 /23 /27 /45 /49" init="//load ban do tu cac ban do vao tac tu&#xD;&#xA;do docmatran_thichnghi;&#xD;&#xA;&#xD;&#xA;do docmatran_khokhan;&#xD;&#xA;create song from:song_file;&#xD;&#xA;create duong from:duong_file;&#xD;&#xA;create donvidatdai from:dvdd_file with:[dvdd::int(read('Sttdvdd'))];&#xD;&#xA;create vungbaode from:bandodebao with:[de::read('De')];&#xD;&#xA;create xa from:xa_file with:[tenxa::read('Tenxa')];&#xD;&#xA;ask active_cell{&#xD;&#xA;&#x9;do to_mau;&#xD;&#xA;&#x9;&#xD;&#xA;}&#xD;&#xA;ask active_cell_dat2010{&#xD;&#xA;&#x9;do tomau;&#xD;&#xA;}&#xD;&#xA;do gan_dvdd;&#xD;&#xA;do gan_cell_hc;&#xD;&#xA;tieuchi&lt;-[[&#xD;&#xA;&quot;name&quot;::&quot;lancan&quot;,&quot;weight&quot;::w_lancan],&#x9; &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;  [&quot;name&quot;::&quot;khokhan&quot;,&quot;weight&quot;::w_khokhan],&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;  [&quot;name&quot;::&quot;thichnghi&quot;,&quot;weight&quot;::w_thichnghi],&#xD;&#xA;  &#x9;&#x9;&#x9;&#x9;  [&quot;name&quot;::&quot;loinhuan&quot;,&quot;weight&quot;::w_loinhuan]&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;  ];&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;">
+    <colorPicto>255</colorPicto>
+    <colorPicto>255</colorPicto>
+    <colorPicto>210</colorPicto>
+    <facets name="torus" value=""/>
+    <facets name="schedules" value=""/>
+    <facets name="control" value="reflex"/>
+    <facets name="frequency" value=""/>
+    <variables init="grid_file(&quot;../includes/lu_100x100_mx_2005_new.tif&quot;)" min="" max="" update="" function="" type="file" name="cell_file"/>
+    <variables init="envelope(cell_file)" min="" max="" update="" function="" type="geometry" name="shape"/>
+    <variables init="cell_dat where (each.grid_value !=0.0)" min="" max="" update="" function="" type="list&lt;cell_dat>" name="active_cell"/>
+    <variables init="" min="" max="" update="" function="" type="float" name="tong_luc"/>
+    <variables init="" min="" max="" update="" function="" type="float" name="tong_tsl"/>
+    <variables init="" min="" max="" update="" function="" type="float" name="tong_bhk"/>
+    <variables init="'../includes/rivers_myxuyen_region.shp'" min="" max="" update="" function="" type="file" name="song_file"/>
+    <variables init="'../includes/road_myxuyen_region.shp'" min="" max="" update="" function="" type="file" name="duong_file"/>
+    <variables init="(&quot;../includes/landunit_mx_region.shp&quot;)" min="" max="" update="" function="" type="file" name="dvdd_file"/>
+    <variables init="(&quot;../includes/soctrang_debao2010_region.shp&quot;)" min="" max="" update="" function="" type="file" name="bandodebao"/>
+    <variables init="" min="" max="" update="" function="" type="matrix" name="matran_khokhan"/>
+    <variables init="csv_file(&quot;../includes/khokhanchuyendoi.csv&quot;,false)" min="" max="" update="" function="" type="file" name="khokhanchuyendoi_file"/>
+    <variables init="" min="" max="" update="" function="" type="matrix" name="matran_thichnghi"/>
+    <variables init="csv_file(&quot;../includes/landsuitability.csv&quot;,false)" min="" max="" update="" function="" type="file" name="thichnghidatdai_file"/>
+    <variables init="0.2" min="" max="" update="" function="" type="float" name="w_lancan"/>
+    <variables init="" min="" max="" update="" function="" type="list" name="tieuchi"/>
+    <variables init="0.0" min="" max="" update="" function="" type="float" name="v_kappa"/>
+    <variables init="grid_file(&quot;../includes/lu_100x100_mx_2019_new.tif&quot;)" min="" max="" update="" function="" type="file" name="cell_dat_2010_file"/>
+    <variables init="cell_dat_2010 where (each.grid_value !=0.0)" min="" max="" update="" function="" type="list&lt;cell_dat_2010>" name="active_cell_dat2010"/>
+    <variables init="&quot;../includes/commune_myxuyen.shp&quot;" min="" max="" update="" function="" type="file" name="xa_file"/>
+    <variables init="" min="" max="" update="" function="" type="float" name="tong_lnk"/>
+    <variables init="" min="" max="" update="" function="" type="float" name="tong_luk"/>
+    <variables init="" min="" max="" update="" function="" type="float" name="tong_khac"/>
+    <variables init="" min="" max="" update="" function="" type="float" name="dt_luc"/>
+    <variables init="" min="" max="" update="" function="" type="float" name="dt_luk"/>
+    <variables init="" min="" max="" update="" function="" type="float" name="dt_lnk"/>
+    <variables init="" min="" max="" update="" function="" type="float" name="dt_bhk"/>
+    <variables init="" min="" max="" update="" function="" type="float" name="dt_tsl"/>
+    <variables init="" min="" max="" update="" function="" type="float" name="dt_khac"/>
+    <variables init="0.7" min="" max="" update="" function="" type="float" name="w_khokhan"/>
+    <variables init="0.8" min="" max="" update="" function="" type="float" name="w_thichnghi"/>
+    <variables init="" min="" max="" update="" function="" type="float" name="tong_lua_tom"/>
+    <variables init="0.7" min="" max="" update="" function="" type="float" name="w_loinhuan"/>
+    <reflexList>main_reflex</reflexList>
+  </gama:EWorldAgent>
+  <gama:EGUIExperiment name="my_GUI_xp" error="" experimentLink="/3" displayLinks="/5 /16" parameters="/61 /62 /63 /64">
+    <colorPicto>135</colorPicto>
+    <colorPicto>206</colorPicto>
+    <colorPicto>250</colorPicto>
+  </gama:EGUIExperiment>
+  <gama:EExperimentLink species="/1" experiment="/2"/>
+  <gama:EDisplay name="Landuse_Sim" error="" layers="/8 /24 /25" displayLink="/5" gamlCode="&#x9;&#x9;&#x9;grid cell_dat;&#xD;&#xA;&#xA;&#x9;&#x9;&#x9;species song;&#xD;&#xA;&#xA;&#x9;&#x9;&#x9;species duong;&#xD;&#xA;&#x9;&#x9;">
+    <colorPicto>127</colorPicto>
+    <colorPicto>255</colorPicto>
+    <colorPicto>0</colorPicto>
+    <facets name="fullscreen" value=""/>
+    <facets name="type" value="java2D"/>
+    <facets name="light" value=""/>
+    <facets name="refresh" value=""/>
+    <facets name="camera_look_pos" value=""/>
+    <facets name="camera_up_vector" value=""/>
+    <facets name="camera_pos" value=""/>
+    <facets name="synchronized" value=""/>
+    <facets name="parent" value=""/>
+    <facets name="z_far" value=""/>
+    <facets name="autosave" value=""/>
+    <facets name="z_near" value=""/>
+    <facets name="toolbar" value=""/>
+    <facets name="ambient_light" value=""/>
+    <facets name="focus" value=""/>
+    <facets name="keystone" value=""/>
+    <facets name="rotate" value=""/>
+    <facets name="virtual" value=""/>
+    <facets name="background" value=""/>
+    <facets name="draw_env" value=""/>
+    <facets name="camera_interaction" value=""/>
+    <facets name="draw_diffuse_light" value=""/>
+  </gama:EDisplay>
+  <gama:EDisplayLink target="/4" source="/2" experiment="/2" display="/4"/>
+  <gama:EGrid name="cell_dat" error="" actionLinks="/10 /33 /35 /37 /39 /41" macroSpeciesLinks="/7" init="&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;">
+    <colorPicto>255</colorPicto>
+    <colorPicto>204</colorPicto>
+    <colorPicto>150</colorPicto>
+    <facets name="width" value=""/>
+    <facets name="use_neighbors_cache" value=""/>
+    <facets name="file" value="cell_file"/>
+    <facets name="use_regular_agents" value=""/>
+    <facets name="use_individual_shapes" value=""/>
+    <facets name="cell_height" value=""/>
+    <facets name="schedules" value=""/>
+    <facets name="control" value="reflex"/>
+    <facets name="frequency" value=""/>
+    <facets name="cell_width" value=""/>
+    <facets name="height" value=""/>
+    <facets name="neighbors" value="8"/>
+    <variables init="int(grid_value)" min="" max="" update="" function="" type="int" name="landuse"/>
+    <variables init="" min="" max="" update="" function="" type="float" name="chiso_luk_lancan"/>
+    <variables init="" min="" max="" update="" function="" type="float" name="chiso_luc_lancan"/>
+    <variables init="" min="" max="" update="" function="" type="float" name="chiso_bhk_lancan"/>
+    <variables init="" min="" max="" update="" function="" type="float" name="chiso_tsl_lancan"/>
+    <variables init="" min="" max="" update="" function="" type="float" name="chiso_lnk_lancan"/>
+    <variables init="" min="" max="" update="" function="" type="float" name="chiso_khac_lancan"/>
+    <variables init="" min="" max="" update="" function="" type="int" name="landuse_obs"/>
+    <variables init="" min="" max="" update="" function="" type="int" name="madvdd"/>
+    <variables init="" min="" max="" update="" function="" type="float" name="chiso_lua_tom_lancan"/>
+    <variables init="" min="" max="" update="" function="" type="float" name="chiso_thichnghi_lua_tom"/>
+    <variables init="" min="" max="" update="" function="" type="float" name="chiso_khokhan_lua_tom"/>
+    <variables init="" min="" max="" update="" function="" type="rgb" name="color"/>
+  </gama:EGrid>
+  <gama:ESubSpeciesLink macro="/1" micro="/6"/>
+  <gama:ELayer name="hientrang" display="/4" type="grid" file="../images/background.png" text="" size="1.0" species="world" agents="[]" aspect="" color="" isColorCst="true" grid="cell_dat" chart_type="series">
+    <facets name="position" value=""/>
+    <facets name="transparency" value=""/>
+    <facets name="selectable" value=""/>
+    <facets name="size" value=""/>
+    <facets name="refresh" value=""/>
+    <facets name="trace" value=""/>
+    <facets name="fading" value=""/>
+    <colorRBG>255</colorRBG>
+    <colorRBG>255</colorRBG>
+    <colorRBG>255</colorRBG>
+  </gama:ELayer>
+  <gama:EAction name="to_mau" error="" gamlCode="&#xD;&#xA;if( landuse = 5)  {&#xD;&#xA;&#x9;&#x9;color &lt;- #yellow;&#xD;&#xA;&#x9;}&#xD;&#xA;if( landuse = 37)  {&#xD;&#xA;&#x9;&#x9;color &lt;- rgb(170,255,255);&#xD;&#xA;&#x9;}&#xD;&#xA;&#xD;&#xA;if (landuse=6){&#xD;&#xA;&#x9;color&lt;-rgb(196,196,0);&#xD;&#xA;}&#xD;&#xA;if (landuse=12){&#xD;&#xA;&#x9;color&lt;-#lightgreen;&#xD;&#xA;}&#xD;&#xA;if (landuse=14){&#xD;&#xA;&#x9;color&lt;-#darkgreen;&#xD;&#xA;}&#xD;&#xA;if (landuse=34){&#xD;&#xA;&#x9;color&lt;-#cyan;&#xD;&#xA;}&#xD;&#xA;if (landuse=100){&#xD;&#xA;&#x9;color&lt;-rgb(40,150,120);&#xD;&#xA;}&#xD;&#xA;if(landuse>0)and (landuse!=14) and (landuse!=5) and (landuse!=6) and(landuse!=100) and (landuse!=12) and (landuse!=34){&#xD;&#xA;&#x9;&#x9;color&lt;-#gray;&#xD;&#xA;&#x9;}&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;" actionLinks="/10" returnType="">
+    <colorPicto>255</colorPicto>
+    <colorPicto>204</colorPicto>
+    <colorPicto>153</colorPicto>
+  </gama:EAction>
+  <gama:EActionLink target="/9" source="/6" action="/9" species="/6"/>
+  <gama:EAction name="tinhtongdt" error="" gamlCode="tong_luc&lt;-0;&#xD;&#xA;tong_luk&lt;-0;&#xD;&#xA;tong_lua_tom&lt;-0;&#xD;&#xA;tong_tsl&lt;-0;&#xD;&#xA;tong_lnk&lt;-0;&#xD;&#xA;tong_bhk&lt;-0;&#xD;&#xA;tong_khac&lt;-0;&#xD;&#xA;&#xD;&#xA;ask active_cell {&#xD;&#xA;&#x9;if (landuse =5){&#xD;&#xA;&#x9;&#x9;tong_luc &lt;-tong_luc+ 100*100/10000;//kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;&#xD;&#xA;}&#xD;&#xA;ask active_cell {&#xD;&#xA;&#x9;if (landuse =6){&#xD;&#xA;&#x9;&#x9;tong_luk &lt;-tong_luk+ 100*100/10000;//kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;&#xD;&#xA;}&#xD;&#xA;ask active_cell {&#xD;&#xA;&#x9;if (landuse =100){&#xD;&#xA;&#x9;&#x9;tong_lua_tom &lt;-tong_lua_tom+ 100*100/10000;//kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster&#xD;&#xA;&#x9;}&#xD;&#xA;}&#xD;&#xA;ask active_cell{&#xD;&#xA;&#x9;if(landuse=34){&#xD;&#xA;&#x9;&#x9;tong_tsl&lt;-tong_tsl+100*100/10000;//kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster&#xD;&#xA;&#x9;}&#xD;&#xA;}&#xD;&#xA;ask active_cell{&#xD;&#xA;&#x9;if(landuse=12){&#xD;&#xA;&#x9;&#x9;tong_bhk&lt;-tong_bhk+100*100/10000;//kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster&#xD;&#xA;&#x9;}&#xD;&#xA;}&#xD;&#xA;ask active_cell{&#xD;&#xA;&#x9;if(landuse=14){&#xD;&#xA;&#x9;&#x9;tong_lnk&lt;-tong_lnk+100*100/10000;//kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;}&#xD;&#xA;ask active_cell{&#xD;&#xA;&#x9;if(landuse>0)and (landuse!=14) and (landuse!=5) and (landuse!=6) and(landuse!=100) and (landuse!=12) and (landuse!=34){&#xD;&#xA;&#x9;&#x9;tong_khac&lt;-tong_khac+100*100/10000;//kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;write &quot;Tong dt lua:&quot;+tong_luc;&#xD;&#xA;write &quot;Tong dt l&#xfa;a kh&#xe1;c:&quot;+tong_luk;&#xD;&#xA;write &quot;Tong dt l&#xfa;a tom:&quot;+tong_lua_tom;&#xD;&#xA;write &quot;Tong dt ts:&quot;+tong_tsl;&#xD;&#xA;write &quot;Tong dt rau mau:&quot;+tong_bhk;&#xD;&#xA;write &quot;Tong dt lnk:&quot;+tong_lnk;&#xD;&#xA;write &quot;Tong dt khac:&quot;+tong_khac;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;" actionLinks="/12" returnType="">
+    <colorPicto>255</colorPicto>
+    <colorPicto>204</colorPicto>
+    <colorPicto>153</colorPicto>
+  </gama:EAction>
+  <gama:EActionLink target="/11" source="/1" action="/11" species="/1"/>
+  <gama:EReflex name="main_reflex" error="" gamlCode="ask active_cell{&#xD;&#xA;&#x9;do tinh_chiso_lancan;&#xD;&#xA;&#xD;&#xA;&#x9;}&#xD;&#xA;ask active_cell{&#xD;&#xA;&#x9;do luachonksd;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;do to_mau;&#xD;&#xA;&#x9;}&#xD;&#xA;do tinhtongdt;&#xD;&#xA;&#xD;&#xA;if (cycle = 25){&#xD;&#xA;do tinh_kappa;&#xD;&#xA;ask cell_dat{&#xD;&#xA;&#x9;grid_value &lt;- float(landuse);&#xD;&#xA;}&#xD;&#xA;save cell_dat to:&quot;../results/landuse_sim_&quot; + 2005+cycle +&quot;.tif&quot; type:&quot;geotiff&quot;;&#xD;&#xA;//&#x9;do tinh_dtmx;&#xD;&#xA;&#x9;do pause;&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;" reflexLinks="/14">
+    <colorPicto>221</colorPicto>
+    <colorPicto>160</colorPicto>
+    <colorPicto>221</colorPicto>
+    <facets name="when" value=""/>
+  </gama:EReflex>
+  <gama:EReflexLink target="/13" source="/1" reflex="/13" species="/1"/>
+  <gama:EDisplay name="Landuse_area_ha" error="" layers="/17" displayLink="/16" gamlCode="&#x9;&#x9;&#x9;chart &quot;Landuse_area_ha&quot; type:series background:rgb(255,255,255){&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;data &quot;2 rice&quot; style:line value:tong_luc color:#red;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;data &quot;Shrimp&quot; style:line value:tong_tsl color:#cyan;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;data &quot;Rice-Shrimp&quot; style:line value:tong_lua_tom color:rgb(40,150,120);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;data &quot;Annual crops&quot; style:line value:tong_bhk color:#lightgreen;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;data &quot;Rice-vegetable&quot; style:line value:tong_luk color:rgb(196,196,0);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;data &quot;Fruit trees&quot; style:line value:tong_lnk color:#darkgreen;&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;">
+    <colorPicto>127</colorPicto>
+    <colorPicto>255</colorPicto>
+    <colorPicto>0</colorPicto>
+    <facets name="fullscreen" value=""/>
+    <facets name="type" value="opengl"/>
+    <facets name="light" value=""/>
+    <facets name="refresh" value=""/>
+    <facets name="camera_look_pos" value=""/>
+    <facets name="camera_up_vector" value=""/>
+    <facets name="camera_pos" value=""/>
+    <facets name="synchronized" value=""/>
+    <facets name="parent" value=""/>
+    <facets name="autosave" value=""/>
+    <facets name="toolbar" value=""/>
+    <facets name="ambient_light" value=""/>
+    <facets name="focus" value=""/>
+    <facets name="keystone" value=""/>
+    <facets name="rotate" value=""/>
+    <facets name="virtual" value=""/>
+    <facets name="background" value=""/>
+    <facets name="draw_env" value=""/>
+    <facets name="camera_interaction" value=""/>
+    <facets name="draw_diffuse_light" value=""/>
+    <facets name="z_far" value=""/>
+    <facets name="z_near" value=""/>
+  </gama:EDisplay>
+  <gama:EDisplayLink target="/15" source="/2" experiment="/2" display="/15"/>
+  <gama:ELayer name="Landuse_area_ha" display="/15" type="chart" file="../images/background.png" text="" size="1.0" species="world" agents="[]" aspect="" color="" isColorCst="true" grid="cell_dat" chartlayers="/65 /66 /67 /68 /69 /70" chart_type="series">
+    <facets name="position" value=""/>
+    <facets name="transparency" value=""/>
+    <facets name="selectable" value=""/>
+    <facets name="size" value=""/>
+    <facets name="refresh" value=""/>
+    <facets name="trace" value=""/>
+    <facets name="fading" value=""/>
+    <colorRBG>255</colorRBG>
+    <colorRBG>255</colorRBG>
+    <colorRBG>255</colorRBG>
+  </gama:ELayer>
+  <gama:ESpecies name="song" error="" macroSpeciesLinks="/19" init="&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;">
+    <colorPicto>255</colorPicto>
+    <colorPicto>255</colorPicto>
+    <colorPicto>150</colorPicto>
+    <facets name="schedules" value=""/>
+    <facets name="control" value="reflex"/>
+    <facets name="frequency" value=""/>
+    <variables init="" min="" max="" update="" function="" type="int" name="id"/>
+    <variables init="rgb(128,255,255)" min="" max="" update="" function="" type="rgb" name="color"/>
+  </gama:ESpecies>
+  <gama:ESubSpeciesLink macro="/1" micro="/18"/>
+  <gama:ESpecies name="donvidatdai" error="" macroSpeciesLinks="/21" init="&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;">
+    <colorPicto>255</colorPicto>
+    <colorPicto>255</colorPicto>
+    <colorPicto>150</colorPicto>
+    <facets name="schedules" value=""/>
+    <facets name="control" value="reflex"/>
+    <facets name="frequency" value=""/>
+    <variables init="" min="" max="" update="" function="" type="int" name="dvdd"/>
+    <variables init="rgb(rnd(255),rnd(255),rnd(255))" min="" max="" update="" function="" type="rgb" name="color"/>
+  </gama:ESpecies>
+  <gama:ESubSpeciesLink macro="/1" micro="/20"/>
+  <gama:ESpecies name="duong" error="" macroSpeciesLinks="/23" init="&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;">
+    <colorPicto>255</colorPicto>
+    <colorPicto>255</colorPicto>
+    <colorPicto>150</colorPicto>
+    <facets name="schedules" value=""/>
+    <facets name="control" value="reflex"/>
+    <facets name="frequency" value=""/>
+    <variables init="" min="" max="" update="" function="" type="int" name="id"/>
+    <variables init="#red" min="" max="" update="" function="" type="rgb" name="color"/>
+  </gama:ESpecies>
+  <gama:ESubSpeciesLink macro="/1" micro="/22"/>
+  <gama:ELayer name="song" display="/4" type="species" file="../images/background.png" text="" size="1.0" species="song" agents="[]" aspect="default" grid="cell_dat" chart_type="series">
+    <facets name="position" value=""/>
+    <facets name="transparency" value=""/>
+    <facets name="selectable" value=""/>
+    <facets name="size" value=""/>
+    <facets name="refresh" value=""/>
+    <facets name="trace" value=""/>
+    <facets name="fading" value=""/>
+    <colorRBG>255</colorRBG>
+    <colorRBG>255</colorRBG>
+    <colorRBG>255</colorRBG>
+  </gama:ELayer>
+  <gama:ELayer name="duong" display="/4" type="species" file="../images/background.png" text="" size="1.0" species="duong" agents="[]" aspect="default" grid="cell_dat" chart_type="series">
+    <facets name="position" value=""/>
+    <facets name="transparency" value=""/>
+    <facets name="selectable" value=""/>
+    <facets name="size" value=""/>
+    <facets name="refresh" value=""/>
+    <facets name="trace" value=""/>
+    <facets name="fading" value=""/>
+    <colorRBG>255</colorRBG>
+    <colorRBG>255</colorRBG>
+    <colorRBG>255</colorRBG>
+  </gama:ELayer>
+  <gama:ESpecies name="vungbaode" error="" macroSpeciesLinks="/27" init="&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;">
+    <colorPicto>255</colorPicto>
+    <colorPicto>255</colorPicto>
+    <colorPicto>150</colorPicto>
+    <facets name="schedules" value=""/>
+    <facets name="control" value="reflex"/>
+    <facets name="frequency" value=""/>
+    <variables init="" min="" max="" update="" function="" type="int" name="de"/>
+    <variables init="" min="" max="" update="" function="" type="rgb" name="color"/>
+  </gama:ESpecies>
+  <gama:ESubSpeciesLink macro="/1" micro="/26"/>
+  <gama:EAction name="docmatran_khokhan" error="" gamlCode="&#xD;&#xA;matran_khokhan&lt;- matrix(khokhanchuyendoi_file);&#xD;&#xA;write &quot;Matra kho khan:&quot; +matran_khokhan;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;" actionLinks="/29" returnType="">
+    <colorPicto>255</colorPicto>
+    <colorPicto>204</colorPicto>
+    <colorPicto>153</colorPicto>
+  </gama:EAction>
+  <gama:EActionLink target="/28" source="/1" action="/28" species="/1"/>
+  <gama:EAction name="docmatran_thichnghi" error="" gamlCode="matran_thichnghi&lt;- matrix(thichnghidatdai_file);&#xD;&#xA;write &quot;Ma tran thich nghi&quot; +matran_thichnghi;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;" actionLinks="/31" returnType="">
+    <colorPicto>255</colorPicto>
+    <colorPicto>204</colorPicto>
+    <colorPicto>153</colorPicto>
+  </gama:EAction>
+  <gama:EActionLink target="/30" source="/1" action="/30" species="/1"/>
+  <gama:EAction name="tinh_chiso_lancan" error="" gamlCode="&#xD;&#xA;//so cell xung quanh cuar mot cell co kieu su dung la luk/8 (8-tong so o lan can cua moi o)&#xD;&#xA;list&lt;cell_dat> cell_lancan &lt;-(self neighbors_at 2);//1 ban kinh lan can laf 2 cell = 8 cell xung quanh 1 cell&#xD;&#xA;//dem so cell trong cell_lancan co landuse=6 (6:luk)&#xD;&#xA;chiso_luc_lancan &lt;-(cell_lancan count (each.landuse=5))/25;&#xD;&#xA;chiso_luk_lancan &lt;-(cell_lancan count (each.landuse=6))/25;&#xD;&#xA;chiso_bhk_lancan &lt;-(cell_lancan count (each.landuse=12))/25;&#xD;&#xA;chiso_lnk_lancan &lt;-(cell_lancan count (each.landuse=14))/25;&#xD;&#xA;chiso_tsl_lancan &lt;-(cell_lancan count (each.landuse=34))/25;&#xD;&#xA;chiso_lua_tom_lancan &lt;-(cell_lancan count (each.landuse=100))/25;&#xD;&#xA;//chiso_khac_lancan &lt;-(cell_lancan count (each.landuse=1))/8;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;" actionLinks="/33" returnType="">
+    <colorPicto>255</colorPicto>
+    <colorPicto>204</colorPicto>
+    <colorPicto>153</colorPicto>
+  </gama:EAction>
+  <gama:EActionLink target="/32" source="/6" action="/32" species="/6"/>
+  <gama:EAction name="xet_thichnghi" error="" gamlCode="float kqthichnghi &lt;-0.0;&#xD;&#xA;int i &lt;-0;&#xD;&#xA;int j &lt;-0;&#xD;&#xA;loop i from: 1 to: matran_thichnghi.rows-1{&#xD;&#xA;&#x9;if (int(matran_thichnghi[0,i])=madvdd){ //cot 0; cot ma dvdd, i:dong&#xD;&#xA;&#x9;&#x9;loop j from:1 to: matran_thichnghi.columns-1{ //do tung cot cua matran&#xD;&#xA;&#x9;&#x9;&#x9;if (int(matran_thichnghi[j,0])=LUT){ //dong 0:chua cac ten cot&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;kqthichnghi &lt;- float(matran_thichnghi[j,i]); &#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;}&#xD;&#xA;}&#xD;&#xA;return kqthichnghi;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;" actionLinks="/35" returnType="float">
+    <colorPicto>255</colorPicto>
+    <colorPicto>204</colorPicto>
+    <colorPicto>153</colorPicto>
+    <variables init="" type="int" name="madvdd"/>
+    <variables init="" type="int" name="LUT"/>
+  </gama:EAction>
+  <gama:EActionLink target="/34" source="/6" action="/34" species="/6"/>
+  <gama:EAction name="xet_khokhanchuyendoi" error="" gamlCode="float kqkhokhanchuyendoi &lt;-0.0;&#xD;&#xA;int i &lt;-0;&#xD;&#xA;int j &lt;-0;&#xD;&#xA;loop i from: 1 to: matran_khokhan.rows-1{&#xD;&#xA;&#x9;if (int(matran_khokhan[0,i])=landuse1){ //cot 0; cot ma dvdd, i:dong&#xD;&#xA;&#x9;&#x9;loop j from:1 to: matran_khokhan.columns-1{ //do tung cot cua matran&#xD;&#xA;&#x9;&#x9;&#x9;if (int(matran_khokhan[j,0])=landuse2){ //dong 0:chua cac ten cot&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;kqkhokhanchuyendoi &lt;- float(matran_khokhan[j,i]); &#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;}&#xD;&#xA;}&#xD;&#xA;return kqkhokhanchuyendoi;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;" actionLinks="/37" returnType="float">
+    <colorPicto>255</colorPicto>
+    <colorPicto>204</colorPicto>
+    <colorPicto>153</colorPicto>
+    <variables init="" type="int" name="landuse1"/>
+    <variables init="" type="int" name="landuse2"/>
+  </gama:EAction>
+  <gama:EActionLink target="/36" source="/6" action="/36" species="/6"/>
+  <gama:EAction name="luachonksd" error="" gamlCode="&#xD;&#xA;list&lt;list> cands &lt;-landuse_eval();&#xD;&#xA;int choice&lt;-0;&#xD;&#xA;if (landuse=5 or landuse=6 or landuse=12 or landuse=14 or landuse=34 or landuse=100 ){&#xD;&#xA;&#x9;//or (landuse>0)and (landuse!=14) and (landuse!=5) and (landuse!=6) and(landuse!=100) and (landuse!=12) and (landuse!=34&#xD;&#xA;&#x9;choice &lt;- weighted_means_DM(cands,tieuchi);&#xD;&#xA;&#x9;//choice tra vi tri ung vien trong danh sach&#xD;&#xA;&#x9;if (choice=0){&#xD;&#xA;&#x9;&#x9;if flip(0.05){&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;landuse&lt;-5;&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;} &#xD;&#xA;&#x9;if (choice=1){&#xD;&#xA;&#x9;&#x9;if (xet_thichnghi(madvdd,34)>0.33){  // Suitability > S3&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if flip(0.08){&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;landuse&lt;-34;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;if (choice=2){&#xD;&#xA;&#x9;&#x9;if (xet_thichnghi(madvdd,12)>0.33){&#xD;&#xA;&#x9;&#x9;&#x9;landuse&lt;-12;&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;if (choice=3){&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;if (xet_thichnghi(madvdd,6)>0.33){&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;landuse&lt;-6;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;if (choice=4){&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;if (xet_thichnghi(madvdd,14)>0.33){&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;landuse&lt;-14;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;if (choice=5){&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;if (xet_thichnghi(madvdd,100)>0){&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;landuse&lt;-100;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;}&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;" actionLinks="/39" returnType="">
+    <colorPicto>255</colorPicto>
+    <colorPicto>204</colorPicto>
+    <colorPicto>153</colorPicto>
+  </gama:EAction>
+  <gama:EActionLink target="/38" source="/6" action="/38" species="/6"/>
+  <gama:EAction name="landuse_eval" error="" gamlCode="&#xD;&#xA;//l&#x1ead;p danh s&#xe1;ch c&#xe1;c ki&#x1ec3;u s&#x1eed; d&#x1ee5;ng &#x111;&#x1ea5;t&#xD;&#xA;list&lt;list> candidates;&#xD;&#xA;list&lt;float>candluc;&#xD;&#xA;list&lt;float>candtsl;&#xD;&#xA;list&lt;float>candbhk;&#xD;&#xA;list&lt;float>candluk;&#xD;&#xA;list&lt;float>candlnk;&#xD;&#xA;list&lt;float>cand_luatom;&#xD;&#xA;&#xD;&#xA;//dua dat tinh cua cac ung vien&#xD;&#xA;candluc&lt;&lt; chiso_luc_lancan;&#xD;&#xA;candluc&lt;&lt; xet_khokhanchuyendoi(landuse,5);&#xD;&#xA;candluc&lt;&lt; xet_thichnghi(madvdd,5);&#xD;&#xA;candluc&lt;&lt; 34/389; &#xD;&#xA;//dua dac tinh ung vien tsl&#xD;&#xA;candtsl&lt;&lt; chiso_tsl_lancan;&#xD;&#xA;candtsl&lt;&lt; xet_khokhanchuyendoi(landuse,34);&#xD;&#xA;candtsl&lt;&lt; xet_thichnghi(madvdd,34);&#xD;&#xA;candtsl&lt;&lt;389/389; &#xD;&#xA;&#xD;&#xA;//dua dac tinh ung vien hnk&#xD;&#xA;candbhk&lt;&lt; chiso_bhk_lancan;&#xD;&#xA;candbhk&lt;&lt; xet_khokhanchuyendoi(landuse,12);&#xD;&#xA;candbhk&lt;&lt; xet_thichnghi(madvdd,12);&#xD;&#xA; candbhk&lt;&lt;180/389;&#xD;&#xA;//dua dac tinh ung vien lnk&#xD;&#xA;candluk&lt;&lt; chiso_luk_lancan;&#xD;&#xA;candluk&lt;&lt;  xet_khokhanchuyendoi(landuse,6);&#xD;&#xA;candluk&lt;&lt; xet_thichnghi(madvdd,6);&#xD;&#xA;candluk&lt;&lt;98/389;&#xD;&#xA;//dua dac tinh ung vien rst&#xD;&#xA;candlnk&lt;&lt; chiso_lnk_lancan;&#xD;&#xA;candlnk&lt;&lt; xet_khokhanchuyendoi(landuse,14);&#xD;&#xA;candlnk&lt;&lt;xet_thichnghi(madvdd,6);&#xD;&#xA; candlnk&lt;&lt;294/389;&#xD;&#xA;// b&#x1ed5; sung th&#xea;m &#x1ee9;ng vi&#xea;n lua-tom&#xD;&#xA;cand_luatom&lt;&lt; chiso_lua_tom_lancan;&#xD;&#xA;cand_luatom&lt;&lt; chiso_khokhan_lua_tom;&#xD;&#xA;cand_luatom&lt;&lt;xet_thichnghi(madvdd,100);&#xD;&#xA;cand_luatom&lt;&lt;84/384; // tamj thowi&#xD;&#xA;//nap cac ung vien vao danh sach candidates&#xD;&#xA;candidates &lt;&lt;candluc;&#xD;&#xA;candidates &lt;&lt;candtsl;&#xD;&#xA;candidates &lt;&lt;candbhk;&#xD;&#xA;candidates &lt;&lt;candluk;&#xD;&#xA;candidates &lt;&lt;candlnk;&#xD;&#xA;candidates &lt;&lt;cand_luatom;&#xD;&#xA;return candidates;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;" actionLinks="/41" returnType="">
+    <colorPicto>255</colorPicto>
+    <colorPicto>204</colorPicto>
+    <colorPicto>153</colorPicto>
+  </gama:EAction>
+  <gama:EActionLink target="/40" source="/6" action="/40" species="/6"/>
+  <gama:EAction name="tinh_kappa" error="" gamlCode="&#xD;&#xA;list&lt;int> categories &lt;- [0];&#xD;&#xA;ask cell_dat{&#xD;&#xA;&#x9;if not (landuse in categories){&#xD;&#xA;&#x9;&#x9;categories &lt;&lt; landuse;&#xD;&#xA;&#x9;}&#xD;&#xA;}&#xD;&#xA;ask cell_dat_2010{&#xD;&#xA;&#x9;if not (landuse in categories){&#xD;&#xA;&#x9;&#x9;categories &lt;&lt; landuse;&#xD;&#xA;&#x9;}&#xD;&#xA;}&#xD;&#xA;write &quot;In kiem tra categories: &quot; + categories;&#xD;&#xA;v_kappa &lt;- kappa(cell_dat collect (each.landuse), cell_dat collect (each.landuse_obs),categories);&#xD;&#xA;write &quot;Kappa: &quot; +v_kappa;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;" actionLinks="/43" returnType="">
+    <colorPicto>255</colorPicto>
+    <colorPicto>204</colorPicto>
+    <colorPicto>153</colorPicto>
+  </gama:EAction>
+  <gama:EActionLink target="/42" source="/1" action="/42" species="/1"/>
+  <gama:EGrid name="cell_dat_2010" error="" actionLinks="/58" macroSpeciesLinks="/45" init="&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;">
+    <colorPicto>255</colorPicto>
+    <colorPicto>204</colorPicto>
+    <colorPicto>150</colorPicto>
+    <facets name="width" value=""/>
+    <facets name="use_neighbors_cache" value=""/>
+    <facets name="file" value="cell_dat_2010_file"/>
+    <facets name="use_regular_agents" value=""/>
+    <facets name="use_individual_shapes" value=""/>
+    <facets name="cell_height" value=""/>
+    <facets name="schedules" value=""/>
+    <facets name="control" value="reflex"/>
+    <facets name="frequency" value="8"/>
+    <facets name="cell_width" value=""/>
+    <facets name="height" value=""/>
+    <facets name="neighbors" value=""/>
+    <variables init="int(grid_value)" min="" max="" update="" function="" type="int" name="landuse"/>
+    <variables init="" min="" max="" update="" function="" type="rgb" name="color"/>
+  </gama:EGrid>
+  <gama:ESubSpeciesLink macro="/1" micro="/44"/>
+  <gama:EAction name="tinh_dtmx" error="" gamlCode="float dt_luc;&#xD;&#xA;float dt_luk;&#xD;&#xA;float dt_lua_tom;&#xD;&#xA;float dt_tsl;&#xD;&#xA;float dt_bhk;&#xD;&#xA;float dt_lnk;&#xD;&#xA;float dt_khac;&#xD;&#xA;save &quot;tenhxa, dt_luc,dt_luk,dt_lua_tom,dt_tsl,dt_bhk,dt_lnk,dt_khac&quot; to: &quot;../results/hientrang_xa.csv&quot; type:&quot;csv&quot; rewrite: true;&#xD;&#xA;loop xa_obj over: xa{&#xD;&#xA;&#x9;// duy&#x1ec7;t h&#x1ebf;t c&#xe1;c cell ch&#x1ed3;ng l&#x1eaf;p v&#x1edb;i huy&#x1ec7;n &#x111;&#x1ec3; t&#xed;nh di&#xea;n di&#x1ec7;n tich&#xD;&#xA;&#x9;dt_luc&lt;-0;&#xD;&#xA;&#x9;dt_luk&lt;-0;&#xD;&#xA;&#x9;dt_lua_tom&lt;-0;&#xD;&#xA;&#x9;dt_tsl&lt;-0;&#xD;&#xA;&#x9;dt_bhk&lt;-0;&#xD;&#xA;&#x9;dt_lnk&lt;-0;&#xD;&#xA;&#x9;dt_khac&lt;-0;&#xD;&#xA;&#x9;//&#x111;&#xe3; ch&#x1ec9;nh &#x111;&#x1ebf;n &#x111;&#xe2;y&#xD;&#xA;&#x9;ask cell_dat overlapping xa_obj {&#xD;&#xA;&#x9;&#x9;if (landuse=5) {&#xD;&#xA;&#x9;&#x9;&#x9;dt_luc&lt;-dt_luc+100*100/10000;&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;if (landuse=6) {&#xD;&#xA;&#x9;&#x9;&#x9;dt_luk&lt;-dt_luk+100*100/10000;&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;if (landuse=100) {&#xD;&#xA;&#x9;&#x9;&#x9;dt_lua_tom&lt;-dt_lua_tom+100*100/10000;&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;if (landuse=34) {&#xD;&#xA;&#x9;&#x9;&#x9;dt_tsl&lt;-dt_tsl+100*100/10000;&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;if (landuse=12) {&#xD;&#xA;&#x9;&#x9;&#x9;dt_bhk&lt;-dt_bhk+100*100/10000;&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;if (landuse=14) {&#xD;&#xA;&#x9;&#x9;&#x9;dt_lnk&lt;-dt_lnk+100*100/10000;&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;if(landuse>0)and (landuse!=14) and (landuse!=5) and (landuse!=6) and(landuse!=100) and (landuse!=12) and (landuse!=34){&#xD;&#xA;&#x9;&#x9;tong_khac&lt;-tong_khac+100*100/10000;//kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;// L&#x1b0;u k&#x1ebf;t qu&#x1ea3; t&#xed;nh t&#x1eeb;ng lo&#x1ea1;i &#x111;&#x1ea5;t v&#xe0;o bi&#x1ebf;n to&#x1ea1;i &#x111;&#xe1;t &#x1b0;&#x1a1;ng &#x1ee9;ng c&#x1ee7;a huy&#x1ec7;n&#xD;&#xA;&#x9;xa_obj.tong_luc_xa &lt;-dt_luc;&#xD;&#xA;&#x9;xa_obj.tong_luk_xa &lt;-dt_luk;&#xD;&#xA;&#x9;xa_obj.tong_lua_tom_xa &lt;-dt_lua_tom;&#xD;&#xA;&#x9;xa_obj.tong_tsl_xa &lt;- dt_tsl;&#xD;&#xA;&#x9;xa_obj.tong_bhk_xa &lt;-dt_bhk;&#xD;&#xA;&#x9;xa_obj.tong_lnk_xa &lt;- dt_lnk;&#xD;&#xA;&#x9;xa_obj.tong_khac_xa &lt;- dt_khac;&#xD;&#xA;&#x9;save [xa_obj.tenxa,xa_obj.tong_luc_xa,xa_obj.tong_luk_xa,xa_obj.tong_lua_tom_xa,xa_obj.tong_tsl_xa,xa_obj.tong_bhk_xa,xa_obj.tong_lnk_xa,xa_obj.tong_khac_xa]  to: &quot;../results/hientrang_xa.csv&quot; type:&quot;csv&quot; rewrite: false;&#xD;&#xA;&#x9;write xa_obj.tenxa + '; ' + tong_luc + '; ' + tong_luk + '; ' + tong_lua_tom + ';  ' + tong_tsl + '; ' + tong_bhk + '; ' + tong_lnk + '; ' + tong_khac;&#xD;&#xA;}&#xD;&#xA;// ghu k&#x1ebf;t qu&#x1ea3; huyen ra file shapfile thu&#x1ed9;c t&#xed;nh g&#x1ed3;m 3 c&#x1ed9;t: ten xa, dt luc, dt tsl. N&#x1ebf;u c&#xf3; th&#x1ec3;m th&#xec; c&#x1ee9; th&#xea;m lo&#x1ea1;i &#x111;&#x1ea5;t v&#xe0;o&#xD;&#xA;save xa to: &quot;../results/xa_landuse.shp&quot; type:&quot;shp&quot; attributes: [&quot;tenxa&quot;:: tenxa, &quot;dt_luc&quot;::tong_luc_xa, &quot;dt_lua_tom&quot;::tong_lua_tom_xa, &quot;dt_tsl&quot;::tong_tsl_xa, &quot;dt_luk&quot;::tong_luk_xa, &quot;dt_lnk&quot;::tong_lnk_xa, &quot;dt_bhk&quot;::tong_bhk_xa, &quot;dt_khac&quot;::tong_khac_xa];&#xD;&#xA;save cell_dat to:&quot;../results/hientrang_sim.tif&quot; type:&quot;geotiff&quot;;&#xD;&#xA;write &quot;&#x110;a tinh dien tich hien trang theo xa xong&quot;;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;" actionLinks="/47" returnType="">
+    <colorPicto>255</colorPicto>
+    <colorPicto>204</colorPicto>
+    <colorPicto>153</colorPicto>
+  </gama:EAction>
+  <gama:EActionLink target="/46" source="/1" action="/46" species="/1"/>
+  <gama:ESpecies name="xa" error="" macroSpeciesLinks="/49" init="&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;">
+    <colorPicto>255</colorPicto>
+    <colorPicto>255</colorPicto>
+    <colorPicto>150</colorPicto>
+    <facets name="schedules" value=""/>
+    <facets name="control" value="reflex"/>
+    <facets name="frequency" value=""/>
+    <variables init="" min="" max="" update="" function="" type="string" name="tenxa"/>
+    <variables init="" min="" max="" update="" function="" type="float" name="tong_luc_xa"/>
+    <variables init="" min="" max="" update="" function="" type="float" name="tong_luk_xa"/>
+    <variables init="" min="" max="" update="" function="" type="float" name="tong_bhk_xa"/>
+    <variables init="" min="" max="" update="" function="" type="float" name="tong_khac_xa"/>
+    <variables init="" min="" max="" update="" function="" type="float" name="tong_tsl_xa"/>
+    <variables init="" min="" max="" update="" function="" type="float" name="tong_lnk_xa"/>
+    <variables init="" min="" max="" update="" function="" type="float" name="tong_lua_tom_xa"/>
+  </gama:ESpecies>
+  <gama:ESubSpeciesLink macro="/1" micro="/48"/>
+  <gama:EGUIExperiment name="can_chinh" error="" experimentLink="/51" parameters="/52 /53 /54">
+    <colorPicto>135</colorPicto>
+    <colorPicto>206</colorPicto>
+    <colorPicto>250</colorPicto>
+  </gama:EGUIExperiment>
+  <gama:EExperimentLink species="/1" experiment="/50"/>
+  <gama:EParameter name="cell_file" variable="w_lancan" min="" init="" step="" max="" among="" category="0.2"/>
+  <gama:EParameter name="cell_file" variable="w_thichnghi" min="" init="" step="" max="" among="" category=""/>
+  <gama:EParameter name="cell_file" variable="w_khokhan" min="" init="" step="" max="" among="" category=""/>
+  <gama:EAction name="gan_dvdd" error="" gamlCode="&#xD;&#xA;loop dvdd_obj over:donvidatdai{&#xD;&#xA;&#x9;ask cell_dat overlapping dvdd_obj{&#xD;&#xA;&#x9;&#x9;madvdd&lt;-dvdd_obj.dvdd;&#xD;&#xA;&#x9;}&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;" actionLinks="/56" returnType="">
+    <colorPicto>255</colorPicto>
+    <colorPicto>204</colorPicto>
+    <colorPicto>153</colorPicto>
+  </gama:EAction>
+  <gama:EActionLink target="/55" source="/1" action="/55" species="/1"/>
+  <gama:EAction name="tomau" error="" gamlCode="&#xD;&#xA;&#xD;&#xA;if( landuse = 5)  {&#xD;&#xA;&#x9;&#x9;color &lt;- rgb(196,196,0);&#xD;&#xA;&#x9;}&#xD;&#xA;if( landuse = 37)  {&#xD;&#xA;&#x9;&#x9;color &lt;- rgb(170,255,255);&#xD;&#xA;&#x9;}&#xD;&#xA;&#xD;&#xA;if (landuse=6){&#xD;&#xA;&#x9;color&lt;-#yellow;&#xD;&#xA;}&#xD;&#xA;if (landuse=12){&#xD;&#xA;&#x9;color&lt;-#lightgreen;&#xD;&#xA;}&#xD;&#xA;if (landuse=14){&#xD;&#xA;&#x9;color&lt;-#darkgreen;&#xD;&#xA;}&#xD;&#xA;if (landuse=34){&#xD;&#xA;&#x9;color&lt;-#cyan;&#xD;&#xA;}&#xD;&#xA;if (landuse=100){&#xD;&#xA;&#x9;color&lt;-rgb(40,150,120);&#xD;&#xA;}&#xD;&#xA;if(landuse>0)and (landuse!=14) and (landuse!=5) and (landuse!=6) and(landuse!=100) and (landuse!=12) and (landuse!=34){&#xD;&#xA;&#x9;&#x9;color&lt;-#gray;&#xD;&#xA;&#x9;}&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;" actionLinks="/58" returnType="">
+    <colorPicto>255</colorPicto>
+    <colorPicto>204</colorPicto>
+    <colorPicto>153</colorPicto>
+  </gama:EAction>
+  <gama:EActionLink target="/57" source="/44" action="/57" species="/44"/>
+  <gama:EAction name="gan_cell_hc" error="" gamlCode="&#xD;&#xA;&#x9;ask cell_dat {&#xD;&#xA;&#x9;&#x9;&#x9;landuse_obs &lt;- cell_dat_2010[self.grid_x, self.grid_y].landuse;&#xD;&#xA;&#x9;&#x9;}" actionLinks="/60" returnType="">
+    <colorPicto>255</colorPicto>
+    <colorPicto>204</colorPicto>
+    <colorPicto>153</colorPicto>
+  </gama:EAction>
+  <gama:EActionLink target="/59" source="/1" action="/59" species="/1"/>
+  <gama:EParameter name="W Neighbor" variable="w_lancan" min="" init="0.8" step="" max="" among="" category=""/>
+  <gama:EParameter name="W Convert ability" variable="w_khokhan" min="" init="0.8" step="" max="" among="" category=""/>
+  <gama:EParameter name="W Land suitability" variable="w_thichnghi" min="" init="0.6" step="" max="" among="" category=""/>
+  <gama:EParameter name="W Profit" variable="w_loinhuan" min="" init="0.2" step="" max="" among="" category=""/>
+  <gama:EChartLayer name="2 rice" style="line" color="#yellow" value="tong_luc"/>
+  <gama:EChartLayer name="Shrimp" style="line" color="#cyan" value="tong_tsl"/>
+  <gama:EChartLayer name="Rice-Shrimp" style="line" color="rgb(40,150,120)" value="tong_lua_tom"/>
+  <gama:EChartLayer name="Annual crops" style="line" color="#lightgreen" value="tong_bhk"/>
+  <gama:EChartLayer name="Rice-vegetable" style="line" color="rgb(196,196,0)" value="tong_luk"/>
+  <gama:EChartLayer name="Fruit trees" style="line" color="#darkgreen" value="tong_lnk"/>
+</xmi:XMI>
