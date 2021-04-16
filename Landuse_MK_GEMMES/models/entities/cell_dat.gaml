@@ -17,10 +17,18 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 	list myL <- [];
 
 	init {
+		/*
+		 * 1113 1130
+		 * 3457 2730
+		 * 1113 1130
+		 * 2783 2824
+		 */
 //		if (grid_value = 8) {
 //			do die;
 //		} else {
-			myL <- read_bands(tiff_in, grid_x, grid_y);
+//			myL <- read_bands(tiff_in,self.location);
+			myL <- read_bands(tiff_in, int(grid_x*(2783/1113)), int(grid_y*(2824/1130)));
+//			myL <- read_bands(tiff_in, int(grid_x*(1113/2783)), int(grid_y*(1130/2824)));
 //		}
 
 	}
@@ -58,6 +66,11 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 			color <- #gray;
 		}
 
+		if(myL!=nil and length(myL)>0){			
+			int rr<-int(mean(myL));
+			color<-rgb(rr);
+			
+		}
 	}
 
 	action tinh_chiso_lancan {

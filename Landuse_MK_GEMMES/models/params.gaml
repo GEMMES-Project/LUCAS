@@ -41,6 +41,6 @@ global {
 	float w_flip <- 0.02;
 
 
-	file tiff_in <- gama_tiff_file("../includes/2015_Mer_tas_dbsc.tif");
+	file tiff_in <- gama_tiff_file("../includes/test.tif");
 
 }

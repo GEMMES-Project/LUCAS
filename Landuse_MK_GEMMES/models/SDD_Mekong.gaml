@@ -245,23 +245,23 @@ experiment "my_GUI_xp" type: gui {
 			species duong;
 		}
 
-		display bieudo type: opengl {
-			chart "Layer" type: series background: rgb(255, 255, 255) {
-				data "Tong dt lua" style: line value: tong_luc color: #red;
-				data "Tong dt tsl" style: line value: tong_tsl color: #blue;
-			}
-
-		}
+//		display bieudo type: opengl {
+//			chart "Layer" type: series background: rgb(255, 255, 255) {
+//				data "Tong dt lua" style: line value: tong_luc color: #red;
+//				data "Tong dt tsl" style: line value: tong_tsl color: #blue;
+//			}
+//
+//		}
 
 	}
 
 }
-
-experiment "can_chinh" type: batch repeat: 1 keep_seed: true until: (time > 10) {
-	parameter "lan can" var: w_lancan min: 0.7 max: 1.0 step: 0.1;
-	parameter "TN" var: w_thichnghi min: 0.6 max: 0.8 step: 0.1;
-	parameter "Kho khan" var: w_khokhan min: 0.6 max: 0.8 step: 0.1;
-	parameter "LN" var: w_loinhuan min: 0.1 max: 0.3 step: 0.1;
-	parameter "Flip" var: w_flip min: 0.02 max: 0.15 step: 0.03;
-	method exhaustive maximize: v_kappa;
-}
+//
+//experiment "can_chinh" type: batch repeat: 1 keep_seed: true until: (time > 10) {
+//	parameter "lan can" var: w_lancan min: 0.7 max: 1.0 step: 0.1;
+//	parameter "TN" var: w_thichnghi min: 0.6 max: 0.8 step: 0.1;
+//	parameter "Kho khan" var: w_khokhan min: 0.6 max: 0.8 step: 0.1;
+//	parameter "LN" var: w_loinhuan min: 0.1 max: 0.3 step: 0.1;
+//	parameter "Flip" var: w_flip min: 0.02 max: 0.15 step: 0.03;
+//	method exhaustive maximize: v_kappa;
+//}
