@@ -9,7 +9,7 @@ global control: reflex {
 			loop j from:0 to:272{
 //		loop i from:0 to:3456{
 //			loop j from:2000 to:2729{
-				list l<-readDataSlice(tiff_in,i,j,0);
+				list l<-read_bands(tiff_in,i,j);
 //				write l;
 			}
 		}

@@ -1,5 +1,6 @@
 model cell_dat
-import "../params.gaml" 
+
+import "../params.gaml"
 grid cell_dat file: cell_file control: reflex neighbors: 8 {
 	int landuse <- int(grid_value);
 	float chiso_luk_lancan;
@@ -14,23 +15,18 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 	float chiso_thichnghi_lua_tom;
 	float chiso_khokhan_lua_tom;
 	rgb color;
-	list myL <- [];
+	map<int, list> Pr <- [];
+	map<int, list> Tas <- [];
+	map<int, list> Tas_max <- [];
+	map<int, list> Tas_min <- [];
 
 	init {
-		/*
+	/*
 		 * 1113 1130
 		 * 3457 2730
 		 * 1113 1130
 		 * 2783 2824
 		 */
-//		if (grid_value = 8) {
-//			do die;
-//		} else {
-//			myL <- read_bands(tiff_in,self.location);
-			myL <- read_bands(tiff_in, int(grid_x*(2783/1113)), int(grid_y*(2824/1130)));
-//			myL <- read_bands(tiff_in, int(grid_x*(1113/2783)), int(grid_y*(1130/2824)));
-//		}
-
 	}
 
 	action to_mau {
@@ -66,11 +62,12 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 			color <- #gray;
 		}
 
-		if(myL!=nil and length(myL)>0){			
-			int rr<-int(mean(myL));
-			color<-rgb(rr);
+		if (Pr[the_date.year] != nil and length(Pr) > 0) {
+			int rr <- int(mean(Pr[the_date.year]));
+			color <- rgb(rr);
 			
 		}
+
 	}
 
 	action tinh_chiso_lancan {
