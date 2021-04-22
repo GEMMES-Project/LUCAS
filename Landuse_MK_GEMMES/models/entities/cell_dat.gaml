@@ -19,6 +19,7 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 	map<int, list> Tas <- [];
 	map<int, list> Tas_max <- [];
 	map<int, list> Tas_min <- [];
+	list<cell_dat> cell_lancan <- [];
 
 	init {
 	/*
@@ -27,6 +28,13 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 		 * 1113 1130
 		 * 2783 2824
 		 */
+		if (grid_value != 8.0) {
+			active_cell <+ self;
+
+		} else {
+			do die;
+		}
+
 	}
 
 	action to_mau {
@@ -65,7 +73,6 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 		if (Pr[the_date.year] != nil and length(Pr) > 0) {
 			int rr <- int(mean(Pr[the_date.year]));
 			color <- rgb(rr);
-			
 		}
 
 	}
@@ -73,8 +80,7 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 	action tinh_chiso_lancan {
 
 	//so cell xung quanh cuar mot cell co kieu su dung la luk/8 (8-tong so o lan can cua moi o)
-		list<cell_dat> cell_lancan <- (self neighbors_at 2); //1 ban kinh lan can laf 2 cell = 8 cell xung quanh 1 cell
-		//dem so cell trong cell_lancan co landuse=6 (6:luk)
+	//dem so cell trong cell_lancan co landuse=6 (6:luk)
 		chiso_luc_lancan <- (cell_lancan count (each.landuse = 5)) / 25;
 		chiso_luk_lancan <- (cell_lancan count (each.landuse = 6)) / 25;
 		chiso_bhk_lancan <- (cell_lancan count (each.landuse = 12)) / 25;

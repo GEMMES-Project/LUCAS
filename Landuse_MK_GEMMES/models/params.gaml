@@ -8,7 +8,7 @@ global {
 	//	file cell_file <- grid_file("../includes/lu_100x100_mx_2005_new.tif");
 	file MKD_bound <- shape_file("../includes/MKD.shp");
 	geometry shape <- envelope(MKD_bound);
-	list<cell_dat> active_cell <- cell_dat where (each.grid_value != 8.0);
+	list<cell_dat> active_cell <-[];//<- cell_dat where (each.grid_value != 8.0);
 	float tong_luc;
 	float tong_tsl;
 	float tong_bhk;

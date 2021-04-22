@@ -19,7 +19,9 @@ global {
 		create donvidatdai from: dvdd_file with: [dvdd::int(read('Sttdvdd'))];
 		create vungbaode from: bandodebao with: [de::int(read('De'))];
 		create xa from: xa_file with: [tenxa::read('Tenxa')];
-		ask active_cell parallel:true{
+		ask active_cell parallel: true {
+			cell_lancan <- (self neighbors_at 2) where (!dead(each)); //1 ban kinh lan can laf 2 cell = 8 cell xung quanh 1 cell
+			do to_mau;
 			date tmp <- the_date;
 			loop i from: 1 to: 5 {
 				tmp <- tmp add_years 5;
@@ -31,7 +33,6 @@ global {
 				}
 
 			}
-			//			do to_mau;
 
 		}
 		//
@@ -46,26 +47,26 @@ global {
 
 	reflex main_reflex {
 		the_date <- the_date add_years 5;
-				ask active_cell  parallel:true{
-					do tinh_chiso_lancan;
-				}
-		
-				ask active_cell  parallel:true{
-					do luachonksd;
-					do to_mau;
-				}
-		
-				do tinhtongdt;
-				if (cycle = 10) {
-					do tinh_kappa;
-					ask cell_dat {
-						grid_value <- float(landuse);
-					}
-		
-					save cell_dat to: "../results/landuse_sim_" + 2005 + cycle + ".tif" type: "geotiff";
-					//	do tinh_dtmx;
-					//	do pause;
-				} 
+		ask active_cell parallel: true {
+			do tinh_chiso_lancan;
+			//				}
+			//		
+			//				ask active_cell  parallel:true{
+			do luachonksd;
+			do to_mau;
+		}
+
+		do tinhtongdt;
+		if (cycle = 10) {
+			do tinh_kappa;
+			ask cell_dat {
+				grid_value <- float(landuse);
+			}
+
+			save cell_dat to: "../results/landuse_sim_" + 2005 + cycle + ".tif" type: "geotiff";
+			//	do tinh_dtmx;
+			//	do pause;
+		}
 
 	}
 

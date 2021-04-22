@@ -80,7 +80,7 @@ global {
 
 	action tinh_kappa {
 		list<int> categories <- [0];
-		ask cell_dat {
+		ask active_cell {
 			if not (landuse in categories) {
 				categories << landuse;
 			}
@@ -95,7 +95,7 @@ global {
 		}
 
 		write "In kiem tra categories: " + categories;
-		v_kappa <- kappa(cell_dat collect (each.landuse), cell_dat collect (each.landuse_obs), categories);
+		v_kappa <- kappa(active_cell collect (each.landuse), active_cell collect (each.landuse_obs), categories);
 		write "Kappa: " + v_kappa;
 	}
 
@@ -111,7 +111,7 @@ global {
 			dt_lnk <- 0.0;
 			dt_khac <- 0.0;
 			//đã chỉnh đến đây
-			ask cell_dat overlapping xa_obj {
+			ask active_cell overlapping xa_obj {
 				if (landuse = 5) {
 					dt_luc <- dt_luc + 100 * 100 / 10000;
 				}
@@ -162,7 +162,7 @@ global {
 
 	action gan_dvdd {
 		loop dvdd_obj over: donvidatdai {
-			ask cell_dat overlapping dvdd_obj {
+			ask active_cell overlapping dvdd_obj {
 				madvdd <- dvdd_obj.dvdd;
 			}
 
