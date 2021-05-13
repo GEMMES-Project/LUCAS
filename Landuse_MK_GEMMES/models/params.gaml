@@ -4,7 +4,7 @@ import "entities/cell_dat.gaml"
 import "entities/cell_dat_2010.gaml"
 
 global {
-	file cell_file <- grid_file("../includes/Landuse_2015.tif");
+	file cell_file <- grid_file("../includes/landuse2015.tif");
 	//	file cell_file <- grid_file("../includes/lu_100x100_mx_2005_new.tif");
 	file MKD_bound <- shape_file("../includes/MKD.shp");
 	geometry shape <- envelope(MKD_bound);
