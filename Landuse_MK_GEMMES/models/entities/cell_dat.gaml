@@ -28,7 +28,7 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 		 * 1113 1130
 		 * 2783 2824
 		 */
-		if (grid_value != 8.0) {
+		if (grid_value !=0.0) {
 			active_cell <+ self;
 
 		} else {
