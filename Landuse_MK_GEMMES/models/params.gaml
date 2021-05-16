@@ -14,7 +14,7 @@ global {
 	float tong_bhk;
 	file song_file <- shape_file('../includes/rivers_myxuyen_region.shp');
 	file duong_file <- shape_file('../includes/road_myxuyen_region.shp');
-	file dvdd_file <- shape_file("../includes/landunit_mx_region.shp");
+	file dvdd_file <- shape_file("../includes/vmd_land_unit_cleaned.shp");
 	file bandodebao <- shape_file("../includes/soctrang_debao2010_region.shp");
 	matrix matran_khokhan;
 	file khokhanchuyendoi_file <- csv_file("../includes/khokhanchuyendoi.csv", false);
@@ -23,7 +23,7 @@ global {
 	float w_lancan <- 0.2;
 	list tieuchi;
 	float v_kappa <- 0.0;
-	file cell_dat_2010_file <- grid_file("../includes/lu_100x100_mx_2015_new.tif");
+	file cell_dat_2010_file <- grid_file("../includes/landuse2015.tif");
 	list<cell_dat_2010> active_cell_dat2010 <- cell_dat_2010 where (each.grid_value != 0.0);
 	file xa_file <- shape_file("../includes/commune_myxuyen.shp");
 	float tong_lnk;
