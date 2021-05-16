@@ -4,7 +4,7 @@ import "entities/cell_dat.gaml"
 import "entities/cell_dat_2010.gaml"
 
 global {
-	file cell_file <- grid_file("../includes/landuse2015.tif");
+	file cell_file <- grid_file("../includes/landuse2015_500.tif");
 	//	file cell_file <- grid_file("../includes/lu_100x100_mx_2005_new.tif");
 	file MKD_bound <- shape_file("../includes/MKD.shp");
 	geometry shape <- envelope(MKD_bound);
@@ -23,7 +23,7 @@ global {
 	float w_lancan <- 0.2;
 	list tieuchi;
 	float v_kappa <- 0.0;
-	file cell_dat_2010_file <- grid_file("../includes/landuse2015.tif");
+	file cell_dat_2010_file <- grid_file("../includes/landuse2020_500.tif");
 	list<cell_dat_2010> active_cell_dat2010 <- cell_dat_2010 where (each.grid_value != 0.0);
 	file xa_file <- shape_file("../includes/commune_myxuyen.shp");
 	float tong_lnk;

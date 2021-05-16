@@ -23,16 +23,16 @@ global {
 			cell_lancan <- (self neighbors_at 2) where (!dead(each)); //1 ban kinh lan can laf 2 cell = 8 cell xung quanh 1 cell
 			do to_mau;
 			date tmp <- the_date;
-			loop i from: 1 to: 5 {
-				tmp <- tmp add_years 5;
-				if (Pr[tmp.year] = nil) {
-					if (Pr_tiff[tmp.year] != nil) {
-						Pr[tmp.year] <- read_bands(Pr_tiff[tmp.year], int(grid_x * (11 / 1113)), int(grid_y * (12 / 1130)));
-					}
-
-				}
-
-			}
+//			loop i from: 1 to: 5 {
+//				tmp <- tmp add_years 5;
+//				if (Pr[tmp.year] = nil) {
+//					if (Pr_tiff[tmp.year] != nil) {
+//						Pr[tmp.year] <- read_bands(Pr_tiff[tmp.year], int(grid_x * (11 / 1113)), int(grid_y * (12 / 1130)));
+//					}
+//
+//				}
+//
+//			}
 
 		}
 		//
