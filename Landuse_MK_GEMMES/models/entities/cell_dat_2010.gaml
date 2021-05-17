@@ -6,7 +6,7 @@ grid cell_dat_2010 file: cell_dat_2010_file control: reflex frequency: 8 {
 	rgb color;
 
 	init {
-		if (grid_value = 8) {
+		if (grid_value = 0) {
 			do die;
 		}
 

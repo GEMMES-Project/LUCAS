@@ -59,13 +59,13 @@ global {
 		do tinhtongdt;
 		if (cycle = 10) {
 			do tinh_kappa;
-			ask cell_dat {
+			ask active_cell {
 				grid_value <- float(landuse);
 			}
 
 			save cell_dat to: "../results/landuse_sim_" + 2005 + cycle + ".tif" type: "geotiff";
 			//	do tinh_dtmx;
-			//	do pause;
+				do pause;
 		}
 
 	}
