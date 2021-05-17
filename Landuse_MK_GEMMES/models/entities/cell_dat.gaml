@@ -39,8 +39,12 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 
 	action to_mau {
 		if (landuse = 5) {
+			color <- #lightyellow;
+		}
+				if (landuse = 6) {
 			color <- #yellow;
 		}
+		
 
 		if (landuse = 37) {
 			color <- rgb(170, 255, 255);
@@ -65,8 +69,11 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 		if (landuse = 100) {
 			color <- rgb(40, 150, 120);
 		}
+		if (landuse = 101) {
+			color <- rgb(40, 100, 120);
+		}
 
-		if (landuse > 0) and (landuse != 14) and (landuse != 5) and (landuse != 6) and (landuse != 100) and (landuse != 12) and (landuse != 34) {
+		if (landuse > 0) and (landuse != 14) and (landuse != 5) and (landuse != 6) and (landuse != 100) and (landuse != 101) and (landuse != 12) and (landuse != 34) {
 			color <- #gray;
 		}
 
