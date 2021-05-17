@@ -14,50 +14,30 @@ global {
 			if (landuse = 5) {
 				tong_luc <- tong_luc + 100 * 100 / 10000; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
 			}
-
-		}
-
-		ask active_cell {
 			if (landuse = 6) {
 				tong_luk <- tong_luk + 100 * 100 / 10000; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
 			}
-
-		}
-
-		ask active_cell {
-			if (landuse = 100) {
+			if (landuse = 101) {
 				tong_lua_tom <- tong_lua_tom + 100 * 100 / 10000; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
 			}
-
-		}
-
-		ask active_cell {
 			if (landuse = 34) {
 				tong_tsl <- tong_tsl + 100 * 100 / 10000; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
 			}
-
-		}
-
-		ask active_cell {
 			if (landuse = 12) {
 				tong_bhk <- tong_bhk + 100 * 100 / 10000; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
 			}
-
-		}
-
-		ask active_cell {
 			if (landuse = 14) {
 				tong_lnk <- tong_lnk + 100 * 100 / 10000; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
 			}
-
 		}
 
-		ask active_cell {
-			if (landuse > 0) and (landuse != 14) and (landuse != 5) and (landuse != 6) and (landuse != 100) and (landuse != 12) and (landuse != 34) {
-				tong_khac <- tong_khac + 100 * 100 / 10000; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
-			}
-
-		}
+	
+//		ask active_cell {
+//			if (landuse > 0) and (landuse != 14) and (landuse != 5) and (landuse != 6) and (landuse != 100) and (landuse != 12) and (landuse != 34) {
+//				tong_khac <- tong_khac + 100 * 100 / 10000; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
+//			}
+//
+//		}
 
 		write "Tong dt lua:" + tong_luc;
 		write "Tong dt lúa khác:" + tong_luk;
@@ -87,12 +67,12 @@ global {
 
 		}
 
-		ask cell_dat_2010 {
-			if not (landuse in categories) {
-				categories << landuse;
-			}
-
-		}
+//		ask cell_dat_2010 {
+//			if not (landuse in categories) {
+//				categories << landuse;
+//			}
+//
+//		}
 
 		write "In kiem tra categories: " + categories;
 		v_kappa <- kappa(active_cell collect (each.landuse), active_cell collect (each.landuse_obs), categories);

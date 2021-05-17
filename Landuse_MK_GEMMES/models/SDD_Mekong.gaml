@@ -16,7 +16,7 @@ global {
 		do docmatran_khokhan;
 		//		create song from: song_file;
 		//		create duong from: duong_file;
-		create donvidatdai from: dvdd_file with: [dvdd::int(read('Sttdvdd'))];
+		create donvidatdai from: dvdd_file with: [dvdd::int(read('id'))];
 		create vungbaode from: bandodebao with: [de::int(read('De'))];
 		create xa from: xa_file with: [tenxa::read('Tenxa')];
 		ask active_cell parallel: true {
@@ -63,7 +63,7 @@ global {
 				grid_value <- float(landuse);
 			}
 
-			save cell_dat to: "../results/landuse_sim_" + 2005 + cycle + ".tif" type: "geotiff";
+			save cell_dat to: "../results/landuse_sim_" + 2010 + cycle + ".tif" type: "geotiff";
 			//	do tinh_dtmx;
 				do pause;
 		}
@@ -83,14 +83,20 @@ experiment "my_GUI_xp" type: gui {
 			species song;
 			species duong;
 		}
+		display landunit type: java2D {
+			
+			species donvidatdai;
+		}
 
-		//		display bieudo type: opengl {
-		//			chart "Layer" type: series background: rgb(255, 255, 255) {
-		//				data "Tong dt lua" style: line value: tong_luc color: #red;
-		//				data "Tong dt tsl" style: line value: tong_tsl color: #blue;
-		//			}
-		//
-		//		}
+				display "landuse chart" type: opengl {
+					chart "Layer" type: series background: rgb(255, 255, 255) {
+						data "3 rice" style: line value: tong_luc color: #yellow;
+						data "2 rice" style: line value: tong_luc color: #brown;
+						data "Aquaculture" style: line value: tong_tsl color: #blue;
+						data "Rice - aquaculture" style: line value: tong_lua_tom color: #cyan;
+					}
+		
+				}
 
 	}
 

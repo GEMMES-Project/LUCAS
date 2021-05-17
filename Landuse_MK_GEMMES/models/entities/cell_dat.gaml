@@ -234,7 +234,7 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 		// bổ sung thêm ứng viên lua-tom
 		cand_luatom << chiso_lua_tom_lancan;
 		cand_luatom << chiso_khokhan_lua_tom;
-		cand_luatom << xet_thichnghi(madvdd, 100);
+		cand_luatom << xet_thichnghi(madvdd, 101);
 		cand_luatom << 150 / 389; // tamj thowi
 		//nap cac ung vien vao danh sach candidates
 		candidates << candluc;
