@@ -91,7 +91,7 @@ experiment "my_GUI_xp" type: gui {
 				display "landuse chart" type: opengl {
 					chart "Layer" type: series background: rgb(255, 255, 255) {
 						data "3 rice" style: line value: tong_luc color: #yellow;
-						data "2 rice" style: line value: tong_luc color: #brown;
+						data "2 rice" style: line value: tong_luk color: #brown;
 						data "Aquaculture" style: line value: tong_tsl color: #blue;
 						data "Rice - aquaculture" style: line value: tong_lua_tom color: #cyan;
 					}

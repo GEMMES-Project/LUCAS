@@ -15,7 +15,7 @@ global {
 	file song_file <- shape_file('../includes/rivers_myxuyen_region.shp');
 	file duong_file <- shape_file('../includes/road_myxuyen_region.shp');
 	file dvdd_file <- shape_file("../includes/vmd_land_unit_cleaned.shp");
-	file bandodebao <- shape_file("../includes/soctrang_debao2010_region.shp");
+	file bandodebao <- shape_file("../includes/mk_dyke_region.shp");
 	matrix matran_khokhan;
 	file khokhanchuyendoi_file <- csv_file("../includes/khokhanchuyendoi.csv", false);
 	matrix matran_thichnghi;
@@ -40,9 +40,9 @@ global {
 	float w_thichnghi <- 0.8;
 	float tong_lua_tom;
 	float w_loinhuan <- 0.7;
-	float w_flip <- 0.02;  
+	float w_flip <- 0.1;  
 	date the_date <- date([2010, 1, 1]);
-	
+	float pixel_size <-500*500/10000;
 	map<int, file>
 	Pr_tiff <- [2015::gama_tiff_file("../includes/Extent/Pr/Pr_2015_extent.tif"), 
 		2020::gama_tiff_file("../includes/Extent/Pr/Pr_2020_extent.tif"), 

@@ -12,22 +12,22 @@ global {
 		tong_khac <- 0.0;
 		ask active_cell {
 			if (landuse = 5) {
-				tong_luc <- tong_luc + 100 * 100 / 10000; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
+				tong_luc <- tong_luc + pixel_size; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
 			}
 			if (landuse = 6) {
-				tong_luk <- tong_luk + 100 * 100 / 10000; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
+				tong_luk <- tong_luk + pixel_size; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
 			}
 			if (landuse = 101) {
-				tong_lua_tom <- tong_lua_tom + 100 * 100 / 10000; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
+				tong_lua_tom <- tong_lua_tom + pixel_size; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
 			}
 			if (landuse = 34) {
-				tong_tsl <- tong_tsl + 100 * 100 / 10000; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
+				tong_tsl <- tong_tsl + pixel_size; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
 			}
 			if (landuse = 12) {
-				tong_bhk <- tong_bhk + 100 * 100 / 10000; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
+				tong_bhk <- tong_bhk + pixel_size; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
 			}
 			if (landuse = 14) {
-				tong_lnk <- tong_lnk + 100 * 100 / 10000; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
+				tong_lnk <- tong_lnk + pixel_size; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
 			}
 		}
 
@@ -93,31 +93,31 @@ global {
 			//đã chỉnh đến đây
 			ask active_cell overlapping xa_obj {
 				if (landuse = 5) {
-					dt_luc <- dt_luc + 100 * 100 / 10000;
+					dt_luc <- dt_luc + pixel_size;
 				}
 
 				if (landuse = 6) {
-					dt_luk <- dt_luk + 100 * 100 / 10000;
+					dt_luk <- dt_luk + pixel_size;
 				}
 
-				if (landuse = 100) {
-					dt_lua_tom <- dt_lua_tom + 100 * 100 / 10000;
+				if (landuse = 101) {
+					dt_lua_tom <- dt_lua_tom + pixel_size;
 				}
 
 				if (landuse = 34) {
-					dt_tsl <- dt_tsl + 100 * 100 / 10000;
+					dt_tsl <- dt_tsl + pixel_size;
 				}
 
 				if (landuse = 12) {
-					dt_bhk <- dt_bhk + 100 * 100 / 10000;
+					dt_bhk <- dt_bhk + pixel_size;
 				}
 
 				if (landuse = 14) {
-					dt_lnk <- dt_lnk + 100 * 100 / 10000;
+					dt_lnk <- dt_lnk +pixel_size;
 				}
 
 				if (landuse > 0) and (landuse != 14) and (landuse != 5) and (landuse != 6) and (landuse != 100) and (landuse != 12) and (landuse != 34) {
-					tong_khac <- tong_khac + 100 * 100 / 10000; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
+					tong_khac <- tong_khac + pixel_size; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
 				}
 
 			}
@@ -144,6 +144,15 @@ global {
 		loop dvdd_obj over: donvidatdai {
 			ask active_cell overlapping dvdd_obj {
 				madvdd <- dvdd_obj.dvdd;
+			}
+
+		}
+
+	}
+	action set_dyke {
+		loop dyke_obj over: vungbaode {
+			ask active_cell overlapping dyke_obj {
+				madvdd <- dyke_obj.de;
 			}
 
 		}

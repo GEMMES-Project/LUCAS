@@ -15,6 +15,7 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 	float chiso_thichnghi_lua_tom;
 	float chiso_khokhan_lua_tom;
 	rgb color;
+	int dyke<-1;//1: inside; 2: outside of dyke
 	map<int, list> Pr <- [];
 	map<int, list> Tas <- [];
 	map<int, list> Tas_max <- [];
@@ -41,7 +42,7 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 		if (landuse = 5) {
 			color <- #lightyellow;
 		}
-				if (landuse = 6) {
+		if (landuse = 6) {
 			color <- #yellow;
 		}
 		
@@ -50,9 +51,9 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 			color <- rgb(170, 255, 255);
 		}
 
-		if (landuse = 6) {
-			color <- rgb(196, 196, 0);
-		}
+//		if (landuse = 6) {
+//			color <- rgb(196, 196, 0);
+//		}
 
 		if (landuse = 12) {
 			color <- #lightgreen;
@@ -66,10 +67,10 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 			color <- #cyan;
 		}
 
-		if (landuse = 100) {
+		if (landuse = 101) {
 			color <- rgb(40, 150, 120);
 		}
-		if (landuse = 101) {
+		if (landuse = 102) {
 			color <- rgb(40, 100, 120);
 		}
 
@@ -93,7 +94,7 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 		chiso_bhk_lancan <- (cell_lancan count (each.landuse = 12)) / 25;
 		chiso_lnk_lancan <- (cell_lancan count (each.landuse = 14)) / 25;
 		chiso_tsl_lancan <- (cell_lancan count (each.landuse = 34)) / 25;
-		chiso_lua_tom_lancan <- (cell_lancan count (each.landuse = 100)) / 25;
+		chiso_lua_tom_lancan <- (cell_lancan count (each.landuse = 101)) / 25;
 		//chiso_khac_lancan <-(cell_lancan count (each.landuse=1))/8;
 
 	}
@@ -141,7 +142,8 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 	action luachonksd {
 		list<list> cands <- landuse_eval();
 		int choice <- 0;
-		if (landuse = 5 or landuse = 6 or landuse = 12 or landuse = 14 or landuse = 34 or landuse = 100) {
+		//if (de >1){}
+		if (landuse = 5 or landuse = 6 or landuse = 12 or landuse = 14 or landuse = 34 or landuse = 101) {
 		//or (landuse>0)and (landuse!=14) and (landuse!=5) and (landuse!=6) and(landuse!=100) and (landuse!=12) and (landuse!=34
 			choice <- weighted_means_DM(cands, tieuchi);
 			//choice tra vi tri ung vien trong danh sach
@@ -151,6 +153,7 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 				}
 
 			}
+
 
 			if (choice = 1) {
 				if (xet_thichnghi(madvdd, 34) > 0.33) { // Suitability > S3
@@ -184,8 +187,8 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 			}
 
 			if (choice = 5) {
-				if (xet_thichnghi(madvdd, 100) > 0) {
-					landuse <- 100;
+				if (xet_thichnghi(madvdd, 101) > 0) {
+					landuse <- 101;
 				}
 
 			}
