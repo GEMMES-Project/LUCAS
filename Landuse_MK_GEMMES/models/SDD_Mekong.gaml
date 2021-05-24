@@ -44,7 +44,7 @@ global {
 		do gan_dvdd;
 		do gan_cell_hc;
 		tieuchi <-
-		[["name"::"lancan", "weight"::w_lancan], ["name"::"khokhan", "weight"::w_khokhan], ["name"::"thichnghi", "weight"::w_thichnghi], ["name"::"loinhuan", "weight"::w_loinhuan], ["name"::"climate", "weight"::w_risky_climate]];
+		[["name"::"lancan", "weight"::w_lancan], ["name"::"khokhan", "weight"::w_khokhan], ["name"::"thichnghi", "weight"::w_thichnghi], ["name"::"loinhuan", "weight"::w_loinhuan]];
 	}
 
 	reflex main_reflex {

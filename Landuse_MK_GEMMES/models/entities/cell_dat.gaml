@@ -16,7 +16,7 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 	float chiso_thichnghi_lua_tom;
 	float chiso_khokhan_lua_tom;
 	rgb color;
-	int dyke<-1;//1: inside; 2: outside of dyke
+	int dyke <- 1; //1: inside; 2: outside of dyke
 	map<int, list> Pr <- [];
 	map<int, list> Tas <- [];
 	map<int, list> Tas_max <- [];
@@ -30,9 +30,8 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 		 * 1113 1130
 		 * 2783 2824
 		 */
-		if (grid_value !=0.0) {
+		if (grid_value != 0.0) {
 			active_cell <+ self;
-
 		} else {
 			do die;
 		}
@@ -43,19 +42,18 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 		if (landuse = 5) {
 			color <- #lightyellow;
 		}
+
 		if (landuse = 6) {
 			color <- #yellow;
 		}
-		
 
 		if (landuse = 37) {
 			color <- rgb(170, 255, 255);
 		}
 
-//		if (landuse = 6) {
-//			color <- rgb(196, 196, 0);
-//		}
-
+		//		if (landuse = 6) {
+		//			color <- rgb(196, 196, 0);
+		//		}
 		if (landuse = 12) {
 			color <- #lightgreen;
 		}
@@ -71,6 +69,7 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 		if (landuse = 101) {
 			color <- rgb(40, 150, 120);
 		}
+
 		if (landuse = 102) {
 			color <- rgb(40, 100, 120);
 		}
@@ -99,13 +98,17 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 		//chiso_khac_lancan <-(cell_lancan count (each.landuse=1))/8;
 
 	}
-	
-	float get_climate(int month){
-		tinh t<-first(tinh overlapping self);
-		write float(t.dulieu[1+month]); 
-		return float(t.dulieu[1+month]);
+
+	float get_climate (int month) {
+		tinh t <- first(tinh overlapping self);
+		if (t != nil) {
+			write (t.dulieu);
+			return float(t.dulieu[1 + month]);
+		}
+
+		return 0.0;
 	}
-	
+
 	float xet_thichnghi (int madvdd_, int LUT) {
 		float kqthichnghi <- 0.0;
 		int i <- 0;
@@ -161,7 +164,6 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 
 			}
 
-
 			if (choice = 1) {
 				if (xet_thichnghi(madvdd, 34) > 0.33) { // Suitability > S3
 					if flip(w_flip) {
@@ -201,13 +203,15 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 			}
 
 		}
-		if(cycle mod 12=0){ 
-			if(get_climate(cycle)>24.5){				
-					landuse <- 14;
-			}
-		}
+
+//		if (cycle mod 12 = 0) {
+//			if (get_climate(cycle) > 24.5) {
+//				landuse <- 101;
+//			}
+//
+//		}
 		// xet lua tom - tom 
-			//dua dac tinh ung vien tsl, lua tom
+		//dua dac tinh ung vien tsl, lua tom
 		list<list> candidates;
 		list<float> candtsl;
 		list<float> cand_luatom;
@@ -215,7 +219,6 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 		candtsl << xet_khokhanchuyendoi(landuse, 34);
 		candtsl << xet_thichnghi(madvdd, 34);
 		candtsl << 389 / 389;
-
 		cand_luatom << chiso_lua_tom_lancan;
 		cand_luatom << chiso_khokhan_lua_tom;
 		cand_luatom << xet_thichnghi(madvdd, 101);
@@ -223,12 +226,11 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 		//nap cac ung vien vao danh sach candidates
 		candidates << candtsl;
 		candidates << cand_luatom;
-		
 		if (landuse = 34 or landuse = 101) {
 			choice <- weighted_means_DM(candidates, tieuchi);
 			if (choice = 0) {
-				//if (xet_thichnghi(madvdd, 14) > 0.33) {
-				if flip(0.20){
+			//if (xet_thichnghi(madvdd, 14) > 0.33) {
+				if flip(0.20) {
 					landuse <- 34;
 				}
 
@@ -236,13 +238,13 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 
 			if (choice = 1) {
 			//	if (xet_thichnghi(madvdd, 101) > 0) {
-					landuse <- 101;
+				landuse <- 101;
 				//}
 
 			}
+
 		}
-		
-		
+
 	}
 
 	action landuse_eval {
