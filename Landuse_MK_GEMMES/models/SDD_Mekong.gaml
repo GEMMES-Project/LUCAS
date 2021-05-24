@@ -7,13 +7,15 @@ import "entities/duong.gaml"
 import "entities/donvidatdai.gaml"
 import "entities/vungbaode.gaml"
 import "entities/xa.gaml"
+import "entities/tinh.gaml"
 
 global {
 
 	init {
-	//load ban do tu cac ban do vao tac tu
+		//load ban do tu cac ban do vao tac tu
 		do docmatran_thichnghi;
 		do docmatran_khokhan;
+		do load_climate;
 		//		create song from: song_file;
 		//		create duong from: duong_file;
 		create donvidatdai from: dvdd_file with: [dvdd::int(read('Code'))];
@@ -23,16 +25,16 @@ global {
 			cell_lancan <- (self neighbors_at 2) where (!dead(each)); //1 ban kinh lan can laf 2 cell = 8 cell xung quanh 1 cell
 			do to_mau;
 			date tmp <- the_date;
-//			loop i from: 1 to: 5 {
-//				tmp <- tmp add_years 5;
-//				if (Pr[tmp.year] = nil) {
-//					if (Pr_tiff[tmp.year] != nil) {
-//						Pr[tmp.year] <- read_bands(Pr_tiff[tmp.year], int(grid_x * (11 / 1113)), int(grid_y * (12 / 1130)));
-//					}
-//
-//				}
-//
-//			}
+			//			loop i from: 1 to: 5 {
+			//				tmp <- tmp add_years 5;
+			//				if (Pr[tmp.year] = nil) {
+			//					if (Pr_tiff[tmp.year] != nil) {
+			//						Pr[tmp.year] <- read_bands(Pr_tiff[tmp.year], int(grid_x * (11 / 1113)), int(grid_y * (12 / 1130)));
+			//					}
+			//
+			//				}
+			//
+			//			}
 
 		}
 		//
@@ -42,7 +44,7 @@ global {
 		do gan_dvdd;
 		do gan_cell_hc;
 		tieuchi <-
-		[["name"::"lancan", "weight"::w_lancan], ["name"::"khokhan", "weight"::w_khokhan], ["name"::"thichnghi", "weight"::w_thichnghi], ["name"::"loinhuan", "weight"::w_loinhuan]];
+		[["name"::"lancan", "weight"::w_lancan], ["name"::"khokhan", "weight"::w_khokhan], ["name"::"thichnghi", "weight"::w_thichnghi], ["name"::"loinhuan", "weight"::w_loinhuan], ["name"::"climate", "weight"::w_risky_climate]];
 	}
 
 	reflex main_reflex {
@@ -65,7 +67,7 @@ global {
 
 			save cell_dat to: "../results/landuse_sim_" + 2015 + cycle + ".tif" type: "geotiff";
 			//	do tinh_dtmx;
-				do pause;
+			do pause;
 		}
 
 	}
@@ -77,26 +79,29 @@ experiment "my_GUI_xp" type: gui {
 	parameter "Trọng số khó khăn" var: w_khokhan <- 0.7;
 	parameter "Trọng số thích nghi" var: w_thichnghi <- 0.8;
 	parameter "Trọng số lợi nhuận" var: w_loinhuan <- 0.0;
+	parameter "Trọng số rủi ro biến đổi khí hậu" var: w_risky_climate <- 0.0;
 	output {
 		display mophong type: java2D {
 			grid cell_dat;
 			species song;
 			species duong;
 		}
+
 		display landunit type: java2D {
-			
 			species donvidatdai;
 		}
-				display "landuse chart" type: opengl {
-					chart "Layer" type: series background: rgb(255, 255, 255) {
-						data "3 rice" style: line value: tong_luc color: #lightyellow;
-						data "2 rice" style: line value: tong_luk color: #yellow;
-						data "Fruit trees" style: line value: tong_lnk color: #darkgreen;
-						data "Annual crops" style: line value: tong_bhk color: #lightgreen;
-						data "Aquaculture" style: line value: tong_tsl color: #cyan;
-						data "Rice - aquaculture" style: line value: tong_lua_tom color: rgb(40, 150, 120);
-					}
-				}
+
+		display "landuse chart" type: java2D {
+			chart "Layer" type: series background: rgb(255, 255, 255) {
+				data "3 rice" style: line value: tong_luc color: #lightyellow;
+				data "2 rice" style: line value: tong_luk color: #yellow;
+				data "Fruit trees" style: line value: tong_lnk color: #darkgreen;
+				data "Annual crops" style: line value: tong_bhk color: #lightgreen;
+				data "Aquaculture" style: line value: tong_tsl color: #cyan;
+				data "Rice - aquaculture" style: line value: tong_lua_tom color: rgb(40, 150, 120);
+			}
+
+		}
 
 	}
 

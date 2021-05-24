@@ -6,7 +6,7 @@ import "entities/cell_dat.gaml"
 global {
 	file cell_file <- grid_file("../includes/ht2015_500x500.tif");
 	//	file cell_file <- grid_file("../includes/lu_100x100_mx_2005_new.tif");
-	file MKD_bound <- shape_file("../includes/MKD.shp");
+	file MKD_bound <- shape_file("../includes/MKD_1.shp");
 	geometry shape <- envelope(cell_file);
 	list<cell_dat> active_cell <-[];//<- cell_dat where (each.grid_value != 8.0);
 	float tong_luc;
@@ -15,6 +15,7 @@ global {
 	file song_file <- shape_file('../includes/rivers_myxuyen_region.shp');
 	file duong_file <- shape_file('../includes/road_myxuyen_region.shp');
 	file dvdd_file <- shape_file("../includes/vmd_land_unit_cleaned.shp");
+	file MKD_file <- shape_file("../includes/MKD_1.shp");
 	file bandodebao <- shape_file("../includes/mk_dyke_region.shp");
 	matrix matran_khokhan;
 	file khokhanchuyendoi_file <- csv_file("../includes/khokhanchuyendoi.csv", false);
@@ -39,49 +40,9 @@ global {
 	float w_khokhan <- 0.7;
 	float w_thichnghi <- 0.8;
 	float tong_lua_tom;
-	float w_loinhuan <- 0.7;
+	float w_loinhuan <- 0.0;
+	float w_risky_climate <- 1.0;
 	float w_flip <- 0.1;  
 	date the_date <- date([2010, 1, 1]);
 	float pixel_size <-500*500/10000;
-	map<int, file>
-	Pr_tiff <- [2015::gama_tiff_file("../includes/Extent/Pr/Pr_2015_extent.tif"), 
-		2020::gama_tiff_file("../includes/Extent/Pr/Pr_2020_extent.tif"), 
-		2025::gama_tiff_file("../includes/Extent/Pr/Pr_2025_extent.tif"), 
-		2030::gama_tiff_file("../includes/Extent/Pr/Pr_2030_extent.tif"), 
-		2035::gama_tiff_file("../includes/Extent/Pr/Pr_2035_extent.tif"), 
-		2040::gama_tiff_file("../includes/Extent/Pr/Pr_2040_extent.tif"), 
-		2045::gama_tiff_file("../includes/Extent/Pr/Pr_2045_extent.tif"), 
-		2050::gama_tiff_file("../includes/Extent/Pr/Pr_2050_extent.tif")
-	];
-	map<int, file>
-	Tas_tiff <- [2015::gama_tiff_file("../includes/Extent/Tas/Tas_2015_extent.tif"), 
-		2020::gama_tiff_file("../includes/Extent/Tas/Tas_2020_extent.tif"), 
-		2025::gama_tiff_file("../includes/Extent/Tas/Tas_2025_extent.tif"), 
-		2030::gama_tiff_file("../includes/Extent/Tas/Tas_2030_extent.tif"), 
-		2035::gama_tiff_file("../includes/Extent/Tas/Tas_2035_extent.tif"), 
-		2040::gama_tiff_file("../includes/Extent/Tas/Tas_2040_extent.tif"), 
-		2045::gama_tiff_file("../includes/Extent/Tas/Tas_2045_extent.tif"), 
-		2050::gama_tiff_file("../includes/Extent/Tas/Tas_2050_extent.tif")
-	];
-	map<int, file>
-	Tas_min_tiff <- [2015::gama_tiff_file("../includes/Extent/Tas_min/TasMin_2015_extent.tif"), 
-		2020::gama_tiff_file("../includes/Extent/Tas_min/TasMin_2020_extent.tif"), 
-		2025::gama_tiff_file("../includes/Extent/Tas_min/TasMin_2025_extent.tif"), 
-		2030::gama_tiff_file("../includes/Extent/Tas_min/TasMin_2030_extent.tif"), 
-		2035::gama_tiff_file("../includes/Extent/Tas_min/TasMin_2035_extent.tif"), 
-		2040::gama_tiff_file("../includes/Extent/Tas_min/TasMin_2040_extent.tif"), 
-		2045::gama_tiff_file("../includes/Extent/Tas_min/TasMin_2045_extent.tif"), 
-		2050::gama_tiff_file("../includes/Extent/Tas_min/TasMin_2050_extent.tif")
-	];
-	map<int, file>
-	Tas_max_tiff <- [
-		2015::gama_tiff_file("../includes/Extent/Tas_max/TasMax_2015_extent.tif"), 
-		2020::gama_tiff_file("../includes/Extent/Tas_max/TasMax_2020_extent.tif"), 
-		2025::gama_tiff_file("../includes/Extent/Tas_max/TasMax_2025_extent.tif"), 
-		2030::gama_tiff_file("../includes/Extent/Tas_max/TasMax_2030_extent.tif"), 
-		2035::gama_tiff_file("../includes/Extent/Tas_max/TasMax_2035_extent.tif"), 
-		2040::gama_tiff_file("../includes/Extent/Tas_max/TasMax_2040_extent.tif"), 
-		2045::gama_tiff_file("../includes/Extent/Tas_max/TasMax_2045_extent.tif"), 
-		2050::gama_tiff_file("../includes/Extent/Tas_max/TasMax_2050_extent.tif")
-	];
 }

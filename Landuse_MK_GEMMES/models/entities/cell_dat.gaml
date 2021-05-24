@@ -1,6 +1,7 @@
 model cell_dat
 
 import "../params.gaml"
+import "tinh.gaml"
 grid cell_dat file: cell_file control: reflex neighbors: 8 {
 	int landuse <- int(grid_value);
 	float chiso_luk_lancan;
@@ -98,7 +99,13 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 		//chiso_khac_lancan <-(cell_lancan count (each.landuse=1))/8;
 
 	}
-
+	
+	float get_climate(int month){
+		tinh t<-first(tinh overlapping self);
+		write float(t.dulieu[1+month]); 
+		return float(t.dulieu[1+month]);
+	}
+	
 	float xet_thichnghi (int madvdd_, int LUT) {
 		float kqthichnghi <- 0.0;
 		int i <- 0;

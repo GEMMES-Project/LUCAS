@@ -1,7 +1,29 @@
-model SDD_MX_6_10_20 
+model SDD_MX_6_10_20
+
 import "SDD_Mekong.gaml"
+
 global {
- 
+
+	action load_climate {
+		create tinh from: MKD_bound;
+		string fpath <- "../includes/DATA.csv";
+		write fpath;
+		if (!file_exists(fpath)) {
+			return;
+		}
+
+		file risk_csv_file <- csv_file(fpath, ";", true);
+		matrix data <- (risk_csv_file.contents);
+		loop i from: 0 to: data.rows - 1 {
+			tinh t <- (tinh where (each.VARNAME_1 = string(data[1, i])))[0];
+			ask t {
+				dulieu <- data[i];
+			}
+
+		}
+
+	}
+
 	action tinhtongdt {
 		tong_luc <- 0.0;
 		tong_luk <- 0.0;
@@ -14,31 +36,35 @@ global {
 			if (landuse = 5) {
 				tong_luc <- tong_luc + pixel_size; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
 			}
+
 			if (landuse = 6) {
 				tong_luk <- tong_luk + pixel_size; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
 			}
+
 			if (landuse = 101) {
 				tong_lua_tom <- tong_lua_tom + pixel_size; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
 			}
+
 			if (landuse = 34) {
 				tong_tsl <- tong_tsl + pixel_size; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
 			}
+
 			if (landuse = 12) {
 				tong_bhk <- tong_bhk + pixel_size; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
 			}
+
 			if (landuse = 14) {
 				tong_lnk <- tong_lnk + pixel_size; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
 			}
+
 		}
 
-	
-//		ask active_cell {
-//			if (landuse > 0) and (landuse != 14) and (landuse != 5) and (landuse != 6) and (landuse != 100) and (landuse != 12) and (landuse != 34) {
-//				tong_khac <- tong_khac + 100 * 100 / 10000; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
-//			}
-//
-//		}
-
+		//		ask active_cell {
+		//			if (landuse > 0) and (landuse != 14) and (landuse != 5) and (landuse != 6) and (landuse != 100) and (landuse != 12) and (landuse != 34) {
+		//				tong_khac <- tong_khac + 100 * 100 / 10000; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
+		//			}
+		//
+		//		}
 		write "Tong dt lua:" + tong_luc;
 		write "Tong dt lúa khác:" + tong_luk;
 		write "Tong dt lúa tom:" + tong_lua_tom;
@@ -67,13 +93,12 @@ global {
 
 		}
 
-//		ask cell_dat_2010 {
-//			if not (landuse in categories) {
-//				categories << landuse;
-//			}
-//
-//		}
-
+		//		ask cell_dat_2010 {
+		//			if not (landuse in categories) {
+		//				categories << landuse;
+		//			}
+		//
+		//		}
 		write "In kiem tra categories: " + categories;
 		v_kappa <- kappa(active_cell collect (each.landuse), active_cell collect (each.landuse_obs), categories);
 		write "Kappa: " + v_kappa;
@@ -113,7 +138,7 @@ global {
 				}
 
 				if (landuse = 14) {
-					dt_lnk <- dt_lnk +pixel_size;
+					dt_lnk <- dt_lnk + pixel_size;
 				}
 
 				if (landuse > 0) and (landuse != 14) and (landuse != 5) and (landuse != 6) and (landuse != 101) and (landuse != 12) and (landuse != 34) {
@@ -149,6 +174,7 @@ global {
 		}
 
 	}
+
 	action set_dyke {
 		loop dyke_obj over: vungbaode {
 			ask active_cell overlapping dyke_obj {
@@ -165,6 +191,5 @@ global {
 	//		}
 
 	}
-
 
 }
