@@ -201,6 +201,11 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 			}
 
 		}
+		if(cycle mod 12=0){ 
+			if(get_climate(cycle)>24.5){				
+					landuse <- 14;
+			}
+		}
 		// xet lua tom - tom 
 			//dua dac tinh ung vien tsl, lua tom
 		list<list> candidates;
