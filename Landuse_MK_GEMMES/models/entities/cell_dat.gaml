@@ -102,20 +102,30 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 
 	float get_climate_PR (int month) {
 		tinh t <- first(tinh overlapping self);
+		int idx <- 12;
 		if (t != nil) {
-//			write (t.dulieu);
-//			return float(t.data_pr[1 + month]);
-			return float(max(t.data_pr));
+			list tmp <- [];
+			loop i from: idx + (cycle * 12) to: idx + 8 + (cycle * 12) {
+				tmp <- tmp + t.data_pr[i];
+			}
+			//			write (t.dulieu);
+			//			return float(t.data_pr[1 + month]);
+			return float(max(tmp));
 		}
 
 		return 0.0;
 	}
 
-	float get_climate_TAS (int month) {
+	float get_climate_TAS (int year) {
 		tinh t <- first(tinh overlapping self);
 		if (t != nil) {
-//			write (t.dulieu);
-			return float(min(t.data_tas));
+			int idx <- 12;
+			list tmp <- [];
+			loop i from: idx + (cycle * 12) to: idx + 8 + (cycle * 12) {
+				tmp <- tmp + t.data_tas[i];
+			}
+			//			write (t.dulieu);
+			return float(min(tmp));
 		}
 
 		return 0.0;
@@ -137,10 +147,12 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 			}
 
 		}
-		float sal<-first(cell_sal overlapping self).grid_value;
-		if(sal>4.0){
-			kqthichnghi<-kqthichnghi-0.33;
+
+		float sal <- first(cell_sal overlapping self).grid_value;
+		if (sal > 4.0) {
+			kqthichnghi <- kqthichnghi - 0.33;
 		}
+
 		return kqthichnghi;
 	}
 
@@ -220,10 +232,11 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 		}
 
 		if (cycle mod 12 = 0) {
-			if (get_climate_TAS(cycle) > 24.5 and get_climate_PR(cycle)>300) {
-				if(flip(0.2)){					
+			if (get_climate_TAS(cycle) > 24.5 and get_climate_PR(cycle) > 300) {
+				if (flip(0.2)) {
 					landuse <- 6;
 				}
+
 			}
 
 		}
