@@ -1,10 +1,11 @@
 model SDD_MX_6_10_20
 
-import "entities/cell_dat.gaml"
+import "entities/cell_dat.gaml" 
 //import "entities/cell_dat_2010.gaml"
 
 global {
 	file cell_file <- grid_file("../includes/ht2015_500x500.tif");
+	file cell_salinity_file <- grid_file("../includes/mk_sal_2030_45_500x500.tif");
 	//	file cell_file <- grid_file("../includes/lu_100x100_mx_2005_new.tif");
 	file MKD_bound <- shape_file("../includes/MKD_1.shp");
 	geometry shape <- envelope(cell_file);

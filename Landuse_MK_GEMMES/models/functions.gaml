@@ -4,9 +4,9 @@ import "SDD_Mekong.gaml"
 
 global {
 
-	action load_climate {
+	action load_climate_PR {
 		create tinh from: MKD_bound;
-		string fpath <- "../includes/DATA.csv";
+		string fpath <- "../includes/DATA_PR.csv";
 		write fpath;
 		if (!file_exists(fpath)) {
 			return;
@@ -17,7 +17,26 @@ global {
 		loop i from: 0 to: data.rows - 1 {
 			tinh t <- (tinh where (each.VARNAME_1 = string(data[1, i])))[0];
 			ask t {
-				dulieu <- data[i];
+				data_pr <- data[i];
+			}
+
+		}
+
+	}
+	action load_climate_TAS {
+		create tinh from: MKD_bound;
+		string fpath <- "../includes/DATA_TAS.csv";
+		write fpath;
+		if (!file_exists(fpath)) {
+			return;
+		}
+
+		file risk_csv_file <- csv_file(fpath, ";", true);
+		matrix data <- (risk_csv_file.contents);
+		loop i from: 0 to: data.rows - 1 {
+			tinh t <- (tinh where (each.VARNAME_1 = string(data[1, i])))[0];
+			ask t {
+				data_tas <- data[i];
 			}
 
 		}

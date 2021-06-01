@@ -1,4 +1,4 @@
-model SDD_MX_6_10_20
+model SDD_MX_6_10_20 
 
 import "params.gaml"
 import "functions.gaml"
@@ -15,7 +15,8 @@ global {
 		//load ban do tu cac ban do vao tac tu
 		do docmatran_thichnghi;
 		do docmatran_khokhan;
-		do load_climate;
+		do load_climate_PR;
+		do load_climate_TAS;
 		//		create song from: song_file;
 		//		create duong from: duong_file;
 		create donvidatdai from: dvdd_file with: [dvdd::int(read('Code'))];

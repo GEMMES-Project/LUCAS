@@ -2,6 +2,7 @@ model cell_dat
 
 import "../params.gaml"
 import "tinh.gaml"
+import "cell_sal.gaml"
 grid cell_dat file: cell_file control: reflex neighbors: 8 {
 	int landuse <- int(grid_value);
 	float chiso_luk_lancan;
@@ -99,11 +100,22 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 
 	}
 
-	float get_climate (int month) {
+	float get_climate_PR (int month) {
 		tinh t <- first(tinh overlapping self);
 		if (t != nil) {
-			write (t.dulieu);
-			return float(t.dulieu[1 + month]);
+//			write (t.dulieu);
+//			return float(t.data_pr[1 + month]);
+			return float(max(t.data_pr));
+		}
+
+		return 0.0;
+	}
+
+	float get_climate_TAS (int month) {
+		tinh t <- first(tinh overlapping self);
+		if (t != nil) {
+//			write (t.dulieu);
+			return float(min(t.data_tas));
 		}
 
 		return 0.0;
@@ -125,7 +137,10 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 			}
 
 		}
-
+		float sal<-first(cell_sal overlapping self).grid_value;
+		if(sal>4.0){
+			kqthichnghi<-kqthichnghi-0.33;
+		}
 		return kqthichnghi;
 	}
 
@@ -204,12 +219,14 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 
 		}
 
-//		if (cycle mod 12 = 0) {
-//			if (get_climate(cycle) > 24.5) {
-//				landuse <- 101;
-//			}
-//
-//		}
+		if (cycle mod 12 = 0) {
+			if (get_climate_TAS(cycle) > 24.5 and get_climate_PR(cycle)>300) {
+				if(flip(0.2)){					
+					landuse <- 6;
+				}
+			}
+
+		}
 		// xet lua tom - tom 
 		//dua dac tinh ung vien tsl, lua tom
 		list<list> candidates;

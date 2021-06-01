@@ -12,7 +12,8 @@ species tinh {
 	string VARNAME_2;
 	string VARNAME_3;
 	string STT;
-	list dulieu;
+	list data_pr;
+	list data_tas;
 
 	init {
 	}
