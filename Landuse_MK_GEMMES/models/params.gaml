@@ -4,11 +4,11 @@ import "entities/cell_dat.gaml"
 //import "entities/cell_dat_2010.gaml"
 
 global {
-	file cell_file <- grid_file("../includes/ht2015_500x500.tif");
+	file cell_file <- grid_file("../includes/ht2015_500x500_cutPQ1.tif");
 	file cell_salinity_file <- grid_file("../includes/mk_sal_2030_45_500x500.tif");
 	//	file cell_file <- grid_file("../includes/lu_100x100_mx_2005_new.tif");
 	file MKD_bound <- shape_file("../includes/MKD_1.shp");
-	geometry shape <- envelope(cell_file);
+	geometry shape <- envelope(MKD_bound);
 	list<cell_dat> active_cell <-[];//<- cell_dat where (each.grid_value != 8.0);
 	float tong_luc;
 	float tong_tsl;
@@ -25,7 +25,7 @@ global {
 	float w_lancan <- 0.2;
 	list tieuchi;
 	float v_kappa <- 0.0;
-	file cell_dat_2010_file <- grid_file("../includes/ht2015_500x500.tif");
+	//file cell_dat_2010_file <- grid_file(""); //../includes/ht2015_500x500cutPQ.tif");
 	//list<cell_dat_2010> active_cell_dat2010 <- cell_dat_2010 where (each.grid_value != 0.0);
 	file xa_file <- shape_file("../includes/commune_myxuyen.shp");
 	float tong_lnk;

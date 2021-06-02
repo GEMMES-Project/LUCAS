@@ -1,7 +1,7 @@
 model cell_dat
 import "../params.gaml" 
 
-grid cell_dat_2010 file: cell_dat_2010_file control: reflex frequency: 8 {
+grid cell_dat_2010 file: cell_file control: reflex frequency: 8 {
 	int landuse <- int(grid_value);
 	rgb color;
 
