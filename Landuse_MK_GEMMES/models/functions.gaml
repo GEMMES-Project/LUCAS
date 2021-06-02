@@ -51,6 +51,7 @@ global {
 		tong_lnk <- 0.0;
 		tong_bhk <- 0.0;
 		tong_khac <- 0.0;
+		dt_tsl_risk<-0.0;
 		ask active_cell {
 			if (landuse = 5) {
 				tong_luc <- tong_luc + pixel_size; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
@@ -75,8 +76,24 @@ global {
 			if (landuse = 14) {
 				tong_lnk <- tong_lnk + pixel_size; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
 			}
-
+			
+			if (landuse =34){
+						if (get_climate_TAS(cycle) > 30 and get_climate_PR(cycle) > 300) {
+							if (flip(0.5)) {
+								dt_tsl_risk <- dt_tsl_risk+pixel_size ;
+							}
+					}
+				}
+			if (landuse in [5,6,14]){  // rau mau, cay hang nam
+						if (get_climate_TAS(cycle) > 30 and get_climate_PR(cycle) < 300) {
+							if (flip(0.5)) {
+								dt_raumau_risk <- dt_raumau_risk+pixel_size ;
+								//dt_caq_risk <- dt_caq_risk+pixel_size ;
+							}
+					}
+				}
 		}
+		
 
 		//		ask active_cell {
 		//			if (landuse > 0) and (landuse != 14) and (landuse != 5) and (landuse != 6) and (landuse != 100) and (landuse != 12) and (landuse != 34) {
@@ -124,8 +141,8 @@ global {
 	}
 
 	action tinh_dtmx {
-		save "tenhxa, dt_luc,dt_luk,dt_lua_tom,dt_tsl,dt_bhk,dt_lnk,dt_khac" to: "../results/hientrang_xa.csv" type: "csv" rewrite: true;
-		loop xa_obj over: xa {
+		save "prov_name, dt_luc,dt_luk,dt_lua_tom,dt_tsl,dt_bhk,dt_lnk,dt_khac" to: "../results/hientrang_xa.csv" type: "csv" rewrite: true;
+		loop tinh_obj over: tinh {
 		// duyệt hết các cell chồng lắp với huyện để tính diên diện tich
 			dt_luc <- 0.0;
 			dt_luk <- 0.0;
@@ -135,7 +152,7 @@ global {
 			dt_lnk <- 0.0;
 			dt_khac <- 0.0;
 			//đã chỉnh đến đây
-			ask active_cell overlapping xa_obj {
+			ask active_cell overlapping tinh_obj {
 				if (landuse = 5) {
 					dt_luc <- dt_luc + pixel_size;
 				}
@@ -166,20 +183,14 @@ global {
 
 			}
 			// Lưu kết quả tính từng loại đất vào biến toại đát ương ứng của huyện
-			xa_obj.tong_luc_xa <- dt_luc;
-			xa_obj.tong_luk_xa <- dt_luk;
-			xa_obj.tong_lua_tom_xa <- dt_lua_tom;
-			xa_obj.tong_tsl_xa <- dt_tsl;
-			xa_obj.tong_bhk_xa <- dt_bhk;
-			xa_obj.tong_lnk_xa <- dt_lnk;
-			xa_obj.tong_khac_xa <- dt_khac;
-			save [xa_obj.tenxa, xa_obj.tong_luc_xa, xa_obj.tong_luk_xa, xa_obj.tong_lua_tom_xa, xa_obj.tong_tsl_xa, xa_obj.tong_bhk_xa, xa_obj.tong_lnk_xa, xa_obj.tong_khac_xa] to:
-			"../results/hientrang_xa.csv" type: "csv" rewrite: false;
-			write xa_obj.tenxa + '; ' + tong_luc + '; ' + tong_luk + '; ' + tong_lua_tom + ';  ' + tong_tsl + '; ' + tong_bhk + '; ' + tong_lnk + '; ' + tong_khac;
+			
+			save [tinh_obj.NAME_1, dt_luc,dt_luk, dt_lua_tom, dt_tsl, dt_bhk, dt_lnk, dt_khac] to:
+			"../results/hientrang_tinh.csv" type: "csv" rewrite: false;
+			write tinh_obj.NAME_1 + '; ' + dt_luc + '; ' + dt_luk + '; ' + dt_lua_tom + ';  ' + dt_tsl + '; ' + dt_bhk + '; ' + dt_lnk + '; ' + dt_khac;
 		}
 		// ghu kết quả huyen ra file shapfile thuộc tính gồm 3 cột: ten xa, dt luc, dt tsl. Nếu có thểm thì cứ thêm loại đất vào
-		save xa to: "../results/xa_landuse.shp" type: "shp" attributes:
-		["tenxa"::tenxa, "dt_luc"::tong_luc_xa, "dt_lua_tom"::tong_lua_tom_xa, "dt_tsl"::tong_tsl_xa, "dt_luk"::tong_luk_xa, "dt_lnk"::tong_lnk_xa, "dt_bhk"::tong_bhk_xa, "dt_khac"::tong_khac_xa];
+		save tinh to: "../results/tinh_landuse.shp" type: "shp" attributes:
+		["tentinh"::NAME_1, "dt_luc"::dt_luc, "dt_lua_tom"::dt_lua_tom, "dt_tsl"::dt_tsl, "dt_luk"::dt_luk, "dt_lnk"::dt_lnk, "dt_bhk"::dt_bhk, "dt_khac"::dt_khac];
 		save cell_dat to: "../results/hientrang_sim.tif" type: "geotiff";
 		write "Đa tinh dien tich hien trang theo xa xong";
 	}
@@ -210,5 +221,5 @@ global {
 	//		}
 
 	}
-
+	
 }

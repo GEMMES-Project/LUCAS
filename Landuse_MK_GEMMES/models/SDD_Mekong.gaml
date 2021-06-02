@@ -91,7 +91,14 @@ experiment "my_GUI_xp" type: gui {
 		display landunit type: java2D {
 			species donvidatdai;
 		}
-
+		display "Risk by climate" type: java2D {
+			chart "Layer" type: series background: rgb(255, 255, 255) {
+				data "Risk for shrimp" style: line value: dt_tsl_risk color: #red;
+				data "Fresh water demand area vegetable" style: line value: dt_raumau_risk color: #lightgreen;
+				data "Fresh water demand area fruit" style: line value: dt_caq_risk color: #darkgreen;
+				
+			}
+		}
 		display "landuse chart" type: java2D {
 			chart "Layer" type: series background: rgb(255, 255, 255) {
 				data "3 rice" style: line value: tong_luc color: #lightyellow;

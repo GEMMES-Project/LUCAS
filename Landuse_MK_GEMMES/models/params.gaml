@@ -41,9 +41,12 @@ global {
 	float w_khokhan <- 0.7;
 	float w_thichnghi <- 0.8;
 	float tong_lua_tom;
-	float w_loinhuan <- 0.0;
+	float w_loinhuan <- 0.3;
 	float w_risky_climate <- 1.0;
 	float w_flip <- 0.1;  
 	date the_date <- date([2010, 1, 1]);
 	float pixel_size <-500*500/10000;
+	float dt_tsl_risk <-0.0;
+	float dt_raumau_risk <-0.0;
+	float dt_caq_risk <-0.0;
 }

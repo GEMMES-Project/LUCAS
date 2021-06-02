@@ -231,12 +231,12 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 
 		}
 
-			if (get_climate_TAS(cycle) > 24.5 and get_climate_PR(cycle) > 300) {
-				if (flip(0.2)) {
-					landuse <- 6;
-				}
-
-			}
+//			if (get_climate_TAS(cycle) > 33 and get_climate_PR(cycle) > 300) {
+//				if (flip(0.2)) {
+//					landuse <- 6;
+//				}
+//
+//			}
 		// xet lua tom - tom 
 		//dua dac tinh ung vien tsl, lua tom
 		list<list> candidates;
@@ -273,7 +273,7 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 		}
 
 	}
-
+	
 	action landuse_eval {
 
 	//lập danh sách các kiểu sử dụng đất
