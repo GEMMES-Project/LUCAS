@@ -105,7 +105,7 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 		int idx <- 12;
 		if (t != nil) {
 			list tmp <- [];
-			loop i from: idx + (cycle * 12) to: idx + 8 + (cycle * 12) {
+			loop i from: idx + (int(cycle/5)  * 12) to: idx + 8 + (int(cycle/5)  * 12) {
 				tmp <- tmp + t.data_pr[i];
 			}
 			//			write (t.dulieu);
@@ -120,8 +120,8 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 		tinh t <- first(tinh overlapping self);
 		if (t != nil) {
 			int idx <- 12;
-			list tmp <- [];
-			loop i from: idx + (cycle * 12) to: idx + 8 + (cycle * 12) {
+			list tmp <- []; 
+			loop i from: idx + (int(cycle/5) * 12) to: idx + 8 + (int(cycle/5)  * 12) {
 				tmp <- tmp + t.data_tas[i];
 			}
 			//			write (t.dulieu);

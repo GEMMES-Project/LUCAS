@@ -4,8 +4,7 @@ import "SDD_Mekong.gaml"
 
 global {
 
-	action load_climate_PR {
-		create tinh from: MKD_bound;
+	action load_climate_PR { 
 		string fpath <- "../includes/DATA_PR.csv";
 		write fpath;
 		if (!file_exists(fpath)) {
@@ -17,14 +16,13 @@ global {
 		loop i from: 0 to: data.rows - 1 {
 			tinh t <- (tinh where (each.VARNAME_1 = string(data[1, i])))[0];
 			ask t {
-				data_pr <- data[i];
+				data_pr <- data row_at i;
 			}
 
 		}
 
 	}
 	action load_climate_TAS {
-		create tinh from: MKD_bound;
 		string fpath <- "../includes/DATA_TAS.csv";
 		write fpath;
 		if (!file_exists(fpath)) {
@@ -35,8 +33,8 @@ global {
 		matrix data <- (risk_csv_file.contents);
 		loop i from: 0 to: data.rows - 1 {
 			tinh t <- (tinh where (each.VARNAME_1 = string(data[1, i])))[0];
-			ask t {
-				data_tas <- data[i];
+			ask t { 
+				data_tas <- data row_at i;
 			}
 
 		}
