@@ -38,8 +38,6 @@ grid cell_dat file: cell_file neighbors: 8 {
 			do die;
 		}
 
-		cell_lancan <- (neighbors where (!dead(each)) where (each.grid_value != 0.0)); //1 ban kinh lan can laf 2 cell = 8 cell xung quanh 1 cell
-
 	}
 
 	action to_mau {
@@ -99,12 +97,13 @@ grid cell_dat file: cell_file neighbors: 8 {
 	}
 
 	float get_climate_PR (int month) {
-		int idx <- 12;
 		if (my_tinh != nil) {
-			list tmp <- [];
-			loop i from: idx + (int(cycle / 5) * 12) to: idx + 8 + (int(cycle / 5) * 12) {
-				tmp <- tmp + my_tinh.data_pr[i];
-			}
+			int idx <- 12 + (int(cycle / 5) * 12);
+			list
+			tmp <- [my_tinh.data_pr[idx + 0], my_tinh.data_pr[idx + 1], my_tinh.data_pr[idx + 2], my_tinh.data_pr[idx + 3], my_tinh.data_pr[idx + 4], my_tinh.data_pr[idx + 5], my_tinh.data_pr[idx + 6], my_tinh.data_pr[idx + 7], my_tinh.data_pr[idx + 8]];
+			//			loop i from: idx + (int(cycle / 5) * 12) to: idx + 8 + (int(cycle / 5) * 12) {
+			//				tmp <- tmp + my_tinh.data_pr[i];
+			//			}
 			//			write (t.dulieu);
 			//			return float(t.data_pr[1 + month]);
 			return float(max(tmp));
@@ -115,11 +114,18 @@ grid cell_dat file: cell_file neighbors: 8 {
 
 	float get_climate_TAS (int year) {
 		if (my_tinh != nil) {
-			int idx <- 12;
-			list tmp <- [];
-			loop i from: idx + (int(cycle / 5) * 12) to: idx + 8 + (int(cycle / 5) * 12) {
-				tmp <- tmp + my_tinh.data_tas[i]; 
-			}
+			int idx <- 12 + (int(cycle / 5) * 12);			
+			list
+			tmp <- [my_tinh.data_tas[idx + 0], my_tinh.data_tas[idx + 1], 
+				my_tinh.data_tas[idx + 2], my_tinh.data_tas[idx + 3], my_tinh.data_tas[idx + 4], 
+				my_tinh.data_tas[idx + 5], my_tinh.data_tas[idx + 6], my_tinh.data_tas[idx + 7], 
+				my_tinh.data_tas[idx + 8]
+			];
+			
+//			list tmp <- [];
+//			loop i from: idx + (int(cycle / 5) * 12) to: idx + 8 + (int(cycle / 5) * 12) {
+//				tmp <- tmp + my_tinh.data_tas[i];
+//			}
 			//			write (t.dulieu);
 			return float(min(tmp));
 		}
@@ -127,6 +133,7 @@ grid cell_dat file: cell_file neighbors: 8 {
 		return 0.0;
 	}
 
+		float sal <-0.0;
 	float xet_thichnghi (int madvdd_, int LUT) {
 		float kqthichnghi <- 0.0;
 		if (matran_thichnghi_map["" + madvdd_ + " " + LUT] = nil) {
@@ -134,7 +141,6 @@ grid cell_dat file: cell_file neighbors: 8 {
 			kqthichnghi <- matran_thichnghi_map["" + madvdd_ + " " + LUT];
 		}
 
-		float sal <- first(cell_sal overlapping self).grid_value;
 		if (sal > 4.0) {
 			kqthichnghi <- kqthichnghi - 0.33;
 		}
@@ -158,7 +164,7 @@ grid cell_dat file: cell_file neighbors: 8 {
 		//if (de >1){}
 		if (landuse = 5 or landuse = 6 or landuse = 12 or landuse = 14) {
 		//or (landuse>0)and (landuse!=14) and (landuse!=5) and (landuse!=6) and(landuse!=100) and (landuse!=12) and (landuse!=34
-			choice <- weighted_means_DM(cands, tieuchi);
+			choice <-weighted_means_DM(cands, tieuchi);
 			//choice tra vi tri ung vien trong danh sach
 			if (choice = 0) {
 				if flip(0.05) {
@@ -211,7 +217,7 @@ grid cell_dat file: cell_file neighbors: 8 {
 			if (get_climate_TAS(cycle) > 25 and get_climate_PR(cycle) > 300) {
 				if (flip(0.5)) {
 					dt_tsl_risk <- dt_tsl_risk + pixel_size;
-					landuse <- 6;
+					landuse <- 101;
 				}
 
 			}
@@ -223,19 +229,13 @@ grid cell_dat file: cell_file neighbors: 8 {
 				if (flip(0.5)) {
 					dt_raumau_risk <- dt_raumau_risk + pixel_size;
 					//dt_caq_risk <- dt_caq_risk+pixel_size ;
-					landuse <- 14;
+					landuse <- 101;
 				}
 
 			}
 
 		}
 
-		//			if (get_climate_TAS(cycle) > 33 and get_climate_PR(cycle) > 300) {
-		//				if (flip(0.2)) {
-		//					landuse <- 6;
-		//				}
-		//
-		//			}
 		// xet lua tom - tom 
 		//dua dac tinh ung vien tsl, lua tom
 		list<list> candidates;

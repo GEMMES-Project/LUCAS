@@ -15,7 +15,8 @@ global {
 	//load ban do tu cac ban do vao tac tu
 		do docmatran_thichnghi;
 		do docmatran_khokhan;
-		create tinh from: MKD_bound;do load_climate_PR;
+		create tinh from: MKD_bound;
+		do load_climate_PR;
 		do load_climate_TAS;
 		//		create song from: song_file;
 		//		create duong from: duong_file;
@@ -23,7 +24,10 @@ global {
 		create vungbaode from: bandodebao with: [de::int(read('De'))];
 		create xa from: xa_file with: [tenxa::read('Tenxa')];
 		ask active_cell parallel: true {
+			
+			sal <- first(cell_sal overlapping self).grid_value;
 			my_tinh <- first(tinh overlapping self);
+			cell_lancan <- (neighbors where (!dead(each)) where (each.grid_value != 0.0)); //1 ban kinh lan can laf 2 cell = 8 cell xung quanh 1 cell
 			//			cell_lancan <- (self neighbors_at 2) where (!dead(each)); //1 ban kinh lan can laf 2 cell = 8 cell xung quanh 1 cell
 			do to_mau;
 			//			date tmp <- the_date;
@@ -61,9 +65,9 @@ global {
 		dt_tsl_risk <- 0.0;
 		ask active_cell parallel: true {
 			do tinh_chiso_lancan;
-			//				}
-			//		
-			//				ask active_cell  parallel:true{
+		}
+
+		ask active_cell parallel: true {
 			do luachonksd;
 			do to_mau;
 			if (landuse = 5) {
