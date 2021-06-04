@@ -118,7 +118,7 @@ grid cell_dat file: cell_file neighbors: 8 {
 			int idx <- 12;
 			list tmp <- [];
 			loop i from: idx + (int(cycle / 5) * 12) to: idx + 8 + (int(cycle / 5) * 12) {
-				tmp <- tmp + my_tinh.data_tas[i];
+				tmp <- tmp + my_tinh.data_tas[i]; 
 			}
 			//			write (t.dulieu);
 			return float(min(tmp));

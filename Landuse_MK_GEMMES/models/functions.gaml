@@ -35,7 +35,7 @@ global {
 		loop i from: 0 to: data.rows - 1 {
 			tinh t <- (tinh where (each.VARNAME_1 = string(data[1, i])))[0];
 			ask t {
-				data_tas <- data row_at i;
+				data_tas <- data row_at i; 
 			}
 
 		}

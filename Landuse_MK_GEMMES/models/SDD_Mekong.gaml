@@ -15,8 +15,7 @@ global {
 	//load ban do tu cac ban do vao tac tu
 		do docmatran_thichnghi;
 		do docmatran_khokhan;
-		create tinh from: MKD_bound;
-		do load_climate_PR;
+		create tinh from: MKD_bound;do load_climate_PR;
 		do load_climate_TAS;
 		//		create song from: song_file;
 		//		create duong from: duong_file;
