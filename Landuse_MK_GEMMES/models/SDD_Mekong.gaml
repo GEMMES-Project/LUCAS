@@ -101,7 +101,7 @@ global {
 		write "Tong dt lnk:" + tong_lnk;
 		write "Tong dt khac:" + tong_khac;
 		if (cycle = 15) {
-		//	do tinh_kappa;
+			do tinh_kappa;
 			ask active_cell {
 				grid_value <- float(landuse);
 			}
