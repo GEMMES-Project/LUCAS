@@ -91,27 +91,6 @@ global {
 				tong_lnk <- tong_lnk + pixel_size; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
 			}
 
-			if (landuse = 34) {
-				if (get_climate_TAS(cycle) > 25 and get_climate_PR(cycle) > 300) {
-					if (flip(0.5)) {
-						dt_tsl_risk <- dt_tsl_risk + pixel_size;
-					}
-
-				}
-
-			}
-
-			if (landuse in [5, 6, 14]) { // rau mau, cay hang nam
-				if (get_climate_TAS(cycle) > 25 and get_climate_PR(cycle) < 400) {
-					if (flip(0.5)) {
-						dt_raumau_risk <- dt_raumau_risk + pixel_size;
-						//dt_caq_risk <- dt_caq_risk+pixel_size ;
-					}
-
-				}
-
-			}
-
 		}
 
 		write "Tong dt lua:" + tong_luc;
