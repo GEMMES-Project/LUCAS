@@ -4,7 +4,7 @@ import "SDD_Mekong.gaml"
 
 global {
 
-	action load_climate_PR { 
+	action load_climate_PR {
 		string fpath <- "../includes/DATA_PR.csv";
 		write fpath;
 		if (!file_exists(fpath)) {
@@ -22,6 +22,7 @@ global {
 		}
 
 	}
+
 	action load_climate_TAS {
 		string fpath <- "../includes/DATA_TAS.csv";
 		write fpath;
@@ -33,7 +34,7 @@ global {
 		matrix data <- (risk_csv_file.contents);
 		loop i from: 0 to: data.rows - 1 {
 			tinh t <- (tinh where (each.VARNAME_1 = string(data[1, i])))[0];
-			ask t { 
+			ask t {
 				data_tas <- data row_at i;
 			}
 
@@ -49,49 +50,9 @@ global {
 		tong_lnk <- 0.0;
 		tong_bhk <- 0.0;
 		tong_khac <- 0.0;
-		dt_tsl_risk<-0.0;
+		dt_tsl_risk <- 0.0;
 		ask active_cell {
-			if (landuse = 5) {
-				tong_luc <- tong_luc + pixel_size; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
-			}
-
-			if (landuse = 6) {
-				tong_luk <- tong_luk + pixel_size; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
-			}
-
-			if (landuse = 101) {
-				tong_lua_tom <- tong_lua_tom + pixel_size; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
-			}
-
-			if (landuse = 34) {
-				tong_tsl <- tong_tsl + pixel_size; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
-			}
-
-			if (landuse = 12) {
-				tong_bhk <- tong_bhk + pixel_size; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
-			}
-
-			if (landuse = 14) {
-				tong_lnk <- tong_lnk + pixel_size; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
-			}
-			
-			if (landuse =34){
-						if (get_climate_TAS(cycle) > 30 and get_climate_PR(cycle) > 300) {
-							if (flip(0.5)) {
-								dt_tsl_risk <- dt_tsl_risk+pixel_size ;
-							}
-					}
-				}
-			if (landuse in [5,6,14]){  // rau mau, cay hang nam
-						if (get_climate_TAS(cycle) > 30 and get_climate_PR(cycle) < 300) {
-							if (flip(0.5)) {
-								dt_raumau_risk <- dt_raumau_risk+pixel_size ;
-								//dt_caq_risk <- dt_caq_risk+pixel_size ;
-							}
-					}
-				}
 		}
-		
 
 		//		ask active_cell {
 		//			if (landuse > 0) and (landuse != 14) and (landuse != 5) and (landuse != 6) and (landuse != 100) and (landuse != 12) and (landuse != 34) {
@@ -110,12 +71,35 @@ global {
 
 	action docmatran_khokhan {
 		matran_khokhan <- matrix(khokhanchuyendoi_file);
-		write "Matra kho khan:" + matran_khokhan;
+		int i <- 0;
+		int j <- 0;
+		loop i from: 1 to: matran_khokhan.rows - 1 {
+			string landuse1 <- matran_khokhan[0, i];
+			loop j from: 2 to: matran_khokhan.columns - 1 { //do tung cot cua matran
+				string landuse2 <- matran_khokhan[j, 0];
+				kqkhokhanchuyendoi_map <+ "" + landuse1 + " " + landuse2::float(matran_khokhan[j, i]);
+			}
+
+		}
+
+		write "Matra kho khan:" + kqkhokhanchuyendoi_map;
 	}
 
 	action docmatran_thichnghi {
 		matran_thichnghi <- matrix(thichnghidatdai_file);
-		write "Ma tran thich nghi" + matran_thichnghi;
+		int i <- 0;
+		int j <- 0;
+		loop i from: 1 to: matran_thichnghi.rows - 1 {
+			int madvdd_ <- int(matran_thichnghi[0, i]);
+			loop j from: 1 to: matran_thichnghi.columns - 1 { //do tung cot cua matran
+				int LUT <- int(matran_thichnghi[j, 0]);
+				matran_thichnghi_map <+ "" + madvdd_ + " " + LUT::float(matran_thichnghi[j, i]);
+				break;
+			}
+
+		}
+
+		write "Ma tran thich nghi" + matran_thichnghi_map;
 	}
 
 	action tinh_kappa {
@@ -181,9 +165,7 @@ global {
 
 			}
 			// Lưu kết quả tính từng loại đất vào biến toại đát ương ứng của huyện
-			
-			save [tinh_obj.NAME_1, dt_luc,dt_luk, dt_lua_tom, dt_tsl, dt_bhk, dt_lnk, dt_khac] to:
-			"../results/hientrang_tinh.csv" type: "csv" rewrite: false;
+			save [tinh_obj.NAME_1, dt_luc, dt_luk, dt_lua_tom, dt_tsl, dt_bhk, dt_lnk, dt_khac] to: "../results/hientrang_tinh.csv" type: "csv" rewrite: false;
 			write tinh_obj.NAME_1 + '; ' + dt_luc + '; ' + dt_luk + '; ' + dt_lua_tom + ';  ' + dt_tsl + '; ' + dt_bhk + '; ' + dt_lnk + '; ' + dt_khac;
 		}
 		// ghu kết quả huyen ra file shapfile thuộc tính gồm 3 cột: ten xa, dt luc, dt tsl. Nếu có thểm thì cứ thêm loại đất vào
@@ -219,5 +201,5 @@ global {
 	//		}
 
 	}
-	
+
 }

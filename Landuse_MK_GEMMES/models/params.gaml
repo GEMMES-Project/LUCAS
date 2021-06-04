@@ -19,8 +19,10 @@ global {
 	file MKD_file <- shape_file("../includes/MKD_1.shp");
 	file bandodebao <- shape_file("../includes/mk_dyke_region.shp");
 	matrix matran_khokhan;
+	map<string,float> kqkhokhanchuyendoi_map;
 	file khokhanchuyendoi_file <- csv_file("../includes/khokhanchuyendoi.csv", false);
-	matrix matran_thichnghi;
+	matrix matran_thichnghi;	
+	map<string,float> matran_thichnghi_map;
 	file thichnghidatdai_file <- csv_file("../includes/landsuitability.csv", false);
 	float w_lancan <- 0.2;
 	list tieuchi;
@@ -44,7 +46,7 @@ global {
 	float w_loinhuan <- 0.3;
 	float w_risky_climate <- 1.0;
 	float w_flip <- 0.1;  
-	date the_date <- date([2010, 1, 1]);
+//	date the_date <- date([2010, 1, 1]);
 	float pixel_size <-500*500/10000;
 	float dt_tsl_risk <-0.0;
 	float dt_raumau_risk <-0.0;

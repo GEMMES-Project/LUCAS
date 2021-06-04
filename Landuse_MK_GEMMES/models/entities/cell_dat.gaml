@@ -3,7 +3,7 @@ model cell_dat
 import "../params.gaml"
 import "tinh.gaml"
 import "cell_sal.gaml"
-grid cell_dat file: cell_file control: reflex neighbors: 8 {
+grid cell_dat file: cell_file neighbors: 8 {
 	int landuse <- int(grid_value);
 	float chiso_luk_lancan;
 	float chiso_luc_lancan;
@@ -23,6 +23,7 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 	map<int, list> Tas_max <- [];
 	map<int, list> Tas_min <- [];
 	list<cell_dat> cell_lancan <- [];
+	tinh my_tinh;
 
 	init {
 	/*
@@ -36,6 +37,8 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 		} else {
 			do die;
 		}
+
+		cell_lancan <- (neighbors where (!dead(each)) where (each.grid_value != 0.0)); //1 ban kinh lan can laf 2 cell = 8 cell xung quanh 1 cell
 
 	}
 
@@ -79,11 +82,6 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 			color <- #gray;
 		}
 
-		if (Pr[the_date.year] != nil and length(Pr) > 0) {
-			int rr <- int(mean(Pr[the_date.year]));
-			color <- rgb(rr);
-		}
-
 	}
 
 	action tinh_chiso_lancan {
@@ -101,12 +99,11 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 	}
 
 	float get_climate_PR (int month) {
-		tinh t <- first(tinh overlapping self);
 		int idx <- 12;
-		if (t != nil) {
+		if (my_tinh != nil) {
 			list tmp <- [];
-			loop i from: idx + (int(cycle/5)  * 12) to: idx + 8 + (int(cycle/5)  * 12) {
-				tmp <- tmp + t.data_pr[i];
+			loop i from: idx + (int(cycle / 5) * 12) to: idx + 8 + (int(cycle / 5) * 12) {
+				tmp <- tmp + my_tinh.data_pr[i];
 			}
 			//			write (t.dulieu);
 			//			return float(t.data_pr[1 + month]);
@@ -117,12 +114,11 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 	}
 
 	float get_climate_TAS (int year) {
-		tinh t <- first(tinh overlapping self);
-		if (t != nil) {
+		if (my_tinh != nil) {
 			int idx <- 12;
-			list tmp <- []; 
-			loop i from: idx + (int(cycle/5) * 12) to: idx + 8 + (int(cycle/5)  * 12) {
-				tmp <- tmp + t.data_tas[i];
+			list tmp <- [];
+			loop i from: idx + (int(cycle / 5) * 12) to: idx + 8 + (int(cycle / 5) * 12) {
+				tmp <- tmp + my_tinh.data_tas[i];
 			}
 			//			write (t.dulieu);
 			return float(min(tmp));
@@ -133,19 +129,9 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 
 	float xet_thichnghi (int madvdd_, int LUT) {
 		float kqthichnghi <- 0.0;
-		int i <- 0;
-		int j <- 0;
-		loop i from: 1 to: matran_thichnghi.rows - 1 {
-			if (int(matran_thichnghi[0, i]) = madvdd_) { //cot 0; cot ma dvdd, i:dong
-				loop j from: 1 to: matran_thichnghi.columns - 1 { //do tung cot cua matran
-					if (int(matran_thichnghi[j, 0]) = LUT) { //dong 0:chua cac ten cot
-						kqthichnghi <- float(matran_thichnghi[j, i]);
-					}
-
-				}
-
-			}
-
+		if (matran_thichnghi_map["" + madvdd_ + " " + LUT] = nil) {
+		} else {
+			kqthichnghi <- matran_thichnghi_map["" + madvdd_ + " " + LUT];
 		}
 
 		float sal <- first(cell_sal overlapping self).grid_value;
@@ -158,19 +144,9 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 
 	float xet_khokhanchuyendoi (int landuse1, int landuse2) {
 		float kqkhokhanchuyendoi <- 0.0;
-		int i <- 0;
-		int j <- 0;
-		loop i from: 1 to: matran_khokhan.rows - 1 {
-			if (int(matran_khokhan[0, i]) = landuse1) { //cot 0; cot ma dvdd, i:dong
-				loop j from: 1 to: matran_khokhan.columns - 1 { //do tung cot cua matran
-					if (int(matran_khokhan[j, 0]) = landuse2) { //dong 0:chua cac ten cot
-						kqkhokhanchuyendoi <- float(matran_khokhan[j, i]);
-					}
-
-				}
-
-			}
-
+		if (kqkhokhanchuyendoi_map["" + landuse1 + " " + landuse2] = nil) {
+		} else {
+			kqkhokhanchuyendoi <- kqkhokhanchuyendoi_map["" + landuse1 + " " + landuse2];
 		}
 
 		return kqkhokhanchuyendoi;
@@ -231,12 +207,12 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 
 		}
 
-//			if (get_climate_TAS(cycle) > 33 and get_climate_PR(cycle) > 300) {
-//				if (flip(0.2)) {
-//					landuse <- 6;
-//				}
-//
-//			}
+		//			if (get_climate_TAS(cycle) > 33 and get_climate_PR(cycle) > 300) {
+		//				if (flip(0.2)) {
+		//					landuse <- 6;
+		//				}
+		//
+		//			}
 		// xet lua tom - tom 
 		//dua dac tinh ung vien tsl, lua tom
 		list<list> candidates;
@@ -273,7 +249,7 @@ grid cell_dat file: cell_file control: reflex neighbors: 8 {
 		}
 
 	}
-	
+
 	action landuse_eval {
 
 	//lập danh sách các kiểu sử dụng đất
