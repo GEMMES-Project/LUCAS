@@ -63,6 +63,8 @@ global {
 		tong_bhk <- 0.0;
 		tong_khac <- 0.0;
 		dt_tsl_risk <- 0.0;
+		dt_raumau_risk<- 0.0;
+		dt_caq_risk <- 0.0;
 		ask active_cell parallel: true {
 			do tinh_chiso_lancan;
 		}

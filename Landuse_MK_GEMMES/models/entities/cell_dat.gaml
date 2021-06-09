@@ -93,26 +93,34 @@ grid cell_dat file: cell_file neighbors: 8 {
 		chiso_tsl_lancan <- (cell_lancan count (each.landuse = 34)) / 25;
 		chiso_lua_tom_lancan <- (cell_lancan count (each.landuse = 101)) / 25;
 		//chiso_khac_lancan <-(cell_lancan count (each.landuse=1))/8;
-
 	}
 
-	float get_climate_PR (int month) {
+	float get_climate_maxPR (int month) {
+		// tim luong mua toi da trong cac thang mua kho trong mot nam
+		// nham danh gia kha nang gay risk khi canh tac thuy san (tom) 
 		if (my_tinh != nil) {
 			int idx <- 12 + (int(cycle / 5) * 12);
 			list
 			tmp <- [my_tinh.data_pr[idx + 0], my_tinh.data_pr[idx + 1], my_tinh.data_pr[idx + 2], my_tinh.data_pr[idx + 3], my_tinh.data_pr[idx + 4], my_tinh.data_pr[idx + 5], my_tinh.data_pr[idx + 6], my_tinh.data_pr[idx + 7], my_tinh.data_pr[idx + 8]];
-			//			loop i from: idx + (int(cycle / 5) * 12) to: idx + 8 + (int(cycle / 5) * 12) {
-			//				tmp <- tmp + my_tinh.data_pr[i];
-			//			}
-			//			write (t.dulieu);
-			//			return float(t.data_pr[1 + month]);
 			return float(max(tmp));
 		}
-
+		return 0.0;
+	}
+	float get_climate_minPR (int month) {
+		// tim luong mua toi thieu  trong cac thang mua kho trong mot nam
+		// nham danh gia kha nang gay risk cho cay trong
+		if (my_tinh != nil) {
+			int idx <- 12 + (int(cycle / 5) * 12);
+			list
+			tmp <- [my_tinh.data_pr[idx + 0], my_tinh.data_pr[idx + 1], my_tinh.data_pr[idx + 2], my_tinh.data_pr[idx + 3], my_tinh.data_pr[idx + 4], my_tinh.data_pr[idx + 5], my_tinh.data_pr[idx + 6], my_tinh.data_pr[idx + 7], my_tinh.data_pr[idx + 8]];
+			return float(min(tmp));
+		}
 		return 0.0;
 	}
 
-	float get_climate_TAS (int year) {
+	float get_climate_maxTAS (int year) {
+		// tim nhiet do cao nhat cua cac thang mua kho 
+		// phuc vu danh gia kha nang xay ra han man trong nam
 		if (my_tinh != nil) {
 			int idx <- 12 + (int(cycle / 5) * 12);			
 			list
@@ -121,19 +129,13 @@ grid cell_dat file: cell_file neighbors: 8 {
 				my_tinh.data_tas[idx + 5], my_tinh.data_tas[idx + 6], my_tinh.data_tas[idx + 7], 
 				my_tinh.data_tas[idx + 8]
 			];
-			
-//			list tmp <- [];
-//			loop i from: idx + (int(cycle / 5) * 12) to: idx + 8 + (int(cycle / 5) * 12) {
-//				tmp <- tmp + my_tinh.data_tas[i];
-//			}
-			//			write (t.dulieu);
-			return float(min(tmp));
+			return float(max(tmp));
 		}
 
 		return 0.0;
 	}
 
-		float sal <-0.0;
+	float sal <-0.0;
 	float xet_thichnghi (int madvdd_, int LUT) {
 		float kqthichnghi <- 0.0;
 		if (matran_thichnghi_map["" + madvdd_ + " " + LUT] = nil) {
@@ -213,25 +215,26 @@ grid cell_dat file: cell_file neighbors: 8 {
 
 		}
 
-		if (landuse = 34) {
-			if (get_climate_TAS(cycle) > 25 and get_climate_PR(cycle) > 300) {
+		if (landuse = 34) {// thuy san
+		// Nhiet do cao nhat > nguong hoac luong mua max >nguong
+			if (get_climate_maxTAS(cycle) > 25 or get_climate_maxPR(cycle) > 300) {
 				if (flip(0.5)) {
 					dt_tsl_risk <- dt_tsl_risk + pixel_size;
-					landuse <- 101;
+					//landuse <- 101;
 				}
 
 			}
 
 		}
 
-		if (landuse in [5, 6, 14]) { // rau mau, cay hang nam
-			if (get_climate_TAS(cycle) > 25 and get_climate_PR(cycle) < 400) {
+		if (landuse in [5, 6, 14]) { // lua , rau mau, cay hang nam
+		// nhiet do max > nguong  va luong mua max< nguong300
+			if (get_climate_maxTAS(cycle) > 32 or get_climate_minPR(cycle) < 300) {
 				if (flip(0.5)) {
 					dt_raumau_risk <- dt_raumau_risk + pixel_size;
 					//dt_caq_risk <- dt_caq_risk+pixel_size ;
-					landuse <- 101;
+					//landuse <- 101;
 				}
-
 			}
 
 		}
