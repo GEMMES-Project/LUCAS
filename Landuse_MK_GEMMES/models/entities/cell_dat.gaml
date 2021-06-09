@@ -16,6 +16,8 @@ grid cell_dat file: cell_file neighbors: 8 {
 	float chiso_lua_tom_lancan;
 	float chiso_thichnghi_lua_tom;
 	float chiso_khokhan_lua_tom;
+	bool risk<- false update:false; // bo sung risk de danh dau cell bi risk. DUng khi kich ban loai risk se xet cac cell nay de chuyen doi sang kieu phu hop hon
+	// moi vong lap gan lai bang false de xet lai cho nam khac.
 	rgb color;
 	int dyke <- 1; //1: inside; 2: outside of dyke
 	map<int, list> Pr <- [];
@@ -217,9 +219,10 @@ grid cell_dat file: cell_file neighbors: 8 {
 
 		if (landuse = 34) {// thuy san
 		// Nhiet do cao nhat > nguong hoac luong mua max >nguong
-			if (get_climate_maxTAS(cycle) > 25 or get_climate_maxPR(cycle) > 300) {
+			if (get_climate_maxTAS(cycle) > 30 or get_climate_maxPR(cycle) > 400) {
 				if (flip(0.5)) {
 					dt_tsl_risk <- dt_tsl_risk + pixel_size;
+					risk<-true;
 					//landuse <- 101;
 				}
 
@@ -227,13 +230,15 @@ grid cell_dat file: cell_file neighbors: 8 {
 
 		}
 
-		if (landuse in [5, 6, 14]) { // lua , rau mau, cay hang nam
+		if (landuse in [5, 14]) { // lua , rau mau, cay hang nam
 		// nhiet do max > nguong  va luong mua max< nguong300
-			if (get_climate_maxTAS(cycle) > 32 or get_climate_minPR(cycle) < 300) {
+		// bo sung duyet 2 tham so nguong duoi: nhietdo tas>27- 29; Pr : 300-500
+			if (get_climate_maxTAS(cycle) > 28 and get_climate_minPR(cycle) < 400) {
 				if (flip(0.5)) {
 					dt_raumau_risk <- dt_raumau_risk + pixel_size;
+					risk<-true;
 					//dt_caq_risk <- dt_caq_risk+pixel_size ;
-					//landuse <- 101;
+					//landuse <- 101; // se xay dung kich ban de khac phuc risk bang cach xet risk xong se xet chiyen doi ksd khac de giam risk.
 				}
 			}
 
