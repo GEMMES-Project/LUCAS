@@ -219,7 +219,7 @@ grid cell_dat file: cell_file neighbors: 8 {
 
 		if (landuse = 34) {// thuy san
 		// Nhiet do cao nhat > nguong hoac luong mua max >nguong
-			if (get_climate_maxTAS(cycle) > 30 or get_climate_maxPR(cycle) > 400) {
+			if (get_climate_maxTAS(cycle) > climate_maxTAS_thuysan or get_climate_maxPR(cycle) > climate_maxPR_thuysan) {
 				if (flip(0.5)) {
 					dt_tsl_risk <- dt_tsl_risk + pixel_size;
 					risk<-true;
@@ -233,7 +233,7 @@ grid cell_dat file: cell_file neighbors: 8 {
 		if (landuse in [5, 14]) { // lua , rau mau, cay hang nam
 		// nhiet do max > nguong  va luong mua max< nguong300
 		// bo sung duyet 2 tham so nguong duoi: nhietdo tas>27- 29; Pr : 300-500
-			if (get_climate_maxTAS(cycle) > 28 and get_climate_minPR(cycle) < 400) {
+			if (get_climate_maxTAS(cycle) > climate_maxTAS_caytrong and get_climate_minPR(cycle) < climate_maxPR_caytrong) {
 				if (flip(0.5)) {
 					dt_raumau_risk <- dt_raumau_risk + pixel_size;
 					risk<-true;

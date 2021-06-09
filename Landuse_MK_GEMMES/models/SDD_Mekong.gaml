@@ -24,7 +24,6 @@ global {
 		create vungbaode from: bandodebao with: [de::int(read('De'))];
 		create xa from: xa_file with: [tenxa::read('Tenxa')];
 		ask active_cell parallel: true {
-			
 			sal <- first(cell_sal overlapping self).grid_value;
 			my_tinh <- first(tinh overlapping self);
 			cell_lancan <- (neighbors where (!dead(each)) where (each.grid_value != 0.0)); //1 ban kinh lan can laf 2 cell = 8 cell xung quanh 1 cell
@@ -63,7 +62,7 @@ global {
 		tong_bhk <- 0.0;
 		tong_khac <- 0.0;
 		dt_tsl_risk <- 0.0;
-		dt_raumau_risk<- 0.0;
+		dt_raumau_risk <- 0.0;
 		dt_caq_risk <- 0.0;
 		ask active_cell parallel: true {
 			do tinh_chiso_lancan;
@@ -136,9 +135,10 @@ experiment "my_GUI_xp" type: gui {
 		display landunit type: java2D {
 			species donvidatdai;
 		}
+
 		display risk_cell type: java2D {
 			species tinh;
-			species cell_dat aspect:risky;
+			species cell_dat aspect: risky;
 		}
 
 		display "Risk by climate" type: java2D {
@@ -160,6 +160,30 @@ experiment "my_GUI_xp" type: gui {
 				data "Rice - aquaculture" style: line value: tong_lua_tom color: rgb(40, 150, 120);
 			}
 
+		}
+
+	}
+
+}
+
+experiment "explore" type: batch repeat: 5 keep_seed: true until: ( time >= 15 ) {
+
+//	float climate_maxTAS_thuysan<- 30.0;//-35 , tăng 0.5
+//	float climate_maxPR_thuysan<-300.0;//-500, tăng 50
+//
+//	float climate_maxTAS_caytrong<- 30.0;//-35 , tăng 0.5
+//	float climate_maxPR_caytrong<- 100.0;// - 300, tăng 50
+	parameter 'climate_maxTAS_thuysan' var: climate_maxTAS_thuysan min: 30.0 max: 35.0 step: 0.5;
+	parameter 'climate_maxPR_thuysan' var: climate_maxPR_thuysan min: 300.0 max: 500.0 step: 50.0;
+	parameter 'climate_maxTAS_caytrong' var: climate_maxTAS_caytrong min: 30.0 max: 35.0 step: 0.5;
+	parameter 'climate_maxPR_caytrong' var: climate_maxPR_caytrong min: 100.0 max: 300.0 step: 50.0;
+	method exhaustive minimize: (dt_raumau_risk + dt_tsl_risk);
+
+	reflex end_of_runs {
+		ask simulations {
+			string
+			ss <- "" + climate_maxTAS_thuysan + ";" + climate_maxPR_thuysan + ";" + climate_maxTAS_caytrong + ";" + climate_maxPR_caytrong + ";" + dt_raumau_risk + ";" + dt_tsl_risk + "\n";
+			save ss type: "text" to: "result/res.csv";
 		}
 
 	}

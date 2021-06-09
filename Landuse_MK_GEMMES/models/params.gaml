@@ -51,4 +51,12 @@ global {
 	float dt_tsl_risk <-0.0;
 	float dt_raumau_risk <-0.0;
 	float dt_caq_risk <-0.0;
+	
+	
+	float climate_maxTAS_thuysan<- 30.0;//-35 , tăng 0.5
+	float climate_maxPR_thuysan<-300.0;//-500, tăng 50
+
+	float climate_maxTAS_caytrong<- 30.0;//-35 , tăng 0.5
+	float climate_maxPR_caytrong<- 100.0;// - 300, tăng 50
+	
 }
