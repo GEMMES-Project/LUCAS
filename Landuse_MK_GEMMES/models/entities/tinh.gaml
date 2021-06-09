@@ -17,5 +17,7 @@ species tinh {
 
 	init {
 	}
-
+	aspect default{
+		draw shape empty:true border:#gray;
+	}
 }

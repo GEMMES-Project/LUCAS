@@ -136,6 +136,10 @@ experiment "my_GUI_xp" type: gui {
 		display landunit type: java2D {
 			species donvidatdai;
 		}
+		display risk_cell type: java2D {
+			species tinh;
+			species cell_dat aspect:risky;
+		}
 
 		display "Risk by climate" type: java2D {
 			chart "Layer" type: series background: rgb(255, 255, 255) {

@@ -332,5 +332,9 @@ grid cell_dat file: cell_file neighbors: 8 {
 		candidates << cand_luatom;
 		return candidates;
 	}
-
+	aspect risky{
+		if(risk){
+			draw shape color:#pink;
+		}
+	}
 }
