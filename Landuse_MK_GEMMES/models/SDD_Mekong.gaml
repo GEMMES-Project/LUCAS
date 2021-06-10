@@ -139,7 +139,7 @@ experiment "my_GUI_xp" type: gui {
 			species donvidatdai;
 		}
 
-		display risk_cell type: java2D {
+		display risk_cell type: opengl {
 			species tinh;
 			species cell_dat aspect: risky;
 		}

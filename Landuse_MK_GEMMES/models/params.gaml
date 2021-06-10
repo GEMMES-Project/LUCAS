@@ -54,9 +54,9 @@ global {
 	
 	
 	float climate_maxTAS_thuysan<- 30.0;//-35 , tăng 0.5
-	float climate_maxPR_thuysan<-300.0;//-500, tăng 50
+	float climate_maxPR_thuysan<-400.0;//-500, tăng 50
 
-	float climate_maxTAS_caytrong<- 30.0;//-35 , tăng 0.5
-	float climate_maxPR_caytrong<- 100.0;// - 300, tăng 50
+	float climate_maxTAS_caytrong<- 28.0;//-35 , tăng 0.5
+	float climate_maxPR_caytrong<-  400; // tăng 50 100-300
 	
 }
