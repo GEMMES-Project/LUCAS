@@ -62,7 +62,7 @@ global {
 		tong_bhk <- 0.0;
 		tong_khac <- 0.0;
 		dt_tsl_risk <- 0.0;
-		dt_raumau_risk <- 0.0;
+		dt_lua_caqrisk <- 0.0;
 		dt_caq_risk <- 0.0;
 		ask active_cell parallel: true {
 			do tinh_chiso_lancan;
@@ -147,7 +147,7 @@ experiment "my_GUI_xp" type: gui {
 		display "Risk by climate" type: java2D {
 			chart "Layer" type: series background: rgb(255, 255, 255) {
 				data "Risk for shrimp" style: line value: dt_tsl_risk color: #red;
-				data "Fresh water demand area vegetable" style: line value: dt_raumau_risk color: #lightgreen;
+				data "Fresh water demand area vegetable" style: line value: dt_lua_caqrisk color: #lightgreen;
 				data "Fresh water demand area fruit" style: line value: dt_caq_risk color: #darkgreen;
 			}
 
@@ -180,12 +180,12 @@ experiment "explore" type: batch repeat: 1 keep_seed: true until: (time >= 15) {
 	parameter 'climate_maxPR_thuysan' var: climate_maxPR_thuysan min: 300.0 max: 500.0 step: 50.0;
 	parameter 'climate_maxTAS_caytrong' var: climate_maxTAS_caytrong min: 30.0 max: 35.0 step: 0.5;
 	parameter 'climate_maxPR_caytrong' var: climate_maxPR_caytrong min: 100.0 max: 300.0 step: 50.0;
-	method exhaustive minimize: (dt_raumau_risk + dt_tsl_risk);
+	method exhaustive minimize: (dt_lua_caqrisk + dt_tsl_risk);
 
 	reflex end_of_runs {
 		ask simulations {
 			string
-			ss <- "" + climate_maxTAS_thuysan + ";" + climate_maxPR_thuysan + ";" + climate_maxTAS_caytrong + ";" + climate_maxPR_caytrong + ";" + dt_raumau_risk + ";" + dt_tsl_risk + "\n";
+			ss <- "" + climate_maxTAS_thuysan + ";" + climate_maxPR_thuysan + ";" + climate_maxTAS_caytrong + ";" + climate_maxPR_caytrong + ";" + dt_lua_caqrisk + ";" + dt_tsl_risk + "\n";
 			save ss type: "text" to: "result/res.csv" rewrite: false;
 		}
 

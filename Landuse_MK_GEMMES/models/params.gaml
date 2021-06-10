@@ -49,7 +49,7 @@ global {
 //	date the_date <- date([2010, 1, 1]);
 	float pixel_size <-500*500/10000;
 	float dt_tsl_risk <-0.0;
-	float dt_raumau_risk <-0.0;
+	float dt_lua_caqrisk <-0.0;
 	float dt_caq_risk <-0.0;
 	
 	
