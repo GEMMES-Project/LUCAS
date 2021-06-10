@@ -105,14 +105,17 @@ global {
 		write "Tong dt lnk:" + tong_lnk;
 		write "Tong dt khac:" + tong_khac;
 		if (cycle = 15) {
-			do tinh_kappa;
-			ask active_cell {
-				grid_value <- float(landuse);
-			}
-
-			save cell_dat to: "../results/landuse_sim_" + 2015 + cycle + ".tif" type: "geotiff";
-			//	do tinh_dtmx;
-			do pause;
+		//			string
+		//			ss <- "" + climate_maxTAS_thuysan + ";" + climate_maxPR_thuysan + ";" + climate_maxTAS_caytrong + ";" + climate_maxPR_caytrong + ";" + dt_raumau_risk + ";" + dt_tsl_risk + "\n";
+		//			save ss type: "text" to: "result/res.csv" rewrite: false;
+		//			//			do tinh_kappa;
+		//			ask active_cell {
+		//				grid_value <- float(landuse);
+		//			}
+		//
+		//			save cell_dat to: "../results/landuse_sim_" + 2015 + cycle + ".tif" type: "geotiff";
+		//			//	do tinh_dtmx;
+		//			do pause;
 		}
 
 	}
@@ -166,7 +169,7 @@ experiment "my_GUI_xp" type: gui {
 
 }
 
-experiment "explore" type: batch repeat: 5 keep_seed: true until: ( time >= 15 ) {
+experiment "explore" type: batch repeat: 1 keep_seed: true until: (time >= 15) {
 
 //	float climate_maxTAS_thuysan<- 30.0;//-35 , tăng 0.5
 //	float climate_maxPR_thuysan<-300.0;//-500, tăng 50
@@ -183,7 +186,7 @@ experiment "explore" type: batch repeat: 5 keep_seed: true until: ( time >= 15 )
 		ask simulations {
 			string
 			ss <- "" + climate_maxTAS_thuysan + ";" + climate_maxPR_thuysan + ";" + climate_maxTAS_caytrong + ";" + climate_maxPR_caytrong + ";" + dt_raumau_risk + ";" + dt_tsl_risk + "\n";
-			save ss type: "text" to: "result/res.csv";
+			save ss type: "text" to: "result/res.csv" rewrite: false;
 		}
 
 	}
