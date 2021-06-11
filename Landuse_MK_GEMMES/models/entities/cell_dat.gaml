@@ -164,29 +164,45 @@ grid cell_dat file: cell_file neighbors: 8 {
 //Sc2: Remove risk with support from goverment : Keeping LU but invest for serving fresh water in the dry season, support for a percentage of farmers. ( explore this number to see risk area)
 	action removerisk_invidual{ // scenarios 1
 		if (risk=1){
-			if flip(0.2){
+			if flip(proportion_aquafarmers_adapted){
 				landuse <-101;
+				risk <-0;
 			}
 		}
 		if (risk=2){
-			if flip(0.5){
-				landuse <- 5;
+			if flip(proportion_agrofarmers_adapted){
+				landuse <- 6;
+				risk <-0;
 			}
+			
 		}
+		
 		
 	}	
 	action removerisk_supp_gov{ // scenarios 2
 		if (risk=1){
 			if flip(proportion_aqua_supported){
-				landuse <-101;
+				//landuse <-101;
+				risk <-0;
 			}
 		}
 		if (risk=2){
 			if flip(proportion_ago_supported){
-				landuse <- 5;
+				//landuse <- 5;
+				risk <-0;
 			}
 		}
 	}	
+	// adaptation scenarios 
+	action adptation_sc{
+			if (scenario=1){
+				do removerisk_invidual;
+			}
+			else if (scenario=2){
+				do removerisk_supp_gov;
+			} 
+		
+	}
 
 	action luachonksd {
 		list<list> cands <- landuse_eval();
@@ -283,9 +299,8 @@ grid cell_dat file: cell_file neighbors: 8 {
 		// Nhiet do cao nhat > nguong hoac luong mua max >nguong
 			if (get_climate_maxTAS(cycle) > climate_maxTAS_thuysan or get_climate_maxPR(cycle) > climate_maxPR_thuysan) {
 				if (flip(0.5)) {
-					dt_tsl_risk <- dt_tsl_risk + pixel_size;
+					
 					risk<-1;  // risk aqua
-					//landuse <- 101;
 				}
 
 			}
@@ -297,10 +312,8 @@ grid cell_dat file: cell_file neighbors: 8 {
 		// bo sung duyet 2 tham so nguong duoi: nhietdo tas>27- 29; Pr : 300-500
 			if (get_climate_maxTAS(cycle) > climate_maxTAS_caytrong and get_climate_minPR(cycle) < climate_maxPR_caytrong) {
 				if (flip(0.5)) {
-					dt_lua_caqrisk <- dt_lua_caqrisk + pixel_size;
+					
 					risk<-2;  // risk agro
-					//dt_caq_risk <- dt_caq_risk+pixel_size ;
-					//landuse <- 101; // se xay dung kich ban de khac phuc risk bang cach xet risk xong se xet chiyen doi ksd khac de giam risk.
 				}
 			}
 

@@ -58,7 +58,9 @@ global {
 
 	float climate_maxTAS_caytrong<- 28.0;//-35 , tăng 0.5
 	float climate_maxPR_caytrong<-  400.0; // tăng 50 100-300
-	float proportion_aqua_supported<-0.2;
-	float proportion_ago_supported<-0.5;
-	int scenario <-1;
+	float proportion_aqua_supported<-1.0;
+	float proportion_ago_supported<-1.0;
+	float proportion_aquafarmers_adapted<-0.2;
+	float proportion_agrofarmers_adapted<-0.5;
+	int scenario <-2;
 }
