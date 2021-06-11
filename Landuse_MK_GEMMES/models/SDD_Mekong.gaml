@@ -147,7 +147,7 @@ experiment "Landuse change" type: gui {
 	parameter "Trọng số thích nghi" var: w_thichnghi <- 0.8;
 	parameter "Trọng số lợi nhuận" var: w_loinhuan <- 0.0;
 	parameter "Trọng số rủi ro biến đổi khí hậu" var: w_risky_climate <- 0.0;
-	parameter "Scenarios" var: scenario;
+	parameter "Scenarios" var: scenario<-0;
 	output {
 		display mophong type: java2D {
 			grid cell_dat;
@@ -198,17 +198,17 @@ experiment "ExploreVulnerable" type: batch repeat: 1 keep_seed: true until: (tim
 //	float climate_maxTAS_caytrong<- 30.0;//-35 , tăng 0.5
 //	float climate_maxPR_caytrong<- 100.0;// - 300, tăng 50
 
-	parameter 'climate_maxTAS_thuysan' var: climate_maxTAS_thuysan min: 28.0 max: 29.0 step: 0.5;
-	parameter 'climate_maxPR_thuysan' var: climate_maxPR_thuysan min: 400.0 max: 500.0 step: 50.0;
+	parameter 'climate_maxTAS_thuysan' var: climate_maxTAS_thuysan min: 30.0 max: 31.0 step: 0.5;
+	parameter 'climate_maxPR_thuysan' var: climate_maxPR_thuysan min: 300.0 max: 400.0 step: 50.0;
 	parameter 'climate_maxTAS_caytrong' var: climate_maxTAS_caytrong min: 28.0 max: 30.0 step: 0.5;
-	parameter 'climate_maxPR_caytrong' var: climate_maxPR_caytrong min: 300.0 max: 400.0 step: 50.0;
+	parameter 'climate_minPR_caytrong' var: climate_minPR_caytrong min: 100.0 max: 200.0 step: 50.0;
 	method exhaustive minimize: (dt_lua_caqrisk + dt_tsl_risk);
 
 	reflex end_of_runs {
 		ask simulations {
 			string
 			
-			ss <- "" + climate_maxTAS_thuysan + ";" + climate_maxPR_thuysan + ";" + climate_maxTAS_caytrong + ";" + climate_maxPR_caytrong + ";" + dt_lua_caqrisk + ";" + dt_tsl_risk + "\n";
+			ss <- "" + climate_maxTAS_thuysan + ";" + climate_maxPR_thuysan + ";" + climate_maxTAS_caytrong + ";" + climate_minPR_caytrong + ";" + dt_lua_caqrisk + ";" + dt_tsl_risk + "\n";
 			save ss type: "text" to: "result/res.csv" rewrite: false;
 		}
 

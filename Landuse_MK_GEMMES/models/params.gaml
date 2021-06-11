@@ -53,11 +53,11 @@ global {
 	float dt_caq_risk <-0.0;
 	
 	
-	float climate_maxTAS_thuysan<- 30.0;//-35 , tăng 0.5
-	float climate_maxPR_thuysan<-400.0;//-500, tăng 50
+	float climate_maxTAS_thuysan<- 30.0;//-32 , tăng 0.5
+	float climate_maxPR_thuysan<-400.0;//-300, tăng 50
 
-	float climate_maxTAS_caytrong<- 28.0;//-35 , tăng 0.5
-	float climate_maxPR_caytrong<-  400.0; // tăng 50 100-300
+	float climate_maxTAS_caytrong<- 28.0;//-32 , tăng 0.5
+	float climate_minPR_caytrong<-  200.0; // tăng 50 50-200
 	float proportion_aqua_supported<-1.0;
 	float proportion_ago_supported<-1.0;
 	float proportion_aquafarmers_adapted<-0.2;
