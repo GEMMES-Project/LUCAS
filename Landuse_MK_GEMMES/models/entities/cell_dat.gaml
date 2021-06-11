@@ -42,11 +42,11 @@ grid cell_dat file: cell_file neighbors: 8 {
 	}
 	action to_mau {
 		if (landuse = 5) {
-			color <- #lightyellow;
+			color <- #yellow;
 		}
 
 		if (landuse = 6) {
-			color <- #yellow;
+			color <- #lightyellow;
 		}
 
 		if (landuse = 37) {
@@ -159,6 +159,34 @@ grid cell_dat file: cell_file neighbors: 8 {
 
 		return kqkhokhanchuyendoi;
 	}
+// adaptation
+//Scenarios1: remove risk by changing land use type: Risk cell in 3 rice crops -> 2 rice crops or 2 rice + 1 other crop; Shrimp ->Intensive with high tech with out support from gov.
+//Sc2: Remove risk with support from goverment : Keeping LU but invest for serving fresh water in the dry season, support for a percentage of farmers. ( explore this number to see risk area)
+	action removerisk_invidual{ // scenarios 1
+		if (risk=1){
+			if flip(0.2){
+				landuse <-101;
+			}
+		}
+		if (risk=2){
+			if flip(0.5){
+				landuse <- 5;
+			}
+		}
+		
+	}	
+	action removerisk_supp_gov{ // scenarios 2
+		if (risk=1){
+			if flip(proportion_aqua_supported){
+				landuse <-101;
+			}
+		}
+		if (risk=2){
+			if flip(proportion_ago_supported){
+				landuse <- 5;
+			}
+		}
+	}	
 
 	action luachonksd {
 		list<list> cands <- landuse_eval();
@@ -264,7 +292,7 @@ grid cell_dat file: cell_file neighbors: 8 {
 
 		}
 
-		if (landuse in [5]) { // lua , rau mau, cay hang nam
+		if (landuse =5) { // lua 
 		// nhiet do max > nguong  va luong mua max< nguong300
 		// bo sung duyet 2 tham so nguong duoi: nhietdo tas>27- 29; Pr : 300-500
 			if (get_climate_maxTAS(cycle) > climate_maxTAS_caytrong and get_climate_minPR(cycle) < climate_maxPR_caytrong) {

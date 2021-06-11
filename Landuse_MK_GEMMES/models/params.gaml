@@ -57,6 +57,8 @@ global {
 	float climate_maxPR_thuysan<-400.0;//-500, tăng 50
 
 	float climate_maxTAS_caytrong<- 28.0;//-35 , tăng 0.5
-	float climate_maxPR_caytrong<-  400; // tăng 50 100-300
-	
+	float climate_maxPR_caytrong<-  400.0; // tăng 50 100-300
+	float proportion_aqua_supported<-0.2;
+	float proportion_ago_supported<-0.5;
+	int scenario <-1;
 }

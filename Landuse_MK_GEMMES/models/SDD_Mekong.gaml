@@ -50,6 +50,7 @@ global {
 		do gan_cell_hc;
 		tieuchi <-
 		[["name"::"lancan", "weight"::w_lancan], ["name"::"khokhan", "weight"::w_khokhan], ["name"::"thichnghi", "weight"::w_thichnghi], ["name"::"loinhuan", "weight"::w_loinhuan]];
+		save "year, rice,2 rice, rice-shrimp,shrimp,vegetables, risk_aqua,risk_rice" type: "text" to: "result/landuse_res.csv" rewrite: true;
 	}
 
 	reflex main_reflex {
@@ -95,16 +96,22 @@ global {
 				tong_lnk <- tong_lnk + pixel_size; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
 			}
 
-		}
-
+		}	
+		int year <-2015+ cycle; 
+		save [ year, tong_luc,tong_luk, tong_lua_tom,tong_tsl,tong_bhk,dt_tsl_risk,dt_lua_caqrisk] type: "text" to: "result/landuse_res.csv" rewrite: false;
 		write "Tong dt lua:" + tong_luc;
 		write "Tong dt lúa khác:" + tong_luk;
 		write "Tong dt lúa tom:" + tong_lua_tom;
 		write "Tong dt ts:" + tong_tsl;
 		write "Tong dt rau mau:" + tong_bhk;
 		write "Tong dt lnk:" + tong_lnk;
-		write "Tong dt khac:" + tong_khac;
-		if (cycle = 15) {
+		//write "Tong dt khac:" + tong_khac;
+		write "Tong dt tsl risk:" + dt_tsl_risk;
+		write "Tong dt lua  risk:" + dt_lua_caqrisk;
+		
+		
+		if (cycle  =15) {
+			//save ss type: "text" to: "result/res.csv" rewrite: false;
 		//			string
 		//			ss <- "" + climate_maxTAS_thuysan + ";" + climate_maxPR_thuysan + ";" + climate_maxTAS_caytrong + ";" + climate_maxPR_caytrong + ";" + dt_raumau_risk + ";" + dt_tsl_risk + "\n";
 		//			save ss type: "text" to: "result/res.csv" rewrite: false;
@@ -115,7 +122,7 @@ global {
 		//
 		//			save cell_dat to: "../results/landuse_sim_" + 2015 + cycle + ".tif" type: "geotiff";
 		//			//	do tinh_dtmx;
-		//			do pause;
+					do pause;
 		}
 
 	}
@@ -128,6 +135,7 @@ experiment "my_GUI_xp" type: gui {
 	parameter "Trọng số thích nghi" var: w_thichnghi <- 0.8;
 	parameter "Trọng số lợi nhuận" var: w_loinhuan <- 0.0;
 	parameter "Trọng số rủi ro biến đổi khí hậu" var: w_risky_climate <- 0.0;
+	parameter "Scenarios" var: scenario <-1;
 	output {
 		display mophong type: java2D {
 			grid cell_dat;
@@ -135,9 +143,9 @@ experiment "my_GUI_xp" type: gui {
 			species duong;
 		}
 
-		display landunit type: java2D {
-			species donvidatdai;
-		}
+//		display landunit type: java2D {
+//			species donvidatdai;
+//		}
 
 		display risk_cell type: opengl {
 			species tinh;
@@ -147,8 +155,8 @@ experiment "my_GUI_xp" type: gui {
 		display "Risk by climate" type: java2D {
 			chart "Layer" type: series background: rgb(255, 255, 255) {
 				data "Risk for shrimp" style: line value: dt_tsl_risk color: #red;
-				data "Fresh water demand area vegetable" style: line value: dt_lua_caqrisk color: #lightgreen;
-				data "Fresh water demand area fruit" style: line value: dt_caq_risk color: #darkgreen;
+				data "Fresh water demand area 3 rice" style: line value: dt_lua_caqrisk color: #lightgreen;
+				//data "Fresh water demand area fruit" style: line value: dt_caq_risk color: #darkgreen;
 			}
 
 		}
@@ -164,6 +172,7 @@ experiment "my_GUI_xp" type: gui {
 			}
 
 		}
+		
 
 	}
 
@@ -176,10 +185,10 @@ experiment "explore" type: batch repeat: 1 keep_seed: true until: (time >= 15) {
 //
 //	float climate_maxTAS_caytrong<- 30.0;//-35 , tăng 0.5
 //	float climate_maxPR_caytrong<- 100.0;// - 300, tăng 50
-	parameter 'climate_maxTAS_thuysan' var: climate_maxTAS_thuysan min: 30.0 max: 35.0 step: 0.5;
-	parameter 'climate_maxPR_thuysan' var: climate_maxPR_thuysan min: 300.0 max: 500.0 step: 50.0;
-	parameter 'climate_maxTAS_caytrong' var: climate_maxTAS_caytrong min: 30.0 max: 35.0 step: 0.5;
-	parameter 'climate_maxPR_caytrong' var: climate_maxPR_caytrong min: 100.0 max: 300.0 step: 50.0;
+	parameter 'climate_maxTAS_thuysan' var: climate_maxTAS_thuysan min: 28.0 max: 29.0 step: 0.5;
+	parameter 'climate_maxPR_thuysan' var: climate_maxPR_thuysan min: 400.0 max: 500.0 step: 50.0;
+	parameter 'climate_maxTAS_caytrong' var: climate_maxTAS_caytrong min: 28.0 max: 30.0 step: 0.5;
+	parameter 'climate_maxPR_caytrong' var: climate_maxPR_caytrong min: 300.0 max: 400.0 step: 50.0;
 	method exhaustive minimize: (dt_lua_caqrisk + dt_tsl_risk);
 
 	reflex end_of_runs {
@@ -201,3 +210,8 @@ experiment "explore" type: batch repeat: 1 keep_seed: true until: (time >= 15) {
 //	parameter "Flip" var: w_flip min: 0.02 max: 0.15 step: 0.03;
 //	method exhaustive maximize: v_kappa;
 //}
+//float climate_maxTAS_thuysan<- 30.0;//-35 , tăng 0.5
+//	float climate_maxPR_thuysan<-400.0;//-500, tăng 50
+//
+//	float climate_maxTAS_caytrong<- 28.0;//-35 , tăng 0.5
+//	float climate_maxPR_caytrong<-  400.0; // tăng 50 100-300
