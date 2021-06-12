@@ -202,7 +202,7 @@ experiment "ExploreVulnerable" type: batch repeat: 1 keep_seed: true until: (tim
 	parameter 'climate_maxPR_thuysan' var: climate_maxPR_thuysan min: 300.0 max: 400.0 step: 50.0;
 	parameter 'climate_maxTAS_caytrong' var: climate_maxTAS_caytrong min: 28.0 max: 30.0 step: 0.5;
 	parameter 'climate_minPR_caytrong' var: climate_minPR_caytrong min: 100.0 max: 200.0 step: 50.0;
-	method exhaustive minimize: (dt_lua_caqrisk + dt_tsl_risk);
+//	method exhaustive minimize: (dt_lua_caqrisk + dt_tsl_risk);
 
 	reflex end_of_runs {
 		ask simulations {
@@ -219,7 +219,7 @@ experiment "ExploreSC2" type: batch repeat: 1 keep_seed: true until: (time >= 15
 	parameter 'proportion_aqua_supported' var: proportion_aqua_supported min: 0.2 max: 0.9 step: 0.1;
 	parameter 'proportion_ago_supported' var: proportion_ago_supported min: 0.2 max: 0.9 step:0.1;
 	parameter "Scenarios" var: scenario<-2;
-	method exhaustive minimize: (dt_lua_caqrisk + dt_tsl_risk)  ;
+//	method exhaustive minimize: (dt_lua_caqrisk + dt_tsl_risk)  ;
 
 	reflex end_of_runs {
 		ask simulations {
@@ -231,7 +231,7 @@ experiment "ExploreSC1" type: batch repeat: 1 keep_seed: true until: (time >= 15
 	parameter 'proportion_aquafarmers_adapted' var: proportion_aquafarmers_adapted min: 0.2 max: 0.9 step: 0.1;
 	parameter 'proportion_agrofarmers_adapted' var: proportion_agrofarmers_adapted min: 0.4 max: 0.9 step:0.1;
 	parameter "Scenarios" var: scenario<-1;
-	method exhaustive minimize: (dt_lua_caqrisk + dt_tsl_risk)  ;
+//	method exhaustive minimize: (dt_lua_caqrisk + dt_tsl_risk)  ;
 
 	reflex end_of_runs {
 		ask simulations {
