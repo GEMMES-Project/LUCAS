@@ -206,10 +206,8 @@ experiment "ExploreVulnerable" type: batch repeat: 1 keep_seed: true until: (tim
 
 	reflex end_of_runs {
 		ask simulations {
-			string
-			
-			ss <- "" + climate_maxTAS_thuysan + ";" + climate_maxPR_thuysan + ";" + climate_maxTAS_caytrong + ";" + climate_minPR_caytrong + ";" + dt_lua_caqrisk + ";" + dt_tsl_risk + "\n";
-			save ss type: "text" to: "result/res.csv" rewrite: false;
+		
+			save [ '2030', tong_luc,tong_luk, tong_lua_tom,tong_tsl,tong_bhk,proportion_ago_supported,proportion_aqua_supported,climate_maxTAS_thuysan, climate_maxPR_thuysan , climate_maxTAS_caytrong,climate_minPR_caytrong, dt_tsl_risk,dt_lua_caqrisk] type: "csv" to: "result/Climate_explore.csv" rewrite: false;
 		}
 
 	}
