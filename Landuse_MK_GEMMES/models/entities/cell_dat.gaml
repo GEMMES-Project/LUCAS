@@ -17,6 +17,7 @@ grid cell_dat file: cell_file neighbors: 8 {
 	float chiso_thichnghi_lua_tom;
 	float chiso_khokhan_lua_tom;
 	int  risk<- 0 ; // bo sung risk de danh dau cell bi risk. DUng khi kich ban loai risk se xet cac cell nay de chuyen doi sang kieu phu hop honbool risk<- false
+	// 1: risk thuy san; 2 : risk lua
 	// moi vong lap gan lai bang false de xet lai cho nam khac.
 	rgb color;
 	int dyke <- 1; //1: inside; 2: outside of dyke
@@ -86,12 +87,12 @@ grid cell_dat file: cell_file neighbors: 8 {
 
 	//so cell xung quanh cuar mot cell co kieu su dung la luk/8 (8-tong so o lan can cua moi o)
 	//dem so cell trong cell_lancan co landuse=6 (6:luk)
-		chiso_luc_lancan <- (cell_lancan count (each.landuse = 5)) / 25;
-		chiso_luk_lancan <- (cell_lancan count (each.landuse = 6)) / 25;
-		chiso_bhk_lancan <- (cell_lancan count (each.landuse = 12)) / 25;
-		chiso_lnk_lancan <- (cell_lancan count (each.landuse = 14)) / 25;
-		chiso_tsl_lancan <- (cell_lancan count (each.landuse = 34)) / 25;
-		chiso_lua_tom_lancan <- (cell_lancan count (each.landuse = 101)) / 25;
+		chiso_luc_lancan <- (cell_lancan count (each.landuse = 5)) / 8;
+		chiso_luk_lancan <- (cell_lancan count (each.landuse = 6)) / 8;
+		chiso_bhk_lancan <- (cell_lancan count (each.landuse = 12)) / 8;
+		chiso_lnk_lancan <- (cell_lancan count (each.landuse = 14)) / 8;
+		chiso_tsl_lancan <- (cell_lancan count (each.landuse = 34)) / 8;
+		chiso_lua_tom_lancan <- (cell_lancan count (each.landuse = 101)) / 8;
 		//chiso_khac_lancan <-(cell_lancan count (each.landuse=1))/8;
 	}
 
@@ -212,32 +213,32 @@ grid cell_dat file: cell_file neighbors: 8 {
 		//or (landuse>0)and (landuse!=14) and (landuse!=5) and (landuse!=6) and(landuse!=100) and (landuse!=12) and (landuse!=34
 			choice <-weighted_means_DM(cands, tieuchi);
 			//choice tra vi tri ung vien trong danh sach
-			if (choice = 0) {
-				if flip(0.05) {
-					landuse <- 5;
-				}
-
-			}
+//			if (choice = 0) {
+//				//if flip(0.0) {
+//				//	landuse <- 5;
+//				}
+//
+//			}
 
 			if (choice = 1) {
-				if (xet_thichnghi(madvdd, 34) > 0.33) { // Suitability > S3
-					if flip(w_flip) {
+				if (xet_thichnghi(madvdd, 34) > 0) { // Suitability > S3
+				//	if flip(w_flip) {
 						landuse <- 34;
-					}
+				//	}
 
 				}
 
 			}
 
 			if (choice = 2) {
-				if (xet_thichnghi(madvdd, 12) > 0.33) {
+				if (xet_thichnghi(madvdd, 12) > 0) {
 					landuse <- 12;
 				}
 
 			}
 
 			if (choice = 3) {
-				if (xet_thichnghi(madvdd, 6) > 0.33) {
+				if (xet_thichnghi(madvdd, 6) > 0) {
 					landuse <- 6;
 				}
 
@@ -276,13 +277,14 @@ grid cell_dat file: cell_file neighbors: 8 {
 		//nap cac ung vien vao danh sach candidates
 		candidates << candtsl;
 		candidates << cand_luatom;
+		choice <- 0;
 		if (landuse = 34 or landuse = 101) {
 			choice <- weighted_means_DM(candidates, tieuchi);
 			if (choice = 0) {
 			//if (xet_thichnghi(madvdd, 14) > 0.33) {
-				if flip(0.20) {
+				//if flip(0.40) {
 					landuse <- 34;
-				}
+				//}
 
 			}
 
@@ -294,6 +296,7 @@ grid cell_dat file: cell_file neighbors: 8 {
 			}
 
 		}
+		// xet risk thuy san va lua
 		risk <- 0;
 		if (landuse = 34) {// thuy san
 		// Nhiet do cao nhat > nguong hoac luong mua max >nguong

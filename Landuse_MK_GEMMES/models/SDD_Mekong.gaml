@@ -145,14 +145,16 @@ experiment "Landuse change" type: gui {
 	parameter "Trong số lân cận" var: w_lancan <- 0.8;
 	parameter "Trọng số khó khăn" var: w_khokhan <- 0.7;
 	parameter "Trọng số thích nghi" var: w_thichnghi <- 0.8;
-	parameter "Trọng số lợi nhuận" var: w_loinhuan <- 0.0;
-	parameter "Trọng số rủi ro biến đổi khí hậu" var: w_risky_climate <- 0.0;
+	parameter "Trọng số lợi nhuận" var: w_loinhuan <- 0.2;
+//	parameter "Trọng số rủi ro biến đổi khí hậu" var: w_risky_climate <- 0.0;
 	parameter "Scenarios" var: scenario<-0;
 	output {
 		display mophong type: java2D {
+			
 			grid cell_dat;
 			species song;
 			species duong;
+		//	species donvidatdai;
 		}
 
 //		display landunit type: java2D {
