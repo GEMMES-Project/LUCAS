@@ -110,7 +110,7 @@ global {
 			
 		}
 		int year <-2015+ cycle; 
-		save [ year, tong_luc,tong_luk, tong_lua_tom,tong_tsl,tong_bhk,dt_tsl_risk,dt_lua_caqrisk] type: "text" to: "result/landuse_res.csv" rewrite: false;
+		save [ year, tong_luc,tong_luk, tong_lua_tom,tong_tsl,tong_bhk,dt_tsl_risk,dt_lua_caqrisk] type: "csv" to: "result/landuse_res.csv" rewrite: false;
 		write "Tong dt lua:" + tong_luc;
 		write "Tong dt lúa khác:" + tong_luk;
 		write "Tong dt lúa tom:" + tong_lua_tom;
@@ -223,19 +223,19 @@ experiment "ExploreSC2" type: batch repeat: 1 keep_seed: true until: (time >= 15
 
 	reflex end_of_runs {
 		ask simulations {
-			save [ '2030', tong_luc,tong_luk, tong_lua_tom,tong_tsl,tong_bhk,proportion_ago_supported,proportion_aqua_supported,dt_tsl_risk,dt_lua_caqrisk] type: "text" to: "result/Sc2_explore.csv" rewrite: false;
+			save [ '2030', tong_luc,tong_luk, tong_lua_tom,tong_tsl,tong_bhk,proportion_ago_supported,proportion_aqua_supported,dt_tsl_risk,dt_lua_caqrisk] type: "csv" to: "result/Sc2_explore.csv" rewrite: false;
 		}
 	}
 }
 experiment "ExploreSC1" type: batch repeat: 1 keep_seed: true until: (time >= 15) {
 	parameter 'proportion_aquafarmers_adapted' var: proportion_aquafarmers_adapted min: 0.2 max: 0.9 step: 0.1;
-	parameter 'proportion_agrofarmers_adapted' var: proportion_agrofarmers_adapted min: 0.4 max: 0.9 step:0.1;
+	parameter 'proportion_agrofarmers_adapted' var: proportion_agrofarmers_adapted min: 0.2 max: 0.9 step:0.1;
 	parameter "Scenarios" var: scenario<-1;
 //	method exhaustive minimize: (dt_lua_caqrisk + dt_tsl_risk)  ;
 
 	reflex end_of_runs {
 		ask simulations {
-			save [ '2030', tong_luc,tong_luk, tong_lua_tom,tong_tsl,tong_bhk,proportion_agrofarmers_adapted,proportion_aquafarmers_adapted,dt_tsl_risk,dt_lua_caqrisk] type: "text" to: "result/Sc1_explore.csv" rewrite: false;
+			save [ '2030', tong_luc,tong_luk, tong_lua_tom,tong_tsl,tong_bhk,proportion_agrofarmers_adapted,proportion_aquafarmers_adapted,dt_tsl_risk,dt_lua_caqrisk] type: "csv" to: "result/Sc1_explore.csv" rewrite: false;
 		}
 	}
 }
