@@ -50,7 +50,7 @@ global {
 		do gan_cell_hc;
 		tieuchi <-
 		[["name"::"lancan", "weight"::w_lancan], ["name"::"khokhan", "weight"::w_khokhan], ["name"::"thichnghi", "weight"::w_thichnghi], ["name"::"loinhuan", "weight"::w_loinhuan]];
-		save "year, 3 rice,2 rice, rice-shrimp,shrimp,vegetables, risk_aqua,risk_rice" type: "text" to: "result/landuse_res.csv" rewrite: true;
+	//	save "year, 3 rice,2 rice, rice-shrimp,shrimp,vegetables, risk_aqua,risk_rice" type: "text" to: "result/landuse_res.csv" rewrite: true;
 	}
 
 	reflex main_reflex {
@@ -96,21 +96,19 @@ global {
 			if (landuse = 14) {
 				tong_lnk <- tong_lnk + pixel_size; 
 			}
-
-		}	
-		// calculate risk area  
-		
-		ask active_cell where (each.risk >0) parallel: true {
+			// calculate risk area  
 			if risk=1{
 				dt_tsl_risk <- dt_tsl_risk + pixel_size;
 			}
 			else if risk =2{
 				dt_lua_caqrisk <- dt_lua_caqrisk + pixel_size;
 			} 
-			
-		}
+
+		}	
+		
+
 		int year <-2015+ cycle; 
-		save [ year, tong_luc,tong_luk, tong_lua_tom,tong_tsl,tong_bhk,dt_tsl_risk,dt_lua_caqrisk] type: "csv" to: "result/landuse_res.csv" rewrite: false;
+		save [ year, tong_luc,tong_luk, tong_lua_tom,tong_tsl,tong_bhk,climate_maxTAS_thuysan, climate_maxPR_thuysan , climate_maxTAS_caytrong,climate_minPR_caytrong, dt_tsl_risk,dt_lua_caqrisk] type: "csv" to: "result/landuse_sim.csv" rewrite: false;
 		write "Tong dt lua:" + tong_luc;
 		write "Tong dt lúa khác:" + tong_luk;
 		write "Tong dt lúa tom:" + tong_lua_tom;
@@ -200,10 +198,11 @@ experiment "ExploreVulnerable" type: batch repeat: 1 keep_seed: true until: (tim
 //	float climate_maxTAS_caytrong<- 30.0;//-35 , tăng 0.5
 //	float climate_maxPR_caytrong<- 100.0;// - 300, tăng 50
 
-	parameter 'climate_maxTAS_thuysan' var: climate_maxTAS_thuysan min: 30.0 max: 31.0 step: 0.5;
-	parameter 'climate_maxPR_thuysan' var: climate_maxPR_thuysan min: 300.0 max: 400.0 step: 50.0;
+	parameter 'climate_maxTAS_thuysan' var: climate_maxTAS_thuysan min: 28.0 max: 30.0 step: 0.5;
+	parameter 'climate_maxPR_thuysan' var: climate_maxPR_thuysan min: 380.0 max: 420.0 step: 20.0;
 	parameter 'climate_maxTAS_caytrong' var: climate_maxTAS_caytrong min: 28.0 max: 30.0 step: 0.5;
 	parameter 'climate_minPR_caytrong' var: climate_minPR_caytrong min: 100.0 max: 200.0 step: 50.0;
+	parameter "Scenarios" var: scenario<-0;
 //	method exhaustive minimize: (dt_lua_caqrisk + dt_tsl_risk);
 
 	reflex end_of_runs {

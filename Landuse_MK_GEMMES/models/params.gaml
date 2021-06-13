@@ -50,19 +50,19 @@ global {
 	float w_flip <- 0.3;  // xã suát chuyen doi lua tom - tom
 //	date the_date <- date([2010, 1, 1]);
 	float pixel_size <-500*500/10000;
-	float dt_tsl_risk <-0.0;
-	float dt_lua_caqrisk <-0.0;
-	float dt_caq_risk <-0.0;
+	float dt_tsl_risk ;
+	float dt_lua_caqrisk;
+	float dt_caq_risk;
 	
 	
 	float climate_maxTAS_thuysan<- 30.0;//-32 , tăng 0.5
 	float climate_maxPR_thuysan<-400.0;//-300, tăng 50
 
 	float climate_maxTAS_caytrong<- 28.0;//-32 , tăng 0.5
-	float climate_minPR_caytrong<-  200.0; // tăng 50 50-200
-	float proportion_aqua_supported<-1.0;
-	float proportion_ago_supported<-1.0;
+	float climate_minPR_caytrong<-  180.0; // 200 chay, thu 180
+	float proportion_aqua_supported<-0.0;
+	float proportion_ago_supported<-0.0;
 	float proportion_aquafarmers_adapted<-0.2;
 	float proportion_agrofarmers_adapted<-0.5;
-	int scenario <-2;
+	int scenario <-0;
 }

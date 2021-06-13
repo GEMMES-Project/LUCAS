@@ -50,7 +50,7 @@ global {
 		tong_lnk <- 0.0;
 		tong_bhk <- 0.0;
 		tong_khac <- 0.0;
-		dt_tsl_risk <- 0.0;
+		
 		ask active_cell {
 		}
 
