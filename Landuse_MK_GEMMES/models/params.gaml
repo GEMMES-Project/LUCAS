@@ -24,7 +24,7 @@ global {
 	matrix matran_thichnghi;	
 	map<string,float> matran_thichnghi_map;
 	file thichnghidatdai_file <- csv_file("../includes/landsuitability.csv", false);
-	float w_lancan <- 0.2;
+	
 	list tieuchi;
 	float v_kappa <- 0.0;
 	//file cell_dat_2010_file <- grid_file(""); //../includes/ht2015_500x500cutPQ.tif");
@@ -40,10 +40,12 @@ global {
 	float dt_bhk;
 	float dt_tsl;
 	float dt_khac;
-	float w_khokhan <- 0.7;
+	float w_lancan <- 0.6;
+	float w_khokhan <- 0.5;
 	float w_thichnghi <- 0.8;
-	float tong_lua_tom;
 	float w_loinhuan <- 0.5;
+	float tong_lua_tom;
+	
 	//float w_risky_climate <- 1.0;
 	float w_flip <- 0.3;  // xã suát chuyen doi lua tom - tom
 //	date the_date <- date([2010, 1, 1]);

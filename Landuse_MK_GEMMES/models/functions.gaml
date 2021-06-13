@@ -74,15 +74,15 @@ global {
 		int i <- 0;
 		int j <- 0;
 		loop i from: 1 to: matran_khokhan.rows - 1 {
-			string landuse1 <- matran_khokhan[0, i];
-			loop j from: 2 to: matran_khokhan.columns - 1 { //do tung cot cua matran
-				string landuse2 <- matran_khokhan[j, 0];
+			int  landuse1 <- int(matran_khokhan[0, i]);
+			loop j from: 1 to: matran_khokhan.columns - 1 { //do tung cot cua matran
+				int  landuse2 <-int( matran_khokhan[j, 0]);
 				kqkhokhanchuyendoi_map <+ "" + landuse1 + " " + landuse2::float(matran_khokhan[j, i]);
 			}
 
 		}
 
-		write "Matra kho khan:" + kqkhokhanchuyendoi_map;
+		write "Matra kho khann:" + kqkhokhanchuyendoi_map;
 	}
 
 	action docmatran_thichnghi {
