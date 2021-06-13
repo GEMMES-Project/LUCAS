@@ -93,8 +93,7 @@ global {
 			int madvdd_ <- int(matran_thichnghi[0, i]);
 			loop j from: 1 to: matran_thichnghi.columns - 1 { //do tung cot cua matran
 				int LUT <- int(matran_thichnghi[j, 0]);
-				matran_thichnghi_map <+ "" + madvdd_ + " " + LUT::float(matran_thichnghi[j, i]);
-				break;
+				matran_thichnghi_map <+ "" + madvdd_ + " " + LUT::float(matran_thichnghi[j, i]); 
 			}
 
 		}
