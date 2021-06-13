@@ -209,7 +209,7 @@ grid cell_dat file: cell_file neighbors: 8 {
 		list<list> cands <- landuse_eval();
 		int choice <- 0;
 		//if (de >1){}
-		if (landuse = 5 or landuse = 6 or landuse = 12 or landuse = 14) {
+		if (landuse = 5 or landuse = 6 or landuse = 12 or landuse = 14 or landuse=101) {
 		//or (landuse>0)and (landuse!=14) and (landuse!=5) and (landuse!=6) and(landuse!=100) and (landuse!=12) and (landuse!=34
 			choice <-weighted_means_DM(cands, tieuchi);
 			//choice tra vi tri ung vien trong danh sach
@@ -221,12 +221,12 @@ grid cell_dat file: cell_file neighbors: 8 {
 //			}
 
 			if (choice = 1) {
-				if (xet_thichnghi(madvdd, 34) > 0) { // Suitability > S3
+			//	if (xet_thichnghi(madvdd, 34) > 0) { // Suitability > S3
 				//	if flip(w_flip) {
 						landuse <- 34;
 				//	}
 
-				}
+			//	}
 
 			}
 
@@ -261,41 +261,41 @@ grid cell_dat file: cell_file neighbors: 8 {
 		}
 		
 
-		// xet lua tom - tom 
-		//dua dac tinh ung vien tsl, lua tom
-		list<list> candidates;
-		list<float> candtsl;
-		list<float> cand_luatom;
-		candtsl << chiso_tsl_lancan;
-		candtsl << xet_khokhanchuyendoi(landuse, 34);
-		candtsl << xet_thichnghi(madvdd, 34);
-		candtsl << 389 / 389;
-		cand_luatom << chiso_lua_tom_lancan;
-		cand_luatom << chiso_khokhan_lua_tom;
-		cand_luatom << xet_thichnghi(madvdd, 101);
-		cand_luatom << 150 / 389; // tamj thowi
-		//nap cac ung vien vao danh sach candidates
-		candidates << candtsl;
-		candidates << cand_luatom;
-		choice <- 0;
-		if (landuse = 34 or landuse = 101) {
-			choice <- weighted_means_DM(candidates, tieuchi);
-			if (choice = 0) {
-			//if (xet_thichnghi(madvdd, 14) > 0.33) {
-				//if flip(0.40) {
-					landuse <- 34;
-				//}
-
-			}
-
-			if (choice = 1) {
-			//	if (xet_thichnghi(madvdd, 101) > 0) {
-				landuse <- 101;
-				//}
-
-			}
-
-		}
+//		// xet lua tom - tom 
+//		//dua dac tinh ung vien tsl, lua tom
+//		list<list> candidates;
+//		list<float> candtsl;
+//		list<float> cand_luatom;
+//		candtsl << chiso_tsl_lancan;
+//		candtsl << xet_khokhanchuyendoi(landuse, 34);
+//		candtsl << xet_thichnghi(madvdd, 34);
+//		candtsl << 389 / 389;
+//		cand_luatom << chiso_lua_tom_lancan;
+//		cand_luatom << xet_khokhanchuyendoi(landuse, 101);
+//		cand_luatom << xet_thichnghi(madvdd, 101);
+//		cand_luatom << 150 / 389; // tamj thowi
+//		//nap cac ung vien vao danh sach candidates
+//		candidates << candtsl;
+//		candidates << cand_luatom;
+//		int choicetsl <- 0;
+//		if (landuse = 34 or landuse = 101) {
+//			choice <- weighted_means_DM(candidates, tieuchi);
+//			if (choice = 0) {
+//			//if (xet_thichnghi(madvdd, 14) > 0.33) {
+//				//if flip(0.40) {
+//					landuse <- 34;
+//				//}
+//
+//			}
+//
+//			if (choice = 1) {
+//			//	if (xet_thichnghi(madvdd, 101) > 0) {
+//				landuse <- 101;
+//				//}
+//
+//			}
+//
+//		}
 		// xet risk thuy san va lua
 		risk <- 0;
 		if (landuse = 34) {// thuy san
@@ -363,7 +363,7 @@ grid cell_dat file: cell_file neighbors: 8 {
 		candlnk << 294 / 389;
 		// bổ sung thêm ứng viên lua-tom
 		cand_luatom << chiso_lua_tom_lancan;
-		cand_luatom << chiso_khokhan_lua_tom;
+		cand_luatom << xet_khokhanchuyendoi(landuse, 101);
 		cand_luatom << xet_thichnghi(madvdd, 101);
 		cand_luatom << 150 / 389; // tamj thowi
 		//nap cac ung vien vao danh sach candidates
