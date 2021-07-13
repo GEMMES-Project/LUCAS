@@ -162,17 +162,17 @@ grid cell_dat file: cell_file neighbors: 8 {
 	}
 // adaptation
 //Scenarios1: remove risk by changing land use type: Risk cell in 3 rice crops -> 2 rice crops or 2 rice + 1 other crop; Shrimp ->Intensive with high tech with out support from gov.
-//Sc2: Remove risk with support from goverment : Keeping LU but invest for serving fresh water in the dry season, support for a percentage of farmers. ( explore this number to see risk area)
+//Sc2: Remove risk with support from goverment : Keeping LU but invest for  fresh water storing in the dry season, support for a percentage of farmers. ( explore this number to see risk area)
 	action removerisk_invidual{ // scenarios 1
 		if (risk=1){
 			if flip(proportion_aquafarmers_adapted){
-				landuse <-101;
+				landuse <-101; // converted to rice-shrimp
 				risk <-0;
 			}
 		}
-		if (risk=2){
-			if flip(proportion_agrofarmers_adapted){
-				landuse <- 6;
+		if (risk=2){ // risk for 3 rice
+			if flip(proportion_agrofarmers_adapted){// convert 3 rice -> 2 rice 
+				landuse <- 6; // 2-rice or rice - vegetable
 				risk <-0;
 			}
 			
@@ -183,13 +183,13 @@ grid cell_dat file: cell_file neighbors: 8 {
 	action removerisk_supp_gov{ // scenarios 2
 		if (risk=1){
 			if flip(proportion_aqua_supported){
-				//landuse <-101;
+				//landuse <-101; //stay in aquculture but remove risk
 				risk <-0;
 			}
 		}
 		if (risk=2){
 			if flip(proportion_ago_supported){
-				//landuse <- 5;
+				//landuse <- 5;  // 
 				risk <-0;
 			}
 		}

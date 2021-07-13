@@ -60,9 +60,10 @@ global {
 
 	float climate_maxTAS_caytrong<- 28.0;//-32 , tăng 0.5
 	float climate_minPR_caytrong<-  180.0; // 200 chay, thu 180
-	float proportion_aqua_supported<-0.0;
-	float proportion_ago_supported<-0.0;
-	float proportion_aquafarmers_adapted<-0.2;
+	float proportion_aqua_supported<-0.5;
+	float proportion_ago_supported<-0.5;
+	float proportion_aquafarmers_adapted<-0.5;
 	float proportion_agrofarmers_adapted<-0.5;
 	int scenario <-0;
+	
 }

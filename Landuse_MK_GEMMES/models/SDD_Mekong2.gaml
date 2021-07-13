@@ -108,8 +108,8 @@ global {
 		
 
 		int year <-2015+ cycle; 
-		//string output_filename <-"../result/landuse_sim" + scenario+".csv";
-		save [ year, tong_luc,tong_luk, tong_lua_tom,tong_tsl,tong_bhk,climate_maxTAS_thuysan, climate_maxPR_thuysan , climate_maxTAS_caytrong,climate_minPR_caytrong, dt_tsl_risk,dt_lua_caqrisk] type: "csv" to: "../results/landuse_sim_scenarios" + scenario+".csv" rewrite: false;
+		string output_filename <-"../result/landuse_sim" + scenario+".csv";
+		save [ year, tong_luc,tong_luk, tong_lua_tom,tong_tsl,tong_bhk,climate_maxTAS_thuysan, climate_maxPR_thuysan , climate_maxTAS_caytrong,climate_minPR_caytrong, dt_tsl_risk,dt_lua_caqrisk] type: "csv" to: "result/landuse_sim.csv" rewrite: false;
 		write "Tong dt lua:" + tong_luc;
 		write "Tong dt lúa khác:" + tong_luk;
 		write "Tong dt lúa tom:" + tong_lua_tom;
@@ -216,26 +216,26 @@ experiment "ExploreVulnerable" type: batch repeat: 1 keep_seed: true until: (tim
 
 }
 experiment "ExploreSC2" type: batch repeat: 1 keep_seed: true until: (time >= 15) {
-	parameter 'proportion_aqua_supported' var: proportion_aqua_supported min: 0.3 max: 0.9 step: 0.3;
-	parameter 'proportion_ago_supported' var: proportion_ago_supported min: 0.3 max: 0.9 step:0.3;
+	parameter 'proportion_aqua_supported' var: proportion_aqua_supported min: 0.2 max: 0.9 step: 0.1;
+	parameter 'proportion_ago_supported' var: proportion_ago_supported min: 0.2 max: 0.9 step:0.1;
 	parameter "Scenarios" var: scenario<-2;
 //	method exhaustive minimize: (dt_lua_caqrisk + dt_tsl_risk)  ;
 
 	reflex end_of_runs {
 		ask simulations {
-			save [ '2030', tong_luc,tong_luk, tong_lua_tom,tong_tsl,tong_bhk,proportion_ago_supported,proportion_aqua_supported,dt_tsl_risk,dt_lua_caqrisk] type: "csv" to: "../results/Sc2_explore.csv" rewrite: false;
+			save [ '2030', tong_luc,tong_luk, tong_lua_tom,tong_tsl,tong_bhk,proportion_ago_supported,proportion_aqua_supported,dt_tsl_risk,dt_lua_caqrisk] type: "csv" to: "result/Sc2_explore.csv" rewrite: false;
 		}
 	}
 }
 experiment "ExploreSC1" type: batch repeat: 1 keep_seed: true until: (time >= 15) {
-	parameter 'proportion_aquafarmers_adapted' var: proportion_aquafarmers_adapted min: 0.3 max: 0.9 step: 0.3;
-	parameter 'proportion_agrofarmers_adapted' var: proportion_agrofarmers_adapted min: 0.3 max: 0.9 step:0.3;
+	parameter 'proportion_aquafarmers_adapted' var: proportion_aquafarmers_adapted min: 0.2 max: 0.9 step: 0.1;
+	parameter 'proportion_agrofarmers_adapted' var: proportion_agrofarmers_adapted min: 0.2 max: 0.9 step:0.1;
 	parameter "Scenarios" var: scenario<-1;
 //	method exhaustive minimize: (dt_lua_caqrisk + dt_tsl_risk)  ;
 
 	reflex end_of_runs {
 		ask simulations {
-			save [ '2030', tong_luc,tong_luk, tong_lua_tom,tong_tsl,tong_bhk,proportion_agrofarmers_adapted,proportion_aquafarmers_adapted,dt_tsl_risk,dt_lua_caqrisk] type: "csv" to: "../results/Sc1_explore_"+scenario+".csv" rewrite: false;
+			save [ '2030', tong_luc,tong_luk, tong_lua_tom,tong_tsl,tong_bhk,proportion_agrofarmers_adapted,proportion_aquafarmers_adapted,dt_tsl_risk,dt_lua_caqrisk] type: "csv" to: "result/Sc1_explore.csv" rewrite: false;
 		}
 	}
 }
