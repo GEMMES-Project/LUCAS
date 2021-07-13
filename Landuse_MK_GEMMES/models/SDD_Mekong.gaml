@@ -65,6 +65,7 @@ global {
 		dt_tsl_risk <- 0.0;
 		dt_lua_caqrisk <- 0.0;
 		dt_caq_risk <- 0.0;
+	//	budget_supported <-0.0; // reset support budget every year.
 		ask active_cell parallel: true {
 			do tinh_chiso_lancan;
 		}
@@ -216,8 +217,8 @@ experiment "ExploreVulnerable" type: batch repeat: 1 keep_seed: true until: (tim
 
 }
 experiment "ExploreSC3" type: batch repeat: 1 keep_seed: true until: (time >= 15) {
-	parameter 'proportion_aqua_supported' var: proportion_aqua_supported min: 0.3 max: 0.9 step: 0.3;
-	parameter 'proportion_ago_supported' var: proportion_ago_supported min: 0.3 max: 0.9 step:0.3;
+	parameter 'proportion_aqua_supported' var: proportion_aqua_supported min: 0.3 max: 0.9 step: 0.1;
+	parameter 'proportion_ago_supported' var: proportion_ago_supported min: 0.3 max: 0.9 step:0.1;
 	parameter "Scenarios" var: scenario<-3;
 //	method exhaustive minimize: (dt_lua_caqrisk + dt_tsl_risk);
 	parameter "proportion_aquafarmers_adapted" var: proportion_aquafarmers_adapted<-1-proportion_aqua_supported;

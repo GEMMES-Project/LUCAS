@@ -197,18 +197,24 @@ grid cell_dat file: cell_file neighbors: 8 {
 			if flip(proportion_aqua_supported){ // supported by gov.
 				//landuse <-101; //stay in aquculture but remove risk
 				risk <-0;
-				budget_supported <- budget_supported * 1;
 			}
 			else 
 			{	      // farmer sel adaptation.
 					
 					landuse <-101; // converted to rice-shrimp
 					risk <-0;
+					budget_supported <- budget_supported + 1;
 			}
 		}
 		if (risk=2){
-			if flip(proportion_ago_supported){
-				//landuse <- 5;  // 
+			if flip(proportion_ago_supported){ 
+				landuse <- 6; // 2-rice or rice - vegetable
+				risk <-0;
+				budget_supported <- budget_supported + 1;
+				
+			}
+			else { // Khong ho tro, nguoi dan tu chuyne doi nhung ko co kinh phi cua nha nuoc., 
+				landuse <- 6; // 2-rice or rice - vegetable
 				risk <-0;
 			}
 		}
