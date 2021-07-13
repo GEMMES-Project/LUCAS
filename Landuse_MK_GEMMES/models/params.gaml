@@ -53,7 +53,7 @@ global {
 	float dt_tsl_risk ;
 	float dt_lua_caqrisk;
 	float dt_caq_risk;
-	
+	float budget_supported; // budget need for support to farmer to adapt (Decision 62/2019): 1 Milion VND /ha
 	
 	float climate_maxTAS_thuysan<- 30.0;//-32 , tăng 0.5
 	float climate_maxPR_thuysan<-400.0;//-300, tăng 50

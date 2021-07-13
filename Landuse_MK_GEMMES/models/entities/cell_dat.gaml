@@ -175,10 +175,7 @@ grid cell_dat file: cell_file neighbors: 8 {
 				landuse <- 6; // 2-rice or rice - vegetable
 				risk <-0;
 			}
-			
 		}
-		
-		
 	}	
 	action removerisk_supp_gov{ // scenarios 2
 		if (risk=1){
@@ -192,8 +189,30 @@ grid cell_dat file: cell_file neighbors: 8 {
 				//landuse <- 5;  // 
 				risk <-0;
 			}
+			
 		}
 	}	
+	action removerisk_mixed_supp_gov_indv{ // scenarios 3 
+		if (risk=1){
+			if flip(proportion_aqua_supported){ // supported by gov.
+				//landuse <-101; //stay in aquculture but remove risk
+				risk <-0;
+				budget_supported <- budget_supported * 1;
+			}
+			else 
+			{	      // farmer sel adaptation.
+					
+					landuse <-101; // converted to rice-shrimp
+					risk <-0;
+			}
+		}
+		if (risk=2){
+			if flip(proportion_ago_supported){
+				//landuse <- 5;  // 
+				risk <-0;
+			}
+		}
+	}
 	// adaptation scenarios 
 	action adptation_sc{
 			if (scenario=1){
@@ -202,7 +221,9 @@ grid cell_dat file: cell_file neighbors: 8 {
 			else if (scenario=2){
 				do removerisk_supp_gov;
 			} 
-		
+			else if (scenario=3){
+				do removerisk_mixed_supp_gov_indv;
+			} 
 	}
 
 	action luachonksd {
