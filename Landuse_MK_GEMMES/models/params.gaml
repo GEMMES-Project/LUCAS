@@ -54,16 +54,17 @@ global {
 	float dt_lua_caqrisk;
 	float dt_caq_risk;
 	float budget_supported; // budget need for support to farmer to adapt (Decision 62/2019): 1 Milion VND /ha
+	float total_income_lost; // lost income  shrimp 50% and 30% 3rice
 	
 	float climate_maxTAS_thuysan<- 30.0;//-32 , tăng 0.5
 	float climate_maxPR_thuysan<-400.0;//-300, tăng 50
 
 	float climate_maxTAS_caytrong<- 28.0;//-32 , tăng 0.5
 	float climate_minPR_caytrong<-  180.0; // 200 chay, thu 180
-	float proportion_aqua_supported<-0.5;
-	float proportion_ago_supported<-0.5;
-	float proportion_aquafarmers_adapted<-0.5;
-	float proportion_agrofarmers_adapted<-0.5;
+	float proportion_aqua_supported<-0.6;
+	float proportion_ago_supported<-0.6;
+	float proportion_aquafarmers_adapted<-0.6;
+	float proportion_agrofarmers_adapted<-0.6;
 	int scenario <-0;
 	
 }

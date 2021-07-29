@@ -66,6 +66,7 @@ global {
 		dt_lua_caqrisk <- 0.0;
 		dt_caq_risk <- 0.0;
 	//	budget_supported <-0.0; // reset support budget every year.
+		total_income_lost <- 0.0;
 		ask active_cell parallel: true {
 			do tinh_chiso_lancan;
 		}
@@ -110,7 +111,7 @@ global {
 
 		int year <-2015+ cycle; 
 		//string output_filename <-"../result/landuse_sim" + scenario+".csv";
-		save [ year, tong_luc,tong_luk, tong_lua_tom,tong_tsl,tong_bhk,climate_maxTAS_thuysan, climate_maxPR_thuysan , climate_maxTAS_caytrong,climate_minPR_caytrong, dt_tsl_risk,dt_lua_caqrisk] type: "csv" to: "../results/landuse_sim_scenarios" + scenario+".csv" rewrite: false;
+		save [ year, tong_luc,tong_luk, tong_lua_tom,tong_tsl,tong_bhk,tong_lnk,climate_maxTAS_thuysan, climate_maxPR_thuysan , climate_maxTAS_caytrong,climate_minPR_caytrong, dt_tsl_risk,dt_lua_caqrisk] type: "csv" to: "../results/landuse_sim_scenarios" + scenario+".csv" rewrite: false;
 		write "Tong dt lua:" + tong_luc;
 		write "Tong dt lúa khác:" + tong_luk;
 		write "Tong dt lúa tom:" + tong_lua_tom;
@@ -121,18 +122,25 @@ global {
 		write "Tong dt tsl risk:" + dt_tsl_risk;
 		write "Tong dt lua  risk:" + dt_lua_caqrisk;
 		
-		
+		 // Save risk into map
+		 if (cycle  mod 5=0) {
+		 	ask active_cell {
+						grid_value <- float(risk);
+			}
+			save cell_dat to: "../results/risk_" + year + "sc"+ scenario+".tif" type: "geotiff";
+		 }
+		// save resul map
 		if (cycle  =15) {
 			//save ss type: "text" to: "result/res.csv" rewrite: false;
 		//			string
 		//			ss <- "" + climate_maxTAS_thuysan + ";" + climate_maxPR_thuysan + ";" + climate_maxTAS_caytrong + ";" + climate_maxPR_caytrong + ";" + dt_raumau_risk + ";" + dt_tsl_risk + "\n";
 		//			save ss type: "text" to: "result/res.csv" rewrite: false;
 		//			//			do tinh_kappa;
-		//			ask active_cell {
-		//				grid_value <- float(landuse);
-		//			}
-		//
-		//			save cell_dat to: "../results/landuse_sim_" + 2015 + cycle + ".tif" type: "geotiff";
+					ask active_cell {
+						grid_value <- float(landuse);
+					}
+					save cell_dat to: "../results/landuse_sim_" + year + "sc"+ scenario+".tif" type: "geotiff";
+					
 		//			//	do tinh_dtmx;
 					do pause;
 		}
@@ -147,7 +155,7 @@ experiment "Landuse change" type: gui {
 	parameter "Trọng số thích nghi" var: w_thichnghi <- 0.7;
 	parameter "Trọng số lợi nhuận" var: w_loinhuan <- 0.8;
 //	parameter "Trọng số rủi ro biến đổi khí hậu" var: w_risky_climate <- 0.0;
-	parameter "Scenarios" var: scenario<-1;
+	parameter "Scenarios" var: scenario<-0;
 	output {
 		display mophong type: java2D {
 			
@@ -200,8 +208,8 @@ experiment "ExploreVulnerable" type: batch repeat: 1 keep_seed: true until: (tim
 //	float climate_maxTAS_caytrong<- 30.0;//-35 , tăng 0.5
 //	float climate_maxPR_caytrong<- 100.0;// - 300, tăng 50
 
-	parameter 'climate_maxTAS_thuysan' var: climate_maxTAS_thuysan min: 28.0 max: 30.0 step: 0.5;
-	parameter 'climate_maxPR_thuysan' var: climate_maxPR_thuysan min: 380.0 max: 420.0 step: 20.0;
+//	parameter 'climate_maxTAS_thuysan' var: climate_maxTAS_thuysan min: 28.0 max: 30.0 step: 0.5;
+//	parameter 'climate_maxPR_thuysan' var: climate_maxPR_thuysan min: 380.0 max: 420.0 step: 20.0;
 	parameter 'climate_maxTAS_caytrong' var: climate_maxTAS_caytrong min: 28.0 max: 30.0 step: 0.5;
 	parameter 'climate_minPR_caytrong' var: climate_minPR_caytrong min: 100.0 max: 200.0 step: 50.0;
 	parameter "Scenarios" var: scenario<-0;
@@ -210,22 +218,22 @@ experiment "ExploreVulnerable" type: batch repeat: 1 keep_seed: true until: (tim
 	reflex end_of_runs {
 		ask simulations {
 		
-			save [ '2030', tong_luc,tong_luk, tong_lua_tom,tong_tsl,tong_bhk,proportion_ago_supported,proportion_aqua_supported,climate_maxTAS_thuysan, climate_maxPR_thuysan , climate_maxTAS_caytrong,climate_minPR_caytrong, dt_tsl_risk,dt_lua_caqrisk,budget_supported] type: "csv" to: "result/Climate_explore.csv" rewrite: false;
+			save [ '2030', tong_luc,tong_luk, tong_lua_tom,tong_tsl,tong_bhk,tong_lnk,proportion_ago_supported,proportion_aqua_supported,climate_maxTAS_thuysan, climate_maxPR_thuysan , climate_maxTAS_caytrong,climate_minPR_caytrong, dt_tsl_risk,dt_lua_caqrisk,budget_supported] type: "csv" to: "../result/Climate_explore_rice.csv" rewrite: false;
 		}
 
 	}
 
 }
 experiment "ExploreSC3" type: batch repeat: 1 keep_seed: true until: (time >= 15) {
-	parameter 'proportion_aqua_supported' var: proportion_aqua_supported min: 0.3 max: 0.9 step: 0.1;
-	parameter 'proportion_ago_supported' var: proportion_ago_supported min: 0.3 max: 0.9 step:0.1;
+	parameter 'proportion_aqua_supported' var: proportion_aqua_supported min: 0.3 max: 0.9 step: 0.3;
+	parameter 'proportion_ago_supported' var: proportion_ago_supported min: 0.3 max: 0.9 step:0.3;
 	parameter "Scenarios" var: scenario<-3;
 //	method exhaustive minimize: (dt_lua_caqrisk + dt_tsl_risk);
 	parameter "proportion_aquafarmers_adapted" var: proportion_aquafarmers_adapted<-1-proportion_aqua_supported;
 	// proportion_aquafarmers_adapted when applied proportion_aqua_supported .
 	reflex end_of_runs {
 		ask simulations {
-			save [ '2030', tong_luc,tong_luk, tong_lua_tom,tong_tsl,tong_bhk,proportion_ago_supported,proportion_aqua_supported,dt_tsl_risk,dt_lua_caqrisk,budget_supported] type: "csv" to: "../results/Sc3_explore.csv" rewrite: false;
+			save [ '2030', tong_luc,tong_luk, tong_lua_tom,tong_tsl,tong_bhk,tong_lnk,proportion_ago_supported,proportion_aqua_supported,dt_tsl_risk,dt_lua_caqrisk,budget_supported,total_income_lost] type: "csv" to: "../results/Sc3_explore.csv" rewrite: false  ;
 		}
 	}
 }
@@ -238,7 +246,7 @@ experiment "ExploreSC2" type: batch repeat: 1 keep_seed: true until: (time >= 15
 
 	reflex end_of_runs {
 		ask simulations {
-			save [ '2030', tong_luc,tong_luk, tong_lua_tom,tong_tsl,tong_bhk,proportion_ago_supported,proportion_aqua_supported,dt_tsl_risk,dt_lua_caqrisk,budget_supported] type: "csv" to: "../results/Sc2_explore.csv" rewrite: false;
+			save [ '2030', tong_luc,tong_luk, tong_lua_tom,tong_tsl,tong_bhk,tong_lnk,proportion_ago_supported,proportion_aqua_supported,dt_tsl_risk,dt_lua_caqrisk,budget_supported] type: "csv" to: "../results/Sc2_explore.csv" rewrite: false;
 		}
 	}
 }
@@ -252,7 +260,7 @@ experiment "ExploreSC1" type: batch repeat: 1 keep_seed: true until: (time >= 15
 
 	reflex end_of_runs {
 		ask simulations {
-			save [ '2030', tong_luc,tong_luk, tong_lua_tom,tong_tsl,tong_bhk,proportion_agrofarmers_adapted,proportion_aquafarmers_adapted,dt_tsl_risk,dt_lua_caqrisk,budget_supported] type: "csv" to: "../results/Sc1_explore_"+scenario+".csv" rewrite: false;
+			save [ '2030', tong_luc,tong_luk, tong_lua_tom,tong_tsl,tong_bhk,tong_lnk,proportion_agrofarmers_adapted,proportion_aquafarmers_adapted,dt_tsl_risk,dt_lua_caqrisk,budget_supported] type: "csv" to: "../results/Sc1_explore_"+scenario+".csv" rewrite: false;
 		}
 	}
 }

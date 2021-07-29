@@ -193,17 +193,20 @@ grid cell_dat file: cell_file neighbors: 8 {
 		}
 	}	
 	action removerisk_mixed_supp_gov_indv{ // scenarios 3 
+	
 		if (risk=1){
+			// gov support farmer to doing rice shrimp
 			if flip(proportion_aqua_supported){ // supported by gov.
 				//landuse <-101; //stay in aquculture but remove risk
+				
+				landuse <-101; // converted to rice-shrimp
+				budget_supported <- budget_supported + 1;
 				risk <-0;
 			}
 			else 
 			{	      // farmer sel adaptation.
-					
-					landuse <-101; // converted to rice-shrimp
-					risk <-0;
-					budget_supported <- budget_supported + 1;
+					total_income_lost <- total_income_lost  +1*384/2; //  50% LN
+					//risk <-0;				
 			}
 		}
 		if (risk=2){
@@ -214,8 +217,9 @@ grid cell_dat file: cell_file neighbors: 8 {
 				
 			}
 			else { // Khong ho tro, nguoi dan tu chuyne doi nhung ko co kinh phi cua nha nuoc., 
-				landuse <- 6; // 2-rice or rice - vegetable
-				risk <-0;
+				//landuse <- 6; // 2-rice or rice - vegetable
+				//risk <-0;
+				total_income_lost <- total_income_lost  +1*22; // 22M VND / season 
 			}
 		}
 	}
@@ -235,7 +239,7 @@ grid cell_dat file: cell_file neighbors: 8 {
 	action luachonksd {
 		list<list> cands <- landuse_eval();
 		int choice <- 0;
-		//if (de >1){}
+		//if (de >1){} 
 		if (landuse = 5 or landuse = 6 or landuse = 12 or landuse = 14) {
 		//or (landuse>0)and (landuse!=14) and (landuse!=5) and (landuse!=6) and(landuse!=100) and (landuse!=12) and (landuse!=34
 			choice <-weighted_means_DM(cands, tieuchi);
