@@ -155,7 +155,7 @@ experiment "Landuse change" type: gui {
 	parameter "Trọng số thích nghi" var: w_thichnghi <- 0.7;
 	parameter "Trọng số lợi nhuận" var: w_loinhuan <- 0.8;
 //	parameter "Trọng số rủi ro biến đổi khí hậu" var: w_risky_climate <- 0.0;
-	parameter "Scenarios" var: scenario<-0;
+	parameter "Scenarios" var: scenario<-3;
 	output {
 		display mophong type: java2D {
 			
