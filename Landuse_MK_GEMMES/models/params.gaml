@@ -7,7 +7,7 @@ global {
 	file cell_file <- grid_file("../includes/ht2015_500x500_cutPQ_clipped.tif");
 	file cell_salinity_file <- grid_file("../includes/mk_sal_2030_45_500x500.tif");
 	//	file cell_file <- grid_file("../includes/lu_100x100_mx_2005_new.tif");
-	file MKD_bound <- shape_file("../includes/MKD_2.shp"); 
+	file MKD_bound <- shape_file("../includes/MKD_district.shp"); 
 	geometry shape <- envelope(MKD_bound);
 	list<cell_dat> active_cell <-[];//<- cell_dat where (each.grid_value != 8.0);
 	float tong_luc;

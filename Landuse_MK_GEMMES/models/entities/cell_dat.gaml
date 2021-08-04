@@ -26,7 +26,7 @@ grid cell_dat file: cell_file neighbors: 8 {
 	map<int, list> Tas_max <- [];
 	map<int, list> Tas_min <- [];
 	list<cell_dat> cell_lancan <- [];
-	tinh my_tinh;
+	huyen my_tinh;
 
 	init {
 	/*
@@ -96,28 +96,28 @@ grid cell_dat file: cell_file neighbors: 8 {
 		//chiso_khac_lancan <-(cell_lancan count (each.landuse=1))/8;
 	}
 
-	float get_climate_maxPR (int month) {
-		// tim luong mua toi da trong cac thang mua kho trong mot nam
-		// nham danh gia kha nang gay risk khi canh tac thuy san (tom) 
-		if (my_tinh != nil) {
-			int idx <- 12 + (int(cycle / 5) * 12);
-			list
-			tmp <- [my_tinh.data_pr[idx + 0], my_tinh.data_pr[idx + 1], my_tinh.data_pr[idx + 2], my_tinh.data_pr[idx + 3], my_tinh.data_pr[idx + 4], my_tinh.data_pr[idx + 5], my_tinh.data_pr[idx + 6], my_tinh.data_pr[idx + 7], my_tinh.data_pr[idx + 8]];
-			return float(max(tmp));
-		}
-		return 0.0;
-	}
-	float get_climate_minPR (int month) {
-		// tim luong mua toi thieu  trong cac thang mua kho trong mot nam
-		// nham danh gia kha nang gay risk cho cay trong
-		if (my_tinh != nil) {
-			int idx <- 12 + (int(cycle / 5) * 12);
-			list
-			tmp <- [my_tinh.data_pr[idx + 0], my_tinh.data_pr[idx + 1], my_tinh.data_pr[idx + 2], my_tinh.data_pr[idx + 3], my_tinh.data_pr[idx + 4], my_tinh.data_pr[idx + 5], my_tinh.data_pr[idx + 6], my_tinh.data_pr[idx + 7], my_tinh.data_pr[idx + 8]];
-			return float(min(tmp));
-		}
-		return 0.0;
-	}
+//	float get_climate_maxPR (int month) {
+//		// tim luong mua toi da trong cac thang mua kho trong mot nam
+//		// nham danh gia kha nang gay risk khi canh tac thuy san (tom) 
+//		if (my_tinh != nil) {
+//			int idx <- 12 + (int(cycle / 5) * 12);
+//			list
+//			tmp <- [my_tinh.data_pr[idx + 0], my_tinh.data_pr[idx + 1], my_tinh.data_pr[idx + 2], my_tinh.data_pr[idx + 3], my_tinh.data_pr[idx + 4], my_tinh.data_pr[idx + 5], my_tinh.data_pr[idx + 6], my_tinh.data_pr[idx + 7], my_tinh.data_pr[idx + 8]];
+//			return float(max(tmp));
+//		}
+//		return 0.0;
+//	}
+//	float get_climate_minPR (int month) {
+//		// tim luong mua toi thieu  trong cac thang mua kho trong mot nam
+//		// nham danh gia kha nang gay risk cho cay trong
+//		if (my_tinh != nil) {
+//			int idx <- 12 + (int(cycle / 5) * 12);
+//			list
+//			tmp <- [my_tinh.data_pr[idx + 0], my_tinh.data_pr[idx + 1], my_tinh.data_pr[idx + 2], my_tinh.data_pr[idx + 3], my_tinh.data_pr[idx + 4], my_tinh.data_pr[idx + 5], my_tinh.data_pr[idx + 6], my_tinh.data_pr[idx + 7], my_tinh.data_pr[idx + 8]];
+//			return float(min(tmp));
+//		}
+//		return 0.0;
+//	}
 
 	float get_climate_maxTAS (int year) {
 		// tim nhiet do cao nhat cua cac thang mua kho 
@@ -125,10 +125,10 @@ grid cell_dat file: cell_file neighbors: 8 {
 		if (my_tinh != nil) {
 			int idx <- 12 + (int(cycle / 5) * 12);			
 			list
-			tmp <- [my_tinh.data_tas[idx + 0], my_tinh.data_tas[idx + 1], 
-				my_tinh.data_tas[idx + 2], my_tinh.data_tas[idx + 3], my_tinh.data_tas[idx + 4], 
-				my_tinh.data_tas[idx + 5], my_tinh.data_tas[idx + 6], my_tinh.data_tas[idx + 7], 
-				my_tinh.data_tas[idx + 8]
+			tmp <- [my_tinh.data_tas[""+(2020+idx) +",0"], my_tinh.data_tas[""+(2020+idx) +",1"], 
+				my_tinh.data_tas[""+(2020+idx) +",2"], my_tinh.data_tas[""+(2020+idx) +",3"], my_tinh.data_tas[""+(2020+idx) +",4"], 
+				my_tinh.data_tas[""+(2020+idx) +",5"], my_tinh.data_tas[""+(2020+idx) +",6"], my_tinh.data_tas[""+(2020+idx) +",7"], 
+				my_tinh.data_tas[""+(2020+idx) +",8"]
 			];
 			return float(max(tmp));
 		}
@@ -336,25 +336,25 @@ grid cell_dat file: cell_file neighbors: 8 {
 		risk <- 0;
 		if (landuse = 34) {// thuy san
 		// Nhiet do cao nhat > nguong hoac luong mua max >nguong
-			if (get_climate_maxTAS(cycle) > climate_maxTAS_thuysan or get_climate_maxPR(cycle) > climate_maxPR_thuysan) {
-				if (flip(0.5)) {
-					
-					risk<-1;  // risk aqua
-				}
-
-			}
+//			if (get_climate_maxTAS(cycle) > climate_maxTAS_thuysan or get_climate_maxPR(cycle) > climate_maxPR_thuysan) {
+//				if (flip(0.5)) {
+//					
+//					risk<-1;  // risk aqua
+//				}
+//
+//			}
 
 		}
 
 		if (landuse =5) { // lua 
 		// nhiet do max > nguong  va luong mua max< nguong300
 		// bo sung duyet 2 tham so nguong duoi: nhietdo tas>27- 29; Pr : 300-500
-			if (get_climate_maxTAS(cycle) > climate_maxTAS_caytrong and get_climate_minPR(cycle) < climate_minPR_caytrong) {
-				if (flip(0.5)) {
-					
-					risk<-2;  // risk agro
-				}
-			}
+//			if (get_climate_maxTAS(cycle) > climate_maxTAS_caytrong and get_climate_minPR(cycle) < climate_minPR_caytrong) {
+//				if (flip(0.5)) {
+//					
+//					risk<-2;  // risk agro
+//				}
+//			}
 
 		}
 

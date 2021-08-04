@@ -1,7 +1,9 @@
 model cell_dat
 
 import "../params.gaml"
-species tinh {
+species huyen {
+	int Id_1;
+	int Id_2;
 	string NAME_1;
 	string NAME_2;
 	string NAME_3;
@@ -12,8 +14,8 @@ species tinh {
 	string VARNAME_2;
 	string VARNAME_3;
 	string STT;
-	list data_pr;
-	list data_tas;
+//	list data_pr;
+	map<string,float> data_tas;
 
 	init {
 	}

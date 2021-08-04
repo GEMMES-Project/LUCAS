@@ -4,27 +4,28 @@ import "SDD_Mekong.gaml"
 
 global {
 
-	action load_climate_PR {
-		string fpath <- "../includes/DATA_PR.csv";
-		write fpath;
-		if (!file_exists(fpath)) {
-			return;
-		}
-
-		file risk_csv_file <- csv_file(fpath, ";", true);
-		matrix data <- (risk_csv_file.contents);
-		loop i from: 0 to: data.rows - 1 {
-			tinh t <- (tinh where (each.VARNAME_1 = string(data[1, i])))[0];
-			ask t {
-				data_pr <- data row_at i;
-			}
-
-		}
-
-	}
+//	action load_climate_PR {
+//		string fpath <- "../includes/data_sample/district_weather_proj_model1.csv";
+//		write fpath;
+//		if (!file_exists(fpath)) {
+//			return;
+//		}
+//
+//		file risk_csv_file <- csv_file(fpath, ";", true);
+//		matrix data <- (risk_csv_file.contents);
+//		loop i from: 0 to: data.rows - 1 {
+//			huyen t <- (huyen where (each.ID_1 = int(data[0, i]) and each.ID_2 = int(data[2, i])))[0];
+//			ask t {
+//				data_pr <- data row_at i;
+//			}
+//
+//		}
+//
+//	}
 
 	action load_climate_TAS {
-		string fpath <- "../includes/DATA_TAS.csv";
+//		string fpath <- "../includes/DATA_TAS.csv";
+		string fpath <- "../includes/data_sample/district_weather_proj_model1.csv";
 		write fpath;
 		if (!file_exists(fpath)) {
 			return;
@@ -33,9 +34,9 @@ global {
 		file risk_csv_file <- csv_file(fpath, ";", true);
 		matrix data <- (risk_csv_file.contents);
 		loop i from: 0 to: data.rows - 1 {
-			tinh t <- (tinh where (each.VARNAME_1 = string(data[1, i])))[0];
+			huyen t <- (huyen where (each.Id_1 = int(data[0, i]) and each.Id_2 = int(data[2, i])))[0];
 			ask t {
-				data_tas <- data row_at i; 
+				data_tas[""+data[7,i]+","+data[8,i]] <- float(data[10,i]); 
 			}
 
 		}
@@ -123,7 +124,7 @@ global {
 
 	action tinh_dtmx {
 		save "prov_name, dt_luc,dt_luk,dt_lua_tom,dt_tsl,dt_bhk,dt_lnk,dt_khac" to: "../results/hientrang_xa.csv" type: "csv" rewrite: true;
-		loop tinh_obj over: tinh {
+		loop tinh_obj over: huyen {
 		// duyệt hết các cell chồng lắp với huyện để tính diên diện tich
 			dt_luc <- 0.0;
 			dt_luk <- 0.0;
@@ -168,7 +169,7 @@ global {
 			write tinh_obj.NAME_1 + '; ' + dt_luc + '; ' + dt_luk + '; ' + dt_lua_tom + ';  ' + dt_tsl + '; ' + dt_bhk + '; ' + dt_lnk + '; ' + dt_khac;
 		}
 		// ghu kết quả huyen ra file shapfile thuộc tính gồm 3 cột: ten xa, dt luc, dt tsl. Nếu có thểm thì cứ thêm loại đất vào
-		save tinh to: "../results/tinh_landuse.shp" type: "shp" attributes:
+		save huyen to: "../results/tinh_landuse.shp" type: "shp" attributes:
 		["tentinh"::NAME_1, "dt_luc"::dt_luc, "dt_lua_tom"::dt_lua_tom, "dt_tsl"::dt_tsl, "dt_luk"::dt_luk, "dt_lnk"::dt_lnk, "dt_bhk"::dt_bhk, "dt_khac"::dt_khac];
 		save cell_dat to: "../results/hientrang_sim.tif" type: "geotiff";
 		write "Đa tinh dien tich hien trang theo xa xong";
