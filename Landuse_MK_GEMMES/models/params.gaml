@@ -24,7 +24,7 @@ global {
 	matrix matran_thichnghi;	
 	map<string,float> matran_thichnghi_map;
 	file thichnghidatdai_file <- csv_file("../includes/landsuitability.csv", false);
-	
+	string risk_csv_file_path<-"";
 	list tieuchi;
 	float v_kappa <- 0.0;
 	//file cell_dat_2010_file <- grid_file(""); //../includes/ht2015_500x500cutPQ.tif");
@@ -56,11 +56,11 @@ global {
 	float budget_supported; // budget need for support to farmer to adapt (Decision 62/2019): 1 Milion VND /ha
 	float total_income_lost; // lost income  shrimp 50% and 30% 3rice
 	
-	float climate_maxTAS_thuysan<- 30.0;//-32 , tăng 0.5
+	float climate_maxTAS_thuysan<- 33.0;//-32 , tăng 0.5
 	float climate_maxPR_thuysan<-400.0;//-300, tăng 50
 
-	float climate_maxTAS_caytrong<- 28.0;//-32 , tăng 0.5
-	float climate_minPR_caytrong<-  180.0; // 200 chay, thu 180
+	float climate_maxTAS_caytrong<- 33.5;//-32 , tăng 0.5
+	float climate_minPR_caytrong<-  120.0; // 200 chay, thu 180
 	float proportion_aqua_supported<-0.6;
 	float proportion_ago_supported<-0.6;
 	float proportion_aquafarmers_adapted<-0.6;

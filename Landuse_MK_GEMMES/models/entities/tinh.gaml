@@ -4,6 +4,7 @@ import "../params.gaml"
 species huyen {
 	int Id_1;
 	int Id_2;
+	int climat_cod;
 	string NAME_1;
 	string NAME_2;
 	string NAME_3;
@@ -15,6 +16,7 @@ species huyen {
 	string VARNAME_3;
 	string STT;
 //	list data_pr;
+	map<string,float> data_pr;
 	map<string,float> data_tas;
 
 	init {

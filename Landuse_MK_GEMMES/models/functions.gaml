@@ -22,25 +22,48 @@ global {
 //		}
 //
 //	}
-
 	action load_climate_TAS {
-//		string fpath <- "../includes/DATA_TAS.csv";
-		string fpath <- "../includes/data_sample/district_weather_proj_model1.csv";
+	//		string fpath <- "../includes/DATA_TAS.csv";
+		string fpath <- risk_csv_file_path; // "../includes/data_sample/district_weather_proj_model1.csv";
 		write fpath;
 		if (!file_exists(fpath)) {
 			return;
 		}
 
-		file risk_csv_file <- csv_file(fpath, ";", true);
+		file risk_csv_file <- csv_file(fpath, ",", false);
 		matrix data <- (risk_csv_file.contents);
 		loop i from: 0 to: data.rows - 1 {
-			huyen t <- (huyen where (each.Id_1 = int(data[0, i]) and each.Id_2 = int(data[2, i])))[0];
+			huyen t <- (huyen where (each.climat_cod = int(data[0, i])))[0];
 			ask t {
-				data_tas[""+data[7,i]+","+data[8,i]] <- float(data[10,i]); 
+				data_tas["" + data[1, i] + "," + data[2, i]] <- float(data[4, i]);
+				data_pr["" + data[1, i] + "," + data[2, i]] <- float(data[6, i]);
 			}
 
 		}
 
+		/*
+ *  60 chỉnh thành 59 để xài chung dữ liệu
+72,73 -> 71
+90->89
+ 
+ */
+		ask (huyen where (each.climat_cod = 60)) {
+			huyen t <- (huyen where (each.climat_cod = 59))[0];
+			data_tas <- t.data_tas;
+			data_pr <- t.data_pr;
+		}
+
+		ask (huyen where (each.climat_cod = 72 or each.climat_cod = 73)) {
+			huyen t <- (huyen where (each.climat_cod = 71))[0];
+			data_tas <- t.data_tas;
+			data_pr <- t.data_pr;
+		}
+
+		ask (huyen where (each.climat_cod = 90)) {
+			huyen t <- (huyen where (each.climat_cod = 89))[0];
+			data_tas <- t.data_tas;
+			data_pr <- t.data_pr;
+		}
 	}
 
 	action tinhtongdt {
@@ -51,7 +74,6 @@ global {
 		tong_lnk <- 0.0;
 		tong_bhk <- 0.0;
 		tong_khac <- 0.0;
-		
 		ask active_cell {
 		}
 
@@ -75,9 +97,9 @@ global {
 		int i <- 0;
 		int j <- 0;
 		loop i from: 1 to: matran_khokhan.rows - 1 {
-			int  landuse1 <- int(matran_khokhan[0, i]);
+			int landuse1 <- int(matran_khokhan[0, i]);
 			loop j from: 1 to: matran_khokhan.columns - 1 { //do tung cot cua matran
-				int  landuse2 <-int( matran_khokhan[j, 0]);
+				int landuse2 <- int(matran_khokhan[j, 0]);
 				kqkhokhanchuyendoi_map <+ "" + landuse1 + " " + landuse2::float(matran_khokhan[j, i]);
 			}
 
@@ -94,7 +116,7 @@ global {
 			int madvdd_ <- int(matran_thichnghi[0, i]);
 			loop j from: 1 to: matran_thichnghi.columns - 1 { //do tung cot cua matran
 				int LUT <- int(matran_thichnghi[j, 0]);
-				matran_thichnghi_map <+ "" + madvdd_ + " " + LUT::float(matran_thichnghi[j, i]); 
+				matran_thichnghi_map <+ "" + madvdd_ + " " + LUT::float(matran_thichnghi[j, i]);
 			}
 
 		}
