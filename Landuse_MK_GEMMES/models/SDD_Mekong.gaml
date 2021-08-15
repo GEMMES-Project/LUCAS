@@ -297,7 +297,7 @@ experiment "SC1" type: gui {
 					//			loop i from: 0 to: data.rows - 1 {
 					//				write data[0, i];
 					//			}
-					create simulation with: [scenario::int(self), proportion_aquafarmers_adapted::(x * 0.3), proportion_agrofarmers_adapted::(y * 0.3), risk_csv_file_path::("../data/" + d)];
+					create simulation with: [proportion_aquafarmers_adapted::(x * 0.3), proportion_agrofarmers_adapted::(y * 0.3), risk_csv_file_path::("../data/" + d)];
 				}
 
 			}
@@ -310,7 +310,7 @@ experiment "SC1" type: gui {
 		ask simulations {
 			save
 			['2030', tong_luc, tong_luk, tong_lua_tom, tong_tsl, tong_bhk, tong_lnk, proportion_agrofarmers_adapted, proportion_aquafarmers_adapted, dt_tsl_risk, dt_lua_caqrisk, budget_supported]
-			type: "csv" to: "../results/Sc1_explore_" + int(self) + ".csv" rewrite: true;
+			type: "csv" to: "../results/Sc1_explore_" + scenario + ".csv" rewrite: false;
 		}
 
 	}

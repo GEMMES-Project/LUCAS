@@ -35,8 +35,8 @@ global {
 		loop i from: 0 to: data.rows - 1 {
 			huyen t <- (huyen where (each.climat_cod = int(data[0, i])))[0];
 			ask t {
-				data_tas["" + data[1, i] + "," + data[2, i]] <- float(data[4, i]);
-				data_pr["" + data[1, i] + "," + data[2, i]] <- float(data[6, i]);
+				data_tas["" + int(data[1, i]) + "," + int(data[2, i])] <- float(data[4, i]);
+				data_pr["" + int(data[1, i]) + "," + int(data[2, i])] <- float(data[6, i]);
 			}
 
 		}
