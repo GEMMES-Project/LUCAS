@@ -34,6 +34,7 @@ global {
 		matrix data <- (risk_csv_file.contents);
 		loop i from: 0 to: data.rows - 1 {
 			huyen t <- (huyen where (each.climat_cod = int(data[0, i])))[0];
+//			write "" + int(data[1, i]) + "," + int(data[2, i]);
 			ask t {
 				data_tas["" + int(data[1, i]) + "," + int(data[2, i])] <- float(data[4, i]);
 				data_pr["" + int(data[1, i]) + "," + int(data[2, i])] <- float(data[6, i]);

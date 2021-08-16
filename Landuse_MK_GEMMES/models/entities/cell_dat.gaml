@@ -111,12 +111,13 @@ grid cell_dat file: cell_file neighbors: 8 {
 		// tim luong mua toi thieu  trong cac thang mua kho trong mot nam
 		// nham danh gia kha nang gay risk cho cay trong
 		if (my_tinh != nil) {
-			int idx <- 12 + (int(cycle / 5) * 12);
+			int idx <- cycle;//12 + (int(cycle / 5) * 12);
+//			write ""+(2016+idx) +",0";
 			list
-			tmp <- [my_tinh.data_pr[""+(2020+idx) +",0"], my_tinh.data_pr[""+(2020+idx) +",1"], 
-				my_tinh.data_pr[""+(2020+idx) +",2"], my_tinh.data_pr[""+(2020+idx) +",3"], my_tinh.data_pr[""+(2020+idx) +",4"], 
-				my_tinh.data_pr[""+(2020+idx) +",5"], my_tinh.data_pr[""+(2020+idx) +",6"], my_tinh.data_pr[""+(2020+idx) +",7"], 
-				my_tinh.data_pr[""+(2020+idx) +",8"]
+			tmp <- [my_tinh.data_pr[""+(2016+idx) +",0"], my_tinh.data_pr[""+(2016+idx) +",1"], 
+				my_tinh.data_pr[""+(2016+idx) +",2"], my_tinh.data_pr[""+(2016+idx) +",3"], my_tinh.data_pr[""+(2016+idx) +",4"], 
+				my_tinh.data_pr[""+(2016+idx) +",5"], my_tinh.data_pr[""+(2016+idx) +",6"], my_tinh.data_pr[""+(2016+idx) +",7"], 
+				my_tinh.data_pr[""+(2016+idx) +",8"]
 			];
 			return float(min(tmp));
 		}
@@ -127,12 +128,12 @@ grid cell_dat file: cell_file neighbors: 8 {
 		// tim nhiet do cao nhat cua cac thang mua kho 
 		// phuc vu danh gia kha nang xay ra han man trong nam
 		if (my_tinh != nil) {
-			int idx <- 12 + (int(cycle / 5) * 12);			
+			int idx <- cycle;//12 + (int(cycle / 5) * 12);			
 			list
-			tmp <- [my_tinh.data_tas[""+(2020+idx) +",0"], my_tinh.data_tas[""+(2020+idx) +",1"], 
-				my_tinh.data_tas[""+(2020+idx) +",2"], my_tinh.data_tas[""+(2020+idx) +",3"], my_tinh.data_tas[""+(2020+idx) +",4"], 
-				my_tinh.data_tas[""+(2020+idx) +",5"], my_tinh.data_tas[""+(2020+idx) +",6"], my_tinh.data_tas[""+(2020+idx) +",7"], 
-				my_tinh.data_tas[""+(2020+idx) +",8"]
+			tmp <- [my_tinh.data_tas[""+(2016+idx) +",0"], my_tinh.data_tas[""+(2016+idx) +",1"], 
+				my_tinh.data_tas[""+(2016+idx) +",2"], my_tinh.data_tas[""+(2016+idx) +",3"], my_tinh.data_tas[""+(2016+idx) +",4"], 
+				my_tinh.data_tas[""+(2016+idx) +",5"], my_tinh.data_tas[""+(2016+idx) +",6"], my_tinh.data_tas[""+(2016+idx) +",7"], 
+				my_tinh.data_tas[""+(2016+idx) +",8"]
 			];
 			return float(max(tmp));
 		}
