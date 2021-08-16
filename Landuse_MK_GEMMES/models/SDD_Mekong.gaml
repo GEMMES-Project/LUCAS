@@ -276,7 +276,66 @@ experiment "ExploreSC1" type: batch repeat: 1 keep_seed: true until: (time >= 15
 
 }
 
-experiment "SC1" type: gui {
+experiment "single sim SC1" type: gui {
+//	parameter 'proportion_aquafarmers_adapted' var: proportion_aquafarmers_adapted min: 0.3 max: 0.9 step: 0.3;
+//	parameter 'proportion_agrofarmers_adapted' var: proportion_agrofarmers_adapted min: 0.3 max: 0.9 step: 0.3;
+	parameter "Scenarios" var: scenario <- 1;
+	//	method exhaustive minimize: (dt_lua_caqrisk + dt_tsl_risk)  ;
+	action _init_ {
+		create simulation with: [risk_csv_file_path::("../data/CMCC-CM_RCP85.csv")];
+	}
+
+	output {
+		display mophong type: java2D {
+			grid cell_dat;
+			species song;
+			species duong;
+			//	species donvidatdai;
+		}
+
+		//		display landunit type: java2D {
+		//			species donvidatdai;
+		//		}
+		display risk_cell type: opengl {
+			species huyen;
+			species cell_dat aspect: risky;
+		}
+
+		display "Risk by climate" type: java2D {
+			chart "Layer" type: series background: rgb(255, 255, 255) {
+				data "Risk for shrimp" style: line value: dt_tsl_risk color: #blue;
+				data "Fresh water demand area 3 rice" style: line value: dt_lua_caqrisk color: #red;
+				//data "Fresh water demand area fruit" style: line value: dt_caq_risk color: #darkgreen;
+			}
+
+		}
+
+		display "landuse chart" type: java2D {
+			chart "Layer" type: series background: rgb(255, 255, 255) {
+				data "3 rice" style: line value: tong_luc color: #yellow;
+				data "2 rice" style: line value: tong_luk color: #lightyellow;
+				data "Fruit trees" style: line value: tong_lnk color: #darkgreen;
+				data "Annual crops" style: line value: tong_bhk color: #lightgreen;
+				data "Aquaculture" style: line value: tong_tsl color: #cyan;
+				data "Rice - aquaculture" style: line value: tong_lua_tom color: rgb(40, 150, 120);
+			}
+
+		}
+
+	}
+
+	reflex end_of_runs when: cycle >= 15 {
+		ask simulations {
+			save
+			['2030', tong_luc, tong_luk, tong_lua_tom, tong_tsl, tong_bhk, tong_lnk, proportion_agrofarmers_adapted, proportion_aquafarmers_adapted, dt_tsl_risk, dt_lua_caqrisk, budget_supported]
+			type: "csv" to: "../results/Sc1_explore_" + scenario + ".csv" rewrite: false;
+		}
+
+	}
+
+}
+
+experiment "multi sim SC1" type: gui {
 //	parameter 'proportion_aquafarmers_adapted' var: proportion_aquafarmers_adapted min: 0.3 max: 0.9 step: 0.3;
 //	parameter 'proportion_agrofarmers_adapted' var: proportion_agrofarmers_adapted min: 0.3 max: 0.9 step: 0.3;
 	parameter "Scenarios" var: scenario <- 1;
