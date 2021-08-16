@@ -24,7 +24,7 @@ global {
 	matrix matran_thichnghi;	
 	map<string,float> matran_thichnghi_map;
 	file thichnghidatdai_file <- csv_file("../includes/landsuitability.csv", false);
-	string risk_csv_file_path<-"";
+	string risk_csv_file_path<-"../data/CMCC-CM_RCP85.csv";
 	list tieuchi;
 	float v_kappa <- 0.0;
 	//file cell_dat_2010_file <- grid_file(""); //../includes/ht2015_500x500cutPQ.tif");
