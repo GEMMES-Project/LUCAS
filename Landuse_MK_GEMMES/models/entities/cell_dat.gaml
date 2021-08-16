@@ -354,7 +354,8 @@ grid cell_dat file: cell_file neighbors: 8 {
 		if (landuse =5) { // lua 
 		// nhiet do max > nguong  va luong mua max< nguong300
 		// bo sung duyet 2 tham so nguong duoi: nhietdo tas>27- 29; Pr : 300-500
-			if (get_climate_maxTAS(cycle) > climate_maxTAS_caytrong and get_climate_minPR(cycle) < climate_minPR_caytrong) {
+			if (get_climate_maxTAS(cycle) > climate_maxTAS_caytrong and get_climate_minPR(cycle) < climate_minPR_caytrong and sal>2)  {
+//			if (get_climate_maxTAS(cycle) > climate_maxTAS_caytrong and get_climate_minPR(cycle) < climate_minPR_caytrong) {
 				if (flip(0.5)) {
 					
 					risk<-2;  // risk agro

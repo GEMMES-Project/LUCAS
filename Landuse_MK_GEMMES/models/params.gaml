@@ -57,10 +57,11 @@ global {
 	float total_income_lost; // lost income  shrimp 50% and 30% 3rice
 	
 	float climate_maxTAS_thuysan<- 33.0;//-32 , tăng 0.5
-	float climate_maxPR_thuysan<-400.0;//-300, tăng 50
+	float climate_maxPR_thuysan<-300.0;//-300, tăng 50
 
-	float climate_maxTAS_caytrong<- 33.5;//-32 , tăng 0.5
+	float climate_maxTAS_caytrong<- 33.0;//-32 , tăng 0.5
 	float climate_minPR_caytrong<-  120.0; // 200 chay, thu 180
+
 	float proportion_aqua_supported<-0.6;
 	float proportion_ago_supported<-0.6;
 	float proportion_aquafarmers_adapted<-0.6;
