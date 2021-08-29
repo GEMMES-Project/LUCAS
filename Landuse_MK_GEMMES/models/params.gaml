@@ -8,7 +8,7 @@ global {
 	file cell_salinity_file <- grid_file("../includes/mk_sal_2030_45_500x500.tif");
 	//	file cell_file <- grid_file("../includes/lu_100x100_mx_2005_new.tif");
 	file MKD_bound <- shape_file("../includes/MKD_district.shp"); 
-	geometry shape <- envelope(MKD_bound);
+	geometry shape <- envelope(cell_file);
 	list<cell_dat> active_cell <-[];//<- cell_dat where (each.grid_value != 8.0);
 	float tong_luc;
 	float tong_tsl;
@@ -42,10 +42,9 @@ global {
 	float dt_khac;
 	float w_lancan <- 0.6;
 	float w_khokhan <- 0.5;
-	float w_thichnghi <- 0.8;
-	float w_loinhuan <- 0.5;
+	float w_thichnghi <- 0.7;
+	float w_loinhuan <- 0.8;
 	float tong_lua_tom;
-	
 	//float w_risky_climate <- 1.0;
 	float w_flip <- 0.3;  // xã suát chuyen doi lua tom - tom
 //	date the_date <- date([2010, 1, 1]);

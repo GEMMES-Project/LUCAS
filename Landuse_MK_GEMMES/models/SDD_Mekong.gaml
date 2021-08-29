@@ -1,3 +1,4 @@
+
 model SDD_MX_6_10_20
 
 import "params.gaml"
@@ -125,26 +126,25 @@ global {
 		write "Tong dt lua  risk:" + dt_lua_caqrisk;
 
 		// Save risk into map
-		if (cycle mod 5 = 0) {
+		if (year mod 10 = 0) {
 			ask active_cell {
 				grid_value <- float(risk);
 			}
 
 			save cell_dat to: "../results/risk_" + year + "sc" + scenario + ".tif" type: "geotiff";
+			ask active_cell {
+				grid_value <- float(landuse);
+			}
+			save cell_dat to: "../results/landuse_sim_" + year + "sc" + scenario + ".tif" type: "geotiff";
 		}
 		// save resul map
-		if (cycle = 15) {
+		if (year >2050) {
 		//save ss type: "text" to: "result/res.csv" rewrite: false;
 		//			string
 		//			ss <- "" + climate_maxTAS_thuysan + ";" + climate_maxPR_thuysan + ";" + climate_maxTAS_caytrong + ";" + climate_maxPR_caytrong + ";" + dt_raumau_risk + ";" + dt_tsl_risk + "\n";
 		//			save ss type: "text" to: "result/res.csv" rewrite: false;
 		//			//			do tinh_kappa;
-			ask active_cell {
-				grid_value <- float(landuse);
-			}
-
-			save cell_dat to: "../results/landuse_sim_" + year + "sc" + scenario + ".tif" type: "geotiff";
-
+			
 			//			//	do tinh_dtmx;
 			do pause;
 		}
@@ -152,14 +152,53 @@ global {
 	}
 
 }
+experiment "LU_3scenarios" type: batch repeat: 1 keep_seed: true until: (time > 35) {
+	//parameter 'proportion_aqua_supported' var: proportion_aqua_supported min: 0.3 max: 0.9 step: 0.3;
+	//parameter 'proportion_ago_supported' var: proportion_ago_supported min: 0.3 max: 0.9 step: 0.3;
+	parameter "Scenarios" var: scenario  min: 1 max: 3 step: 2;
+	output {
+		display sim_LU type: java2D {
+			grid cell_dat;
+			species song;
+			species duong;
+		}
+		display vulnerable_cell type: opengl {
+			species huyen;
+			species cell_dat aspect: risky;
+		}
 
+		display "Vulnerable by climate" type: java2D {
+			chart "Layer" type: series background: rgb(255, 255, 255) {
+				data "Risk for shrimp" style: line value: dt_tsl_risk color: #blue;
+				data "Fresh water demand area 3 rice" style: line value: dt_lua_caqrisk color: #red;
+				//data "Fresh water demand area fruit" style: line value: dt_caq_risk color: #darkgreen;
+			}
+
+		}
+
+		display "landuse chart" type: java2D {
+			chart "Layer" type: series background: rgb(255, 255, 255) {
+				data "3 rice" style: line value: tong_luc color: #yellow;
+				data "2 rice" style: line value: tong_luk color: #lightyellow;
+				data "Fruit trees" style: line value: tong_lnk color: #darkgreen;
+				data "Annual crops" style: line value: tong_bhk color: #lightgreen;
+				data "Aquaculture" style: line value: tong_tsl color: #cyan;
+				data "Rice - aquaculture" style: line value: tong_lua_tom color: rgb(40, 150, 120);
+			}
+
+		}
+
+	}
+
+}
 experiment "Landuse change" type: gui {
 	parameter "Trong số lân cận" var: w_lancan <- 0.6;
 	parameter "Trọng số khó khăn" var: w_khokhan <- 0.5;
 	parameter "Trọng số thích nghi" var: w_thichnghi <- 0.7;
 	parameter "Trọng số lợi nhuận" var: w_loinhuan <- 0.8;
 	//	parameter "Trọng số rủi ro biến đổi khí hậu" var: w_risky_climate <- 0.0;
-	parameter "Scenarios" var: scenario <- 3;
+	parameter "Scenarios" var: scenario <- 0;
+	
 	output {
 		display mophong type: java2D {
 			grid cell_dat;
@@ -277,10 +316,13 @@ experiment "ExploreSC1" type: batch repeat: 1 keep_seed: true until: (time >= 15
 }
 
 experiment "single sim SC1" type: gui {
-//	parameter 'proportion_aquafarmers_adapted' var: proportion_aquafarmers_adapted min: 0.3 max: 0.9 step: 0.3;
-//	parameter 'proportion_agrofarmers_adapted' var: proportion_agrofarmers_adapted min: 0.3 max: 0.9 step: 0.3;
+parameter "Trong số lân cận" var: w_lancan <- 0.6;
+	parameter "Trọng số khó khăn" var: w_khokhan <- 0.5;
+	parameter "Trọng số thích nghi" var: w_thichnghi <- 0.7;
+	parameter "Trọng số lợi nhuận" var: w_loinhuan <- 0.8;
+	//	parameter "Trọng số rủi ro biến đổi khí hậu" var: w_risky_climate <- 0.0;
 	parameter "Scenarios" var: scenario <- 1;
-	//	method exhaustive minimize: (dt_lua_caqrisk + dt_tsl_risk)  ;
+	
 	action _init_ {
 		create simulation with: [risk_csv_file_path::("../data/CMCC-CM_RCP85.csv")];
 	}
@@ -324,11 +366,11 @@ experiment "single sim SC1" type: gui {
 
 	}
 
-	reflex end_of_runs when: cycle >= 15 {
+	reflex save_result_sim_csv when: (cycle mod 10 = 0) {
 		ask simulations {
 			save
-			['2030', tong_luc, tong_luk, tong_lua_tom, tong_tsl, tong_bhk, tong_lnk, proportion_agrofarmers_adapted, proportion_aquafarmers_adapted, dt_tsl_risk, dt_lua_caqrisk, budget_supported]
-			type: "csv" to: "../results/Sc1_explore_" + scenario + ".csv" rewrite: false;
+			[cycle+2015, tong_luc, tong_luk, tong_lua_tom, tong_tsl, tong_bhk, tong_lnk, proportion_agrofarmers_adapted, proportion_aquafarmers_adapted, dt_tsl_risk, dt_lua_caqrisk, budget_supported]
+			type: "csv" to: "../results/Lu_sim_sc_" + scenario + ".csv" rewrite: false;
 		}
 
 	}
@@ -389,3 +431,5 @@ experiment "multi sim SC1" type: gui {
 //
 //	float climate_maxTAS_caytrong<- 28.0;//-35 , tăng 0.5
 //	float climate_maxPR_caytrong<-  400.0; // tăng 50 100-300
+
+  

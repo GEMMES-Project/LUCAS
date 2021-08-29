@@ -171,8 +171,12 @@ grid cell_dat file: cell_file neighbors: 8 {
 	action removerisk_invidual{ // scenarios 1
 		if (risk=1){
 			if flip(proportion_aquafarmers_adapted){
-				landuse <-101; // converted to rice-shrimp
-				risk <-0;
+			if (xet_thichnghi(madvdd, 101) > 0) {
+					landuse <-101; // converted to rice-shrimp
+					//budget_supported <- budget_supported + 1;
+					risk <-0;
+					
+				}
 			}
 		}
 		if (risk=2){ // risk for 3 rice
@@ -202,11 +206,8 @@ grid cell_dat file: cell_file neighbors: 8 {
 		if (risk=1){
 			// gov support farmer to doing rice shrimp
 			if flip(proportion_aqua_supported){ // supported by gov.
-				//landuse <-101; //stay in aquculture but remove risk
-				
-				landuse <-101; // converted to rice-shrimp
-				budget_supported <- budget_supported + 1;
-				risk <-0;
+					budget_supported <- budget_supported + 1;
+					risk <-0;
 			}
 			else 
 			{	      // farmer sel adaptation.
