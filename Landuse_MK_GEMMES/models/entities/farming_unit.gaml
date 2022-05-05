@@ -1,9 +1,7 @@
-model cell_dat
-
-import "../params.gaml"
-import "tinh.gaml"
+model farming_unit
+   
 import "cell_sal.gaml"
-grid cell_dat file: cell_file neighbors: 8 {
+grid farming_unit file: cell_file neighbors: 8 {
 	int landuse <- int(grid_value);
 	float chiso_luk_lancan;
 	float chiso_luc_lancan;
@@ -25,8 +23,8 @@ grid cell_dat file: cell_file neighbors: 8 {
 	map<int, list> Tas <- [];
 	map<int, list> Tas_max <- [];
 	map<int, list> Tas_min <- [];
-	list<cell_dat> cell_lancan <- [];
-	huyen my_tinh;
+	list<farming_unit> cell_lancan <- [];
+	district my_tinh;
 
 	init {
 	/*
@@ -158,9 +156,9 @@ grid cell_dat file: cell_file neighbors: 8 {
 
 	float xet_khokhanchuyendoi (int landuse1, int landuse2) {
 		float kqkhokhanchuyendoi <- 0.0;
-		if (kqkhokhanchuyendoi_map["" + landuse1 + " " + landuse2] = nil) {
+		if (ability_map["" + landuse1 + " " + landuse2] = nil) {
 		} else {
-			kqkhokhanchuyendoi <- kqkhokhanchuyendoi_map["" + landuse1 + " " + landuse2];
+			kqkhokhanchuyendoi <- ability_map["" + landuse1 + " " + landuse2];
 		}
 
 		return kqkhokhanchuyendoi;
@@ -248,7 +246,7 @@ grid cell_dat file: cell_file neighbors: 8 {
 		//if (de >1){} 
 		if (landuse = 5 or landuse = 6 or landuse = 12 or landuse = 14) {
 		//or (landuse>0)and (landuse!=14) and (landuse!=5) and (landuse!=6) and(landuse!=100) and (landuse!=12) and (landuse!=34
-			choice <-weighted_means_DM(cands, tieuchi);
+			choice <-weighted_means_DM(cands, criteria);
 			//choice tra vi tri ung vien trong danh sach
 //			if (choice = 0) {
 //				//if flip(0.0) {
@@ -321,7 +319,7 @@ grid cell_dat file: cell_file neighbors: 8 {
 		candidates << cand_luatom;
 		int choicetsl <- 0;
 		if (landuse = 34 or landuse = 101) {
-			choicetsl <- weighted_means_DM(candidates, tieuchi);
+			choicetsl <- weighted_means_DM(candidates, criteria);
 			if (choicetsl = 0) {
 			//if (xet_thichnghi(madvdd, 14) > 0.33) {
 				//if flip(0.40) {
@@ -342,7 +340,7 @@ grid cell_dat file: cell_file neighbors: 8 {
 		risk <- 0;
 		if (landuse = 34) {// thuy san
 		// Nhiet do cao nhat > nguong hoac luong mua max >nguong
-			if (get_climate_maxTAS(cycle) > climate_maxTAS_thuysan or get_climate_minPR(cycle) > climate_maxPR_thuysan) {
+			if (get_climate_maxTAS(cycle) > climate_maxTAS_shrimp or get_climate_minPR(cycle) > climate_maxPR_thuysan) {
 				if (flip(0.5)) {
 					
 					risk<-1;  // risk aqua

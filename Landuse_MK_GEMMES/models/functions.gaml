@@ -1,7 +1,9 @@
 model SDD_MX_6_10_20
-
-import "SDD_Mekong.gaml"
-
+  
+  import "params.gaml" 
+  import "entities/land_unit.gaml"
+  import "entities/dyke_protected.gaml"
+ 
 global {
 
 //	action load_climate_PR {
@@ -33,10 +35,10 @@ global {
 		file risk_csv_file <- csv_file(fpath, ",", false);
 		matrix data <- (risk_csv_file.contents);
 		loop i from: 1 to: data.rows - 1 {
-			if(length(huyen where (each.climat_cod = int(data[0, i])))=0){
+			if(length(district where (each.climat_cod = int(data[0, i])))=0){
 				write int(data[0, i]);
 			}
-			huyen t <- (huyen where (each.climat_cod = int(data[0, i])))[0];
+			district t <- (district where (each.climat_cod = int(data[0, i])))[0];
 //			write "" + int(data[1, i]) + "," + int(data[2, i]);
 			ask t {
 				data_tas["" + int(data[1, i]) + "," + int(data[2, i])] <- float(data[4, i]); //prcipitation is in column 5 in data file
@@ -52,20 +54,20 @@ global {
 90->89
  
  */
-		ask (huyen where (each.climat_cod = 60)) {
-			huyen t <- (huyen where (each.climat_cod = 59))[0];
+		ask (district where (each.climat_cod = 60)) {
+			district t <- (district where (each.climat_cod = 59))[0];
 			data_tas <- t.data_tas;
 			data_pr <- t.data_pr;
 		}
 
-		ask (huyen where (each.climat_cod = 72 or each.climat_cod = 73)) {
-			huyen t <- (huyen where (each.climat_cod = 71))[0];
+		ask (district where (each.climat_cod = 72 or each.climat_cod = 73)) {
+			district t <- (district where (each.climat_cod = 71))[0];
 			data_tas <- t.data_tas;
 			data_pr <- t.data_pr;
 		}
 
-		ask (huyen where (each.climat_cod = 90)) {
-			huyen t <- (huyen where (each.climat_cod = 89))[0];
+		ask (district where (each.climat_cod = 90)) {
+			district t <- (district where (each.climat_cod = 89))[0];
 			data_tas <- t.data_tas;
 			data_pr <- t.data_pr;
 		}
@@ -73,12 +75,12 @@ global {
 
 	action tinhtongdt {
 		tong_luc <- 0.0;
-		tong_luk <- 0.0;
-		tong_lua_tom <- 0.0;
+		total_2rice_luk <- 0.0;
+		total_rice_shrimp <- 0.0;
 		tong_tsl <- 0.0;
-		tong_lnk <- 0.0;
+		total_fruit_tree_lnk <- 0.0;
 		tong_bhk <- 0.0;
-		tong_khac <- 0.0;
+		total_rice_shrimp <- 0.0;
 		ask active_cell {
 		}
 
@@ -89,39 +91,39 @@ global {
 		//
 		//		}
 		write "Tong dt lua:" + tong_luc;
-		write "Tong dt lúa khác:" + tong_luk;
-		write "Tong dt lúa tom:" + tong_lua_tom;
+		write "Tong dt lúa khác:" + total_2rice_luk;
+		write "Tong dt lúa tom:" + total_rice_shrimp;
 		write "Tong dt ts:" + tong_tsl;
 		write "Tong dt rau mau:" + tong_bhk;
-		write "Tong dt lnk:" + tong_lnk;
-		write "Tong dt khac:" + tong_khac;
+		write "Tong dt lnk:" + total_fruit_tree_lnk;
+		write "Tong dt khac:" + total_rice_shrimp;
 	}
 
 	action docmatran_khokhan {
-		matran_khokhan <- matrix(khokhanchuyendoi_file);
+		ability_matrix <- matrix(ability_file);
 		int i <- 0;
 		int j <- 0;
-		loop i from: 1 to: matran_khokhan.rows - 1 {
-			int landuse1 <- int(matran_khokhan[0, i]);
-			loop j from: 1 to: matran_khokhan.columns - 1 { //do tung cot cua matran
-				int landuse2 <- int(matran_khokhan[j, 0]);
-				kqkhokhanchuyendoi_map <+ "" + landuse1 + " " + landuse2::float(matran_khokhan[j, i]);
+		loop i from: 1 to: ability_matrix.rows - 1 {
+			int landuse1 <- int(ability_matrix[0, i]);
+			loop j from: 1 to: ability_matrix.columns - 1 { //do tung cot cua matran
+				int landuse2 <- int(ability_matrix[j, 0]);
+				ability_map <+ "" + landuse1 + " " + landuse2::float(ability_matrix[j, i]);
 			}
 
 		}
 
-		write "Matra kho khann:" + kqkhokhanchuyendoi_map;
+		write "Matra kho khann:" + ability_map;
 	}
 
 	action docmatran_thichnghi {
-		matran_thichnghi <- matrix(thichnghidatdai_file);
+		suitability_matrix <- matrix(suitability_file);
 		int i <- 0;
 		int j <- 0;
-		loop i from: 1 to: matran_thichnghi.rows - 1 {
-			int madvdd_ <- int(matran_thichnghi[0, i]);
-			loop j from: 1 to: matran_thichnghi.columns - 1 { //do tung cot cua matran
-				int LUT <- int(matran_thichnghi[j, 0]);
-				matran_thichnghi_map <+ "" + madvdd_ + " " + LUT::float(matran_thichnghi[j, i]);
+		loop i from: 1 to: suitability_matrix.rows - 1 {
+			int madvdd_ <- int(suitability_matrix[0, i]);
+			loop j from: 1 to: suitability_matrix.columns - 1 { //do tung cot cua matran
+				int LUT <- int(suitability_matrix[j, 0]);
+				matran_thichnghi_map <+ "" + madvdd_ + " " + LUT::float(suitability_matrix[j, i]);
 			}
 
 		}
@@ -151,59 +153,59 @@ global {
 
 	action tinh_dtmx {
 		save "prov_name, dt_luc,dt_luk,dt_lua_tom,dt_tsl,dt_bhk,dt_lnk,dt_khac" to: "../results/hientrang_xa.csv" type: "csv" rewrite: true;
-		loop tinh_obj over: huyen {
+		loop tinh_obj over: district {
 		// duyệt hết các cell chồng lắp với huyện để tính diên diện tich
-			dt_luc <- 0.0;
-			dt_luk <- 0.0;
-			dt_lua_tom <- 0.0;
-			dt_tsl <- 0.0;
-			dt_bhk <- 0.0;
-			dt_lnk <- 0.0;
-			dt_khac <- 0.0;
+			area_3rice_luc <- 0.0;
+			area_2rice_luk <- 0.0;
+			area_rice_shrimp <- 0.0;
+			area_shrimp_tsl <- 0.0;
+			area_vegetable_bhk <- 0.0;
+			area_fruit_tree_lnk <- 0.0;
+			area_other <- 0.0;
 			//đã chỉnh đến đây
 			ask active_cell overlapping tinh_obj {
 				if (landuse = 5) {
-					dt_luc <- dt_luc + pixel_size;
+					area_3rice_luc <- area_3rice_luc + pixel_size;
 				}
 
 				if (landuse = 6) {
-					dt_luk <- dt_luk + pixel_size;
+					area_2rice_luk <- area_2rice_luk + pixel_size;
 				}
 
 				if (landuse = 101) {
-					dt_lua_tom <- dt_lua_tom + pixel_size;
+					area_rice_shrimp <- area_rice_shrimp + pixel_size;
 				}
 
 				if (landuse = 34) {
-					dt_tsl <- dt_tsl + pixel_size;
+					area_shrimp_tsl <- area_shrimp_tsl + pixel_size;
 				}
 
 				if (landuse = 12) {
-					dt_bhk <- dt_bhk + pixel_size;
+					area_vegetable_bhk <- area_vegetable_bhk + pixel_size;
 				}
 
 				if (landuse = 14) {
-					dt_lnk <- dt_lnk + pixel_size;
+					area_fruit_tree_lnk <- area_fruit_tree_lnk + pixel_size;
 				}
 
 				if (landuse > 0) and (landuse != 14) and (landuse != 5) and (landuse != 6) and (landuse != 101) and (landuse != 12) and (landuse != 34) {
-					tong_khac <- tong_khac + pixel_size; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
+					total_rice_shrimp <- total_rice_shrimp + pixel_size; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
 				}
 
 			}
 			// Lưu kết quả tính từng loại đất vào biến toại đát ương ứng của huyện
-			save [tinh_obj.NAME_1, dt_luc, dt_luk, dt_lua_tom, dt_tsl, dt_bhk, dt_lnk, dt_khac] to: "../results/hientrang_tinh.csv" type: "csv" rewrite: false;
-			write tinh_obj.NAME_1 + '; ' + dt_luc + '; ' + dt_luk + '; ' + dt_lua_tom + ';  ' + dt_tsl + '; ' + dt_bhk + '; ' + dt_lnk + '; ' + dt_khac;
+			save [tinh_obj.NAME_1, area_3rice_luc, area_2rice_luk, area_rice_shrimp, area_shrimp_tsl, area_vegetable_bhk, area_fruit_tree_lnk, area_other] to: "../results/hientrang_tinh.csv" type: "csv" rewrite: false;
+			write tinh_obj.NAME_1 + '; ' + area_3rice_luc + '; ' + area_2rice_luk + '; ' + area_rice_shrimp + ';  ' + area_shrimp_tsl + '; ' + area_vegetable_bhk + '; ' + area_fruit_tree_lnk + '; ' + area_other;
 		}
 		// ghu kết quả huyen ra file shapfile thuộc tính gồm 3 cột: ten xa, dt luc, dt tsl. Nếu có thểm thì cứ thêm loại đất vào
-		save huyen to: "../results/tinh_landuse.shp" type: "shp" attributes:
-		["tentinh"::NAME_1, "dt_luc"::dt_luc, "dt_lua_tom"::dt_lua_tom, "dt_tsl"::dt_tsl, "dt_luk"::dt_luk, "dt_lnk"::dt_lnk, "dt_bhk"::dt_bhk, "dt_khac"::dt_khac];
-		save cell_dat to: "../results/hientrang_sim.tif" type: "geotiff";
+		save district to: "../results/tinh_landuse.shp" type: "shp" attributes:
+		["tentinh"::NAME_1, "dt_luc"::area_3rice_luc, "dt_lua_tom"::area_rice_shrimp, "dt_tsl"::area_shrimp_tsl, "dt_luk"::area_2rice_luk, "dt_lnk"::area_fruit_tree_lnk, "dt_bhk"::area_vegetable_bhk, "dt_khac"::area_other];
+		save farming_unit to: "../results/hientrang_sim.tif" type: "geotiff";
 		write "Đa tinh dien tich hien trang theo xa xong";
 	}
 
 	action gan_dvdd {
-		loop dvdd_obj over: donvidatdai {
+		loop dvdd_obj over: land_unit {
 			ask active_cell overlapping dvdd_obj {
 				madvdd <- dvdd_obj.dvdd;
 			}
@@ -213,7 +215,7 @@ global {
 	}
 
 	action set_dyke {
-		loop dyke_obj over: vungbaode {
+		loop dyke_obj over: dyke_protected {
 			ask active_cell overlapping dyke_obj {
 				madvdd <- dyke_obj.de;
 			}

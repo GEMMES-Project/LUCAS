@@ -1,7 +1,6 @@
-model cell_dat
+model district
 
-import "../params.gaml"
-species huyen {
+species district {
 	int Id_1;
 	int Id_2;
 	int climat_cod;

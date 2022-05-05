@@ -1,8 +1,8 @@
-model cell_sal
+model cell_sal 
 
 import "../params.gaml"
-import "tinh.gaml"
-grid cell_sal file: cell_salinity_file control: reflex neighbors: 8 {
+import "district.gaml"
+grid cell_salinity file: cell_salinity_file control: reflex neighbors: 8 {
  
  
 }
