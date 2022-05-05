@@ -1,0 +1,5 @@
+dim i as integer 
+for i=6 to 260
+	Select * from vmd_land_unit where Code=i 
+	Objects Combine Data Code=Code,Soil_textu=Soil_textu,Actual_ass=Actual_ass,Potential_=Potential_,Rainfall=Rainfall,Tgngot=Tgngot,Tgman=Tgman,Doman=Doman,Tgngap=Tgngap,Dongap=Dongap,Area_ha=sum(Area_ha)
+next

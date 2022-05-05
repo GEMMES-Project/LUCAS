@@ -1,0 +1,91 @@
+!Workspace
+!Version 1150
+!Charset WindowsLatin1
+Open Table "vmd_land_unit" As vmd_land_unit Interactive
+Open Table "landsuitability_mi" As landsuitability_mi Interactive
+Select *  from vmd_land_unit , landsuitability_mi  where vmd_land_unit . Code = landsuitability_mi . DVDD  into landunit_suitable noselect  
+Map From landunit_suitable
+  Position (0.0520833,0.0520833) Units "in"
+  Width 5.88542 Units "in" Height 3.82292 Units "in" 
+Set Window FrontWindow() ScrollBars Off Autoscroll On Enhanced On Smooth Text Antialias Image High
+Set Map
+  CoordSys Earth Projection 8, 104, "m", 105, 0, 0.9996, 500000, 0
+  Center (567676.3776,1083039.41)
+  Zoom 261.3405275 Units "mi"
+  Preserve Zoom Display Zoom
+  Distance Units "mi" Area Units "sq mi" XY Units "m"
+shade 1 with _34 ignore 0 values 
+  0.33 Brush (2,16752800,16777215) ,
+  0.67 Brush (2,16728128,16777215) Pen (1,2,0) ,
+  1 Brush (2,9437184,16777215) Pen (1,2,0) 
+  default Brush (2,0,16777215)   # color 1 # 
+shade 2 with _101 ignore 0 values 
+  0.67 Brush (2,16732240,16777215) Pen (1,2,0) ,
+  1 Brush (2,9437184,16777215) Pen (1,2,0) 
+  default Brush (2,0,16777215)   # color 1 # 
+Set Map
+  Layer 1
+    Display Value
+    Global Pen (1,2,0)  Brush (2,16777215,16777215)  Symbol (35,0,12)  Line (1,2,0)  Font ("Arial",0,9,0)
+    Selectable Off
+  Layer 2
+    Display Value
+    Global Pen (1,2,0)  Brush (2,16777215,16777215)  Symbol (35,0,12)  Line (1,2,0)  Font ("Arial",0,9,0)
+    Selectable Off
+  Layer 3
+    Display Graphic
+    Global Pen (1,2,0) Brush (2,16777215,16777215) Symbol (35,0,12) Line (1,2,0) Font ("Arial",0,9,0)
+    Label Line None Position Center Font ("Arial",0,9,0) Pen (1,2,0) 
+      With Soil_textu
+      Parallel On Auto Off Overlap Off Duplicates On Offset 2
+      Visibility On
+set legend 
+  layer 1 
+    display on 
+    shades on 
+    symbols off 
+    lines off 
+    count on 
+    title auto Font ("Arial",0,9,0)
+    subtitle auto Font ("Arial",0,8,0)
+    ascending on 
+    ranges Font ("Arial",0,8,0)
+      auto display off ,
+      auto display on ,
+      auto display on  
+set legend 
+  layer 2 
+    display on 
+    shades on 
+    symbols off 
+    lines off 
+    count on 
+    title auto Font ("Arial",0,9,0)
+    subtitle auto Font ("Arial",0,8,0)
+    ascending on 
+    ranges Font ("Arial",0,8,0)
+      auto display off ,
+      auto display on ,
+      auto display on ,
+      auto display on  
+Set Window FrontWindow() Printer
+ Name "MapInfo PDF Printer Version 15.0" Orientation Portrait Copies 1
+ Papersize 1
+Dim WorkspaceMaximizedWindow As Integer
+WorkspaceMaximizedWindow = Frontwindow()
+Create Designer Legend
+  Position (8.76042,0.21875) Units "in"
+  Width 2.80208 Units "in" Height 5 Units "in" 
+  Portrait
+  Default Frame Title "# Legend" Font ("Arial",0,10,0)
+  Default Frame Style "%" Font ("Arial",0,8,0)
+  Default Frame Line Width 36 Units "pt"
+  Default Frame Region Width 32 Units "pt"
+  Default Frame Region Height 14 Units "pt"
+  Frame From Layer 2
+  Frame From Layer 1
+Set Window FrontWindow() Printer
+ Name "MapInfo PDF Printer Version 15.0" Orientation Portrait Copies 1
+ Papersize 1
+Set Window WorkspaceMaximizedWindow Max
+Undim WorkspaceMaximizedWindow

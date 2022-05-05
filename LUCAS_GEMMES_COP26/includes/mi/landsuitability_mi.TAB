@@ -1,0 +1,22 @@
+!table
+!version 450
+!charset WindowsLatin1
+
+Definition Table
+  Type NATIVE Charset "WindowsLatin1"
+  Fields 9
+    DVDD Float Index 1 ;
+    _5 Float ;
+    _6 Float ;
+    _102 Float ;
+    _101 Float Index 3 ;
+    _16 Float ;
+    _12 Float ;
+    _14 Float ;
+    _34 Float Index 2 ;
+begin_metadata
+"\IsReadOnly" = "FALSE"
+"\MapInfo" = ""
+"\MapInfo\TableID" = "68f044f8-0e5d-4ec0-b314-70d40b315b2e"
+"\MapInfo\ParentTableID" = "2926ab15-8dc7-4290-9cf4-e9cc97340c5b"
+end_metadata
