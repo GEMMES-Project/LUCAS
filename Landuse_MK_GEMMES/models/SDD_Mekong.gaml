@@ -25,7 +25,7 @@ global {
 		//		create duong from: duong_file;
 		create donvidatdai from: dvdd_file with: [dvdd::int(read('Code'))];
 		create vungbaode from: bandodebao with: [de::int(read('De'))];
-		create xa from: xa_file with: [tenxa::read('Tenxa')];
+		create xa from: huyen_file with: [tenxa::read('Tenxa')];
 		ask active_cell parallel: true {
 			sal <- first(cell_sal overlapping self).grid_value;
 			my_tinh <- first(huyen overlapping self);
@@ -324,7 +324,7 @@ parameter "Trong số lân cận" var: w_lancan <- 0.6;
 	parameter "Scenarios" var: scenario <- 1;
 	
 	action _init_ {
-		create simulation with: [risk_csv_file_path::("../data/CMCC-CM_RCP85.csv")];
+		create simulation ;
 	}
 
 	output {

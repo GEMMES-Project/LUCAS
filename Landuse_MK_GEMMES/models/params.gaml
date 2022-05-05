@@ -13,10 +13,10 @@ global {
 	float tong_luc;
 	float tong_tsl;
 	float tong_bhk;
-	file song_file <- shape_file('../includes/rivers_myxuyen_region.shp');
-	file duong_file <- shape_file('../includes/road_myxuyen_region.shp');
+	file song_file <- shape_file('../includes/road_polyline.shp');
+	file duong_file <- shape_file('../includes/river_region.shp');
 	file dvdd_file <- shape_file("../includes/vmd_land_unit_cleaned.shp");
-	file MKD_file <- shape_file("../includes/MKD_1.shp");
+	file MKD_file <- shape_file("../includes/MKD.shp");
 	file bandodebao <- shape_file("../includes/mk_dyke_region.shp");
 	matrix matran_khokhan;
 	map<string,float> kqkhokhanchuyendoi_map;
@@ -24,12 +24,12 @@ global {
 	matrix matran_thichnghi;	
 	map<string,float> matran_thichnghi_map;
 	file thichnghidatdai_file <- csv_file("../includes/landsuitability.csv", false);
-	string risk_csv_file_path<-"../data/CMCC-CM_RCP85.csv";
+	string risk_csv_file_path<-"../data/_31model_RCP85_CMIP5_tmaxavg_tmaxmax_premin.csv";
 	list tieuchi;
 	float v_kappa <- 0.0;
 	//file cell_dat_2010_file <- grid_file(""); //../includes/ht2015_500x500cutPQ.tif");
 	//list<cell_dat_2010> active_cell_dat2010 <- cell_dat_2010 where (each.grid_value != 0.0);
-	file xa_file <- shape_file("../includes/commune_myxuyen.shp");
+	file huyen_file <- shape_file("../includes/MKD_district.shp");
 	float tong_lnk;
 	float tong_luk;
 	float tong_khac;

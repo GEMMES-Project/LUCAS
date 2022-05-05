@@ -32,18 +32,22 @@ global {
 
 		file risk_csv_file <- csv_file(fpath, ",", false);
 		matrix data <- (risk_csv_file.contents);
-		loop i from: 0 to: data.rows - 1 {
+		loop i from: 1 to: data.rows - 1 {
+			if(length(huyen where (each.climat_cod = int(data[0, i])))=0){
+				write int(data[0, i]);
+			}
 			huyen t <- (huyen where (each.climat_cod = int(data[0, i])))[0];
 //			write "" + int(data[1, i]) + "," + int(data[2, i]);
 			ask t {
-				data_tas["" + int(data[1, i]) + "," + int(data[2, i])] <- float(data[4, i]);
-				data_pr["" + int(data[1, i]) + "," + int(data[2, i])] <- float(data[6, i]);
+				data_tas["" + int(data[1, i]) + "," + int(data[2, i])] <- float(data[4, i]); //prcipitation is in column 5 in data file
+				data_pr["" + int(data[1, i]) + "," + int(data[2, i])] <- float(data[5, i]);// prcipitation is in column 5 in data file
 			}
 
 		}
 
 		/*
- *  60 chỉnh thành 59 để xài chung dữ liệu
+ *  60 chỉnh thành 59 để xài chung dữ liệu -
+ * Get the nearest station of mising code stations 
 72,73 -> 71
 90->89
  
