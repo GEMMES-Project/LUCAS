@@ -21,6 +21,6 @@ species province {
 	init {
 	}
 	aspect default{
-		draw shape empty:true border:#gray;
+		draw shape  border:#gray;
 	}
 }

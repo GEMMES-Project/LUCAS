@@ -14,12 +14,18 @@ global {
 		create district from: district_file{// with: [dist_name::read('dist_name')]
 		//			write climat_cod;
 		}
+		create province from: province_file{// with: [dist_name::read('dist_name')]
+		//			write climat_cod;
+		}
 		//		do load_climate_PR;
 		do load_climate_TAS;
 		//		create song from: song_file;
 		//		create duong from: duong_file;
 		create land_unit from: dvdd_file with: [dvdd::int(read('Code'))];
 		create dyke_protected from: dyke_file with: [de::int(read('De'))];
+		
+		create AEZ from:aez_file;
+		
 //		create xa from: huyen_file with: [tenxa::read('Tenxa')];
 		ask active_cell parallel: true {
 			sal <- first(cell_salinity overlapping self).grid_value;
@@ -147,271 +153,276 @@ global {
 	}
 
 }
-experiment "LU_3scenarios" type: batch repeat: 1 keep_seed: true until: (time > 35) {
-	//parameter 'proportion_aqua_supported' var: proportion_aqua_supported min: 0.3 max: 0.9 step: 0.3;
-	//parameter 'proportion_ago_supported' var: proportion_ago_supported min: 0.3 max: 0.9 step: 0.3;
-	parameter "Scenarios" var: scenario  min: 1 max: 3 step: 2;
-	output {
-		display sim_LU type: java2D {
-			grid farming_unit;
-			species river;
-			species road;
-		}
-		display vulnerable_cell type: opengl {
-			species district;
-			species farming_unit aspect: risky;
-		}
-
-		display "Vulnerable by climate" type: java2D {
-			chart "Layer" type: series background: rgb(255, 255, 255) {
-				data "Risk for shrimp" style: line value: area_shrimp_tsl_risk color: #blue;
-				data "Fresh water demand area 3 rice" style: line value: area_rice_fruit_tree_risk color: #red;
-				//data "Fresh water demand area fruit" style: line value: dt_caq_risk color: #darkgreen;
-			}
-
-		}
-
-		display "landuse chart" type: java2D {
-			chart "Layer" type: series background: rgb(255, 255, 255) {
-				data "3 rice" style: line value: tong_luc color: #yellow;
-				data "2 rice" style: line value: total_2rice_luk color: #lightyellow;
-				data "Fruit trees" style: line value: total_fruit_tree_lnk color: #darkgreen;
-				data "Annual crops" style: line value: tong_bhk color: #lightgreen;
-				data "Aquaculture" style: line value: tong_tsl color: #cyan;
-				data "Rice - aquaculture" style: line value: total_rice_shrimp color: rgb(40, 150, 120);
-			}
-
-		}
-
-	}
-
-}
+//experiment "LU_3scenarios" type: batch repeat: 1 keep_seed: true until: (time > 35) {
+//	//parameter 'proportion_aqua_supported' var: proportion_aqua_supported min: 0.3 max: 0.9 step: 0.3;
+//	//parameter 'proportion_ago_supported' var: proportion_ago_supported min: 0.3 max: 0.9 step: 0.3;
+//	parameter "Scenarios" var: scenario  min: 1 max: 3 step: 2;
+//	output {
+//		display sim_LU type: java2D {
+//			grid farming_unit;
+//			species river;
+//			species road;
+//		}
+//		display vulnerable_cell type: opengl {
+//			species district;
+//			species farming_unit aspect: risky;
+//		}
+//
+//		display "Vulnerable by climate" type: java2D {
+//			chart "Layer" type: series background: rgb(255, 255, 255) {
+//				data "Risk for shrimp" style: line value: area_shrimp_tsl_risk color: #blue;
+//				data "Fresh water demand area 3 rice" style: line value: area_rice_fruit_tree_risk color: #red;
+//				//data "Fresh water demand area fruit" style: line value: dt_caq_risk color: #darkgreen;
+//			}
+//
+//		}
+//
+//		display "landuse chart" type: java2D {
+//			chart "Layer" type: series background: rgb(255, 255, 255) {
+//				data "3 rice" style: line value: tong_luc color: #yellow;
+//				data "2 rice" style: line value: total_2rice_luk color: #lightyellow;
+//				data "Fruit trees" style: line value: total_fruit_tree_lnk color: #darkgreen;
+//				data "Annual crops" style: line value: tong_bhk color: #lightgreen;
+//				data "Aquaculture" style: line value: tong_tsl color: #cyan;
+//				data "Rice - aquaculture" style: line value: total_rice_shrimp color: rgb(40, 150, 120);
+//			}
+//
+//		}
+//
+//	}
+//
+//}
 experiment "Landuse change" type: gui {
 	parameter "Trong số lân cận" var: area_shrimp_tsl_risk <- 0.6;
 	parameter "Trọng số khó khăn" var: area_rice_fruit_tree_risk <- 0.5;
 	parameter "Trọng số thích nghi" var: area_fruit_tree_risk <- 0.7;
 	parameter "Trọng số lợi nhuận" var: w_profit <- 0.8;
 	//	parameter "Trọng số rủi ro biến đổi khí hậu" var: w_risky_climate <- 0.0;
-	parameter "Scenarios" var: scenario <- 0;
+	parameter "Scenarios" var: scenario <- 0; 
 	
 	output {
-		display mophong type: java2D {
-			grid farming_unit;
+		display mophong type: opengl {
+//			grid farming_unit;
 			species river;
 			species road;
+//			species province;
+//			species AEZ transparency:0.3;			
+			mesh field_subsidence color: palette(reverse(brewer_colors("Blues"))) scale:10 smooth: 4;//  
+			
+//			species district;
 			//	species donvidatdai;
 		}
 
 		//		display landunit type: java2D {
 		//			species donvidatdai;
 		//		}
-		display risk_cell type: opengl {
-			species district;
-			species farming_unit aspect: risky;
-		}
-
-		display "Risk by climate" type: java2D {
-			chart "Layer" type: series background: rgb(255, 255, 255) {
-				data "Risk for shrimp" style: line value: area_shrimp_tsl_risk color: #blue;
-				data "Fresh water demand area 3 rice" style: line value: area_rice_fruit_tree_risk color: #red;
-				//data "Fresh water demand area fruit" style: line value: dt_caq_risk color: #darkgreen;
-			}
-
-		}
-
-		display "landuse chart" type: java2D {
-			chart "Layer" type: series background: rgb(255, 255, 255) {
-				data "3 rice" style: line value: tong_luc color: #yellow;
-				data "2 rice" style: line value: total_2rice_luk color: #lightyellow;
-				data "Fruit trees" style: line value: total_fruit_tree_lnk color: #darkgreen;
-				data "Annual crops" style: line value: tong_bhk color: #lightgreen;
-				data "Aquaculture" style: line value: tong_tsl color: #cyan;
-				data "Rice - aquaculture" style: line value: total_rice_shrimp color: rgb(40, 150, 120);
-			}
-
-		}
-
-	}
-
-}
-
-experiment "ExploreVulnerable" type: batch repeat: 1 keep_seed: true until: (time >= 15) {
-
-//	float climate_maxTAS_thuysan<- 30.0;//-35 , tăng 0.5
-//	float climate_maxPR_thuysan<-300.0;//-500, tăng 50
+//		display risk_cell type: opengl {
+//			species district;
+//			species farming_unit aspect: risky;
+//		}
 //
-//	float climate_maxTAS_caytrong<- 30.0;//-35 , tăng 0.5
-//	float climate_maxPR_caytrong<- 100.0;// - 300, tăng 50
-
-//	parameter 'climate_maxTAS_thuysan' var: climate_maxTAS_thuysan min: 28.0 max: 30.0 step: 0.5;
-//	parameter 'climate_maxPR_thuysan' var: climate_maxPR_thuysan min: 380.0 max: 420.0 step: 20.0;
-	parameter 'climate_maxTAS_caytrong' var: climate_maxTAS_caytrong min: 28.0 max: 30.0 step: 0.5;
-	parameter 'climate_minPR_caytrong' var: climate_minPR_caytrong min: 100.0 max: 200.0 step: 50.0;
-	parameter "Scenarios" var: scenario <- 0;
-	//	method exhaustive minimize: (area_rice_fruit_tree_risk + area_shrimp_tsl_risk);
-	reflex end_of_runs {
-		ask simulations {
-			save
-			['2030', tong_luc, total_2rice_luk, total_rice_shrimp, tong_tsl, tong_bhk, total_fruit_tree_lnk, proportion_ago_supported, proportion_aqua_supported, climate_maxTAS_shrimp, climate_maxPR_thuysan, climate_maxTAS_caytrong, climate_minPR_caytrong, area_shrimp_tsl_risk, area_rice_fruit_tree_risk, budget_supported]
-			type: "csv" to: "../result/Climate_explore_rice.csv" rewrite: false;
-		}
-
-	}
-
-}
-
-experiment "ExploreSC3" type: batch repeat: 1 keep_seed: true until: (time >= 15) {
-	parameter 'proportion_aqua_supported' var: proportion_aqua_supported min: 0.3 max: 0.9 step: 0.3;
-	parameter 'proportion_ago_supported' var: proportion_ago_supported min: 0.3 max: 0.9 step: 0.3;
-	parameter "Scenarios" var: scenario <- 3;
-	//	method exhaustive minimize: (area_rice_fruit_tree_risk + area_shrimp_tsl_risk);
-	parameter "proportion_aquafarmers_adapted" var: proportion_aquafarmers_adapted <- 1 - proportion_aqua_supported;
-	// proportion_aquafarmers_adapted when applied proportion_aqua_supported .
-	reflex end_of_runs {
-		ask simulations {
-			save
-			['2030', tong_luc, total_2rice_luk, total_rice_shrimp, tong_tsl, tong_bhk, total_fruit_tree_lnk, proportion_ago_supported, proportion_aqua_supported, area_shrimp_tsl_risk, area_rice_fruit_tree_risk, budget_supported, total_income_lost]
-			type: "csv" to: "../results/Sc3_explore.csv" rewrite: false;
-		}
+//		display "Risk by climate" type: java2D {
+//			chart "Layer" type: series background: rgb(255, 255, 255) {
+//				data "Risk for shrimp" style: line value: area_shrimp_tsl_risk color: #blue;
+//				data "Fresh water demand area 3 rice" style: line value: area_rice_fruit_tree_risk color: #red;
+//				//data "Fresh water demand area fruit" style: line value: dt_caq_risk color: #darkgreen;
+//			}
+//
+//		}
+//
+//		display "landuse chart" type: java2D {
+//			chart "Layer" type: series background: rgb(255, 255, 255) {
+//				data "3 rice" style: line value: tong_luc color: #yellow;
+//				data "2 rice" style: line value: total_2rice_luk color: #lightyellow;
+//				data "Fruit trees" style: line value: total_fruit_tree_lnk color: #darkgreen;
+//				data "Annual crops" style: line value: tong_bhk color: #lightgreen;
+//				data "Aquaculture" style: line value: tong_tsl color: #cyan;
+//				data "Rice - aquaculture" style: line value: total_rice_shrimp color: rgb(40, 150, 120);
+//			}
+//
+//		}
 
 	}
 
 }
 
-experiment "ExploreSC2" type: batch repeat: 1 keep_seed: true until: (time >= 15) {
-	parameter 'proportion_aqua_supported' var: proportion_aqua_supported min: 0.3 max: 0.9 step: 0.3;
-	parameter 'proportion_ago_supported' var: proportion_ago_supported min: 0.3 max: 0.9 step: 0.3;
-	parameter "Scenarios" var: scenario <- 2;
-	//	method exhaustive minimize: (area_rice_fruit_tree_risk + area_shrimp_tsl_risk)  ;
-	reflex end_of_runs {
-		ask simulations {
-			save
-			['2030', tong_luc, total_2rice_luk, total_rice_shrimp, tong_tsl, tong_bhk, total_fruit_tree_lnk, proportion_ago_supported, proportion_aqua_supported, area_shrimp_tsl_risk, area_rice_fruit_tree_risk, budget_supported]
-			type: "csv" to: "../results/Sc2_explore.csv" rewrite: false;
-		}
-
-	}
-
-}
-
-experiment "ExploreSC1" type: batch repeat: 1 keep_seed: true until: (time >= 15) {
-	parameter 'proportion_aquafarmers_adapted' var: proportion_aquafarmers_adapted min: 0.3 max: 0.9 step: 0.3;
-	parameter 'proportion_agrofarmers_adapted' var: proportion_agrofarmers_adapted min: 0.3 max: 0.9 step: 0.3;
-	parameter "Scenarios" var: scenario <- 1;
-	//	method exhaustive minimize: (area_rice_fruit_tree_risk + area_shrimp_tsl_risk)  ;
-	reflex end_of_runs {
-		ask simulations {
-			save
-			['2030', tong_luc, total_2rice_luk, total_rice_shrimp, tong_tsl, tong_bhk, total_fruit_tree_lnk, proportion_agrofarmers_adapted, proportion_aquafarmers_adapted, area_shrimp_tsl_risk, area_rice_fruit_tree_risk, budget_supported]
-			type: "csv" to: "../results/Sc1_explore_" + scenario + ".csv" rewrite: false;
-		}
-
-	}
-
-}
-
-experiment "single sim SC1" type: gui {
-parameter "Trong số lân cận" var: area_shrimp_tsl_risk <- 0.6;
-	parameter "Trọng số khó khăn" var: area_rice_fruit_tree_risk <- 0.5;
-	parameter "Trọng số thích nghi" var: area_fruit_tree_risk <- 0.7;
-	parameter "Trọng số lợi nhuận" var: w_profit <- 0.8;
-	//	parameter "Trọng số rủi ro biến đổi khí hậu" var: w_risky_climate <- 0.0;
-	parameter "Scenarios" var: scenario <- 1;
-	
-	action _init_ {
-		create simulation ;
-	}
-
-	output {
-		display mophong type: java2D {
-			grid farming_unit;
-			species river;
-			species road;
-			//	species donvidatdai;
-		}
-
-		//		display landunit type: java2D {
-		//			species donvidatdai;
-		//		}
-		display risk_cell type: opengl {
-			species district;
-			species farming_unit aspect: risky;
-		}
-
-		display "Risk by climate" type: java2D {
-			chart "Layer" type: series background: rgb(255, 255, 255) {
-				data "Risk for shrimp" style: line value: area_shrimp_tsl_risk color: #blue;
-				data "Fresh water demand area 3 rice" style: line value: area_rice_fruit_tree_risk color: #red;
-				//data "Fresh water demand area fruit" style: line value: dt_caq_risk color: #darkgreen;
-			}
-
-		}
-
-		display "landuse chart" type: java2D {
-			chart "Layer" type: series background: rgb(255, 255, 255) {
-				data "3 rice" style: line value: tong_luc color: #yellow;
-				data "2 rice" style: line value: total_2rice_luk color: #lightyellow;
-				data "Fruit trees" style: line value: total_fruit_tree_lnk color: #darkgreen;
-				data "Annual crops" style: line value: tong_bhk color: #lightgreen;
-				data "Aquaculture" style: line value: tong_tsl color: #cyan;
-				data "Rice - aquaculture" style: line value: total_rice_shrimp color: rgb(40, 150, 120);
-			}
-
-		}
-
-	}
-
-	reflex save_result_sim_csv when: (cycle mod 10 = 0) {
-		ask simulations {
-			save
-			[cycle+2015, tong_luc, total_2rice_luk, total_rice_shrimp, tong_tsl, tong_bhk, total_fruit_tree_lnk, proportion_agrofarmers_adapted, proportion_aquafarmers_adapted, area_shrimp_tsl_risk, area_rice_fruit_tree_risk, budget_supported]
-			type: "csv" to: "../results/Lu_sim_sc_" + scenario + ".csv" rewrite: false;
-		}
-
-	}
-
-}
-
-experiment "multi sim SC1" type: gui {
+//experiment "ExploreVulnerable" type: batch repeat: 1 keep_seed: true until: (time >= 15) {
+//
+////	float climate_maxTAS_thuysan<- 30.0;//-35 , tăng 0.5
+////	float climate_maxPR_thuysan<-300.0;//-500, tăng 50
+////
+////	float climate_maxTAS_caytrong<- 30.0;//-35 , tăng 0.5
+////	float climate_maxPR_caytrong<- 100.0;// - 300, tăng 50
+//
+////	parameter 'climate_maxTAS_thuysan' var: climate_maxTAS_thuysan min: 28.0 max: 30.0 step: 0.5;
+////	parameter 'climate_maxPR_thuysan' var: climate_maxPR_thuysan min: 380.0 max: 420.0 step: 20.0;
+//	parameter 'climate_maxTAS_caytrong' var: climate_maxTAS_caytrong min: 28.0 max: 30.0 step: 0.5;
+//	parameter 'climate_minPR_caytrong' var: climate_minPR_caytrong min: 100.0 max: 200.0 step: 50.0;
+//	parameter "Scenarios" var: scenario <- 0;
+//	//	method exhaustive minimize: (area_rice_fruit_tree_risk + area_shrimp_tsl_risk);
+//	reflex end_of_runs {
+//		ask simulations {
+//			save
+//			['2030', tong_luc, total_2rice_luk, total_rice_shrimp, tong_tsl, tong_bhk, total_fruit_tree_lnk, proportion_ago_supported, proportion_aqua_supported, climate_maxTAS_shrimp, climate_maxPR_thuysan, climate_maxTAS_caytrong, climate_minPR_caytrong, area_shrimp_tsl_risk, area_rice_fruit_tree_risk, budget_supported]
+//			type: "csv" to: "../result/Climate_explore_rice.csv" rewrite: false;
+//		}
+//
+//	}
+//
+//}
+//
+//experiment "ExploreSC3" type: batch repeat: 1 keep_seed: true until: (time >= 15) {
+//	parameter 'proportion_aqua_supported' var: proportion_aqua_supported min: 0.3 max: 0.9 step: 0.3;
+//	parameter 'proportion_ago_supported' var: proportion_ago_supported min: 0.3 max: 0.9 step: 0.3;
+//	parameter "Scenarios" var: scenario <- 3;
+//	//	method exhaustive minimize: (area_rice_fruit_tree_risk + area_shrimp_tsl_risk);
+//	parameter "proportion_aquafarmers_adapted" var: proportion_aquafarmers_adapted <- 1 - proportion_aqua_supported;
+//	// proportion_aquafarmers_adapted when applied proportion_aqua_supported .
+//	reflex end_of_runs {
+//		ask simulations {
+//			save
+//			['2030', tong_luc, total_2rice_luk, total_rice_shrimp, tong_tsl, tong_bhk, total_fruit_tree_lnk, proportion_ago_supported, proportion_aqua_supported, area_shrimp_tsl_risk, area_rice_fruit_tree_risk, budget_supported, total_income_lost]
+//			type: "csv" to: "../results/Sc3_explore.csv" rewrite: false;
+//		}
+//
+//	}
+//
+//}
+//
+//experiment "ExploreSC2" type: batch repeat: 1 keep_seed: true until: (time >= 15) {
+//	parameter 'proportion_aqua_supported' var: proportion_aqua_supported min: 0.3 max: 0.9 step: 0.3;
+//	parameter 'proportion_ago_supported' var: proportion_ago_supported min: 0.3 max: 0.9 step: 0.3;
+//	parameter "Scenarios" var: scenario <- 2;
+//	//	method exhaustive minimize: (area_rice_fruit_tree_risk + area_shrimp_tsl_risk)  ;
+//	reflex end_of_runs {
+//		ask simulations {
+//			save
+//			['2030', tong_luc, total_2rice_luk, total_rice_shrimp, tong_tsl, tong_bhk, total_fruit_tree_lnk, proportion_ago_supported, proportion_aqua_supported, area_shrimp_tsl_risk, area_rice_fruit_tree_risk, budget_supported]
+//			type: "csv" to: "../results/Sc2_explore.csv" rewrite: false;
+//		}
+//
+//	}
+//
+//}
+//
+//experiment "ExploreSC1" type: batch repeat: 1 keep_seed: true until: (time >= 15) {
 //	parameter 'proportion_aquafarmers_adapted' var: proportion_aquafarmers_adapted min: 0.3 max: 0.9 step: 0.3;
 //	parameter 'proportion_agrofarmers_adapted' var: proportion_agrofarmers_adapted min: 0.3 max: 0.9 step: 0.3;
-	parameter "Scenarios" var: scenario <- 1;
-	//	method exhaustive minimize: (area_rice_fruit_tree_risk + area_shrimp_tsl_risk)  ;
-	action _init_ {
-		list<string> dirs <- folder("../data").contents;
-		loop x from: 1 to: 3 {
-			loop y from: 1 to: 3 {
-				write "" + x * 0.3 + " " + y * 0.3;
-				loop d over: dirs {
-					write ("../data/" + d);
-					//			if (!file_exists("../data/"+d)) {
-					//				return;
-					//			}
-					//
-					//			file risk_csv_file <- csv_file("../data/"+d, ",", false);
-					//			matrix data <- (risk_csv_file.contents);
-					//			loop i from: 0 to: data.rows - 1 {
-					//				write data[0, i];
-					//			}
-					create simulation with: [proportion_aquafarmers_adapted::(x * 0.3), proportion_agrofarmers_adapted::(y * 0.3), risk_csv_file_path::("../data/" + d)];
-				}
-
-			}
-
-		}
-
-	}
-
-	reflex end_of_runs when: cycle >= 15 {
-		ask simulations {
-			save
-			['2030', tong_luc, total_2rice_luk, total_rice_shrimp, tong_tsl, tong_bhk, total_fruit_tree_lnk, proportion_agrofarmers_adapted, proportion_aquafarmers_adapted, area_shrimp_tsl_risk, area_rice_fruit_tree_risk, budget_supported]
-			type: "csv" to: "../results/Sc1_explore_" + scenario + ".csv" rewrite: false;
-		}
-
-	}
-
-}
+//	parameter "Scenarios" var: scenario <- 1;
+//	//	method exhaustive minimize: (area_rice_fruit_tree_risk + area_shrimp_tsl_risk)  ;
+//	reflex end_of_runs {
+//		ask simulations {
+//			save
+//			['2030', tong_luc, total_2rice_luk, total_rice_shrimp, tong_tsl, tong_bhk, total_fruit_tree_lnk, proportion_agrofarmers_adapted, proportion_aquafarmers_adapted, area_shrimp_tsl_risk, area_rice_fruit_tree_risk, budget_supported]
+//			type: "csv" to: "../results/Sc1_explore_" + scenario + ".csv" rewrite: false;
+//		}
+//
+//	}
+//
+//}
+//
+//experiment "single sim SC1" type: gui {
+//parameter "Trong số lân cận" var: area_shrimp_tsl_risk <- 0.6;
+//	parameter "Trọng số khó khăn" var: area_rice_fruit_tree_risk <- 0.5;
+//	parameter "Trọng số thích nghi" var: area_fruit_tree_risk <- 0.7;
+//	parameter "Trọng số lợi nhuận" var: w_profit <- 0.8;
+//	//	parameter "Trọng số rủi ro biến đổi khí hậu" var: w_risky_climate <- 0.0;
+//	parameter "Scenarios" var: scenario <- 1;
+//	
+//	action _init_ {
+//		create simulation ;
+//	}
+//
+//	output {
+//		display mophong type: java2D {
+//			grid farming_unit;
+//			species river;
+//			species road;
+//			//	species donvidatdai;
+//		}
+//
+//		//		display landunit type: java2D {
+//		//			species donvidatdai;
+//		//		}
+////		display risk_cell type: opengl {
+////			species district;
+////			species farming_unit aspect: risky;
+////		}
+////
+////		display "Risk by climate" type: java2D {
+////			chart "Layer" type: series background: rgb(255, 255, 255) {
+////				data "Risk for shrimp" style: line value: area_shrimp_tsl_risk color: #blue;
+////				data "Fresh water demand area 3 rice" style: line value: area_rice_fruit_tree_risk color: #red;
+////				//data "Fresh water demand area fruit" style: line value: dt_caq_risk color: #darkgreen;
+////			}
+////
+////		}
+////
+////		display "landuse chart" type: java2D {
+////			chart "Layer" type: series background: rgb(255, 255, 255) {
+////				data "3 rice" style: line value: tong_luc color: #yellow;
+////				data "2 rice" style: line value: total_2rice_luk color: #lightyellow;
+////				data "Fruit trees" style: line value: total_fruit_tree_lnk color: #darkgreen;
+////				data "Annual crops" style: line value: tong_bhk color: #lightgreen;
+////				data "Aquaculture" style: line value: tong_tsl color: #cyan;
+////				data "Rice - aquaculture" style: line value: total_rice_shrimp color: rgb(40, 150, 120);
+////			}
+////
+////		}
+//
+//	}
+//
+//	reflex save_result_sim_csv when: (cycle mod 10 = 0) {
+//		ask simulations {
+//			save
+//			[cycle+2015, tong_luc, total_2rice_luk, total_rice_shrimp, tong_tsl, tong_bhk, total_fruit_tree_lnk, proportion_agrofarmers_adapted, proportion_aquafarmers_adapted, area_shrimp_tsl_risk, area_rice_fruit_tree_risk, budget_supported]
+//			type: "csv" to: "../results/Lu_sim_sc_" + scenario + ".csv" rewrite: false;
+//		}
+//
+//	}
+//
+//}
+//
+//experiment "multi sim SC1" type: gui {
+////	parameter 'proportion_aquafarmers_adapted' var: proportion_aquafarmers_adapted min: 0.3 max: 0.9 step: 0.3;
+////	parameter 'proportion_agrofarmers_adapted' var: proportion_agrofarmers_adapted min: 0.3 max: 0.9 step: 0.3;
+//	parameter "Scenarios" var: scenario <- 1;
+//	//	method exhaustive minimize: (area_rice_fruit_tree_risk + area_shrimp_tsl_risk)  ;
+//	action _init_ {
+//		list<string> dirs <- folder("../data").contents;
+//		loop x from: 1 to: 3 {
+//			loop y from: 1 to: 3 {
+//				write "" + x * 0.3 + " " + y * 0.3;
+//				loop d over: dirs {
+//					write ("../data/" + d);
+//					//			if (!file_exists("../data/"+d)) {
+//					//				return;
+//					//			}
+//					//
+//					//			file risk_csv_file <- csv_file("../data/"+d, ",", false);
+//					//			matrix data <- (risk_csv_file.contents);
+//					//			loop i from: 0 to: data.rows - 1 {
+//					//				write data[0, i];
+//					//			}
+//					create simulation with: [proportion_aquafarmers_adapted::(x * 0.3), proportion_agrofarmers_adapted::(y * 0.3), risk_csv_file_path::("../data/" + d)];
+//				}
+//
+//			}
+//
+//		}
+//
+//	}
+//
+//	reflex end_of_runs when: cycle >= 15 {
+//		ask simulations {
+//			save
+//			['2030', tong_luc, total_2rice_luk, total_rice_shrimp, tong_tsl, tong_bhk, total_fruit_tree_lnk, proportion_agrofarmers_adapted, proportion_aquafarmers_adapted, area_shrimp_tsl_risk, area_rice_fruit_tree_risk, budget_supported]
+//			type: "csv" to: "../results/Sc1_explore_" + scenario + ".csv" rewrite: false;
+//		}
+//
+//	}
+//
+//}
 //
 //experiment "can_chinh" type: batch repeat: 1 keep_seed: true until: (time > 10) {
 //	parameter "lan can" var: w_lancan min: 0.7 max: 1.0 step: 0.1;

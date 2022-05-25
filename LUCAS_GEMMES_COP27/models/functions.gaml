@@ -1,6 +1,9 @@
 model SDD_MX_6_10_20
   
   import "params.gaml" 
+  import "entities/AEZ.gaml"
+  import "entities/province.gaml"
+  import "entities/land_subsidence.gaml"
   import "entities/land_unit.gaml"
   import "entities/dyke_protected.gaml"
  

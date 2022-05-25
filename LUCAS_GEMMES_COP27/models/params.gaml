@@ -5,6 +5,7 @@ import "entities/farming_unit.gaml"
 
 global {
 	file cell_file <- grid_file("../includes/ht2015_500x500_cutPQ_clipped.tif");
+//	file cell_file <- grid_file("../includes/subsidence/subscidence_tot_2030_500x500.tif");
 	file cell_salinity_file <- grid_file("../includes/mk_sal_2030_45_500x500.tif");
 	//	file cell_file <- grid_file("../includes/lu_100x100_mx_2005_new.tif");
 //	file MKD_bound <- shape_file("../includes/MKD_district.shp"); 
@@ -15,6 +16,7 @@ global {
 	file dvdd_file <- shape_file("../includes/vmd_land_unit_cleaned.shp");
 	file MKD_file <- shape_file("../includes/MKD.shp");
 	file dyke_file <- shape_file("../includes/mk_dyke_region.shp");
+	file aez_file <- shape_file("../includes/AEZ/aezone_MKD_region.shp");
 	matrix ability_matrix;
 	map<string,float> ability_map;
 	file ability_file <- csv_file("../includes/khokhanchuyendoi.csv", false);
@@ -27,6 +29,7 @@ global {
 	//file cell_dat_2010_file <- grid_file(""); //../includes/ht2015_500x500cutPQ.tif");
 	//list<cell_dat_2010> active_cell_dat2010 <- cell_dat_2010 where (each.grid_value != 0.0);
 	file district_file <- shape_file("../includes/MKD_district.shp");
+	file province_file <- shape_file("../includes/MKD_province.shp");
 	float tong_luc;
 	float tong_tsl;
 	float tong_bhk;

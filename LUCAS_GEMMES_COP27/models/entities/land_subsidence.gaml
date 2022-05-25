@@ -1,6 +1,9 @@
-model province
+model land_subsidence
 
-species province {
+global{
+	field  field_subsidence<-field(grid_file("../includes/subsidence/subscidence_tot_2030_500x500_nodata.tif"));
+}
+species land_subsidence {
 	int Id_1;
 	int Id_2;
 	int climat_cod;
