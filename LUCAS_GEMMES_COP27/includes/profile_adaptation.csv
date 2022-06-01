@@ -1,7 +1,7 @@
 Adaptation profile,AEZ name,Subsidencelow,Subsidencehight,5,6,12,34,14,101
 Living with flood,Up stream zone,0,0.1,1,1,1,0,0.67,0
 Optimize farmer income,Middle zone,0,0.1,1,1,1,0,1,0
-Living with salt water ,Coastal zone,0,0.1,0,1,1,1,1,1
-Living with flood protect groundwater ,Up stream zone,0.1,10,0.67,1,0.67,0,0.67,0
+Living with salt water,Coastal zone,0,0.1,0,1,1,1,1,1
+Living with flood protect groundwater,Up stream zone,0.1,10,0.67,1,0.67,0,0.67,0
 Optimize  income protect groundwater,Middle zone,0.1,10,0.67,1,0.67,0,0.67,0
-Living with salt water protect groundwater ,Coastal zone,0.1,10,0,1,0.33,1,0.33,1
+Living with salt water protect groundwater,Coastal zone,0.1,10,0,1,0.33,1,0.33,1

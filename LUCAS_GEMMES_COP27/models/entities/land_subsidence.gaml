@@ -1,7 +1,7 @@
 model land_subsidence
-
+import "../params.gaml"
 global{
-	field  field_subsidence<-field(grid_file("../includes/subsidence/subscidence_tot_2030_500x500_nodata.tif"));
+	field  field_subsidence<-field(cell_subsidence_file);
 }
 species land_subsidence {
 	int Id_1;

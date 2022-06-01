@@ -102,10 +102,8 @@ global {
 		write "Tong dt khac:" + total_rice_shrimp;
 	}
 
-	action docmatran_khokhan {
-		ability_matrix <- matrix(ability_file);
-		int i <- 0;
-		int j <- 0;
+	action load_ability_data {
+		ability_matrix <- matrix(ability_file); 
 		loop i from: 1 to: ability_matrix.rows - 1 {
 			int landuse1 <- int(ability_matrix[0, i]);
 			loop j from: 1 to: ability_matrix.columns - 1 { //do tung cot cua matran
@@ -115,23 +113,34 @@ global {
 
 		}
 
-		write "Matra kho khann:" + ability_map;
+		write "Ability map:" + ability_map;
 	}
 
-	action docmatran_thichnghi {
-		suitability_matrix <- matrix(suitability_file);
-		int i <- 0;
-		int j <- 0;
+	action load_suitability_data {
+		suitability_matrix <- matrix(suitability_file); 
 		loop i from: 1 to: suitability_matrix.rows - 1 {
 			int madvdd_ <- int(suitability_matrix[0, i]);
 			loop j from: 1 to: suitability_matrix.columns - 1 { //do tung cot cua matran
 				int LUT <- int(suitability_matrix[j, 0]);
-				matran_thichnghi_map <+ "" + madvdd_ + " " + LUT::float(suitability_matrix[j, i]);
+				suitability_map <+ "" + madvdd_ + " " + LUT::float(suitability_matrix[j, i]);
 			}
 
 		}
 
-		write "Ma tran thich nghi" + matran_thichnghi_map;
+		write "Suitability Map" + suitability_map;
+	}
+
+	action load_profile_adaptation{
+		profile_matrix <- matrix(profile_file); 
+		loop i from: 0 to: profile_matrix.rows - 1 {
+			int madvdd_ <- int(profile_matrix[0, i]);
+			loop j from: 0 to: profile_matrix.columns - 1 { //do tung cot cua matran 
+				profile_map <+ (""+profile_matrix[1,i] + profile_matrix[2,i] + profile_matrix[3,i])::(""+profile_matrix[0,i]);
+			}
+
+		}
+
+		write "Profile map" + profile_map;
 	}
 
 	action tinh_kappa {

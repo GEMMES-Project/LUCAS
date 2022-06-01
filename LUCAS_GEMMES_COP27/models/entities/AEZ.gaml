@@ -1,4 +1,4 @@
-model province
+model Aez
 
 species AEZ {
 	int Id_1;

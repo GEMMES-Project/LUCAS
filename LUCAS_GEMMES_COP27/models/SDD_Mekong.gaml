@@ -9,8 +9,9 @@ global {
 
 	init {
 	//load ban do tu cac ban do vao tac tu
-		do docmatran_thichnghi;
-		do docmatran_khokhan;
+		do load_suitability_data;
+		do load_ability_data;
+		do load_profile_adaptation;
 		create district from: district_file{// with: [dist_name::read('dist_name')]
 		//			write climat_cod;
 		}
@@ -28,8 +29,11 @@ global {
 		
 //		create xa from: huyen_file with: [tenxa::read('Tenxa')];
 		ask active_cell parallel: true {
-			sal <- first(cell_salinity overlapping self).grid_value;
-			my_tinh <- first(district overlapping self);
+			sal <- field_salinity[location];//first(cell_salinity overlapping self).grid_value;
+			sub <- field_subsidence[location];//first(cell_salinity overlapping self).grid_value;
+			my_district <- first(district overlapping self);
+			my_province <- first(province overlapping self);
+			my_aez <- first(AEZ overlapping self);
 			cell_lancan <- (neighbors where (!dead(each)) where (each.grid_value != 0.0)); //1 ban kinh lan can laf 2 cell = 8 cell xung quanh 1 cell
 			//			cell_lancan <- (self neighbors_at 2) where (!dead(each)); //1 ban kinh lan can laf 2 cell = 8 cell xung quanh 1 cell
 			do to_mau;
@@ -44,6 +48,10 @@ global {
 			//				}
 			//
 			//			}
+			if(my_province!=nil and my_province.agreed_aez and my_aez!=nil){
+				string p_key<-my_aez.aezone+(sub<=0.1?"00.1":"0.110");
+				profile<-profile_map[p_key];
+			}
 
 		}
 		//
@@ -73,6 +81,10 @@ global {
 		total_income_lost <- 0.0;
 		ask active_cell parallel: true {
 			do tinh_chiso_lancan;
+			if(my_province!=nil and my_province.agreed_aez and my_aez!=nil){
+				string p_key<-my_aez.aezone+(sub<=0.1?"00.1":"0.110");
+				profile<-profile_map[p_key];
+			}
 		}
 
 		ask active_cell parallel: true {
@@ -153,6 +165,63 @@ global {
 	}
 
 }
+
+experiment "Landuse change" type: gui {
+	parameter "Trong số lân cận" var: area_shrimp_tsl_risk <- 0.6;
+	parameter "Trọng số khó khăn" var: area_rice_fruit_tree_risk <- 0.5;
+	parameter "Trọng số thích nghi" var: area_fruit_tree_risk <- 0.7;
+	parameter "Trọng số lợi nhuận" var: w_profit <- 0.8;
+	//	parameter "Trọng số rủi ro biến đổi khí hậu" var: w_risky_climate <- 0.0;
+	parameter "Scenarios" var: scenario <- 0; 
+	
+	output {
+		display mophong type: opengl {
+			species farming_unit aspect: profile;
+////			grid farming_unit;
+//			species river;
+//			species road;
+////			species province;
+////			agents value:active_cell;
+////			species AEZ transparency:0.3;			
+//			mesh field_subsidence color: palette(reverse(brewer_colors("Blues"))) scale:10 smooth: 4;//  
+//			mesh field_salinity color: palette(reverse(brewer_colors("Blues"))) scale:10 smooth: 4;//  
+//			
+////			species district;
+//			//	species donvidatdai;
+		}
+
+		//		display landunit type: java2D {
+		//			species donvidatdai;
+		//		}
+//		display risk_cell type: opengl {
+//			species district;
+//			species farming_unit aspect: risky;
+//		}
+//
+//		display "Risk by climate" type: java2D {
+//			chart "Layer" type: series background: rgb(255, 255, 255) {
+//				data "Risk for shrimp" style: line value: area_shrimp_tsl_risk color: #blue;
+//				data "Fresh water demand area 3 rice" style: line value: area_rice_fruit_tree_risk color: #red;
+//				//data "Fresh water demand area fruit" style: line value: dt_caq_risk color: #darkgreen;
+//			}
+//
+//		}
+//
+//		display "landuse chart" type: java2D {
+//			chart "Layer" type: series background: rgb(255, 255, 255) {
+//				data "3 rice" style: line value: tong_luc color: #yellow;
+//				data "2 rice" style: line value: total_2rice_luk color: #lightyellow;
+//				data "Fruit trees" style: line value: total_fruit_tree_lnk color: #darkgreen;
+//				data "Annual crops" style: line value: tong_bhk color: #lightgreen;
+//				data "Aquaculture" style: line value: tong_tsl color: #cyan;
+//				data "Rice - aquaculture" style: line value: total_rice_shrimp color: rgb(40, 150, 120);
+//			}
+//
+//		}
+
+	}
+
+}
 //experiment "LU_3scenarios" type: batch repeat: 1 keep_seed: true until: (time > 35) {
 //	//parameter 'proportion_aqua_supported' var: proportion_aqua_supported min: 0.3 max: 0.9 step: 0.3;
 //	//parameter 'proportion_ago_supported' var: proportion_ago_supported min: 0.3 max: 0.9 step: 0.3;
@@ -192,59 +261,6 @@ global {
 //	}
 //
 //}
-experiment "Landuse change" type: gui {
-	parameter "Trong số lân cận" var: area_shrimp_tsl_risk <- 0.6;
-	parameter "Trọng số khó khăn" var: area_rice_fruit_tree_risk <- 0.5;
-	parameter "Trọng số thích nghi" var: area_fruit_tree_risk <- 0.7;
-	parameter "Trọng số lợi nhuận" var: w_profit <- 0.8;
-	//	parameter "Trọng số rủi ro biến đổi khí hậu" var: w_risky_climate <- 0.0;
-	parameter "Scenarios" var: scenario <- 0; 
-	
-	output {
-		display mophong type: opengl {
-//			grid farming_unit;
-			species river;
-			species road;
-//			species province;
-//			species AEZ transparency:0.3;			
-			mesh field_subsidence color: palette(reverse(brewer_colors("Blues"))) scale:10 smooth: 4;//  
-			
-//			species district;
-			//	species donvidatdai;
-		}
-
-		//		display landunit type: java2D {
-		//			species donvidatdai;
-		//		}
-//		display risk_cell type: opengl {
-//			species district;
-//			species farming_unit aspect: risky;
-//		}
-//
-//		display "Risk by climate" type: java2D {
-//			chart "Layer" type: series background: rgb(255, 255, 255) {
-//				data "Risk for shrimp" style: line value: area_shrimp_tsl_risk color: #blue;
-//				data "Fresh water demand area 3 rice" style: line value: area_rice_fruit_tree_risk color: #red;
-//				//data "Fresh water demand area fruit" style: line value: dt_caq_risk color: #darkgreen;
-//			}
-//
-//		}
-//
-//		display "landuse chart" type: java2D {
-//			chart "Layer" type: series background: rgb(255, 255, 255) {
-//				data "3 rice" style: line value: tong_luc color: #yellow;
-//				data "2 rice" style: line value: total_2rice_luk color: #lightyellow;
-//				data "Fruit trees" style: line value: total_fruit_tree_lnk color: #darkgreen;
-//				data "Annual crops" style: line value: tong_bhk color: #lightgreen;
-//				data "Aquaculture" style: line value: tong_tsl color: #cyan;
-//				data "Rice - aquaculture" style: line value: total_rice_shrimp color: rgb(40, 150, 120);
-//			}
-//
-//		}
-
-	}
-
-}
 
 //experiment "ExploreVulnerable" type: batch repeat: 1 keep_seed: true until: (time >= 15) {
 //

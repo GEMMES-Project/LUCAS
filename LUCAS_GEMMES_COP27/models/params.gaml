@@ -6,7 +6,9 @@ import "entities/farming_unit.gaml"
 global {
 	file cell_file <- grid_file("../includes/ht2015_500x500_cutPQ_clipped.tif");
 //	file cell_file <- grid_file("../includes/subsidence/subscidence_tot_2030_500x500.tif");
-	file cell_salinity_file <- grid_file("../includes/mk_sal_2030_45_500x500.tif");
+	grid_file cell_salinity_file <- grid_file("../includes/mk_sal_2030_45_500x500.tif");
+	grid_file cell_subsidence_file <- grid_file("../includes/subsidence/subscidence_tot_2030_500x500_nodata.tif");
+	
 	//	file cell_file <- grid_file("../includes/lu_100x100_mx_2005_new.tif");
 //	file MKD_bound <- shape_file("../includes/MKD_district.shp"); 
 	geometry shape <- envelope(cell_file);
@@ -21,8 +23,11 @@ global {
 	map<string,float> ability_map;
 	file ability_file <- csv_file("../includes/khokhanchuyendoi.csv", false);
 	matrix suitability_matrix;	
-	map<string,float> matran_thichnghi_map;
+	matrix profile_matrix;	
+	map<string,float> suitability_map;
+	map<string,string> profile_map;
 	file suitability_file <- csv_file("../includes/landsuitability.csv", false);
+	file profile_file <- csv_file("../includes/profile_adaptation.csv", true);
 	string risk_csv_file_path<-"../data/_31model_RCP85_CMIP5_tmaxavg_tmaxmax_premin.csv";
 	list criteria;
 	float v_kappa <- 0.0;
