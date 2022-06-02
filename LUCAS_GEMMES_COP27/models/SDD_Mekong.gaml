@@ -176,8 +176,8 @@ experiment "Landuse change" type: gui {
 	
 	output {
 		display mophong type: opengl {
-			species farming_unit aspect: profile;
-////			grid farming_unit;
+//			species farming_unit aspect: profile;
+			grid farming_unit;
 //			species river;
 //			species road;
 ////			species province;
