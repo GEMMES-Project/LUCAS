@@ -1,12 +1,12 @@
 model SDD_MX_6_10_20
-  
-  import "params.gaml" 
-  import "entities/AEZ.gaml"
-  import "entities/province.gaml"
-  import "entities/land_subsidence.gaml"
-  import "entities/land_unit.gaml"
-  import "entities/dyke_protected.gaml"
- 
+
+import "params.gaml"
+import "entities/AEZ.gaml"
+import "entities/province.gaml"
+import "entities/land_subsidence.gaml"
+import "entities/land_unit.gaml"
+import "entities/dyke_protected.gaml"
+
 global {
 
 //	action load_climate_PR {
@@ -38,14 +38,15 @@ global {
 		file risk_csv_file <- csv_file(fpath, ",", false);
 		matrix data <- (risk_csv_file.contents);
 		loop i from: 1 to: data.rows - 1 {
-			if(length(district where (each.climat_cod = int(data[0, i])))=0){
+			if (length(district where (each.climat_cod = int(data[0, i]))) = 0) {
 				write int(data[0, i]);
 			}
+
 			district t <- (district where (each.climat_cod = int(data[0, i])))[0];
-//			write "" + int(data[1, i]) + "," + int(data[2, i]);
+			//			write "" + int(data[1, i]) + "," + int(data[2, i]);
 			ask t {
 				data_tas["" + int(data[1, i]) + "," + int(data[2, i])] <- float(data[4, i]); //prcipitation is in column 5 in data file
-				data_pr["" + int(data[1, i]) + "," + int(data[2, i])] <- float(data[5, i]);// prcipitation is in column 5 in data file
+				data_pr["" + int(data[1, i]) + "," + int(data[2, i])] <- float(data[5, i]); // prcipitation is in column 5 in data file
 			}
 
 		}
@@ -74,6 +75,7 @@ global {
 			data_tas <- t.data_tas;
 			data_pr <- t.data_pr;
 		}
+
 	}
 
 	action tinhtongdt {
@@ -103,7 +105,7 @@ global {
 	}
 
 	action load_ability_data {
-		ability_matrix <- matrix(ability_file); 
+		ability_matrix <- matrix(ability_file);
 		loop i from: 1 to: ability_matrix.rows - 1 {
 			int landuse1 <- int(ability_matrix[0, i]);
 			loop j from: 1 to: ability_matrix.columns - 1 { //do tung cot cua matran
@@ -117,7 +119,7 @@ global {
 	}
 
 	action load_suitability_data {
-		suitability_matrix <- matrix(suitability_file); 
+		suitability_matrix <- matrix(suitability_file);
 		loop i from: 1 to: suitability_matrix.rows - 1 {
 			int madvdd_ <- int(suitability_matrix[0, i]);
 			loop j from: 1 to: suitability_matrix.columns - 1 { //do tung cot cua matran
@@ -130,17 +132,18 @@ global {
 		write "Suitability Map" + suitability_map;
 	}
 
-	action load_profile_adaptation{
-		profile_matrix <- matrix(profile_file); 
-		loop i from: 0 to: profile_matrix.rows - 1 {
-			int madvdd_ <- int(profile_matrix[0, i]);
-			loop j from: 0 to: profile_matrix.columns - 1 { //do tung cot cua matran 
-				profile_map <+ (""+profile_matrix[1,i] + profile_matrix[2,i] + profile_matrix[3,i])::(""+profile_matrix[0,i]);
+	action load_profile_adaptation {
+		profile_matrix <- matrix(profile_file);
+		loop i from: 1 to: profile_matrix.rows - 1 {
+			profile_map <+ ("" + profile_matrix[1, i] + profile_matrix[2, i] + profile_matrix[3, i])::("" + profile_matrix[0, i]);
+			loop j from: 4 to: profile_matrix.columns - 1 { //do tung cot cua matran 
+				supported_lu_type <+ "" + profile_matrix[0, i] + profile_matrix[j, 0]::float(profile_matrix[j, i]);
 			}
 
 		}
 
 		write "Profile map" + profile_map;
+		write "supported_lu_type " + supported_lu_type; 
 	}
 
 	action tinh_kappa {
@@ -206,8 +209,10 @@ global {
 
 			}
 			// Lưu kết quả tính từng loại đất vào biến toại đát ương ứng của huyện
-			save [tinh_obj.NAME_1, area_3rice_luc, area_2rice_luk, area_rice_shrimp, area_shrimp_tsl, area_vegetable_bhk, area_fruit_tree_lnk, area_other] to: "../results/hientrang_tinh.csv" type: "csv" rewrite: false;
-			write tinh_obj.NAME_1 + '; ' + area_3rice_luc + '; ' + area_2rice_luk + '; ' + area_rice_shrimp + ';  ' + area_shrimp_tsl + '; ' + area_vegetable_bhk + '; ' + area_fruit_tree_lnk + '; ' + area_other;
+			save [tinh_obj.NAME_1, area_3rice_luc, area_2rice_luk, area_rice_shrimp, area_shrimp_tsl, area_vegetable_bhk, area_fruit_tree_lnk, area_other] to:
+			"../results/hientrang_tinh.csv" type: "csv" rewrite: false;
+			write
+			tinh_obj.NAME_1 + '; ' + area_3rice_luc + '; ' + area_2rice_luk + '; ' + area_rice_shrimp + ';  ' + area_shrimp_tsl + '; ' + area_vegetable_bhk + '; ' + area_fruit_tree_lnk + '; ' + area_other;
 		}
 		// ghu kết quả huyen ra file shapfile thuộc tính gồm 3 cột: ten xa, dt luc, dt tsl. Nếu có thểm thì cứ thêm loại đất vào
 		save district to: "../results/tinh_landuse.shp" type: "shp" attributes:

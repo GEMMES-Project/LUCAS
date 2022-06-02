@@ -258,6 +258,7 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 			//				}
 			//
 			//			}
+			int old_lu<-landuse;
 			if (choice = 1) {
 			//	if (xet_thichnghi(madvdd, 34) > 0) { // Suitability > S3
 			//	if flip(w_flip) {
@@ -297,6 +298,15 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 					landuse <- 101;
 				}
 
+			}
+			int new_lu<-landuse;
+			if(profile!=""){
+				landuse<-old_lu;
+				if(supported_lu_type[profile+landuse]!=nil){
+					if(flip(supported_lu_type[profile+landuse])){
+						landuse<-new_lu;
+					}
+				}
 			}
 
 		}

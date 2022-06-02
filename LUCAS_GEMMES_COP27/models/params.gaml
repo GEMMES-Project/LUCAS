@@ -26,8 +26,9 @@ global {
 	matrix profile_matrix;	
 	map<string,float> suitability_map;
 	map<string,string> profile_map;
+	map<string,float> supported_lu_type;
 	file suitability_file <- csv_file("../includes/landsuitability.csv", false);
-	file profile_file <- csv_file("../includes/profile_adaptation.csv", true);
+	file profile_file <- csv_file("../includes/profile_adaptation.csv", false);
 	string risk_csv_file_path<-"../data/_31model_RCP85_CMIP5_tmaxavg_tmaxmax_premin.csv";
 	list criteria;
 	float v_kappa <- 0.0;
