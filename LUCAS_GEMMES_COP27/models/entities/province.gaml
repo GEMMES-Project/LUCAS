@@ -17,7 +17,8 @@ species province {
 //	list data_pr;
 	map<string,float> data_pr;
 	map<string,float> data_tas;
-	float pumping;
+	float pumping;//no , 0-2%
+	float budget_invest;//
 	bool agreed_aez<-true;
 
 	init {

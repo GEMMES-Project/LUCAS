@@ -1,4 +1,7 @@
 model district
+global{
+	map<int,district> map_district_by_climat_cod;
+}
 
 species district {
 	int Id_1;
@@ -19,8 +22,9 @@ species district {
 	map<string,float> data_tas;
 
 	init {
+		map_district_by_climat_cod<+climat_cod::self;
 	}
 	aspect default{
-		draw shape empty:true border:#gray;
+		draw shape wireframe:true border:#gray;
 	}
 }

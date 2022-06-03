@@ -1,42 +1,38 @@
-
 model SDD_MX_6_10_20
-  
+
 import "functions.gaml"
 import "entities/river.gaml"
-import "entities/road.gaml" 
+import "entities/road.gaml"
 
-global { 
+global {
 
 	init {
 	//load ban do tu cac ban do vao tac tu
+		create district from: district_file {
+		}
+
+		create province from: province_file {
+			agreed_aez <- use_profile_adaptation;
+		}
+
+		create AEZ from: aez_file;
+		write "gis loaded";
 		do load_suitability_data;
 		do load_ability_data;
 		do load_profile_adaptation;
-		create district from: district_file{// with: [dist_name::read('dist_name')]
-		//			write climat_cod;
-		}
-		create province from: province_file{// with: [dist_name::read('dist_name')]
-		//			write climat_cod;
-		}
-		//		do load_climate_PR;
 		do load_climate_TAS;
-		//		create song from: song_file;
-		//		create duong from: duong_file;
-		create land_unit from: dvdd_file with: [dvdd::int(read('Code'))];
-		create dyke_protected from: dyke_file with: [de::int(read('De'))];
-		
-		create AEZ from:aez_file;
-		
-//		create xa from: huyen_file with: [tenxa::read('Tenxa')];
+		write "matrix loaded";
+
+		//		create xa from: huyen_file with: [tenxa::read('Tenxa')];
 		ask active_cell parallel: true {
-			sal <- field_salinity[location];//first(cell_salinity overlapping self).grid_value;
-			sub <- field_subsidence[location];//first(cell_salinity overlapping self).grid_value;
+			sal <- field_salinity[location]; //first(cell_salinity overlapping self).grid_value;
+			sub <- field_subsidence[location]; //first(cell_salinity overlapping self).grid_value;
 			my_district <- first(district overlapping self);
 			my_province <- first(province overlapping self);
 			my_aez <- first(AEZ overlapping self);
 			cell_lancan <- (neighbors where (!dead(each)) where (each.grid_value != 0.0)); //1 ban kinh lan can laf 2 cell = 8 cell xung quanh 1 cell
 			//			cell_lancan <- (self neighbors_at 2) where (!dead(each)); //1 ban kinh lan can laf 2 cell = 8 cell xung quanh 1 cell
-			do to_mau;
+			//			do to_mau;
 			//			date tmp <- the_date;
 			//			loop i from: 1 to: 5 {
 			//				tmp <- tmp add_years 5;
@@ -48,21 +44,28 @@ global {
 			//				}
 			//
 			//			}
-			if(my_province!=nil and my_province.agreed_aez and my_aez!=nil){
-				string p_key<-my_aez.aezone+(sub<=0.1?"00.1":"0.110");
-				profile<-profile_map[p_key];
+			if (my_province != nil and my_province.agreed_aez and my_aez != nil) {
+				string p_key <- my_aez.aezone + (sub <= 0.1 ? "00.1" : "0.110");
+				profile <- profile_map[p_key];
 			}
 
+			//			if(my_province!=nil and my_province.agreed_aez and my_aez!=nil){
+			//				string p_key<-my_aez.aezone+(sub<=0.1?"00.1":"0.110");
+			//				profile<-profile_map[p_key];
+			//			}
 		}
+
+		write "cell initialized";
 		//
 		//		ask active_cell_dat2010 {
 		//			do tomau;
 		//		}
 		do gan_dvdd;
-		do gan_cell_hc;
+		//		do gan_cell_hc;
 		criteria <-
 		[["name"::"lancan", "weight"::area_shrimp_tsl_risk], ["name"::"khokhan", "weight"::area_rice_fruit_tree_risk], ["name"::"thichnghi", "weight"::area_fruit_tree_risk], ["name"::"loinhuan", "weight"::w_profit]];
 		//	save "year, 3 rice,2 rice, rice-shrimp,shrimp,vegetables, risk_aqua,risk_rice" type: "text" to: "result/landuse_res.csv" rewrite: true;
+		write "ready";
 	}
 
 	reflex main_reflex {
@@ -81,16 +84,16 @@ global {
 		total_income_lost <- 0.0;
 		ask active_cell parallel: true {
 			do tinh_chiso_lancan;
-			if(my_province!=nil and my_province.agreed_aez and my_aez!=nil){
-				string p_key<-my_aez.aezone+(sub<=0.1?"00.1":"0.110");
-				profile<-profile_map[p_key];
-			}
 		}
 
 		ask active_cell parallel: true {
 			do luachonksd;
+		}
+
+		ask active_cell parallel: true {
 			do adptation_sc; // applied when scenarios 1 or 2
-			do to_mau;
+			field_farming_unit[location] <- landuse;
+			//			do to_mau;
 			if (landuse = 5) {
 				tong_luc <- tong_luc + pixel_size; //pixel size = 500x500
 			}
@@ -148,17 +151,18 @@ global {
 			ask active_cell {
 				grid_value <- float(landuse);
 			}
+
 			save farming_unit to: "../results/landuse_sim_" + year + "sc" + scenario + ".tif" type: "geotiff";
 		}
 		// save resul map
-		if (year >2050) {
+		if (year > 2050) {
 		//save ss type: "text" to: "result/res.csv" rewrite: false;
 		//			string
 		//			ss <- "" + climate_maxTAS_thuysan + ";" + climate_maxPR_thuysan + ";" + climate_maxTAS_caytrong + ";" + climate_maxPR_caytrong + ";" + dt_raumau_risk + ";" + area_shrimp_tsl_risk + "\n";
 		//			save ss type: "text" to: "result/res.csv" rewrite: false;
 		//			//			do tinh_kappa;
-			
-			//			//	do tinh_dtmx;
+
+		//			//	do tinh_dtmx;
 			do pause;
 		}
 
@@ -172,52 +176,53 @@ experiment "Landuse change" type: gui {
 	parameter "Trọng số thích nghi" var: area_fruit_tree_risk <- 0.7;
 	parameter "Trọng số lợi nhuận" var: w_profit <- 0.8;
 	//	parameter "Trọng số rủi ro biến đổi khí hậu" var: w_risky_climate <- 0.0;
-	parameter "Scenarios" var: scenario <- 0; 
-	
+	parameter "Scenarios" var: scenario <- 0;
+	//	init{
+	//		create simulation with:[use_profile_adaptation::false];
+	//	}
 	output {
 		display mophong type: opengl {
-//			species farming_unit aspect: profile;
-			grid farming_unit;
-//			species river;
-//			species road;
-////			species province;
-////			agents value:active_cell;
-////			species AEZ transparency:0.3;			
-//			mesh field_subsidence color: palette(reverse(brewer_colors("Blues"))) scale:10 smooth: 4;//  
-//			mesh field_salinity color: palette(reverse(brewer_colors("Blues"))) scale:10 smooth: 4;//  
-//			
-////			species district;
-//			//	species donvidatdai;
+		//			species farming_unit aspect: profile;
+		//			grid farming_unit;
+		//			species river;
+		//			species road;
+		////			species province;
+		////			agents value:active_cell;
+		////			species AEZ transparency:0.3;			
+		//			mesh field_subsidence color: palette(reverse(brewer_colors("Blues"))) scale:10 smooth: 4;//  
+		//			mesh field_salinity color: palette(reverse(brewer_colors("Blues"))) scale:10 smooth: 4;//  
+			mesh field_farming_unit color: scale(lu_color) smooth: false; //  
+			//			 
 		}
 
-		//		display landunit type: java2D {
-		//			species donvidatdai;
+		//				display landunit type: java2D {
+		//					species land_unit;
+		//				}
+		//		display risk_cell type: opengl {
+		////			species district;
+		//			species farming_unit aspect: risky;
 		//		}
-//		display risk_cell type: opengl {
-//			species district;
-//			species farming_unit aspect: risky;
-//		}
-//
-//		display "Risk by climate" type: java2D {
-//			chart "Layer" type: series background: rgb(255, 255, 255) {
-//				data "Risk for shrimp" style: line value: area_shrimp_tsl_risk color: #blue;
-//				data "Fresh water demand area 3 rice" style: line value: area_rice_fruit_tree_risk color: #red;
-//				//data "Fresh water demand area fruit" style: line value: dt_caq_risk color: #darkgreen;
-//			}
-//
-//		}
-//
-//		display "landuse chart" type: java2D {
-//			chart "Layer" type: series background: rgb(255, 255, 255) {
-//				data "3 rice" style: line value: tong_luc color: #yellow;
-//				data "2 rice" style: line value: total_2rice_luk color: #lightyellow;
-//				data "Fruit trees" style: line value: total_fruit_tree_lnk color: #darkgreen;
-//				data "Annual crops" style: line value: tong_bhk color: #lightgreen;
-//				data "Aquaculture" style: line value: tong_tsl color: #cyan;
-//				data "Rice - aquaculture" style: line value: total_rice_shrimp color: rgb(40, 150, 120);
-//			}
-//
-//		}
+		//
+		//		display "Risk by climate" type: java2D {
+		//			chart "Layer" type: series background: rgb(255, 255, 255) {
+		//				data "Risk for shrimp" style: line value: area_shrimp_tsl_risk color: #blue;
+		//				data "Fresh water demand area 3 rice" style: line value: area_rice_fruit_tree_risk color: #red;
+		//				//data "Fresh water demand area fruit" style: line value: dt_caq_risk color: #darkgreen;
+		//			}
+		//
+		//		}
+		//
+		//		display "landuse chart" type: java2D {
+		//			chart "Layer" type: series background: rgb(255, 255, 255) {
+		//				data "3 rice" style: line value: tong_luc color: #yellow;
+		//				data "2 rice" style: line value: total_2rice_luk color: #lightyellow;
+		//				data "Fruit trees" style: line value: total_fruit_tree_lnk color: #darkgreen;
+		//				data "Annual crops" style: line value: tong_bhk color: #lightgreen;
+		//				data "Aquaculture" style: line value: tong_tsl color: #cyan;
+		//				data "Rice - aquaculture" style: line value: total_rice_shrimp color: rgb(40, 150, 120);
+		//			}
+		//
+		//		}
 
 	}
 

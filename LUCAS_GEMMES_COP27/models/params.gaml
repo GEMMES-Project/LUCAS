@@ -7,6 +7,7 @@ global {
 	file cell_file <- grid_file("../includes/ht2015_500x500_cutPQ_clipped.tif");
 //	file cell_file <- grid_file("../includes/subsidence/subscidence_tot_2030_500x500.tif");
 	grid_file cell_salinity_file <- grid_file("../includes/mk_sal_2030_45_500x500.tif");
+	grid_file dvdd_file <- grid_file("../includes/madvdd.tif");
 	grid_file cell_subsidence_file <- grid_file("../includes/subsidence/subscidence_tot_2030_500x500_nodata.tif");
 	
 	//	file cell_file <- grid_file("../includes/lu_100x100_mx_2005_new.tif");
@@ -15,18 +16,18 @@ global {
 	list<farming_unit> active_cell <-[];//<- cell_dat where (each.grid_value != 8.0);
 	file song_file <- shape_file('../includes/road_polyline.shp');
 	file duong_file <- shape_file('../includes/river_region.shp');
-	file dvdd_file <- shape_file("../includes/vmd_land_unit_cleaned.shp");
+//	file dvdd_file <- shape_file("../includes/vmd_land_unit_cleaned.shp");
 	file MKD_file <- shape_file("../includes/MKD.shp");
 	file dyke_file <- shape_file("../includes/mk_dyke_region.shp");
 	file aez_file <- shape_file("../includes/AEZ/aezone_MKD_region.shp");
 	matrix ability_matrix;
 	map<string,float> ability_map;
-	file ability_file <- csv_file("../includes/khokhanchuyendoi.csv", false);
 	matrix suitability_matrix;	
 	matrix profile_matrix;	
 	map<string,float> suitability_map;
 	map<string,string> profile_map;
 	map<string,float> supported_lu_type;
+	file ability_file <- csv_file("../includes/khokhanchuyendoi.csv", false);
 	file suitability_file <- csv_file("../includes/landsuitability.csv", false);
 	file profile_file <- csv_file("../includes/profile_adaptation.csv", false);
 	string risk_csv_file_path<-"../data/_31model_RCP85_CMIP5_tmaxavg_tmaxmax_premin.csv";
@@ -76,4 +77,7 @@ global {
 	float proportion_agrofarmers_adapted<-0.6;
 	int scenario <-0;
 	
+	bool use_profile_adaptation<-true;
+//	map<int,rgb> lu_color<-[5::#yellow,6::#lightyellow,37::rgb(170, 255, 255),12::#lightgreen,14::#darkgreen,34:: #cyan,101::rgb(40, 150, 120),102::rgb(40, 100, 120)];
+	map<rgb,int> lu_color<-[#white::0,#yellow::5,#lightyellow::6,rgb(170, 255, 255)::37,#lightgreen::12,#darkgreen::14, #cyan::34,rgb(40, 150, 120)::101,rgb(40, 100, 120)::102];
 }

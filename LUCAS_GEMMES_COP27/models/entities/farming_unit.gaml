@@ -2,6 +2,10 @@ model farming_unit
 
 import "cell_sal.gaml"
 import "AEZ.gaml"
+global{
+	
+	field  field_farming_unit<-field(cell_file);
+}
 grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shapes: false use_regular_agents: false use_neighbors_cache: false {
 	int landuse <- int(grid_value);
 	float chiso_luk_lancan;
@@ -242,15 +246,17 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 			do removerisk_supp_gov;
 		} else if (scenario = 3) {
 			do removerisk_mixed_supp_gov_indv;
-		} }
+		} 
+	}
 
 	action luachonksd {
+		int old_lu <- landuse;
 		list<list> cands <- landuse_eval();
 		int choice <- 0;
 		//if (de >1){} 
 		if (landuse = 5 or landuse = 6 or landuse = 12 or landuse = 14) {
 		//or (landuse>0)and (landuse!=14) and (landuse!=5) and (landuse!=6) and(landuse!=100) and (landuse!=12) and (landuse!=34
-			choice <- weighted_means_DM(cands, criteria);
+			choice <- weighted_means_DM(cands, criteria); 
 			//choice tra vi tri ung vien trong danh sach
 			//			if (choice = 0) {
 			//				//if flip(0.0) {
@@ -258,7 +264,6 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 			//				}
 			//
 			//			}
-			int old_lu<-landuse;
 			if (choice = 1) {
 			//	if (xet_thichnghi(madvdd, 34) > 0) { // Suitability > S3
 			//	if flip(w_flip) {
@@ -298,15 +303,6 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 					landuse <- 101;
 				}
 
-			}
-			int new_lu<-landuse;
-			if(profile!=""){
-				landuse<-old_lu;
-				if(supported_lu_type[profile+landuse]!=nil){
-					if(flip(supported_lu_type[profile+landuse])){
-						landuse<-new_lu;
-					}
-				}
 			}
 
 		}
@@ -351,6 +347,25 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 			}
 
 		}
+		
+		
+////
+////profile AEZ adaptation
+////
+////
+		int new_lu <- landuse;
+		if (profile != "") {
+			landuse <- old_lu;
+			if (supported_lu_type[profile + landuse] != nil) {
+//				if (flip(supported_lu_type[profile + landuse])) {
+				if ((supported_lu_type[profile + landuse])>0.6) {
+					landuse <- new_lu;
+				}
+
+			}
+
+		}
+		
 		// xet risk thuy san va lua
 		risk <- 0;
 		if (landuse = 34) { // thuy san

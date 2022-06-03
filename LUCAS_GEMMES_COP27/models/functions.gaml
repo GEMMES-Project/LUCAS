@@ -38,11 +38,11 @@ global {
 		file risk_csv_file <- csv_file(fpath, ",", false);
 		matrix data <- (risk_csv_file.contents);
 		loop i from: 1 to: data.rows - 1 {
-			if (length(district where (each.climat_cod = int(data[0, i]))) = 0) {
-				write int(data[0, i]);
-			}
+//			if (length(district where (each.climat_cod = int(data[0, i]))) = 0) {
+//				write int(data[0, i]);
+//			}
 
-			district t <- (district where (each.climat_cod = int(data[0, i])))[0];
+			district t <- map_district_by_climat_cod[int(data[0, i])] ;//(district where (each.climat_cod = int(data[0, i])))[0];
 			//			write "" + int(data[1, i]) + "," + int(data[2, i]);
 			ask t {
 				data_tas["" + int(data[1, i]) + "," + int(data[2, i])] <- float(data[4, i]); //prcipitation is in column 5 in data file
@@ -221,25 +221,28 @@ global {
 		write "Đa tinh dien tich hien trang theo xa xong";
 	}
 
-	action gan_dvdd {
-		loop dvdd_obj over: land_unit {
-			ask active_cell overlapping dvdd_obj {
-				madvdd <- dvdd_obj.dvdd;
-			}
-
-		}
-
-	}
-
-	action set_dyke {
-		loop dyke_obj over: dyke_protected {
-			ask active_cell overlapping dyke_obj {
-				madvdd <- dyke_obj.de;
-			}
-
-		}
+	action gan_dvdd { 
+			ask active_cell parallel:true {
+				madvdd <- field_land_unit[location];
+			} 
+//		loop dvdd_obj over: land_unit {
+//			ask active_cell overlapping dvdd_obj {
+//				madvdd <- dvdd_obj.dvdd;
+//			}
+//
+//		}
 
 	}
+
+//	action set_dyke {
+//		loop dyke_obj over: dyke_protected {
+//			ask active_cell overlapping dyke_obj {
+//				madvdd <- dyke_obj.de;
+//			}
+//
+//		}
+//
+//	}
 
 	action gan_cell_hc {
 	//		ask cell_dat {
