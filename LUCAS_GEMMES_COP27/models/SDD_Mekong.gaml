@@ -70,6 +70,8 @@ global {
 
 	reflex main_reflex {
 	//		the_date <- the_date add_years 5;
+		total_debt<-0.0;
+		total_benefit<-0.0;
 		tong_luc <- 0.0;
 		total_2rice_luk <- 0.0;
 		total_rice_shrimp <- 0.0;
@@ -83,6 +85,8 @@ global {
 		//	budget_supported <-0.0; // reset support budget every year.
 		total_income_lost <- 0.0;
 		ask active_cell parallel: true {
+			benefit<-0.0;
+			debt<-0.0;
 			do tinh_chiso_lancan;
 		}
 
@@ -195,6 +199,13 @@ experiment "Landuse change" type: gui {
 			//			 
 		}
 
+		display "benefit - Debt" type: java2D {
+			chart "Layer" type: series {
+				data "benefit" style: line value: total_benefit color: #blue;
+				data "debt" style: line value: total_debt color: #red;
+			}
+
+		}
 		//				display landunit type: java2D {
 		//					species land_unit;
 		//				}

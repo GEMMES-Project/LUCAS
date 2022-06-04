@@ -2,10 +2,14 @@ model farming_unit
 
 import "cell_sal.gaml"
 import "AEZ.gaml"
-global{
-	
-	field  field_farming_unit<-field(cell_file);
+
+global {
+	field field_farming_unit <- field(cell_file);
+	float total_debt <- 0.0;
+	float total_benefit <- 0.0;
+	map<int, int> lu_total_benefit <- [5::0, 34::0, 12::0, 6::0, 14::0, 101::0];
 }
+
 grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shapes: false use_regular_agents: false use_neighbors_cache: false {
 	int landuse <- int(grid_value);
 	float chiso_luk_lancan;
@@ -35,6 +39,8 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 	province my_province;
 	AEZ my_aez;
 	string profile;
+	float benefit;
+	float debt <- 0.0;
 
 	init {
 	/*
@@ -43,6 +49,7 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 		 * 1113 1130
 		 * 2783 2824
 		 */
+		benefit <- lu_benefit[landuse];
 		if (grid_value != 0.0) {
 			active_cell <+ self;
 		} else {
@@ -246,8 +253,7 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 			do removerisk_supp_gov;
 		} else if (scenario = 3) {
 			do removerisk_mixed_supp_gov_indv;
-		} 
-	}
+		} }
 
 	action luachonksd {
 		int old_lu <- landuse;
@@ -256,7 +262,7 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 		//if (de >1){} 
 		if (landuse = 5 or landuse = 6 or landuse = 12 or landuse = 14) {
 		//or (landuse>0)and (landuse!=14) and (landuse!=5) and (landuse!=6) and(landuse!=100) and (landuse!=12) and (landuse!=34
-			choice <- weighted_means_DM(cands, criteria); 
+			choice <- weighted_means_DM(cands, criteria);
 			//choice tra vi tri ung vien trong danh sach
 			//			if (choice = 0) {
 			//				//if flip(0.0) {
@@ -347,25 +353,24 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 			}
 
 		}
-		
-		
-////
-////profile AEZ adaptation
-////
-////
+
+		////
+		////profile AEZ adaptation
+		////
+		////
 		int new_lu <- landuse;
 		if (profile != "") {
 			landuse <- old_lu;
 			if (supported_lu_type[profile + landuse] != nil) {
-//				if (flip(supported_lu_type[profile + landuse])) {
-				if ((supported_lu_type[profile + landuse])>0.6) {
+				if (flip(supported_lu_type[profile + landuse])) {
+				//				if ((supported_lu_type[profile + landuse]) > 0.6) {
 					landuse <- new_lu;
 				}
 
 			}
 
 		}
-		
+
 		// xet risk thuy san va lua
 		risk <- 0;
 		if (landuse = 34) { // thuy san
@@ -391,7 +396,22 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 			}
 
 		}
+		//
+		// tinh benefit, debt pump
+		//
+		if (risk > 0) {
+			if (my_province != nil and my_province.pumping >= 0) {
+				risk <- 0;
+				benefit <- benefit + lu_benefit[landuse] - my_province.pumping_price;
+				debt <- lu_benefit[landuse] - my_province.pumping_price < 0 ? debt - (lu_benefit[landuse] - my_province.pumping_price) : debt;
+			}
 
+		} else {
+			benefit <- benefit + lu_benefit[landuse];
+		}
+
+		total_debt <- total_debt + debt / 10000;
+		total_benefit <- total_benefit + benefit / 10000;
 	}
 
 	action landuse_eval {

@@ -14,16 +14,19 @@ species province {
 	string VARNAME_2;
 	string VARNAME_3;
 	string STT;
-//	list data_pr;
-	map<string,float> data_pr;
-	map<string,float> data_tas;
-	float pumping;//no , 0-2%
-	float budget_invest;//
-	bool agreed_aez<-true;
+	//	list data_pr;
+	map<string, float> data_pr;
+	map<string, float> data_tas;
+	float pumping <- -1.0; //-1 no , 0-2%
+	float budget_invest<-shape.area;
+	float pumping_price <- pumping > -1 ? pumping * budget_invest /2E6: 0;
+	bool agreed_aez <- true;
 
-	init {
+	init { 
 	}
-	aspect default{
-		draw shape  border:#gray;
+
+	aspect default {
+		draw shape border: #gray;
 	}
+
 }
