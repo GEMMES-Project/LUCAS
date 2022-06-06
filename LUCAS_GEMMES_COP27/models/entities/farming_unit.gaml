@@ -402,8 +402,9 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 		if (risk > 0) {
 			if (my_province != nil and my_province.pumping >= 0) {
 				risk <- 0;
-				benefit <- benefit + lu_benefit[landuse] - my_province.pumping_price;
+				//benefit <- benefit + lu_benefit[landuse] - my_province.pumping_price; // no benefit when risk 
 				debt <- lu_benefit[landuse] - my_province.pumping_price < 0 ? debt - (lu_benefit[landuse] - my_province.pumping_price) : debt;
+				debt <- lu_benefit[landuse];
 			}
 
 		} else {
