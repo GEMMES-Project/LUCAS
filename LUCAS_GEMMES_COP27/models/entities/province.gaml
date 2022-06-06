@@ -17,7 +17,8 @@ species province {
 	//	list data_pr;
 	map<string, float> data_pr;
 	map<string, float> data_tas;
-	float pumping <- -1.0; //-1 no , 0-2%
+	list<float> pump_val<-[-1.0,0.1,0.2];
+	float pumping <- any(pump_val); //-1 no , 0-2%
 	float budget_invest<-shape.area;
 	float pumping_price <- pumping > -1 ? pumping * budget_invest /2E6: 0;
 	bool agreed_aez <- true;
@@ -26,7 +27,7 @@ species province {
 	}
 
 	aspect default {
-		draw shape border: #gray;
+		draw shape border: #black wireframe:true;
 	}
 
 }

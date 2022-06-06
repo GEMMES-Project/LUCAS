@@ -70,8 +70,8 @@ global {
 
 	reflex main_reflex {
 	//		the_date <- the_date add_years 5;
-		total_debt<-0.0;
-		total_benefit<-0.0;
+		total_debt <- 0.0;
+		total_benefit <- 0.0;
 		tong_luc <- 0.0;
 		total_2rice_luk <- 0.0;
 		total_rice_shrimp <- 0.0;
@@ -85,8 +85,8 @@ global {
 		//	budget_supported <-0.0; // reset support budget every year.
 		total_income_lost <- 0.0;
 		ask active_cell parallel: true {
-			benefit<-0.0;
-			debt<-0.0;
+			benefit <- 0.0;
+			debt <- 0.0;
 			do tinh_chiso_lancan;
 		}
 
@@ -97,6 +97,7 @@ global {
 		ask active_cell parallel: true {
 			do adptation_sc; // applied when scenarios 1 or 2
 			field_farming_unit[location] <- landuse;
+			field_risk_farming_unit[location] <- risk;
 			//			do to_mau;
 			if (landuse = 5) {
 				tong_luc <- tong_luc + pixel_size; //pixel size = 500x500
@@ -209,10 +210,11 @@ experiment "Landuse change" type: gui {
 		//				display landunit type: java2D {
 		//					species land_unit;
 		//				}
-		//		display risk_cell type: opengl {
-		////			species district;
-		//			species farming_unit aspect: risky;
-		//		}
+		display risk_cell type: opengl {
+		//			species district;
+		species province;
+			mesh field_risk_farming_unit color: scale([#white::0, #blue::1, #red::2]) smooth: false; //  
+		}
 		//
 		//		display "Risk by climate" type: java2D {
 		//			chart "Layer" type: series background: rgb(255, 255, 255) {

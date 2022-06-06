@@ -5,6 +5,7 @@ import "AEZ.gaml"
 
 global {
 	field field_farming_unit <- field(cell_file);
+	field field_risk_farming_unit <- field(515,546);
 	float total_debt <- 0.0;
 	float total_benefit <- 0.0;
 	map<int, int> lu_total_benefit <- [5::0, 34::0, 12::0, 6::0, 14::0, 101::0];
