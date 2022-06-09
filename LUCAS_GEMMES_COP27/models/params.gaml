@@ -8,8 +8,25 @@ global {
 //	file cell_file <- grid_file("../includes/subsidence/subscidence_tot_2030_500x500.tif");
 	grid_file cell_salinity_file <- grid_file("../includes/mk_sal_2030_45_500x500.tif");
 	grid_file dvdd_file <- grid_file("../includes/madvdd.tif");
-	grid_file cell_subsidence_file <- grid_file("../includes/subsidence/subscidence_tot_2030_500x500_nodata.tif");
-	
+//	grid_file cell_subsidence_file <- grid_file("../includes/subsidence/subscidence_tot_2030_500x500_nodata.tif");
+//	grid_file cell_subsidence_file <- grid_file("../includes/subsidence/Scenario_B2/B2_2020.tif");
+	list<string> file_subsidence1<-["../includes/subsidence/Scenario_M1/M1_2020.tif",
+		"../includes/subsidence/Scenario_M1/M1_2030.tif",
+		"../includes/subsidence/Scenario_M1/M1_2040.tif",
+		"../includes/subsidence/Scenario_M1/M1_2050.tif"
+	];
+	list<string> file_subsidence2<-["../includes/subsidence/Scenario_B1/B1_2020.tif",
+		"../includes/subsidence/Scenario_B1/B1_2030.tif",
+		"../includes/subsidence/Scenario_B1/B1_2040.tif",
+		"../includes/subsidence/Scenario_B1/B1_2050.tif"
+	];
+	list<string> file_subsidence3<-["../includes/subsidence/Scenario_B2/B2_2020.tif",
+		"../includes/subsidence/Scenario_B2/B2_2030.tif",
+		"../includes/subsidence/Scenario_B2/B2_2040.tif",
+		"../includes/subsidence/Scenario_B2/B2_2050.tif"
+	];
+	map<string, list<string>> map_scenario_subsidence<-["M1"::file_subsidence1,"B1"::file_subsidence2,"B2"::file_subsidence3];
+	string scenario_subsidence<-"B2";
 	//	file cell_file <- grid_file("../includes/lu_100x100_mx_2005_new.tif");
 //	file MKD_bound <- shape_file("../includes/MKD_district.shp"); 
 	geometry shape <- envelope(cell_file);
