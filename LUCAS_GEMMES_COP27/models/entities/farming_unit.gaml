@@ -458,7 +458,7 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 		//dua dac tinh ung vien rst
 		candlnk << chiso_lnk_lancan;
 		candlnk << xet_khokhanchuyendoi(landuse, 14);
-		candlnk << xet_thichnghi(madvdd, 6);
+		candlnk << xet_thichnghi(madvdd, 14);
 		candlnk << 294 / 389;
 		// bổ sung thêm ứng viên lua-tom
 		cand_luatom << chiso_lua_tom_lancan;
