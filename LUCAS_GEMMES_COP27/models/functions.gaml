@@ -38,11 +38,10 @@ global {
 		file risk_csv_file <- csv_file(fpath, ",", false);
 		matrix data <- (risk_csv_file.contents);
 		loop i from: 1 to: data.rows - 1 {
-//			if (length(district where (each.climat_cod = int(data[0, i]))) = 0) {
-//				write int(data[0, i]);
-//			}
-
-			district t <- map_district_by_climat_cod[int(data[0, i])] ;//(district where (each.climat_cod = int(data[0, i])))[0];
+		//			if (length(district where (each.climat_cod = int(data[0, i]))) = 0) {
+		//				write int(data[0, i]);
+		//			}
+			district t <- map_district_by_climat_cod[int(data[0, i])]; //(district where (each.climat_cod = int(data[0, i])))[0];
 			//			write "" + int(data[1, i]) + "," + int(data[2, i]);
 			ask t {
 				data_tas["" + int(data[1, i]) + "," + int(data[2, i])] <- float(data[4, i]); //prcipitation is in column 5 in data file
@@ -104,6 +103,16 @@ global {
 		write "Tong dt khac:" + total_rice_shrimp;
 	}
 
+	action load_macroeconomic_data {
+		matrix macro_matrix <- matrix(macroeconomic_file);
+		loop i from: 2 to: macro_matrix.rows - 1 {
+			int yy <- int(macro_matrix[0, i]);
+			lending_rate <+ "" + yy::float(macro_matrix[8, i]);
+		}
+
+		write "lending_rate map:" + lending_rate;
+	}
+
 	action load_ability_data {
 		ability_matrix <- matrix(ability_file);
 		loop i from: 1 to: ability_matrix.rows - 1 {
@@ -143,7 +152,7 @@ global {
 		}
 
 		write "Profile map" + profile_map;
-		write "supported_lu_type " + supported_lu_type; 
+		write "supported_lu_type " + supported_lu_type;
 	}
 
 	action tinh_kappa {
@@ -221,29 +230,28 @@ global {
 		write "Đa tinh dien tich hien trang theo xa xong";
 	}
 
-	action gan_dvdd { 
-			ask active_cell parallel:true {
-				madvdd <- field_land_unit[location];
-			} 
-//		loop dvdd_obj over: land_unit {
-//			ask active_cell overlapping dvdd_obj {
-//				madvdd <- dvdd_obj.dvdd;
-//			}
-//
-//		}
+	action gan_dvdd {
+		ask active_cell parallel: true {
+			madvdd <- field_land_unit[location];
+		}
+		//		loop dvdd_obj over: land_unit {
+		//			ask active_cell overlapping dvdd_obj {
+		//				madvdd <- dvdd_obj.dvdd;
+		//			}
+		//
+		//		}
 
 	}
 
-//	action set_dyke {
-//		loop dyke_obj over: dyke_protected {
-//			ask active_cell overlapping dyke_obj {
-//				madvdd <- dyke_obj.de;
-//			}
-//
-//		}
-//
-//	}
-
+	//	action set_dyke {
+	//		loop dyke_obj over: dyke_protected {
+	//			ask active_cell overlapping dyke_obj {
+	//				madvdd <- dyke_obj.de;
+	//			}
+	//
+	//		}
+	//
+	//	}
 	action gan_cell_hc {
 	//		ask cell_dat {
 	//			landuse_obs <- cell_dat_2010[self.grid_x, self.grid_y].landuse;
