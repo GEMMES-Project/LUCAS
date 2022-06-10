@@ -84,6 +84,21 @@ global {
 		area_fruit_tree_risk <- 0.0;
 		//	budget_supported <-0.0; // reset support budget every year.
 		total_income_lost <- 0.0;
+		int year <- 2015 + cycle;
+		if (year mod 10 = 0) {
+			do load_subsidence((year-2020)/10);
+			ask active_cell parallel: true {
+				sub <- field_subsidence[location]; //first(cell_salinity overlapping self).grid_value; 
+				if (my_province != nil and my_province.agreed_aez and my_aez != nil) {
+					string p_key <- my_aez.aezone + (sub <= 0.1 ? "00.1" : "0.110");
+					profile <- profile_map[p_key];
+				}
+
+			}
+
+			write "subsidence updated";
+		}
+
 		ask active_cell parallel: true {
 			benefit <- 0.0;
 			debt <- 0.0;
@@ -131,7 +146,6 @@ global {
 
 		}
 
-		int year <- 2015 + cycle;
 		//string output_filename <-"../result/landuse_sim" + scenario+".csv";
 		save
 		[year, tong_luc, total_2rice_luk, total_rice_shrimp, tong_tsl, tong_bhk, total_fruit_tree_lnk, climate_maxTAS_shrimp, climate_maxPR_thuysan, climate_maxTAS_caytrong, climate_minPR_caytrong, area_shrimp_tsl_risk, area_rice_fruit_tree_risk]
@@ -182,11 +196,12 @@ experiment "Landuse change" type: gui {
 	parameter "Trọng số lợi nhuận" var: w_profit <- 0.8;
 	//	parameter "Trọng số rủi ro biến đổi khí hậu" var: w_risky_climate <- 0.0;
 	parameter "Scenarios" var: scenario <- 0;
-	//	init{
-	//		create simulation with:[use_profile_adaptation::false];
-	//	}
+	parameter "Scenario subsidence" var: scenario_subsidence among:["M1","B1","B2"];
+//		init{
+//			create simulation with:[scenario_subsidence::"B2"];
+//		}
 	output {
-		display mophong type: opengl {
+		display mophong type: opengl autosave:true axes:false{
 		//			species farming_unit aspect: profile;
 		//			grid farming_unit;
 		//			species river;
@@ -194,27 +209,26 @@ experiment "Landuse change" type: gui {
 		////			species province;
 		////			agents value:active_cell;
 		////			species AEZ transparency:0.3;			
-		//			mesh field_subsidence color: palette(reverse(brewer_colors("Blues"))) scale:10 smooth: 4;//  
+		//			mesh field_subsidence color: palette(reverse(brewer_colors("Blues"))) scale: 10 smooth: 4; //  
 		//			mesh field_salinity color: palette(reverse(brewer_colors("Blues"))) scale:10 smooth: 4;//  
-			mesh field_farming_unit color: scale(lu_color) smooth: false; //  
-			//			 
+			mesh field_farming_unit color: scale(lu_color) smooth: false;  
 		}
 
-		display "benefit - Debt" type: java2D {
-			chart "Layer" type: series {
-				data "benefit" style: line value: total_benefit color: #blue;
-				data "debt" style: line value: total_debt color: #red;
-			}
-
-		}
-		//				display landunit type: java2D {
-		//					species land_unit;
-		//				}
-		display risk_cell type: opengl {
-		//			species district;
-		species province;
-			mesh field_risk_farming_unit color: scale([#white::0, #blue::1, #red::2]) smooth: false; //  
-		}
+//		display "benefit - Debt" type: java2D {
+//			chart "Layer" type: series {
+//				data "benefit" style: line value: total_benefit color: #blue;
+//				data "debt" style: line value: total_debt color: #red;
+//			}
+//
+//		}
+//		//				display landunit type: java2D {
+//		//					species land_unit;
+//		//				}
+//		display risk_cell type: opengl {
+//		//			species district;
+//			species province;
+//			mesh field_risk_farming_unit color: scale([#white::0, #blue::1, #red::2]) smooth: false; //  
+//		}
 		//
 		//		display "Risk by climate" type: java2D {
 		//			chart "Layer" type: series background: rgb(255, 255, 255) {
