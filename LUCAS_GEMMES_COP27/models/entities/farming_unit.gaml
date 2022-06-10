@@ -5,7 +5,7 @@ import "AEZ.gaml"
 
 global {
 	field field_farming_unit <- field(cell_file);
-	field field_risk_farming_unit <- field(515,546);
+	field field_risk_farming_unit <- field(515, 546);
 	float total_debt <- 0.0;
 	float total_benefit <- 0.0;
 	map<int, int> lu_total_benefit <- [5::0, 34::0, 12::0, 6::0, 14::0, 101::0];
@@ -40,6 +40,7 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 	province my_province;
 	AEZ my_aez;
 	string profile;
+	float investment <- 0.0;
 	float benefit;
 	float debt <- 0.0;
 
@@ -400,23 +401,20 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 		//
 		// tinh benefit, debt pump
 		//
+		investment <- lu_cost[landuse] * (shape.area/1E3) + lu_cost[landuse] * (shape.area/1E3) * lending_rate["" + (2015 + cycle)] / 100;
+		benefit <- benefit + lu_benefit[landuse];
 		if (risk > 0) {
 			if (my_province != nil and my_province.pumping >= 0) {
 				risk <- 0;
-				//benefit <- benefit + lu_benefit[landuse] - my_province.pumping_price; // no benefit when risk 
-				debt <- lu_benefit[landuse] - my_province.pumping_price < 0 ? debt - (lu_benefit[landuse] - my_province.pumping_price) : debt;
-				
+				debt <- debt + investment + my_province.pumping_price;
+			} else {
+				benefit <- 0.0;
+				debt <- debt + investment;
 			}
-			else {
-				debt <- lu_benefit[landuse];
-			}
-			
 
-		} else {
-			benefit <- benefit + lu_benefit[landuse];
 		}
 
-		total_debt <- total_debt + debt / 10000;
+		total_debt <- total_debt + debt / 1E7;
 		total_benefit <- total_benefit + benefit / 10000;
 	}
 

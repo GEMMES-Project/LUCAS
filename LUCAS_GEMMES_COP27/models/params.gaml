@@ -44,6 +44,8 @@ global {
 	map<string,float> suitability_map;
 	map<string,string> profile_map;
 	map<string,float> supported_lu_type;
+	map<string, float> lending_rate;
+	file macroeconomic_file <- csv_file("../includes/macroeconomic/macroeconomic_data.csv", false);
 	file ability_file <- csv_file("../includes/khokhanchuyendoi.csv", false);
 	file suitability_file <- csv_file("../includes/landsuitability.csv", false);
 	file profile_file <- csv_file("../includes/profile_adaptation.csv", false);
@@ -98,4 +100,5 @@ global {
 //	map<int,rgb> lu_color<-[5::#yellow,6::#lightyellow,37::rgb(170, 255, 255),12::#lightgreen,14::#darkgreen,34:: #cyan,101::rgb(40, 150, 120),102::rgb(40, 100, 120)];
 	map<rgb,int> lu_color<-[#white::0,#yellow::5,rgb(175, 175, 0)::6,rgb(170, 255, 255)::37,#lightgreen::12,#darkgreen::14, #cyan::34,rgb(40, 150, 120)::101,rgb(40, 100, 120)::102];
 	map<int,int> lu_benefit<-[5::34,34::389,12::180,6::98,14::294,101::150];
+	map<int,int> lu_cost<-[5::34,34::389,12::180,6::98,14::294,101::150];
 }

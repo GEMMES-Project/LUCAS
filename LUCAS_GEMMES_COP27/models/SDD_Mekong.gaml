@@ -20,6 +20,7 @@ global {
 		do load_suitability_data;
 		do load_ability_data;
 		do load_profile_adaptation;
+		do load_macroeconomic_data;
 		do load_climate_TAS;
 		write "matrix loaded";
 
@@ -70,7 +71,7 @@ global {
 
 	reflex main_reflex {
 	//		the_date <- the_date add_years 5;
-		total_debt <- 0.0;
+//		total_debt <- 0.0;
 		total_benefit <- 0.0;
 		tong_luc <- 0.0;
 		total_2rice_luk <- 0.0;
@@ -189,19 +190,19 @@ global {
 
 }
 
-experiment "Landuse change" type: gui {
+experiment "Landuse change" type: gui autorun:true{
 	parameter "Trong số lân cận" var: area_shrimp_tsl_risk <- 0.6;
 	parameter "Trọng số khó khăn" var: area_rice_fruit_tree_risk <- 0.5;
 	parameter "Trọng số thích nghi" var: area_fruit_tree_risk <- 0.7;
 	parameter "Trọng số lợi nhuận" var: w_profit <- 0.8;
 	//	parameter "Trọng số rủi ro biến đổi khí hậu" var: w_risky_climate <- 0.0;
 	parameter "Scenarios" var: scenario <- 0;
-	parameter "Scenario subsidence" var: scenario_subsidence among:["M1","B1","B2"];
+	parameter "Scenario subsidence" var: scenario_subsidence among:["M1","B1","B2"]; 
 //		init{
 //			create simulation with:[scenario_subsidence::"B2"];
 //		}
 	output {
-		display mophong type: opengl autosave:true axes:false{
+		display mophong type: opengl axes:false{
 		//			species farming_unit aspect: profile;
 		//			grid farming_unit;
 		//			species river;
@@ -214,21 +215,21 @@ experiment "Landuse change" type: gui {
 			mesh field_farming_unit color: scale(lu_color) smooth: false;  
 		}
 
-//		display "benefit - Debt" type: java2D {
-//			chart "Layer" type: series {
-//				data "benefit" style: line value: total_benefit color: #blue;
-//				data "debt" style: line value: total_debt color: #red;
-//			}
-//
-//		}
-//		//				display landunit type: java2D {
-//		//					species land_unit;
-//		//				}
-//		display risk_cell type: opengl {
-//		//			species district;
-//			species province;
-//			mesh field_risk_farming_unit color: scale([#white::0, #blue::1, #red::2]) smooth: false; //  
-//		}
+		display "benefit - Debt" type: java2D {
+			chart "Layer" type: series {
+				data "benefit" style: line value: total_benefit color: #blue;
+				data "debt" style: line value: total_debt color: #red;
+			}
+
+		}
+		//				display landunit type: java2D {
+		//					species land_unit;
+		//				}
+		display risk_cell type: opengl {
+		//			species district;
+			species province;
+			mesh field_risk_farming_unit color: scale([#white::0, #blue::1, #red::2]) smooth: false; //  
+		}
 		//
 		//		display "Risk by climate" type: java2D {
 		//			chart "Layer" type: series background: rgb(255, 255, 255) {
