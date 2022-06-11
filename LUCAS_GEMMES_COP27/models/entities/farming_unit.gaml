@@ -401,7 +401,7 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 		//
 		// tinh benefit, debt pump
 		//
-		investment <- (lu_cost[landuse] * (shape.area/1E3) + lu_cost[landuse] * (shape.area/1E3) * lending_rate["" + (2015 + cycle)]* lending_rate["" + (2015 + cycle)]) / 1E3;
+		investment <- (lu_cost[landuse] * (shape.area/1E3) + lu_cost[landuse] * (shape.area/1E3) * lending_rate["" + (2015 + cycle)]* lending_rate["" + (2015 + cycle)]) / 100;
 		benefit <-  lu_benefit[landuse];
 		if (risk > 0) {
 			if (my_province != nil and my_province.pumping >= 0) {
