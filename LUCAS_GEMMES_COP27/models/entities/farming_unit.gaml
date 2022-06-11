@@ -401,8 +401,8 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 		//
 		// tinh benefit, debt pump
 		//
-		investment <- (lu_cost[landuse] * (shape.area/1E3) + lu_cost[landuse] * (shape.area/1E3) * lending_rate["" + (2015 + cycle)]* lending_rate["" + (2015 + cycle)]) / 100;
-		benefit <-  lu_benefit[landuse];
+		investment <- (lu_cost[landuse] * (shape.area / 1E3) + lu_cost[landuse] * (shape.area / 1E3) * lending_rate["" + (2015 + cycle)] * lending_rate["" + (2015 + cycle)]) / 100;
+		benefit <- lu_benefit[landuse];
 		if (risk > 0) {
 			if (my_province != nil and my_province.pumping >= 0) {
 				risk <- 0;
@@ -412,6 +412,16 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 				debt <- debt + investment;
 			}
 
+		}
+
+		if (my_province != nil) {
+			my_province.debt <- my_province.debt + debt / 1E7;
+			my_province.benefit <- my_province.benefit + benefit / 10000;
+		}
+
+		if (my_aez != nil) {
+			my_aez.debt <- my_aez.debt + debt / 1E7;
+			my_aez.benefit <- my_aez.benefit + benefit / 10000;
 		}
 
 		total_debt <- total_debt + debt / 1E7;

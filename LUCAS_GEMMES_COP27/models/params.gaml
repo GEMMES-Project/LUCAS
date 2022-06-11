@@ -27,6 +27,7 @@ global {
 	];
 	map<string, list<string>> map_scenario_subsidence<-["M1"::file_subsidence1,"B1"::file_subsidence2,"B2"::file_subsidence3];
 	string scenario_subsidence<-"B2";
+	float subsidence_threshold<-0.1;
 	//	file cell_file <- grid_file("../includes/lu_100x100_mx_2005_new.tif");
 //	file MKD_bound <- shape_file("../includes/MKD_district.shp"); 
 	geometry shape <- envelope(cell_file);
@@ -95,7 +96,7 @@ global {
 	float proportion_aquafarmers_adapted<-0.6;
 	float proportion_agrofarmers_adapted<-0.6;
 	int scenario <-0;
-	
+	string explo_param<-"base";
 	bool use_profile_adaptation<-true;
 //	map<int,rgb> lu_color<-[5::#yellow,6::#lightyellow,37::rgb(170, 255, 255),12::#lightgreen,14::#darkgreen,34:: #cyan,101::rgb(40, 150, 120),102::rgb(40, 100, 120)];
 	map<rgb,int> lu_color<-[#white::0,#yellow::5,rgb(175, 175, 0)::6,rgb(170, 255, 255)::37,#lightgreen::12,#darkgreen::14, #cyan::34,rgb(40, 150, 120)::101,rgb(40, 100, 120)::102];

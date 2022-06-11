@@ -22,7 +22,8 @@ species province {
 	float budget_invest<-shape.area;
 	float pumping_price <- pumping > -1 ? pumping * budget_invest /2E6: 0;
 	bool agreed_aez <- true;
-
+	float debt<-0.0;
+	float benefit<-0.0;
 	init { 
 	}
 

@@ -9,7 +9,8 @@ species AEZ {
 //	list data_pr;
 	map<string,float> data_pr;
 	map<string,float> data_tas;
-
+	float debt;
+	float benefit<-0.0;
 	init {
 	}
 	aspect default{
