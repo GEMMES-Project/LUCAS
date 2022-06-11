@@ -103,11 +103,21 @@ global {
 		write "Tong dt khac:" + total_rice_shrimp;
 	}
 
+	action load_cost_benefit_data {
+		matrix cb_matrix <- matrix(csv_file("../includes/cost_benefit.csv", true));
+		loop i from: 0 to: cb_matrix.rows - 1 {
+			int yy <- int(cb_matrix[0, i]);
+			lu_cost <+ int(yy)::float(cb_matrix[1, i]);
+			lu_benefit <+ int(yy)::float(cb_matrix[2, i]);
+		}
+
+		write "cost benefit " + lu_cost + lu_benefit;
+	}
 	action load_macroeconomic_data {
 		matrix macro_matrix <- matrix(macroeconomic_file);
 		loop i from: 2 to: macro_matrix.rows - 1 {
 			int yy <- int(macro_matrix[0, i]);
-			lending_rate <+ "" + yy::float(macro_matrix[8, i]);
+			lending_rate <+ "" + yy::float(macro_matrix[1, i]);
 		}
 
 		write "lending_rate map:" + lending_rate;

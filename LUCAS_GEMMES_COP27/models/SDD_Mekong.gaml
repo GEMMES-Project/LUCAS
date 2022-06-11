@@ -18,6 +18,7 @@ global {
 		create AEZ from: aez_file;
 		write "gis loaded";
 		do load_suitability_data;
+		do load_cost_benefit_data;
 		do load_ability_data;
 		do load_profile_adaptation;
 		do load_macroeconomic_data;
