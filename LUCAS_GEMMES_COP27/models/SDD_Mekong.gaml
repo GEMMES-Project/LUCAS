@@ -303,12 +303,12 @@ experiment "Landuse change" type: gui autorun: true {
 
 experiment "Explore" type: gui autorun: true {
 	parameter "Scenarios" var: scenario <- 0;
-	parameter "Scenario subsidence" var: scenario_subsidence among: ["M1", "B1", "B2"] <- "B2";
-	parameter "Subsidence threshold" var: subsidence_threshold among: [0.1, 0.15, 0.2, 0.3] <- 0.3;
+//	parameter "Scenario subsidence" var: scenario_subsidence among: ["M1", "B1", "B2"] <- "B2";
+//	parameter "Subsidence threshold" var: subsidence_threshold among: [0.1, 0.15, 0.2, 0.3] <- 0.3;
 
 	action _init_ {
 		loop t over: [0.1, 0.15, 0.2, 0.3] {
-			create simulation with: [scenario_subsidence::"B2", subsidence_threshold::t];
+			create simulation with: [scenario_subsidence::"M1", subsidence_threshold::t];
 		}
 
 	}
