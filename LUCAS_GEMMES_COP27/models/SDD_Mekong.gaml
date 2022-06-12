@@ -7,7 +7,7 @@ import "entities/road.gaml"
 global {
 
 	init {
-		explo_param <- scenario_subsidence + "_" + subsidence_threshold + "_";
+		explo_param <- scenario_subsidence + "_"; //+ subsidence_threshold + "_";
 		//load ban do tu cac ban do vao tac tu
 		create district from: district_file {
 		}
@@ -69,19 +69,27 @@ global {
 		[["name"::"lancan", "weight"::area_shrimp_tsl_risk], ["name"::"khokhan", "weight"::area_rice_fruit_tree_risk], ["name"::"thichnghi", "weight"::area_fruit_tree_risk], ["name"::"loinhuan", "weight"::w_profit]];
 		//	save "year, 3 rice,2 rice, rice-shrimp,shrimp,vegetables, risk_aqua,risk_rice" type: "text" to: "result/landuse_res.csv" rewrite: true;
 		string s <- "";
+		s <- s + ["year", "subsidence_threshold"];
 		s <- s + province collect (each.NAME_1);
 		s <- s + (AEZ group_by (each.aezone)).keys;
 		s <- s + ["total_debt"];
-		s <- (s replace (",", ";") replace ("][", ";") replace ("[", "") replace ("]", ""));
+		s <- (s replace ("][", ",") replace ("[", "") replace ("]", ""));
 		write s;
-		save s to: "../results/" + explo_param + int(world) + "_debt.csv" type: text rewrite: true;
+		if (int(world) = 0) {
+			save s to: "../results/" + explo_param + "_debt.csv" type: text rewrite: true;
+		}
+
 		s <- "";
+		s <- s + ["year", "subsidence_threshold"];
 		s <- s + province collect (each.NAME_1);
 		s <- s + (AEZ group_by (each.aezone)).keys;
 		s <- s + ["total_benefit"];
-		s <- (s replace (",", ";") replace ("][", ";") replace ("[", "") replace ("]", ""));
+		s <- (s replace ("][", ",") replace ("[", "") replace ("]", ""));
 		write s;
-		save s to: "../results/" + explo_param + int(world) + "_benefit.csv" type: text rewrite: true;
+		if (int(world) = 0) {
+			save s to: "../results/" + explo_param + "_benefit.csv" type: text rewrite: true;
+		}
+
 		write "ready";
 	}
 
@@ -134,8 +142,18 @@ global {
 			do luachonksd;
 		}
 
-		ask active_cell parallel: true {
+		ask active_cell parallel: false {
 			do adptation_sc; // applied when scenarios 1 or 2
+			if (my_province != nil and my_aez != nil) {
+				int tmp <- benefit / 1000;
+				my_province.debt <- my_province.debt + debt / 1E3; //convert to Milillard
+				my_province.benefit <- my_province.benefit + tmp;
+				my_aez.debt <- my_aez.debt + debt / 1E3;
+				my_aez.benefit <- my_aez.benefit + tmp; //convert to Milillard
+				total_debt <- total_debt + debt / 1E3;
+				total_benefit <- total_benefit + tmp;
+			}
+
 			field_farming_unit[location] <- landuse;
 			field_risk_farming_unit[location] <- risk;
 			//			do to_mau;
@@ -175,15 +193,15 @@ global {
 		save
 		[year, tong_luc, total_2rice_luk, total_rice_shrimp, tong_tsl, tong_bhk, total_fruit_tree_lnk, climate_maxTAS_shrimp, climate_maxPR_thuysan, climate_maxTAS_caytrong, climate_minPR_caytrong, area_shrimp_tsl_risk, area_rice_fruit_tree_risk]
 		type: "csv" to: "../results/landuse_sim_scenarios" + scenario + ".csv" rewrite: false;
-		//		write "Tong dt lua:" + tong_luc;
-		//		write "Tong dt lúa khác:" + total_2rice_luk;
-		//		write "Tong dt lúa tom:" + total_rice_shrimp;
-		//		write "Tong dt ts:" + tong_tsl;
-		//		write "Tong dt rau mau:" + tong_bhk;
-		//		write "Tong dt lnk:" + total_fruit_tree_lnk;
-		//		//write "Tong dt khac:" + tong_khac;
-		//		write "Tong dt tsl risk:" + area_shrimp_tsl_risk;
-		//		write "Tong dt lua  risk:" + area_rice_fruit_tree_risk;
+		write "Tong dt lua:" + tong_luc;
+		write "Tong dt lúa khác:" + total_2rice_luk;
+		write "Tong dt lúa tom:" + total_rice_shrimp;
+		write "Tong dt ts:" + tong_tsl;
+		write "Tong dt rau mau:" + tong_bhk;
+		write "Tong dt lnk:" + total_fruit_tree_lnk;
+		//write "Tong dt khac:" + tong_khac;
+		write "Tong dt tsl risk:" + area_shrimp_tsl_risk;
+		write "Tong dt lua  risk:" + area_rice_fruit_tree_risk;
 
 		// Save risk into map
 		if (year mod 10 = 0) {
@@ -194,20 +212,22 @@ global {
 		//			benefits per AEZ
 		//			benefits total	
 			string s <- "";
+			s <- s + [year, subsidence_threshold];
 			s <- s + province collect each.debt;
 			map<string, list<AEZ>> mm <- (AEZ group_by each.aezone);
 			s <- s + mm.values collect sum(each collect each.debt);
 			s <- s + [total_debt];
-			s <- (s replace (",", ";") replace ("][", ";") replace ("[", "") replace ("]", ""));
+			s <- (s replace ("][", ",") replace ("[", "") replace ("]", ""));
 			write s;
-			save s to: "../results/" + explo_param + int(world) + "_debt.csv" type: text rewrite: false;
+			save s to: "../results/" + explo_param + "_debt.csv" type: text rewrite: false;
 			s <- "";
-			s <- s + province collect each.benefit;
-			s <- s + mm.values collect sum(each collect each.benefit);
+			s <- s + [year, subsidence_threshold];
+			s <- s + province collect (each.benefit);
+			s <- s + mm.values collect sum(each collect (each.benefit));
 			s <- s + [total_benefit];
-			s <- (s replace (",", ";") replace ("][", ";") replace ("[", "") replace ("]", ""));
+			s <- (s replace ("][", ",") replace ("[", "") replace ("]", ""));
 			write s;
-			save s to: "../results/" + explo_param + int(world) + "_benefit.csv" type: text rewrite: false;
+			save s to: "../results/" + explo_param + "_benefit.csv" type: text rewrite: false;
 			//			ask active_cell {
 			//				grid_value <- float(risk);
 			//			}
@@ -303,12 +323,11 @@ experiment "Landuse change" type: gui autorun: true {
 
 experiment "Explore" type: gui autorun: true {
 	parameter "Scenarios" var: scenario <- 0;
-//	parameter "Scenario subsidence" var: scenario_subsidence among: ["M1", "B1", "B2"] <- "B2";
-//	parameter "Subsidence threshold" var: subsidence_threshold among: [0.1, 0.15, 0.2, 0.3] <- 0.3;
-
+	//	parameter "Scenario subsidence" var: scenario_subsidence among: ["M1", "B1", "B2"] <- "B2";
+	//	parameter "Subsidence threshold" var: subsidence_threshold among: [0.1, 0.15, 0.2, 0.3] <- 0.3;
 	action _init_ {
 		loop t over: [0.1, 0.15, 0.2, 0.3] {
-			create simulation with: [scenario_subsidence::"M1", subsidence_threshold::t];
+			create simulation with: [scenario_subsidence::"B2", subsidence_threshold::t];
 		}
 
 	}
