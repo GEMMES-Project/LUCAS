@@ -50,7 +50,7 @@ global {
 	file ability_file <- csv_file("../includes/khokhanchuyendoi.csv", false);
 	file suitability_file <- csv_file("../includes/landsuitability.csv", false);
 	file profile_file <- csv_file("../includes/profile_adaptation.csv", false);
-	string risk_csv_file_path<-"../data/_31model_RCP85_CMIP5_tmaxavg_tmaxmax_premin.csv";
+	string risk_csv_file_path<-"../data/_31model_RCP85_CMIP6_tmaxavg_tmaxmax_premin.csv";
 	list criteria;
 	float v_kappa <- 0.0;
 	//file cell_dat_2010_file <- grid_file(""); //../includes/ht2015_500x500cutPQ.tif");
