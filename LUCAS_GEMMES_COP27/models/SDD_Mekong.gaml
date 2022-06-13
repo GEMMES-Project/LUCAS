@@ -14,6 +14,7 @@ global {
 
 		create province from: province_file {
 			agreed_aez <- use_profile_adaptation;
+			subsi_threshold<-prov_sub_thres[int(self)]=nil?subsidence_threshold:prov_sub_thres[int(self)];
 		}
 
 		create AEZ from: aez_file;
@@ -46,9 +47,9 @@ global {
 			//
 			//				}
 			//
-			//			}
+			//			} 
 			if (my_province != nil and my_province.agreed_aez and my_aez != nil) {
-				string p_key <- my_aez.aezone + (sub <= subsidence_threshold ? "00.1" : "0.110");
+				string p_key <- my_aez.aezone + (sub <= my_province.subsi_threshold ? "00.1" : "0.110");
 				profile <- profile_map[p_key];
 			}
 
@@ -123,7 +124,7 @@ global {
 			ask active_cell parallel: true {
 				sub <- field_subsidence[location]; //first(cell_salinity overlapping self).grid_value; 
 				if (my_province != nil and my_province.agreed_aez and my_aez != nil) {
-					string p_key <- my_aez.aezone + (sub <= subsidence_threshold ? "00.1" : "0.110");
+					string p_key <- my_aez.aezone + (sub <= my_province.subsi_threshold ? "00.1" : "0.110");
 					profile <- profile_map[p_key];
 				}
 
