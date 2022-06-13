@@ -257,9 +257,9 @@ global {
 }
 
 experiment "Landuse change" type: gui autorun: true {
-	parameter "Trong số lân cận" var: area_shrimp_tsl_risk <- 0.6;
-	parameter "Trọng số khó khăn" var: area_rice_fruit_tree_risk <- 0.5;
-	parameter "Trọng số thích nghi" var: area_fruit_tree_risk <- 0.7;
+	parameter "Trong số lân cận" var: w_neighbor_density <- 0.6;
+	parameter "Trọng số khó khăn" var: w_ability <- 0.5;
+	parameter "Trọng số thích nghi" var: w_suitability <- 0.7;
 	parameter "Trọng số lợi nhuận" var: w_profit <- 0.8;
 	//	parameter "Trọng số rủi ro biến đổi khí hậu" var: w_risky_climate <- 0.0;
 	parameter "Scenarios" var: scenario <- 0;
