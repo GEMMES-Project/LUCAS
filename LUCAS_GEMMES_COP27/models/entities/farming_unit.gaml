@@ -60,47 +60,47 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 
 	}
 
-	action to_mau {
-		if (landuse = 5) {
-			color <- #yellow;
-		}
-
-		if (landuse = 6) {
-			color <- #lightyellow;
-		}
-
-		if (landuse = 37) {
-			color <- rgb(170, 255, 255);
-		}
-
-		//		if (landuse = 6) {
-		//			color <- rgb(196, 196, 0);
-		//		}
-		if (landuse = 12) {
-			color <- #lightgreen;
-		}
-
-		if (landuse = 14) {
-			color <- #darkgreen;
-		}
-
-		if (landuse = 34) {
-			color <- #cyan;
-		}
-
-		if (landuse = 101) {
-			color <- rgb(40, 150, 120);
-		}
-
-		if (landuse = 102) {
-			color <- rgb(40, 100, 120);
-		}
-
-		if (landuse > 0) and (landuse != 14) and (landuse != 5) and (landuse != 6) and (landuse != 102) and (landuse != 101) and (landuse != 12) and (landuse != 34) {
-			color <- #gray;
-		}
-
-	}
+//	action to_mau {
+//		if (landuse = 5) {
+//			color <- #yellow;
+//		}
+//
+//		if (landuse = 6) {
+//			color <- #lightyellow;
+//		}
+//
+//		if (landuse = 37) {
+//			color <- rgb(170, 255, 255);
+//		}
+//
+//		//		if (landuse = 6) {
+//		//			color <- rgb(196, 196, 0);
+//		//		}
+//		if (landuse = 12) {
+//			color <- #lightgreen;
+//		}
+//
+//		if (landuse = 14) {
+//			color <- #darkgreen;
+//		}
+//
+//		if (landuse = 34) {
+//			color <- #cyan;
+//		}
+//
+//		if (landuse = 101) {
+//			color <- rgb(40, 150, 120);
+//		}
+//
+//		if (landuse = 102) {
+//			color <- rgb(40, 100, 120);
+//		}
+//
+//		if (landuse > 0) and (landuse != 14) and (landuse != 5) and (landuse != 6) and (landuse != 102) and (landuse != 101) and (landuse != 12) and (landuse != 34) {
+//			color <- #gray;
+//		}
+//
+//	}
 
 	action tinh_chiso_lancan {
 
@@ -258,8 +258,8 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 		} }
 
 	action luachonksd {
-		int old_lu <- landuse;
-		list<list> cands <- landuse_eval();
+//		int old_lu <- landuse;
+		list<list> cands <- profile != nil ? landuse_eval_with_profile() : landuse_eval();
 		int choice <- 0;
 		//if (de >1){} 
 		if (landuse = 5 or landuse = 6 or landuse = 12 or landuse = 14) {
@@ -360,18 +360,18 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 		////profile AEZ adaptation
 		////
 		////
-		int new_lu <- landuse;
-		if (profile != "") {
-			landuse <- old_lu;
-			if (supported_lu_type[profile + landuse] != nil) {
-				if (flip(supported_lu_type[profile + landuse])) {
-				//				if ((supported_lu_type[profile + landuse]) > 0.6) {
-					landuse <- new_lu;
-				}
-
-			}
-
-		}
+		//		int new_lu <- landuse;
+		//		if (profile != "") {
+		//			landuse <- old_lu;
+		//			if (supported_lu_type[profile + landuse] != nil) {
+		//				if (flip(supported_lu_type[profile + landuse])) {
+		//				//				if ((supported_lu_type[profile + landuse]) > 0.6) {
+		//					landuse <- new_lu;
+		//				}
+		//
+		//			}
+		//
+		//		}
 
 		// xet risk thuy san va lua
 		risk <- 0;
@@ -430,8 +430,67 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 
 	}
 
-	action landuse_eval {
+	action landuse_eval_with_profile {
+	//lập danh sách các kiểu sử dụng đất
+		list<list> candidates;
+		list<float> candluc;
+		list<float> candtsl;
+		list<float> candbhk;
+		list<float> candluk;
+		list<float> candlnk;
+		list<float> cand_luatom;
 
+		//dua dat tinh cua cac ung vien
+		bool fx <- flip(supported_lu_type[profile + 5]);
+		candluc << fx ? chiso_luc_lancan : 0;
+		candluc << fx ? xet_khokhanchuyendoi(landuse, 5) : 0;
+		candluc << fx ? xet_thichnghi(madvdd, 5) : 0;
+		candluc << fx ? (34 / 389) : 0;
+		//dua dac tinh ung vien tsl
+		fx <- flip(supported_lu_type[profile + 34]);
+		candtsl << fx ? chiso_tsl_lancan : 0;
+		candtsl << fx ? xet_khokhanchuyendoi(landuse, 34) : 0;
+		candtsl << fx ? xet_thichnghi(madvdd, 34) : 0;
+		candtsl << fx ? (389 / 389) : 0;
+		//		if landuse=101{
+		//			write "kk:" +xet_khokhanchuyendoi(landuse, 34)+ "tn:"+xet_thichnghi(madvdd, 34);
+		//		}
+
+		//dua dac tinh ung vien hnk
+		fx <- flip(supported_lu_type[profile + 12]);
+		candbhk << fx ? chiso_bhk_lancan : 0;
+		candbhk << fx ? xet_khokhanchuyendoi(landuse, 12) : 0;
+		candbhk << fx ? xet_thichnghi(madvdd, 12) : 0;
+		candbhk << fx ? (180 / 389) : 0;
+		//dua dac tinh ung vien lnk
+		fx <- flip(supported_lu_type[profile + 6]);
+		candluk << fx ? chiso_luk_lancan : 0;
+		candluk << fx ? xet_khokhanchuyendoi(landuse, 6) : 0;
+		candluk << fx ? xet_thichnghi(madvdd, 6) : 0;
+		candluk << fx ? (98 / 389) : 0;
+		//dua dac tinh ung vien rst
+		fx <- flip(supported_lu_type[profile + 14]);
+		candlnk << fx ? chiso_lnk_lancan : 0;
+		candlnk << fx ? xet_khokhanchuyendoi(landuse, 14) : 0;
+		candlnk << fx ? xet_thichnghi(madvdd, 14) : 0;
+		candlnk << fx ? (294 / 389) : 0;
+		// bổ sung thêm ứng viên lua-tom
+		fx <- flip(supported_lu_type[profile + 101]);
+		cand_luatom << fx ? chiso_lua_tom_lancan : 0;
+		cand_luatom << fx ? xet_khokhanchuyendoi(landuse, 101) : 0;
+		cand_luatom << fx ? xet_thichnghi(madvdd, 101) : 0;
+		cand_luatom << fx ? (150 / 389) : 0; // tamj thowi
+		//nap cac ung vien vao danh sach candidates
+		candidates << candluc;
+		candidates << candtsl;
+		candidates << candbhk;
+		candidates << candluk;
+		candidates << candlnk;
+		candidates << cand_luatom;
+		return candidates;
+	}
+
+	action landuse_eval {
 	//lập danh sách các kiểu sử dụng đất
 		list<list> candidates;
 		list<float> candluc;

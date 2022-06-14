@@ -7,7 +7,7 @@ import "entities/road.gaml"
 global {
 
 	init {
-		explo_param <- scenario_subsidence + "_"; //+ subsidence_threshold + "_";
+		explo_param <-scenario_subsidence + "_"; //+ subsidence_threshold + "_";
 		//load ban do tu cac ban do vao tac tu
 		create district from: district_file {
 		}
@@ -70,7 +70,7 @@ global {
 		[["name"::"lancan", "weight"::w_neighbor_density], ["name"::"khokhan", "weight"::w_ability], ["name"::"thichnghi", "weight"::w_suitability], ["name"::"loinhuan", "weight"::w_profit]];
 		//	save "year, 3 rice,2 rice, rice-shrimp,shrimp,vegetables, risk_aqua,risk_rice" type: "text" to: "result/landuse_res.csv" rewrite: true;
 		string s <- "";
-		s <- s + ["year", "subsidence_threshold"];
+		s <- s + ["year", "subsi_scenario", "subsidence_threshold"];
 		s <- s + province collect (each.NAME_1);
 		s <- s + (AEZ group_by (each.aezone)).keys;
 		s <- s + ["total_debt"];
@@ -183,9 +183,9 @@ global {
 		}
 
 		//string output_filename <-"../result/landuse_sim" + scenario+".csv";
-		save
-		[year, tong_luc, total_2rice_luk, total_rice_shrimp, tong_tsl, tong_bhk, total_fruit_tree_lnk, climate_maxTAS_shrimp, climate_maxPR_thuysan, climate_maxTAS_caytrong, climate_minPR_caytrong, area_shrimp_tsl_risk, area_rice_fruit_tree_risk]
-		type: "csv" to: "../results/landuse_sim_scenarios" + scenario + ".csv" rewrite: false;
+		//		save
+		//		[year, tong_luc, total_2rice_luk, total_rice_shrimp, tong_tsl, tong_bhk, total_fruit_tree_lnk, climate_maxTAS_shrimp, climate_maxPR_thuysan, climate_maxTAS_caytrong, climate_minPR_caytrong, area_shrimp_tsl_risk, area_rice_fruit_tree_risk]
+		//		type: "csv" to: "../results/landuse_sim_scenarios" + scenario + ".csv" rewrite: false;
 		write "Tong dt lua:" + tong_luc;
 		write "Tong dt lúa khác:" + total_2rice_luk;
 		write "Tong dt lúa tom:" + total_rice_shrimp;
@@ -205,7 +205,7 @@ global {
 		//			benefits per AEZ
 		//			benefits total	
 			string s <- "";
-			s <- s + [year, subsidence_threshold];
+			s <- s + [year, scenario_subsidence, subsidence_threshold];
 			s <- s + province collect each.debt;
 			map<string, list<AEZ>> mm <- (AEZ group_by each.aezone);
 			s <- s + mm.values collect sum(each collect each.debt);
@@ -214,7 +214,7 @@ global {
 			//			write s;
 			save s to: "../results/" + explo_param + "_debt.csv" type: text rewrite: false;
 			s <- "";
-			s <- s + [year, subsidence_threshold];
+			s <- s + [year, scenario_subsidence, subsidence_threshold];
 			s <- s + province collect (each.benefit);
 			s <- s + mm.values collect sum(each collect (each.benefit));
 			s <- s + [total_benefit];
@@ -256,12 +256,14 @@ experiment "Landuse change" type: gui autorun: true {
 	//	parameter "Trọng số rủi ro biến đổi khí hậu" var: w_risky_climate <- 0.0;
 	parameter "Scenarios" var: scenario <- 0;
 	parameter "Scenario subsidence" var: scenario_subsidence among: ["M1", "B1", "B2"];
-	//		init{
-	//			create simulation with:[scenario_subsidence::"B2"];
-	//		}
+
+//	init {
+//		create simulation with: [scenario_subsidence::"M1"];
+//	}
+
 	output {
-		display mophong type: opengl axes: false {
-		//			species farming_unit aspect: profile;
+		display mophong type: opengl axes: false autosave: true refresh: every(5 #cycle)  {
+//					species farming_unit aspect: profile;
 		//			grid farming_unit;
 		//			species river;
 		//			species road;
@@ -273,30 +275,19 @@ experiment "Landuse change" type: gui autorun: true {
 			mesh field_farming_unit color: scale(lu_color) smooth: false;
 		}
 
-		display "benefit - Debt" type: java2D {
-			chart "Layer" type: series {
-				data "benefit" style: line value: total_benefit color: #blue;
-				data "debt" style: line value: total_debt color: #red;
-			}
-
-		}
-
-		//		display "ttt" type: java2D {
+		//		display "benefit - Debt" type: java2D {
 		//			chart "Layer" type: series {
-		//				data "tong_luc" style: line value: tong_luc color: #blue;
-		//				data "total_2rice_luk" style: line value: total_2rice_luk color: #red;
-		//				data "total_rice_shrimp" style: line value: total_rice_shrimp color: #yellow;
-		//				data "tong_tsl" style: line value: tong_tsl color: #orange;
-		//				data "tong_bhk" style: line value: tong_bhk color: #violet;
-		//				data "total_fruit_tree_lnk" style: line value: total_fruit_tree_lnk color: #black;
+		//				data "benefit" style: line value: total_benefit color: #blue;
+		//				data "debt" style: line value: total_debt color: #red;
 		//			}
 		//
 		//		}
-		display risk_cell type: opengl axes: false {
-		//			species district;
-			mesh field_risk_farming_unit color: scale([#white::0, #blue::1, #red::2]) smooth: false; //  
-			species province;
-		}
+
+		//		display risk_cell type: opengl axes: false {
+		//		//			species district;
+		//			mesh field_risk_farming_unit color: scale([#white::0, #blue::1, #red::2]) smooth: false; //  
+		//			species province;
+		//		}
 		//
 		//		display "Risk by climate" type: java2D {
 		//			chart "Layer" type: series background: rgb(255, 255, 255) {
@@ -328,9 +319,12 @@ experiment "Explore" type: gui autorun: true {
 	//	parameter "Scenario subsidence" var: scenario_subsidence among: ["M1", "B1", "B2"] <- "B2";
 	//	parameter "Subsidence threshold" var: subsidence_threshold among: [0.1, 0.15, 0.2, 0.3] <- 0.3;
 	action _init_ {
-		loop t over: [0.1, 0.15, 0.2, 0.3] {
-			create simulation with: [scenario_subsidence::"B2", subsidence_threshold::t];
-		}
+//		loop s over: ["M1", "B1", "B2"] {
+			loop t over: [0.007,0.005,0.5] { //, [0.1,0.15, 0.2, 0.3] {
+				create simulation with: [scenario_subsidence::"B1", subsidence_threshold::t];
+			}
+
+//		}
 
 	}
 
