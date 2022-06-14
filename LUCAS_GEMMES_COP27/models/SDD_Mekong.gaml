@@ -254,15 +254,15 @@ experiment "Landuse change" type: gui autorun: true {
 	parameter "Trọng số thích nghi" var: w_suitability <- 0.7;
 	parameter "Trọng số lợi nhuận" var: w_profit <- 0.8;
 	//	parameter "Trọng số rủi ro biến đổi khí hậu" var: w_risky_climate <- 0.0;
-	parameter "Scenarios" var: scenario <- 0;
-	parameter "Scenario subsidence" var: scenario_subsidence among: ["M1", "B1", "B2"];
+//	parameter "Scenarios" var: scenario <- 0;
+//	parameter "Scenario subsidence" var: scenario_subsidence among: ["M1", "B1", "B2"];
 
 //	init {
 //		create simulation with: [scenario_subsidence::"M1"];
 //	}
 
 	output {
-		display mophong type: opengl axes: false autosave: true refresh: every(5 #cycle)  {
+		display mophong type: opengl axes: false {//autosave: true refresh: every(5 #cycle)  {
 //					species farming_unit aspect: profile;
 		//			grid farming_unit;
 		//			species river;
@@ -275,19 +275,19 @@ experiment "Landuse change" type: gui autorun: true {
 			mesh field_farming_unit color: scale(lu_color) smooth: false;
 		}
 
-		//		display "benefit - Debt" type: java2D {
-		//			chart "Layer" type: series {
-		//				data "benefit" style: line value: total_benefit color: #blue;
-		//				data "debt" style: line value: total_debt color: #red;
-		//			}
-		//
-		//		}
+				display "benefit - Debt" type: java2D {
+					chart "Layer" type: series {
+						data "benefit" style: line value: total_benefit color: #blue;
+						data "debt" style: line value: total_debt color: #red;
+					}
+		
+				}
 
-		//		display risk_cell type: opengl axes: false {
-		//		//			species district;
-		//			mesh field_risk_farming_unit color: scale([#white::0, #blue::1, #red::2]) smooth: false; //  
-		//			species province;
-		//		}
+				display risk_cell type: opengl axes: false {
+				//			species district;
+					mesh field_risk_farming_unit color: scale([#white::0, #blue::1, #red::2]) smooth: false; //  
+					species province;
+				}
 		//
 		//		display "Risk by climate" type: java2D {
 		//			chart "Layer" type: series background: rgb(255, 255, 255) {
