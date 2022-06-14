@@ -45,7 +45,7 @@ global {
 			//			write "" + int(data[1, i]) + "," + int(data[2, i]);
 			ask t {
 				data_tas["" + int(data[1, i]) + "," + int(data[2, i])] <- float(data[4, i]); //prcipitation is in column 5 in data file
-				data_pr["" + int(data[1, i]) + "," + int(data[2, i])] <- float(data[5, i]); // prcipitation is in column 5 in data file
+				data_pr["" + int(data[1, i]) + "," + int(data[2, i])] <- float(data[6, i]); // prcipitation is in column 5 in data file
 			}
 
 		}

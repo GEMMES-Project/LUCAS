@@ -48,10 +48,10 @@ global {
 			//				}
 			//
 			//			} 
-			if (my_province != nil and my_province.agreed_aez and my_aez != nil) {
-				string p_key <- my_aez.aezone + (sub <= my_province.subsi_threshold ? "00.1" : "0.110");
-				profile <- profile_map[p_key];
-			}
+//			if (my_province != nil and my_province.agreed_aez and my_aez != nil) {
+//				string p_key <- my_aez.aezone + (sub <= my_province.subsi_threshold ? "00.1" : "0.110");
+//				profile <- profile_map[p_key];
+//			}
 
 			//			if(my_province!=nil and my_province.agreed_aez and my_aez!=nil){
 			//				string p_key<-my_aez.aezone+(sub<=0.1?"00.1":"0.110");
@@ -67,7 +67,7 @@ global {
 		do gan_dvdd;
 		//		do gan_cell_hc;
 		criteria <-
-		[["name"::"lancan", "weight"::area_shrimp_tsl_risk], ["name"::"khokhan", "weight"::area_rice_fruit_tree_risk], ["name"::"thichnghi", "weight"::area_fruit_tree_risk], ["name"::"loinhuan", "weight"::w_profit]];
+		[["name"::"lancan", "weight"::w_neighbor_density], ["name"::"khokhan", "weight"::w_ability], ["name"::"thichnghi", "weight"::w_suitability], ["name"::"loinhuan", "weight"::w_profit]];
 		//	save "year, 3 rice,2 rice, rice-shrimp,shrimp,vegetables, risk_aqua,risk_rice" type: "text" to: "result/landuse_res.csv" rewrite: true;
 		string s <- "";
 		s <- s + ["year", "subsidence_threshold"];
@@ -256,7 +256,7 @@ global {
 
 }
 
-experiment "Landuse change" type: gui autorun: true {
+experiment "Landuse change" type: gui autorun: false {
 	parameter "Trong số lân cận" var: w_neighbor_density <- 0.6;
 	parameter "Trọng số khó khăn" var: w_ability <- 0.5;
 	parameter "Trọng số thích nghi" var: w_suitability <- 0.7;
@@ -276,7 +276,7 @@ experiment "Landuse change" type: gui autorun: true {
 		////			species province;
 		////			agents value:active_cell;
 		////			species AEZ transparency:0.3;			
-		//			mesh field_subsidence color: palette(reverse(brewer_colors("Blues"))) scale: 10 smooth: 4; //  
+//					mesh field_subsidence color: palette(reverse(brewer_colors("Blues"))) scale: 10 smooth: 4; //  
 		//			mesh field_salinity color: palette(reverse(brewer_colors("Blues"))) scale:10 smooth: 4;//  
 			mesh field_farming_unit color: scale(lu_color) smooth: false;
 		}

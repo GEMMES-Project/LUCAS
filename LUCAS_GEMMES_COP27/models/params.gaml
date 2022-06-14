@@ -26,7 +26,7 @@ global {
 		"../includes/subsidence/Scenario_B2/B2_2050.tif"
 	];
 	map<string, list<string>> map_scenario_subsidence<-["M1"::file_subsidence1,"B1"::file_subsidence2,"B2"::file_subsidence3];
-	string scenario_subsidence<-"B2";
+	string scenario_subsidence<-"M1";
 	float subsidence_threshold<-0.1;
 	map<int,float> prov_sub_thres<-[];
 	//	file cell_file <- grid_file("../includes/lu_100x100_mx_2005_new.tif");
@@ -51,7 +51,7 @@ global {
 	file ability_file <- csv_file("../includes/khokhanchuyendoi.csv", false);
 	file suitability_file <- csv_file("../includes/landsuitability.csv", false);
 	file profile_file <- csv_file("../includes/profile_adaptation.csv", false);
-	string risk_csv_file_path<-"../data/_31model_RCP85_CMIP5_tmaxavg_tmaxmax_premin.csv";
+	string risk_csv_file_path<-"../data/_31model_RCP85_CMIP6_tmaxavg_tmaxmax_premin.csv";
 	list criteria;
 	float v_kappa <- 0.0;
 	//file cell_dat_2010_file <- grid_file(""); //../includes/ht2015_500x500cutPQ.tif");
