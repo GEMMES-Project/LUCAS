@@ -14,7 +14,7 @@ global {
 
 		create province from: province_file {
 			agreed_aez <- use_profile_adaptation;
-			subsi_threshold<-prov_sub_thres[int(self)]=nil?subsidence_threshold:prov_sub_thres[int(self)];
+			subsi_threshold <- prov_sub_thres[int(self)] = nil ? subsidence_threshold : prov_sub_thres[int(self)];
 		}
 
 		create AEZ from: aez_file;
@@ -48,10 +48,10 @@ global {
 			//				}
 			//
 			//			} 
-//			if (my_province != nil and my_province.agreed_aez and my_aez != nil) {
-//				string p_key <- my_aez.aezone + (sub <= my_province.subsi_threshold ? "00.1" : "0.110");
-//				profile <- profile_map[p_key];
-//			}
+			//			if (my_province != nil and my_province.agreed_aez and my_aez != nil) {
+			//				string p_key <- my_aez.aezone + (sub <= my_province.subsi_threshold ? "00.1" : "0.110");
+			//				profile <- profile_map[p_key];
+			//			}
 
 			//			if(my_province!=nil and my_province.agreed_aez and my_aez!=nil){
 			//				string p_key<-my_aez.aezone+(sub<=0.1?"00.1":"0.110");
@@ -95,8 +95,10 @@ global {
 	}
 
 	reflex main_reflex {
-	//		the_date <- the_date add_years 5;
-	//		total_debt <- 0.0;
+		int year <- 2015 + cycle;
+		write cycle;
+		//		the_date <- the_date add_years 5;
+		//		total_debt <- 0.0;
 		ask province {
 			benefit <- 0.0;
 		}
@@ -118,7 +120,6 @@ global {
 		area_fruit_tree_risk <- 0.0;
 		//	budget_supported <-0.0; // reset support budget every year.
 		total_income_lost <- 0.0;
-		int year <- 2015 + cycle;
 		if (year mod 10 = 0) {
 			do load_subsidence((year - 2020) / 10);
 			ask active_cell parallel: true {
@@ -130,7 +131,7 @@ global {
 
 			}
 
-			write "subsidence updated";
+			//				write "subsidence updated";
 		}
 
 		ask active_cell parallel: true {
@@ -145,16 +146,7 @@ global {
 
 		ask active_cell parallel: false {
 			do adptation_sc; // applied when scenarios 1 or 2
-			if (my_province != nil and my_aez != nil) {
-				int tmp <- benefit / 1000;
-				my_province.debt <- my_province.debt + debt / 1E3; //convert to Milillard
-				my_province.benefit <- my_province.benefit + tmp;
-				my_aez.debt <- my_aez.debt + debt / 1E3;
-				my_aez.benefit <- my_aez.benefit + tmp; //convert to Milillard
-				total_debt <- total_debt + debt / 1E3;
-				total_benefit <- total_benefit + tmp;
-			}
-
+			do economic_compute;
 			field_farming_unit[location] <- landuse;
 			field_risk_farming_unit[location] <- risk;
 			//			do to_mau;
@@ -219,7 +211,7 @@ global {
 			s <- s + mm.values collect sum(each collect each.debt);
 			s <- s + [total_debt];
 			s <- (s replace ("][", ",") replace ("[", "") replace ("]", ""));
-			write s;
+			//			write s;
 			save s to: "../results/" + explo_param + "_debt.csv" type: text rewrite: false;
 			s <- "";
 			s <- s + [year, subsidence_threshold];
@@ -227,7 +219,7 @@ global {
 			s <- s + mm.values collect sum(each collect (each.benefit));
 			s <- s + [total_benefit];
 			s <- (s replace ("][", ",") replace ("[", "") replace ("]", ""));
-			write s;
+			//			write s;
 			save s to: "../results/" + explo_param + "_benefit.csv" type: text rewrite: false;
 			//			ask active_cell {
 			//				grid_value <- float(risk);
@@ -256,7 +248,7 @@ global {
 
 }
 
-experiment "Landuse change" type: gui autorun: false {
+experiment "Landuse change" type: gui autorun: true {
 	parameter "Trong số lân cận" var: w_neighbor_density <- 0.6;
 	parameter "Trọng số khó khăn" var: w_ability <- 0.5;
 	parameter "Trọng số thích nghi" var: w_suitability <- 0.7;
@@ -276,7 +268,7 @@ experiment "Landuse change" type: gui autorun: false {
 		////			species province;
 		////			agents value:active_cell;
 		////			species AEZ transparency:0.3;			
-//					mesh field_subsidence color: palette(reverse(brewer_colors("Blues"))) scale: 10 smooth: 4; //  
+		//					mesh field_subsidence color: palette(reverse(brewer_colors("Blues"))) scale: 10 smooth: 4; //  
 		//			mesh field_salinity color: palette(reverse(brewer_colors("Blues"))) scale:10 smooth: 4;//  
 			mesh field_farming_unit color: scale(lu_color) smooth: false;
 		}
@@ -288,13 +280,22 @@ experiment "Landuse change" type: gui autorun: false {
 			}
 
 		}
-		//				display landunit type: java2D {
-		//					species land_unit;
-		//				}
-		display risk_cell type: opengl {
+
+		//		display "ttt" type: java2D {
+		//			chart "Layer" type: series {
+		//				data "tong_luc" style: line value: tong_luc color: #blue;
+		//				data "total_2rice_luk" style: line value: total_2rice_luk color: #red;
+		//				data "total_rice_shrimp" style: line value: total_rice_shrimp color: #yellow;
+		//				data "tong_tsl" style: line value: tong_tsl color: #orange;
+		//				data "tong_bhk" style: line value: tong_bhk color: #violet;
+		//				data "total_fruit_tree_lnk" style: line value: total_fruit_tree_lnk color: #black;
+		//			}
+		//
+		//		}
+		display risk_cell type: opengl axes: false {
 		//			species district;
-			species province;
 			mesh field_risk_farming_unit color: scale([#white::0, #blue::1, #red::2]) smooth: false; //  
+			species province;
 		}
 		//
 		//		display "Risk by climate" type: java2D {
@@ -328,7 +329,7 @@ experiment "Explore" type: gui autorun: true {
 	//	parameter "Subsidence threshold" var: subsidence_threshold among: [0.1, 0.15, 0.2, 0.3] <- 0.3;
 	action _init_ {
 		loop t over: [0.1, 0.15, 0.2, 0.3] {
-			create simulation with: [scenario_subsidence::"B1", subsidence_threshold::t];
+			create simulation with: [scenario_subsidence::"B2", subsidence_threshold::t];
 		}
 
 	}

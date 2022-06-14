@@ -3,7 +3,7 @@ import "../params.gaml"
 global{
 	field  field_subsidence<-field(636,728,0.0);//field(cell_subsidence_file);
 	action load_subsidence(int idx){ 
-		write map_scenario_subsidence[scenario_subsidence][idx];
+//		write map_scenario_subsidence[scenario_subsidence][idx];
 		field_subsidence<- field(grid_file(map_scenario_subsidence[scenario_subsidence][idx]));
 	}
 }
