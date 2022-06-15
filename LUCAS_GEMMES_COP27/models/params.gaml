@@ -27,7 +27,7 @@ global {
 	];
 	map<string, list<string>> map_scenario_subsidence<-["M1"::file_subsidence1,"B1"::file_subsidence2,"B2"::file_subsidence3];
 	string scenario_subsidence<-"B2";
-	float subsidence_threshold<-0.7;
+	float subsidence_threshold<-0.5;
 	map<int,float> prov_sub_thres<-[];
 	//	file cell_file <- grid_file("../includes/lu_100x100_mx_2005_new.tif");
 //	file MKD_bound <- shape_file("../includes/MKD_district.shp"); 

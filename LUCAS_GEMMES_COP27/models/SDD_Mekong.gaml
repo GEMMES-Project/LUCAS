@@ -320,8 +320,8 @@ experiment "Explore" type: gui autorun: true {
 	//	parameter "Subsidence threshold" var: subsidence_threshold among: [0.1, 0.15, 0.2, 0.3] <- 0.3;
 	action _init_ {
 //		loop s over: ["M1", "B1", "B2"] {
-			loop t over: [0.007,0.005,0.5] { //, [0.1,0.15, 0.2, 0.3] {
-				create simulation with: [scenario_subsidence::"B1", subsidence_threshold::t];
+			loop t over: [0.1, 0.2, 0.5] { //, [0.1,0.15, 0.2, 0.3] { [0.007,0.005,0.5]
+				create simulation with: [scenario_subsidence::"M1", subsidence_threshold::t];
 			}
 
 //		}
