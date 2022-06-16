@@ -221,16 +221,16 @@ global {
 			s <- (s replace ("][", ",") replace ("[", "") replace ("]", ""));
 			//			write s;
 			save s to: "../results/" + explo_param + "_benefit.csv" type: text rewrite: false;
-			//			ask active_cell {
-			//				grid_value <- float(risk);
-			//			}
-			//
-			//			save farming_unit to: "../results/risk_" + year + "sc" + scenario + ".tif" type: "geotiff";
-			//			ask active_cell {
-			//				grid_value <- float(landuse);
-			//			}
-			//
-			//			save farming_unit to: "../results/landuse_sim_" + year + "sc" + scenario + ".tif" type: "geotiff";
+						ask active_cell {
+							grid_value <- float(risk);
+						}
+			
+						save farming_unit to: "../results/risk_" + year + "sc" + explo_param + ".tif" type: "geotiff";
+						ask active_cell {
+							grid_value <- float(landuse);
+						}
+			
+						save farming_unit to: "../results/landuse_sim_" + year + "sc" + explo_param + ".tif" type: "geotiff";
 		}
 		// save resul map
 		if (year > 2050) {
@@ -262,7 +262,7 @@ experiment "Landuse change" type: gui autorun: true {
 //	}
 
 	output {
-		display mophong type: opengl axes: false {//autosave: true refresh: every(5 #cycle)  {
+		display LU_sim type: opengl axes: false {//autosave: true refresh: every(5 #cycle)  {
 //					species farming_unit aspect: profile;
 		//			grid farming_unit;
 		//			species river;
@@ -275,10 +275,10 @@ experiment "Landuse change" type: gui autorun: true {
 			mesh field_farming_unit color: scale(lu_color) smooth: false;
 		}
 
-				display "benefit - Debt" type: java2D {
+				display "Benefit - Debt" type: java2D {
 					chart "Layer" type: series {
-						data "benefit" style: line value: total_benefit color: #blue;
-						data "debt" style: line value: total_debt color: #red;
+						data "Benefit" style: line value: total_benefit color: #blue;
+						data "Debt" style: line value: total_debt color: #red;
 					}
 		
 				}

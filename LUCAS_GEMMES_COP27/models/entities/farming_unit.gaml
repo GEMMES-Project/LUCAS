@@ -115,17 +115,31 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 		//chiso_khac_lancan <-(cell_lancan count (each.landuse=1))/8;
 	}
 
-	//	float get_climate_maxPR (int month) {
-	//		// tim luong mua toi da trong cac thang mua kho trong mot nam
-	//		// nham danh gia kha nang gay risk khi canh tac thuy san (tom) 
-	//		if (my_tinh != nil) {
-	//			int idx <- 12 + (int(cycle / 5) * 12);
-	//			list
-	//			tmp <- [my_tinh.data_pr[idx + 0], my_tinh.data_pr[idx + 1], my_tinh.data_pr[idx + 2], my_tinh.data_pr[idx + 3], my_tinh.data_pr[idx + 4], my_tinh.data_pr[idx + 5], my_tinh.data_pr[idx + 6], my_tinh.data_pr[idx + 7], my_tinh.data_pr[idx + 8]];
-	//			return float(max(tmp));
-	//		}
-	//		return 0.0;
-	//	}
+//		float get_climate_maxPR (int month) {
+//			// tim luong mua toi da trong cac thang mua kho trong mot nam
+//			// nham danh gia kha nang gay risk khi canh tac thuy san (tom) 
+//			if (my_district != nil) {
+//				int idx <- 12 + (int(cycle / 5) * 12);
+//				list
+//				tmp <- [my_district.data_pr[idx + 0], my_district.data_pr[idx + 1], my_district.data_pr[idx + 2], my_district.data_pr[idx + 3], my_district.data_pr[idx + 4], my_district.data_pr[idx + 5], my_district.data_pr[idx + 6], my_district.data_pr[idx + 7], my_district.data_pr[idx + 8]];
+//				return float(max(tmp));
+//			}
+//			return 0.0;
+//		}
+float get_climate_maxPR (int month) {
+	// tim luong mua toi thieu  trong cac thang mua kho trong mot nam
+	// nham danh gia kha nang gay risk cho cay trong
+		if (my_district != nil) {
+			int idx <- cycle; //12 + (int(cycle / 5) * 12);
+			//			write ""+(2016+idx) +",0";
+			list
+			tmp <- [my_district.data_pr["" + (2016 + idx) + ",0"], my_district.data_pr["" + (2016 + idx) + ",1"], my_district.data_pr["" + (2016 + idx) + ",2"], my_district.data_pr["" + (2016 + idx) + ",3"], my_district.data_pr["" + (2016 + idx) + ",4"], my_district.data_pr["" + (2016 + idx) + ",5"], my_district.data_pr["" + (2016 + idx) + ",6"], my_district.data_pr["" + (2016 + idx) + ",7"], my_district.data_pr["" + (2016 + idx) + ",8"]];
+			return float(max(tmp));
+		}
+
+		return 0.0;
+	}
+
 	float get_climate_minPR (int month) {
 	// tim luong mua toi thieu  trong cac thang mua kho trong mot nam
 	// nham danh gia kha nang gay risk cho cay trong
@@ -377,8 +391,8 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 		risk <- 0;
 		if (landuse = 34) { // thuy san
 		// Nhiet do cao nhat > nguong hoac luong mua max >nguong
-			if (get_climate_maxTAS(cycle) > climate_maxTAS_shrimp or get_climate_minPR(cycle) > climate_maxPR_thuysan) {
-				if (flip(0.5)) {
+			if (get_climate_maxTAS(cycle) > climate_maxTAS_shrimp or get_climate_maxPR(cycle) > climate_maxPR_thuysan) {
+				if (flip(0.3)) {
 					risk <- 1; // risk aqua
 				}
 
@@ -391,7 +405,7 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 		// bo sung duyet 2 tham so nguong duoi: nhietdo tas>27- 29; Pr : 300-500
 			if (get_climate_maxTAS(cycle) > climate_maxTAS_caytrong and get_climate_minPR(cycle) < climate_minPR_caytrong and sal > 2) {
 			//			if (get_climate_maxTAS(cycle) > climate_maxTAS_caytrong and get_climate_minPR(cycle) < climate_minPR_caytrong) {
-				if (flip(0.5)) {
+				if (flip(0.3)) {
 					risk <- 2; // risk agro
 				}
 
