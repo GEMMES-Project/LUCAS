@@ -1,0 +1,5 @@
+year,tong_luc,total_2rice_luk,total_rice_shrimp,tong_tsl,tong_bhk,total_fruit_tree_lnk,climate_maxTAS_shrimp,climate_maxPR_thuysan,climate_maxTAS_caytrong,climate_minPR_caytrong,area_shrimp_tsl_risk,area_rice_fruit_tree_risk
+2020,647400.0,839100.0,87800.0,704375.0,165225.0,554350.0,37.0,400.0,36.5,180.0,171925.0,61825.0
+2030,429075.0,882925.0,41150.0,782375.0,245575.0,617150.0,37.0,400.0,36.5,180.0,500.0,700.0
+2040,287600.0,940600.0,23325.0,826700.0,275600.0,644425.0,37.0,400.0,36.5,180.0,11600.0,17375.0
+2050,191275.0,976425.0,15575.0,835275.0,301275.0,678425.0,37.0,400.0,36.5,180.0,0.0,0.0

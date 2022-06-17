@@ -181,28 +181,27 @@ global {
 
 		}
 
-		//string output_filename <-"../result/landuse_sim" + scenario+".csv";
-		//		save
-		//		[year, tong_luc, total_2rice_luk, total_rice_shrimp, tong_tsl, tong_bhk, total_fruit_tree_lnk, climate_maxTAS_shrimp, climate_maxPR_thuysan, climate_maxTAS_caytrong, climate_minPR_caytrong, area_shrimp_tsl_risk, area_rice_fruit_tree_risk]
-		//		type: "csv" to: "../results/landuse_sim_scenarios" + scenario + ".csv" rewrite: false;
-		write "Tong dt lua:" + tong_luc;
-		write "Tong dt lúa khác:" + total_2rice_luk;
-		write "Tong dt lúa tom:" + total_rice_shrimp;
-		write "Tong dt ts:" + tong_tsl;
-		write "Tong dt rau mau:" + tong_bhk;
-		write "Tong dt lnk:" + total_fruit_tree_lnk;
-		//write "Tong dt khac:" + tong_khac;
-		write "Tong dt tsl risk:" + area_shrimp_tsl_risk;
-		write "Tong dt lua  risk:" + area_rice_fruit_tree_risk;
-
 		// Save risk into map
 		if (year mod 10 = 0) {
-		//			debt per province
-		//			debt (total)
-		//			debt   AEZ
-		//			benefits per province
-		//			benefits per AEZ
-		//			benefits total	
+			string output_filename <- "../result/landuse_sim" + scenario + ".csv";
+			save
+			[year, tong_luc, total_2rice_luk, total_rice_shrimp, tong_tsl, tong_bhk, total_fruit_tree_lnk, climate_maxTAS_shrimp, climate_maxPR_thuysan, climate_maxTAS_caytrong, climate_minPR_caytrong, area_shrimp_tsl_risk, area_rice_fruit_tree_risk]
+			type: "csv" to: "../results/" + explo_param + "_" + subsidence_threshold + "_landuse_sim.csv" rewrite: false;
+			write "Tong dt lua:" + tong_luc;
+			write "Tong dt lúa khác:" + total_2rice_luk;
+			write "Tong dt lúa tom:" + total_rice_shrimp;
+			write "Tong dt ts:" + tong_tsl;
+			write "Tong dt rau mau:" + tong_bhk;
+			write "Tong dt lnk:" + total_fruit_tree_lnk;
+			//write "Tong dt khac:" + tong_khac;
+			write "Tong dt tsl risk:" + area_shrimp_tsl_risk;
+			write "Tong dt lua  risk:" + area_rice_fruit_tree_risk;
+			//			debt per province
+			//			debt (total)
+			//			debt   AEZ
+			//			benefits per province
+			//			benefits per AEZ
+			//			benefits total	
 			string s <- "";
 			s <- s + [year, scenario_subsidence, subsidence_threshold];
 			s <- s + province collect each.debt;
@@ -351,12 +350,13 @@ experiment "Explore" type: gui autorun: true {
 	action _init_ {
 	//		loop s over: ["M1", "B1", "B2"] {
 		loop t over: [0.1, 0.2, 0.5, 1.0] { //, [0.1,0.15, 0.2, 0.3] { [0.007,0.005,0.5]
-			create simulation with: [scenario_subsidence::"B1", use_profile_adaptation::true, explo_param::"B1", subsidence_threshold::t];
+//			create simulation with: [scenario_subsidence::"M1", use_profile_adaptation::true, explo_param::"M1", subsidence_threshold::t];
+//			create simulation with: [scenario_subsidence::"B1", use_profile_adaptation::true, explo_param::"B1", subsidence_threshold::t];
+			create simulation with: [scenario_subsidence::"B2", use_profile_adaptation::true, explo_param::"B2", subsidence_threshold::t];
 		}
 
 		//		}
 
 	}
- 
 
 }
