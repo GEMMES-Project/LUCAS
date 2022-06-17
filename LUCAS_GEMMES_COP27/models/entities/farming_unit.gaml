@@ -127,13 +127,13 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 //			return 0.0;
 //		}
 float get_climate_maxPR (int month) {
-	// tim luong mua toi thieu  trong cac thang mua kho trong mot nam
-	// nham danh gia kha nang gay risk cho cay trong
+	// tim luong mua lớn nhất  trong cac thang mua kho trong mot nam
+	// nham danh gia kha nang gay risk cho thuy san
 		if (my_district != nil) {
 			int idx <- cycle; //12 + (int(cycle / 5) * 12);
 			//			write ""+(2016+idx) +",0";
 			list
-			tmp <- [my_district.data_pr["" + (2016 + idx) + ",0"], my_district.data_pr["" + (2016 + idx) + ",1"], my_district.data_pr["" + (2016 + idx) + ",2"], my_district.data_pr["" + (2016 + idx) + ",3"], my_district.data_pr["" + (2016 + idx) + ",4"], my_district.data_pr["" + (2016 + idx) + ",5"], my_district.data_pr["" + (2016 + idx) + ",6"], my_district.data_pr["" + (2016 + idx) + ",7"], my_district.data_pr["" + (2016 + idx) + ",8"]];
+			tmp <- [my_district.data_pr["" + (2016 + idx) + ",0"], my_district.data_pr["" + (2016 + idx) + ",1"], my_district.data_pr["" + (2016 + idx) + ",2"], my_district.data_pr["" + (2016 + idx) + ",3"], my_district.data_pr["" + (2016 + idx) + ",4"], my_district.data_pr["" + (2016 + idx) + ",5"]];
 			return float(max(tmp));
 		}
 
@@ -147,7 +147,7 @@ float get_climate_maxPR (int month) {
 			int idx <- cycle; //12 + (int(cycle / 5) * 12);
 			//			write ""+(2016+idx) +",0";
 			list
-			tmp <- [my_district.data_pr["" + (2016 + idx) + ",0"], my_district.data_pr["" + (2016 + idx) + ",1"], my_district.data_pr["" + (2016 + idx) + ",2"], my_district.data_pr["" + (2016 + idx) + ",3"], my_district.data_pr["" + (2016 + idx) + ",4"], my_district.data_pr["" + (2016 + idx) + ",5"], my_district.data_pr["" + (2016 + idx) + ",6"], my_district.data_pr["" + (2016 + idx) + ",7"], my_district.data_pr["" + (2016 + idx) + ",8"]];
+			tmp <- [my_district.data_pr["" + (2016 + idx) + ",0"], my_district.data_pr["" + (2016 + idx) + ",1"], my_district.data_pr["" + (2016 + idx) + ",2"], my_district.data_pr["" + (2016 + idx) + ",3"], my_district.data_pr["" + (2016 + idx) + ",4"], my_district.data_pr["" + (2016 + idx) + ",5"], my_district.data_pr["" + (2016 + idx) + ",6"],my_district.data_pr["" + (2016 + idx) + ",11"]];
 			return float(min(tmp));
 		}
 
@@ -160,7 +160,7 @@ float get_climate_maxPR (int month) {
 		if (my_district != nil) {
 			int idx <- cycle; //12 + (int(cycle / 5) * 12);			
 			list
-			tmp <- [my_district.data_tas["" + (2016 + idx) + ",0"], my_district.data_tas["" + (2016 + idx) + ",1"], my_district.data_tas["" + (2016 + idx) + ",2"], my_district.data_tas["" + (2016 + idx) + ",3"], my_district.data_tas["" + (2016 + idx) + ",4"], my_district.data_tas["" + (2016 + idx) + ",5"], my_district.data_tas["" + (2016 + idx) + ",6"], my_district.data_tas["" + (2016 + idx) + ",7"], my_district.data_tas["" + (2016 + idx) + ",8"]];
+			tmp <- [my_district.data_tas["" + (2016 + idx) + ",0"], my_district.data_tas["" + (2016 + idx) + ",1"], my_district.data_tas["" + (2016 + idx) + ",2"], my_district.data_tas["" + (2016 + idx) + ",3"], my_district.data_tas["" + (2016 + idx) + ",4"], my_district.data_tas["" + (2016 + idx) + ",5"], my_district.data_tas["" + (2016 + idx) + ",11"]];
 			return float(max(tmp));
 		}
 
