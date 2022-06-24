@@ -73,6 +73,7 @@ global {
 		s <- s + province collect (each.NAME_1);
 		s <- s + (AEZ group_by (each.aezone)).keys;
 		s <- s + ["total_debt"];
+		s <- s + ["total_wu"];
 		s <- (s replace ("][", ",") replace ("[", "") replace ("]", ""));
 		write s;
 		if (int(world) = 0) {
@@ -100,12 +101,15 @@ global {
 		//		total_debt <- 0.0;
 		ask province {
 			benefit <- 0.0;
+			wu <- 0.0;
 		}
 
 		ask AEZ {
 			benefit <- 0.0;
+			wu <- 0.0;
 		}
 
+		total_wu <- 0.0;
 		total_benefit <- 0.0;
 		tong_luc <- 0.0;
 		total_2rice_luk <- 0.0;
@@ -136,6 +140,7 @@ global {
 		ask active_cell parallel: true {
 			benefit <- 0.0;
 			debt <- 0.0;
+			water_unit <- 0.0;
 			do tinh_chiso_lancan;
 		}
 
@@ -209,6 +214,7 @@ global {
 			map<string, list<AEZ>> mm <- (AEZ group_by each.aezone);
 			s <- s + mm.values collect sum(each collect each.debt);
 			s <- s + [total_debt];
+			s <- s + [total_wu];
 			s <- (s replace ("][", ",") replace ("[", "") replace ("]", ""));
 			//			write s;
 			save s to: "../results/" + explo_param + "_debt.csv" type: text rewrite: false;
@@ -309,6 +315,7 @@ experiment "Landuse change" type: gui autorun: true {
 			chart "Layer" type: series {
 				data "Benefit" style: line value: total_benefit color: #blue;
 				data "Debt" style: line value: total_debt color: #red;
+				data "Water_Unit" style: line value: total_wu color: #darkcyan;
 			}
 
 		}
@@ -353,7 +360,8 @@ experiment "Explore" type: gui autorun: true {
 		loop t over: [0.1, 0.2, 0.5, 1.0] { //, [0.1,0.15, 0.2, 0.3] { [0.007,0.005,0.5]
 		//			create simulation with: [scenario_subsidence::"M1", use_profile_adaptation::true, explo_param::"M1", subsidence_threshold::t];
 		//			create simulation with: [scenario_subsidence::"B1", use_profile_adaptation::true, explo_param::"B1", subsidence_threshold::t];
-			create simulation with: [scenario_subsidence::"M1", use_profile_adaptation::true, explo_param::"M1", subsidence_threshold::t];
+			create simulation with: [scenario_subsidence::"M1", use_profile_adaptation::false, use_subsidence_macro::true, explo_param::"macro_subsi_M1", subsidence_threshold::t];
+			create simulation with: [scenario_subsidence::"M1", use_profile_adaptation::true, use_subsidence_macro::true, explo_param::"waterunit_M1", subsidence_threshold::t];
 		}
 
 		//		}

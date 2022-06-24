@@ -11,6 +11,7 @@ species AEZ {
 	map<string,float> data_tas;
 	float debt;
 	float benefit<-0.0;
+	float wu;
 	init {
 	}
 	aspect default{

@@ -8,6 +8,7 @@ global {
 	field field_risk_farming_unit <- field(515, 546);
 	float total_debt <- 0.0;
 	float total_benefit <- 0.0;
+	float total_wu <- 0.0;
 	map<int, int> lu_total_benefit <- [5::0, 34::0, 12::0, 6::0, 14::0, 101::0];
 }
 
@@ -43,6 +44,7 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 	float investment <- 0.0;
 	float benefit <- 0.0;
 	float debt <- 0.0;
+	float water_unit<-0.0;
 
 	init {
 	/*
@@ -433,11 +435,23 @@ float get_climate_maxPR (int month) {
 		}
 
 		if (my_province != nil and my_aez != nil) {
-			int tmp <- benefit / 1000;
+			float old_wu<-water_unit;
+			water_unit<-water_unit+landuse;
+			float decrease<-1.0;
+			if(use_subsidence_macro and sub > my_province.subsi_threshold){
+				decrease<-0.8;
+			}
+			if(use_profile_adaptation and sub > my_province.subsi_threshold){
+				water_unit<-water_unit-landuse;				
+			}
+			int tmp <- benefit / 1000 * decrease;
+			my_province.wu <- my_province.wu + (water_unit-old_wu)/10;
 			my_province.debt <- my_province.debt + debt / 1E3; //convert to Milillard
 			my_province.benefit <- my_province.benefit + tmp;
+			my_aez.wu <- my_aez.wu + (water_unit-old_wu)/10;
 			my_aez.debt <- my_aez.debt + debt / 1E3;
 			my_aez.benefit <- my_aez.benefit + tmp; //convert to Milillard
+			total_wu <- total_wu + (water_unit-old_wu)/10;
 			total_debt <- total_debt + debt / 1E3;
 			total_benefit <- total_benefit + tmp;
 		}
