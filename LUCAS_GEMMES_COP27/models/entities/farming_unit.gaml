@@ -27,6 +27,8 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 	float chiso_khokhan_lua_tom;
 	int risk <- 0; // bo sung risk de danh dau cell bi risk. DUng khi kich ban loai risk se xet cac cell nay de chuyen doi sang kieu phu hop honbool risk<- false
 	// 1: risk thuy san; 2 : risk lua
+	int vul_rice<-0;
+	int vul_aqua<-0;
 	// moi vong lap gan lai bang false de xet lai cho nam khac.
 	rgb color;
 	int dyke <- 1; //1: inside; 2: outside of dyke
@@ -396,6 +398,7 @@ float get_climate_maxPR (int month) {
 			if (get_climate_maxTAS(cycle) > climate_maxTAS_shrimp or get_climate_maxPR(cycle) > climate_maxPR_thuysan) {
 				if (flip(0.3)) {
 					risk <- 1; // risk aqua
+					vul_aqua<-vul_aqua+1;
 				}
 
 			}
@@ -409,6 +412,7 @@ float get_climate_maxPR (int month) {
 			//			if (get_climate_maxTAS(cycle) > climate_maxTAS_caytrong and get_climate_minPR(cycle) < climate_minPR_caytrong) {
 				if (flip(0.3)) {
 					risk <- 2; // risk agro
+					vul_rice <-vul_rice +1;
 				}
 
 			}

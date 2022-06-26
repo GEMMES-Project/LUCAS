@@ -226,11 +226,11 @@ global {
 			s <- (s replace ("][", ",") replace ("[", "") replace ("]", ""));
 			//			write s;
 			save s to: "../results/" + explo_param + "_benefit.csv" type: text rewrite: false;
-			ask active_cell {
-				grid_value <- float(risk);
-			}
-
-			save farming_unit to: "../results/" + explo_param + "_" + subsidence_threshold + "_risk_" + year + ".tif" type: "geotiff";
+//			ask active_cell {
+//				grid_value <- float(risk);
+//			}
+//
+//			save farming_unit to: "../results/" + explo_param + "_" + subsidence_threshold + "_risk_" + year + ".tif" type: "geotiff";
 			ask active_cell {
 				grid_value <- float(landuse);
 			}
@@ -246,6 +246,17 @@ global {
 		//			//			do tinh_kappa;
 
 		//			//	do tinh_dtmx;
+			ask active_cell {
+				grid_value <- float(vul_rice);
+			}
+
+			save farming_unit to: "../results/" + explo_param + "_" + subsidence_threshold + "_vulnerable_rice_" + year + ".tif" type: "geotiff";
+
+			ask active_cell {
+				grid_value <- 200.0+float(vul_aqua);
+			}
+
+			save farming_unit to: "../results/" + explo_param + "_" + subsidence_threshold + "_vulnerable_aqua_" + year + ".tif" type: "geotiff";
 			do pause;
 		}
 
