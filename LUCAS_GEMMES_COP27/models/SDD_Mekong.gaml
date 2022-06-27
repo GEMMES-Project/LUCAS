@@ -253,7 +253,10 @@ global {
 			save farming_unit to: "../results/" + explo_param + "_" + subsidence_threshold + "_vulnerable_rice_" + year + ".tif" type: "geotiff";
 
 			ask active_cell {
-				grid_value <- 200.0+float(vul_aqua);
+				grid_value <- 0.0;
+				if (vul_aqua >0) {
+					grid_value <- 200.0+float(vul_aqua);
+				}
 			}
 
 			save farming_unit to: "../results/" + explo_param + "_" + subsidence_threshold + "_vulnerable_aqua_" + year + ".tif" type: "geotiff";
