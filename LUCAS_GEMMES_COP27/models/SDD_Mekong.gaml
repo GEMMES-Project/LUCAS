@@ -186,6 +186,7 @@ global {
 
 		}
 
+		do update_benefit_from_landuse_change;
 		save
 		[year, tong_luc, total_2rice_luk, total_rice_shrimp, tong_tsl, tong_bhk, total_fruit_tree_lnk, climate_maxTAS_shrimp, climate_maxPR_thuysan, climate_maxTAS_caytrong, climate_minPR_caytrong, area_shrimp_tsl_risk, area_rice_fruit_tree_risk]
 		type: "csv" to: "../results/" + explo_param + "_" + subsidence_threshold + "_landuse_sim.csv" rewrite: false;
@@ -226,11 +227,11 @@ global {
 			s <- (s replace ("][", ",") replace ("[", "") replace ("]", ""));
 			//			write s;
 			save s to: "../results/" + explo_param + "_benefit.csv" type: text rewrite: false;
-//			ask active_cell {
-//				grid_value <- float(risk);
-//			}
-//
-//			save farming_unit to: "../results/" + explo_param + "_" + subsidence_threshold + "_risk_" + year + ".tif" type: "geotiff";
+			//			ask active_cell {
+			//				grid_value <- float(risk);
+			//			}
+			//
+			//			save farming_unit to: "../results/" + explo_param + "_" + subsidence_threshold + "_risk_" + year + ".tif" type: "geotiff";
 			ask active_cell {
 				grid_value <- float(landuse);
 			}
@@ -251,12 +252,12 @@ global {
 			}
 
 			save farming_unit to: "../results/" + explo_param + "_" + subsidence_threshold + "_vulnerable_rice_" + year + ".tif" type: "geotiff";
-
 			ask active_cell {
 				grid_value <- 0.0;
-				if (vul_aqua >0) {
-					grid_value <- 200.0+float(vul_aqua);
+				if (vul_aqua > 0) {
+					grid_value <- 200.0 + float(vul_aqua);
 				}
+
 			}
 
 			save farming_unit to: "../results/" + explo_param + "_" + subsidence_threshold + "_vulnerable_aqua_" + year + ".tif" type: "geotiff";

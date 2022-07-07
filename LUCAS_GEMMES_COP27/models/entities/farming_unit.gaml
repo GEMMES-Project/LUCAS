@@ -27,8 +27,8 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 	float chiso_khokhan_lua_tom;
 	int risk <- 0; // bo sung risk de danh dau cell bi risk. DUng khi kich ban loai risk se xet cac cell nay de chuyen doi sang kieu phu hop honbool risk<- false
 	// 1: risk thuy san; 2 : risk lua
-	int vul_rice<-0;
-	int vul_aqua<-0;
+	int vul_rice <- 0;
+	int vul_aqua <- 0;
 	// moi vong lap gan lai bang false de xet lai cho nam khac.
 	rgb color;
 	int dyke <- 1; //1: inside; 2: outside of dyke
@@ -46,7 +46,7 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 	float investment <- 0.0;
 	float benefit <- 0.0;
 	float debt <- 0.0;
-	float water_unit<-0.0;
+	float water_unit <- 0.0;
 
 	init {
 	/*
@@ -64,48 +64,47 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 
 	}
 
-//	action to_mau {
-//		if (landuse = 5) {
-//			color <- #yellow;
-//		}
-//
-//		if (landuse = 6) {
-//			color <- #lightyellow;
-//		}
-//
-//		if (landuse = 37) {
-//			color <- rgb(170, 255, 255);
-//		}
-//
-//		//		if (landuse = 6) {
-//		//			color <- rgb(196, 196, 0);
-//		//		}
-//		if (landuse = 12) {
-//			color <- #lightgreen;
-//		}
-//
-//		if (landuse = 14) {
-//			color <- #darkgreen;
-//		}
-//
-//		if (landuse = 34) {
-//			color <- #cyan;
-//		}
-//
-//		if (landuse = 101) {
-//			color <- rgb(40, 150, 120);
-//		}
-//
-//		if (landuse = 102) {
-//			color <- rgb(40, 100, 120);
-//		}
-//
-//		if (landuse > 0) and (landuse != 14) and (landuse != 5) and (landuse != 6) and (landuse != 102) and (landuse != 101) and (landuse != 12) and (landuse != 34) {
-//			color <- #gray;
-//		}
-//
-//	}
-
+	//	action to_mau {
+	//		if (landuse = 5) {
+	//			color <- #yellow;
+	//		}
+	//
+	//		if (landuse = 6) {
+	//			color <- #lightyellow;
+	//		}
+	//
+	//		if (landuse = 37) {
+	//			color <- rgb(170, 255, 255);
+	//		}
+	//
+	//		//		if (landuse = 6) {
+	//		//			color <- rgb(196, 196, 0);
+	//		//		}
+	//		if (landuse = 12) {
+	//			color <- #lightgreen;
+	//		}
+	//
+	//		if (landuse = 14) {
+	//			color <- #darkgreen;
+	//		}
+	//
+	//		if (landuse = 34) {
+	//			color <- #cyan;
+	//		}
+	//
+	//		if (landuse = 101) {
+	//			color <- rgb(40, 150, 120);
+	//		}
+	//
+	//		if (landuse = 102) {
+	//			color <- rgb(40, 100, 120);
+	//		}
+	//
+	//		if (landuse > 0) and (landuse != 14) and (landuse != 5) and (landuse != 6) and (landuse != 102) and (landuse != 101) and (landuse != 12) and (landuse != 34) {
+	//			color <- #gray;
+	//		}
+	//
+	//	}
 	action tinh_chiso_lancan {
 
 	//so cell xung quanh cuar mot cell co kieu su dung la luk/8 (8-tong so o lan can cua moi o)
@@ -119,18 +118,18 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 		//chiso_khac_lancan <-(cell_lancan count (each.landuse=1))/8;
 	}
 
-//		float get_climate_maxPR (int month) {
-//			// tim luong mua toi da trong cac thang mua kho trong mot nam
-//			// nham danh gia kha nang gay risk khi canh tac thuy san (tom) 
-//			if (my_district != nil) {
-//				int idx <- 12 + (int(cycle / 5) * 12);
-//				list
-//				tmp <- [my_district.data_pr[idx + 0], my_district.data_pr[idx + 1], my_district.data_pr[idx + 2], my_district.data_pr[idx + 3], my_district.data_pr[idx + 4], my_district.data_pr[idx + 5], my_district.data_pr[idx + 6], my_district.data_pr[idx + 7], my_district.data_pr[idx + 8]];
-//				return float(max(tmp));
-//			}
-//			return 0.0;
-//		}
-float get_climate_maxPR (int month) {
+	//		float get_climate_maxPR (int month) {
+	//			// tim luong mua toi da trong cac thang mua kho trong mot nam
+	//			// nham danh gia kha nang gay risk khi canh tac thuy san (tom) 
+	//			if (my_district != nil) {
+	//				int idx <- 12 + (int(cycle / 5) * 12);
+	//				list
+	//				tmp <- [my_district.data_pr[idx + 0], my_district.data_pr[idx + 1], my_district.data_pr[idx + 2], my_district.data_pr[idx + 3], my_district.data_pr[idx + 4], my_district.data_pr[idx + 5], my_district.data_pr[idx + 6], my_district.data_pr[idx + 7], my_district.data_pr[idx + 8]];
+	//				return float(max(tmp));
+	//			}
+	//			return 0.0;
+	//		}
+	float get_climate_maxPR (int month) {
 	// tim luong mua lớn nhất  trong cac thang mua kho trong mot nam
 	// nham danh gia kha nang gay risk cho thuy san
 		if (my_district != nil) {
@@ -151,7 +150,7 @@ float get_climate_maxPR (int month) {
 			int idx <- cycle; //12 + (int(cycle / 5) * 12);
 			//			write ""+(2016+idx) +",0";
 			list
-			tmp <- [my_district.data_pr["" + (2016 + idx) + ",0"], my_district.data_pr["" + (2016 + idx) + ",1"], my_district.data_pr["" + (2016 + idx) + ",2"], my_district.data_pr["" + (2016 + idx) + ",3"], my_district.data_pr["" + (2016 + idx) + ",4"], my_district.data_pr["" + (2016 + idx) + ",5"], my_district.data_pr["" + (2016 + idx) + ",6"],my_district.data_pr["" + (2016 + idx) + ",11"]];
+			tmp <- [my_district.data_pr["" + (2016 + idx) + ",0"], my_district.data_pr["" + (2016 + idx) + ",1"], my_district.data_pr["" + (2016 + idx) + ",2"], my_district.data_pr["" + (2016 + idx) + ",3"], my_district.data_pr["" + (2016 + idx) + ",4"], my_district.data_pr["" + (2016 + idx) + ",5"], my_district.data_pr["" + (2016 + idx) + ",6"], my_district.data_pr["" + (2016 + idx) + ",11"]];
 			return float(min(tmp));
 		}
 
@@ -276,7 +275,7 @@ float get_climate_maxPR (int month) {
 		} }
 
 	action luachonksd {
-//		int old_lu <- landuse;
+	//		int old_lu <- landuse;
 		list<list> cands <- profile != nil ? landuse_eval_with_profile() : landuse_eval();
 		int choice <- 0;
 		//if (de >1){} 
@@ -398,7 +397,7 @@ float get_climate_maxPR (int month) {
 			if (get_climate_maxTAS(cycle) > climate_maxTAS_shrimp or get_climate_maxPR(cycle) > climate_maxPR_thuysan) {
 				if (flip(0.3)) {
 					risk <- 1; // risk aqua
-					vul_aqua<-vul_aqua+1;
+					vul_aqua <- vul_aqua + 1;
 				}
 
 			}
@@ -412,7 +411,7 @@ float get_climate_maxPR (int month) {
 			//			if (get_climate_maxTAS(cycle) > climate_maxTAS_caytrong and get_climate_minPR(cycle) < climate_minPR_caytrong) {
 				if (flip(0.3)) {
 					risk <- 2; // risk agro
-					vul_rice <-vul_rice +1;
+					vul_rice <- vul_rice + 1;
 				}
 
 			}
@@ -422,42 +421,49 @@ float get_climate_maxPR (int month) {
 	}
 
 	action economic_compute {
-	//
-	// tinh benefit, debt pump
-	//
-		investment <- (lu_cost[landuse] * (shape.area / 10000) + lu_cost[landuse] * (shape.area / 1E4) * lending_rate["" + (2015 + cycle)] * lending_rate["" + (2015 + cycle)]) / 100;
-		benefit <- lu_benefit[landuse] * 25; // 25ha - size of the cell 500*500/10000
-		if (risk > 0) {
-		//			if (my_province != nil and my_province.pumping >= 0) {
-		//				risk <- 0;
-		//				debt <- debt + investment + my_province.pumping_price;
-		//			} else {
-			benefit <- 0.0;
-			debt <- debt + investment;
-			//			}
-
-		}
-
-		if (my_province != nil and my_aez != nil) {
-			float old_wu<-water_unit;
-			water_unit<-water_unit+landuse;
-			float decrease<-1.0;
-			if(use_subsidence_macro and sub > my_province.subsi_threshold){
-				decrease<-0.8;
+		if (my_province != nil) {
+			float old_wu <- water_unit;
+			water_unit <- water_unit + landuse;
+			float coefficient <- 1.0;
+			if (use_subsidence_macro and sub > my_province.subsi_threshold) {
+				coefficient <- 0.8;
 			}
-			if(use_profile_adaptation and sub > my_province.subsi_threshold){
-				water_unit<-water_unit-landuse;				
+
+			if (use_profile_adaptation and sub > my_province.subsi_threshold) {
+				water_unit <- water_unit - landuse;
 			}
-			int tmp <- benefit / 1000 * decrease;
-			my_province.wu <- my_province.wu + (water_unit-old_wu)/10;
+
+			//
+			// tinh benefit, debt pump
+			//
+			lu_benefit_total[landuse] <- lu_benefit_total[landuse] + (lu_benefit[landuse] * coefficient);
+			lu_benefit_cnt[landuse] <- lu_benefit_cnt[landuse] + 1;
+			investment <- (lu_cost[landuse] * (shape.area / 10000) + lu_cost[landuse] * (shape.area / 1E4) * lending_rate["" + (2015 + cycle)] * lending_rate["" + (2015 + cycle)]) / 100;
+			benefit <- lu_benefit[landuse] * 25 * coefficient; // 25ha - size of the cell 500*500/10000
+			if (risk > 0) {
+			//			if (my_province != nil and my_province.pumping >= 0) {
+			//				risk <- 0;
+			//				debt <- debt + investment + my_province.pumping_price;
+			//			} else {
+				benefit <- 0.0;
+				debt <- debt + investment;
+				//			}
+
+			}
+
+			float tmp <- benefit / 1000; //* coefficient has involve in lu_benefit
+			my_province.wu <- my_province.wu + (water_unit - old_wu) / 10;
 			my_province.debt <- my_province.debt + debt / 1E3; //convert to Milillard
 			my_province.benefit <- my_province.benefit + tmp;
-			my_aez.wu <- my_aez.wu + (water_unit-old_wu)/10;
-			my_aez.debt <- my_aez.debt + debt / 1E3;
-			my_aez.benefit <- my_aez.benefit + tmp; //convert to Milillard
-			total_wu <- total_wu + (water_unit-old_wu)/10;
+			total_wu <- total_wu + (water_unit - old_wu) / 10;
 			total_debt <- total_debt + debt / 1E3;
 			total_benefit <- total_benefit + tmp;
+			if (my_aez != nil) {
+				my_aez.wu <- my_aez.wu + (water_unit - old_wu) / 10;
+				my_aez.debt <- my_aez.debt + debt / 1E3;
+				my_aez.benefit <- my_aez.benefit + tmp; //convert to Milillard
+			}
+
 		}
 
 	}
@@ -477,13 +483,13 @@ float get_climate_maxPR (int month) {
 		candluc << fx ? chiso_luc_lancan : 0;
 		candluc << fx ? xet_khokhanchuyendoi(landuse, 5) : 0;
 		candluc << fx ? xet_thichnghi(madvdd, 5) : 0;
-		candluc << fx ? (34 / 389) : 0;
+		candluc << fx ? (lu_benefit[5] / max_lu_benefit) : 0;
 		//dua dac tinh ung vien tsl
 		fx <- flip(supported_lu_type[profile + 34]);
 		candtsl << fx ? chiso_tsl_lancan : 0;
 		candtsl << fx ? xet_khokhanchuyendoi(landuse, 34) : 0;
 		candtsl << fx ? xet_thichnghi(madvdd, 34) : 0;
-		candtsl << fx ? (389 / 389) : 0;
+		candtsl << fx ? (lu_benefit[34] / max_lu_benefit) : 0;
 		//		if landuse=101{
 		//			write "kk:" +xet_khokhanchuyendoi(landuse, 34)+ "tn:"+xet_thichnghi(madvdd, 34);
 		//		}
@@ -493,25 +499,25 @@ float get_climate_maxPR (int month) {
 		candbhk << fx ? chiso_bhk_lancan : 0;
 		candbhk << fx ? xet_khokhanchuyendoi(landuse, 12) : 0;
 		candbhk << fx ? xet_thichnghi(madvdd, 12) : 0;
-		candbhk << fx ? (180 / 389) : 0;
+		candbhk << fx ? (lu_benefit[12] / max_lu_benefit) : 0;
 		//dua dac tinh ung vien lnk
 		fx <- flip(supported_lu_type[profile + 6]);
 		candluk << fx ? chiso_luk_lancan : 0;
 		candluk << fx ? xet_khokhanchuyendoi(landuse, 6) : 0;
 		candluk << fx ? xet_thichnghi(madvdd, 6) : 0;
-		candluk << fx ? (98 / 389) : 0;
+		candluk << fx ? (lu_benefit[6] / max_lu_benefit) : 0;
 		//dua dac tinh ung vien rst
 		fx <- flip(supported_lu_type[profile + 14]);
 		candlnk << fx ? chiso_lnk_lancan : 0;
 		candlnk << fx ? xet_khokhanchuyendoi(landuse, 14) : 0;
 		candlnk << fx ? xet_thichnghi(madvdd, 14) : 0;
-		candlnk << fx ? (294 / 389) : 0;
+		candlnk << fx ? (lu_benefit[14] / max_lu_benefit) : 0;
 		// bổ sung thêm ứng viên lua-tom
 		fx <- flip(supported_lu_type[profile + 101]);
 		cand_luatom << fx ? chiso_lua_tom_lancan : 0;
 		cand_luatom << fx ? xet_khokhanchuyendoi(landuse, 101) : 0;
 		cand_luatom << fx ? xet_thichnghi(madvdd, 101) : 0;
-		cand_luatom << fx ? (150 / 389) : 0; // tamj thowi
+		cand_luatom << fx ? (lu_benefit[101] / max_lu_benefit) : 0; // tamj thowi
 		//nap cac ung vien vao danh sach candidates
 		candidates << candluc;
 		candidates << candtsl;

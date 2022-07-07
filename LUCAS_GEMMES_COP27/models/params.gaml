@@ -102,6 +102,9 @@ global {
 	bool use_subsidence_macro parameter:"use_subsidence_macro"<-true;
 //	map<int,rgb> lu_color<-[5::#yellow,6::#lightyellow,37::rgb(170, 255, 255),12::#lightgreen,14::#darkgreen,34:: #cyan,101::rgb(40, 150, 120),102::rgb(40, 100, 120)];
 	map<rgb,int> lu_color<-[#white::0,#yellow::5,rgb(175, 175, 0)::6,rgb(170, 255, 255)::37,#lightgreen::12,#darkgreen::14, #cyan::34,rgb(40, 150, 120)::101,rgb(40, 100, 120)::102];
-	map<int,int> lu_benefit;//<-[5::34,34::389,12::180,6::98,14::294,101::150];
-	map<int,int> lu_cost;//<-[5::34,34::389,12::180,6::98,14::294,101::150];
+	map<int,float> lu_benefit;//<-[5::34,34::389,12::180,6::98,14::294,101::150];
+	map<int,float> lu_benefit_total;//<-[5::34,34::389,12::180,6::98,14::294,101::150];
+	map<int,float> lu_benefit_cnt;//<-[5::34,34::389,12::180,6::98,14::294,101::150];
+	float max_lu_benefit;
+	map<int,float> lu_cost;//<-[5::34,34::389,12::180,6::98,14::294,101::150];
 }

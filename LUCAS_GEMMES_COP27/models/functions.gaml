@@ -77,42 +77,53 @@ global {
 
 	}
 
-//	action tinhtongdt {
-//		tong_luc <- 0.0;
-//		total_2rice_luk <- 0.0;
-//		total_rice_shrimp <- 0.0;
-//		tong_tsl <- 0.0;
-//		total_fruit_tree_lnk <- 0.0;
-//		tong_bhk <- 0.0;
-//		total_rice_shrimp <- 0.0;
-//		ask active_cell {
-//		}
-//
-//		//		ask active_cell {
-//		//			if (landuse > 0) and (landuse != 14) and (landuse != 5) and (landuse != 6) and (landuse != 100) and (landuse != 12) and (landuse != 34) {
-//		//				tong_khac <- tong_khac + 100 * 100 / 10000; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
-//		//			}
-//		//
-//		//		}
-//		write "Tong dt lua:" + tong_luc;
-//		write "Tong dt lúa khác:" + total_2rice_luk;
-//		write "Tong dt lúa tom:" + total_rice_shrimp;
-//		write "Tong dt ts:" + tong_tsl;
-//		write "Tong dt rau mau:" + tong_bhk;
-//		write "Tong dt lnk:" + total_fruit_tree_lnk;
-//		write "Tong dt khac:" + total_rice_shrimp;
-//	}
-
+	//	action tinhtongdt {
+	//		tong_luc <- 0.0;
+	//		total_2rice_luk <- 0.0;
+	//		total_rice_shrimp <- 0.0;
+	//		tong_tsl <- 0.0;
+	//		total_fruit_tree_lnk <- 0.0;
+	//		tong_bhk <- 0.0;
+	//		total_rice_shrimp <- 0.0;
+	//		ask active_cell {
+	//		}
+	//
+	//		//		ask active_cell {
+	//		//			if (landuse > 0) and (landuse != 14) and (landuse != 5) and (landuse != 6) and (landuse != 100) and (landuse != 12) and (landuse != 34) {
+	//		//				tong_khac <- tong_khac + 100 * 100 / 10000; //kichs thuowcs mooix cell 50*50m tuwf duwx lieeuj rasster
+	//		//			}
+	//		//
+	//		//		}
+	//		write "Tong dt lua:" + tong_luc;
+	//		write "Tong dt lúa khác:" + total_2rice_luk;
+	//		write "Tong dt lúa tom:" + total_rice_shrimp;
+	//		write "Tong dt ts:" + tong_tsl;
+	//		write "Tong dt rau mau:" + tong_bhk;
+	//		write "Tong dt lnk:" + total_fruit_tree_lnk;
+	//		write "Tong dt khac:" + total_rice_shrimp;
+	//	}
 	action load_cost_benefit_data {
 		matrix cb_matrix <- matrix(csv_file("../includes/cost_benefit.csv", true));
 		loop i from: 0 to: cb_matrix.rows - 1 {
 			int yy <- int(cb_matrix[0, i]);
-			lu_cost <+ int(yy)::float(cb_matrix[1, i]);
-			lu_benefit <+ int(yy)::float(cb_matrix[2, i]);
+			lu_cost <+ (yy)::float(cb_matrix[1, i]);
+			lu_benefit <+ (yy)::float(cb_matrix[2, i]);
 		}
 
+		max_lu_benefit <- max(lu_benefit collect each);
+		write "max_lu_benefit " + max_lu_benefit;
 		write "cost benefit " + lu_cost + lu_benefit;
 	}
+
+	action update_benefit_from_landuse_change {
+		loop k over: lu_benefit.keys {
+			lu_benefit[k] <- lu_benefit_total[k] / lu_benefit_cnt[k];
+			lu_benefit_total[k] <- 0;
+			lu_benefit_cnt[k] <- 0;
+		}
+
+	}
+
 	action load_macroeconomic_data {
 		matrix macro_matrix <- matrix(macroeconomic_file);
 		loop i from: 2 to: macro_matrix.rows - 1 {
@@ -262,11 +273,11 @@ global {
 	//		}
 	//
 	//	}
-//	action gan_cell_hc {
-//	//		ask cell_dat {
-//	//			landuse_obs <- cell_dat_2010[self.grid_x, self.grid_y].landuse;
-//	//		}
-//
-//	}
+	//	action gan_cell_hc {
+	//	//		ask cell_dat {
+	//	//			landuse_obs <- cell_dat_2010[self.grid_x, self.grid_y].landuse;
+	//	//		}
+	//
+	//	}
 
 }
