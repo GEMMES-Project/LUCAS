@@ -491,13 +491,13 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 		bool fx <- flip(supported_lu_type[profile + 5]);
 		candluc << fx ? chiso_luc_lancan : 0;
 		candluc << fx ? xet_khokhanchuyendoi(landuse, 5) : 0;
-		candluc << max([0, xet_thichnghi(madvdd, 5) - risk_suitab_5]);
+		candluc << fx ? max([0, xet_thichnghi(madvdd, 5) - risk_suitab_5]) : 0;
 		candluc << fx ? (my_lu_benefit[5] / max_lu_benefit) : 0;
 		//dua dac tinh ung vien tsl
 		fx <- flip(supported_lu_type[profile + 34]);
 		candtsl << fx ? chiso_tsl_lancan : 0;
 		candtsl << fx ? xet_khokhanchuyendoi(landuse, 34) : 0;
-		candtsl << max([0, xet_thichnghi(madvdd, 34) - risk_suitab_34]);
+		candtsl << fx ? max([0, xet_thichnghi(madvdd, 34) - risk_suitab_34]) : 0;
 		candtsl << fx ? (my_lu_benefit[34] / max_lu_benefit) : 0;
 		//		if landuse=101{
 		//			write "kk:" +xet_khokhanchuyendoi(landuse, 34)+ "tn:"+xet_thichnghi(madvdd, 34);

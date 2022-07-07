@@ -7,6 +7,7 @@ import "entities/road.gaml"
 global {
  
 	init {
+		write "use_profile_adaptation "+use_profile_adaptation+" use_subsidence_macro "+use_subsidence_macro+" explo_param "+explo_param;
 	//load ban do tu cac ban do vao tac tu
 		create district from: district_file {
 		}
