@@ -89,8 +89,8 @@ global {
 	float climate_maxTAS_shrimp<- 37.0;//33.0 -32 , tăng 0.5
 	float climate_maxPR_thuysan<-400.0;//-300, tăng 50
 
-	float climate_maxTAS_caytrong<- 36.5;//33.0 -32 , tăng 0.5
-	float climate_minPR_caytrong<-  180.0; //120.0 200 chay, thu 180
+	float climate_maxTAS_caytrong<- 36.0;//33.0 -32 , tăng 0.5
+	float climate_minPR_caytrong<-  200.0; //120.0 200 chay, thu 180
 
 	float proportion_aqua_supported<-0.6;
 	float proportion_ago_supported<-0.6;
