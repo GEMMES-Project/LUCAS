@@ -277,7 +277,15 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 
 	action luachonksd {
 	//		int old_lu <- landuse;
-		list<list> cands <- profile != nil ? landuse_eval_with_profile() : landuse_eval();
+		list<list> cands; // <- profile != nil ? landuse_eval_with_profile() : landuse_eval();
+		if (profile = nil and use_subsidence_macro) {
+			cands <- landuse_eval_with_subsi_no_profile();
+		} else if (profile != nil) {
+			cands <- landuse_eval_with_profile();
+		} else {
+			cands <- landuse_eval();
+		}
+
 		int choice <- 0;
 		//if (de >1){} 
 		if (landuse = 5 or landuse = 6 or landuse = 12 or landuse = 14) {
