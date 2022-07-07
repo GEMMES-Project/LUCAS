@@ -114,16 +114,7 @@ global {
 		write "max_lu_benefit " + max_lu_benefit;
 		write "cost benefit " + lu_cost + lu_benefit;
 	}
-
-	action update_benefit_from_landuse_change {
-		loop k over: lu_benefit.keys {
-			lu_benefit[k] <- lu_benefit_total[k] / lu_benefit_cnt[k];
-			lu_benefit_total[k] <- 0;
-			lu_benefit_cnt[k] <- 0;
-		}
-
-	}
-
+	
 	action load_macroeconomic_data {
 		matrix macro_matrix <- matrix(macroeconomic_file);
 		loop i from: 2 to: macro_matrix.rows - 1 {

@@ -5,7 +5,7 @@ import "entities/river.gaml"
 import "entities/road.gaml"
 
 global {
-
+ 
 	init {
 	//load ban do tu cac ban do vao tac tu
 		create district from: district_file {
@@ -184,9 +184,8 @@ global {
 				area_rice_fruit_tree_risk <- area_rice_fruit_tree_risk + pixel_size;
 			}
 
-		}
-
-		do update_benefit_from_landuse_change;
+		} 
+		
 		save
 		[year, tong_luc, total_2rice_luk, total_rice_shrimp, tong_tsl, tong_bhk, total_fruit_tree_lnk, climate_maxTAS_shrimp, climate_maxPR_thuysan, climate_maxTAS_caytrong, climate_minPR_caytrong, area_shrimp_tsl_risk, area_rice_fruit_tree_risk]
 		type: "csv" to: "../results/" + explo_param + "_" + subsidence_threshold + "_landuse_sim.csv" rewrite: false;

@@ -45,6 +45,7 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 	string profile;
 	float investment <- 0.0;
 	float benefit <- 0.0;
+	map<int, float> my_lu_benefit; //<-[5::34,34::389,12::180,6::98,14::294,101::150]; 
 	float debt <- 0.0;
 	float water_unit <- 0.0;
 
@@ -398,6 +399,7 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 				if (flip(0.3)) {
 					risk <- 1; // risk aqua
 					vul_aqua <- vul_aqua + 1;
+					risk_suitab_34 <- 0.33;
 				}
 
 			}
@@ -412,6 +414,7 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 				if (flip(0.3)) {
 					risk <- 2; // risk agro
 					vul_rice <- vul_rice + 1;
+					risk_suitab_5 <- 0.33;
 				}
 
 			}
@@ -435,11 +438,9 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 
 			//
 			// tinh benefit, debt pump
-			//
-			lu_benefit_total[landuse] <- lu_benefit_total[landuse] + (lu_benefit[landuse] * coefficient);
-			lu_benefit_cnt[landuse] <- lu_benefit_cnt[landuse] + 1;
+			my_lu_benefit[landuse] <- my_lu_benefit[landuse] = nil ? lu_benefit[landuse] * coefficient : my_lu_benefit[landuse] * coefficient;
 			investment <- (lu_cost[landuse] * (shape.area / 10000) + lu_cost[landuse] * (shape.area / 1E4) * lending_rate["" + (2015 + cycle)] * lending_rate["" + (2015 + cycle)]) / 100;
-			benefit <- lu_benefit[landuse] * 25 * coefficient; // 25ha - size of the cell 500*500/10000
+			benefit <- my_lu_benefit[landuse] * 25; // 25ha - size of the cell 500*500/10000
 			if (risk > 0) {
 			//			if (my_province != nil and my_province.pumping >= 0) {
 			//				risk <- 0;
@@ -469,7 +470,7 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 	}
 
 	action landuse_eval_with_profile {
-	//lập danh sách các kiểu sử dụng đất
+	//lập danh sách các kiểu sử dụng đất Th3: landuse_eval có lọc lại danh sách candidate, giảm suitability
 		list<list> candidates;
 		list<float> candluc;
 		list<float> candtsl;
@@ -482,14 +483,14 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 		bool fx <- flip(supported_lu_type[profile + 5]);
 		candluc << fx ? chiso_luc_lancan : 0;
 		candluc << fx ? xet_khokhanchuyendoi(landuse, 5) : 0;
-		candluc << fx ? xet_thichnghi(madvdd, 5) : 0;
-		candluc << fx ? (lu_benefit[5] / max_lu_benefit) : 0;
+		candluc << max([0, xet_thichnghi(madvdd, 5) - risk_suitab_5]);
+		candluc << fx ? (my_lu_benefit[5] / max_lu_benefit) : 0;
 		//dua dac tinh ung vien tsl
 		fx <- flip(supported_lu_type[profile + 34]);
 		candtsl << fx ? chiso_tsl_lancan : 0;
 		candtsl << fx ? xet_khokhanchuyendoi(landuse, 34) : 0;
-		candtsl << fx ? xet_thichnghi(madvdd, 34) : 0;
-		candtsl << fx ? (lu_benefit[34] / max_lu_benefit) : 0;
+		candtsl << max([0, xet_thichnghi(madvdd, 34) - risk_suitab_34]);
+		candtsl << fx ? (my_lu_benefit[34] / max_lu_benefit) : 0;
 		//		if landuse=101{
 		//			write "kk:" +xet_khokhanchuyendoi(landuse, 34)+ "tn:"+xet_thichnghi(madvdd, 34);
 		//		}
@@ -499,25 +500,82 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 		candbhk << fx ? chiso_bhk_lancan : 0;
 		candbhk << fx ? xet_khokhanchuyendoi(landuse, 12) : 0;
 		candbhk << fx ? xet_thichnghi(madvdd, 12) : 0;
-		candbhk << fx ? (lu_benefit[12] / max_lu_benefit) : 0;
+		candbhk << fx ? (my_lu_benefit[12] / max_lu_benefit) : 0;
 		//dua dac tinh ung vien lnk
 		fx <- flip(supported_lu_type[profile + 6]);
 		candluk << fx ? chiso_luk_lancan : 0;
 		candluk << fx ? xet_khokhanchuyendoi(landuse, 6) : 0;
 		candluk << fx ? xet_thichnghi(madvdd, 6) : 0;
-		candluk << fx ? (lu_benefit[6] / max_lu_benefit) : 0;
+		candluk << fx ? (my_lu_benefit[6] / max_lu_benefit) : 0;
 		//dua dac tinh ung vien rst
 		fx <- flip(supported_lu_type[profile + 14]);
 		candlnk << fx ? chiso_lnk_lancan : 0;
 		candlnk << fx ? xet_khokhanchuyendoi(landuse, 14) : 0;
 		candlnk << fx ? xet_thichnghi(madvdd, 14) : 0;
-		candlnk << fx ? (lu_benefit[14] / max_lu_benefit) : 0;
+		candlnk << fx ? (my_lu_benefit[14] / max_lu_benefit) : 0;
 		// bổ sung thêm ứng viên lua-tom
 		fx <- flip(supported_lu_type[profile + 101]);
 		cand_luatom << fx ? chiso_lua_tom_lancan : 0;
 		cand_luatom << fx ? xet_khokhanchuyendoi(landuse, 101) : 0;
 		cand_luatom << fx ? xet_thichnghi(madvdd, 101) : 0;
-		cand_luatom << fx ? (lu_benefit[101] / max_lu_benefit) : 0; // tamj thowi
+		cand_luatom << fx ? (my_lu_benefit[101] / max_lu_benefit) : 0; // tamj thowi
+		//nap cac ung vien vao danh sach candidates
+		candidates << candluc;
+		candidates << candtsl;
+		candidates << candbhk;
+		candidates << candluk;
+		candidates << candlnk;
+		candidates << cand_luatom;
+		return candidates;
+	}
+
+	float risk_suitab_5 <- 0.0;
+	float risk_suitab_34 <- 0.0;
+
+	action landuse_eval_with_subsi_no_profile {
+	//lập danh sách các kiểu sử dụng đất TH2: Land_use eval có chỉnh landsuitability và benefit
+		list<list> candidates;
+		list<float> candluc;
+		list<float> candtsl;
+		list<float> candbhk;
+		list<float> candluk;
+		list<float> candlnk;
+		list<float> cand_luatom;
+
+		//dua dat tinh cua cac ung vien
+		candluc << chiso_luc_lancan;
+		candluc << xet_khokhanchuyendoi(landuse, 5);
+		candluc << max([0, xet_thichnghi(madvdd, 5) - risk_suitab_5]);
+		candluc << (my_lu_benefit[5] / max_lu_benefit);
+		//dua dac tinh ung vien tsl
+		candtsl << chiso_tsl_lancan;
+		candtsl << xet_khokhanchuyendoi(landuse, 34);
+		candtsl << max([0, xet_thichnghi(madvdd, 34) - risk_suitab_34]);
+		candtsl << (my_lu_benefit[34] / max_lu_benefit);
+		//		if landuse=101{
+		//			write "kk:" +xet_khokhanchuyendoi(landuse, 34)+ "tn:"+xet_thichnghi(madvdd, 34);
+		//		}
+
+		//dua dac tinh ung vien hnk
+		candbhk << chiso_bhk_lancan;
+		candbhk << xet_khokhanchuyendoi(landuse, 12);
+		candbhk << xet_thichnghi(madvdd, 12);
+		candbhk << (my_lu_benefit[12] / max_lu_benefit);
+		//dua dac tinh ung vien lnk
+		candluk << chiso_luk_lancan;
+		candluk << xet_khokhanchuyendoi(landuse, 6);
+		candluk << xet_thichnghi(madvdd, 6);
+		candluk << (my_lu_benefit[6] / max_lu_benefit);
+		//dua dac tinh ung vien rst
+		candlnk << chiso_lnk_lancan;
+		candlnk << xet_khokhanchuyendoi(landuse, 14);
+		candlnk << xet_thichnghi(madvdd, 14);
+		candlnk << (my_lu_benefit[14] / max_lu_benefit);
+		// bổ sung thêm ứng viên lua-tom
+		cand_luatom << chiso_lua_tom_lancan;
+		cand_luatom << xet_khokhanchuyendoi(landuse, 101);
+		cand_luatom << xet_thichnghi(madvdd, 101);
+		cand_luatom << (my_lu_benefit[101] / max_lu_benefit); // tamj thowi
 		//nap cac ung vien vao danh sach candidates
 		candidates << candluc;
 		candidates << candtsl;
