@@ -375,7 +375,7 @@ experiment "Explore" type: gui autorun: true {
 		loop t over: [0.1, 0.2, 0.5, 1.0] { //, [0.1,0.15, 0.2, 0.3] { [0.007,0.005,0.5]
 		//			create simulation with: [scenario_subsidence::"M1", use_profile_adaptation::true, explo_param::"M1", subsidence_threshold::t];
 		//			create simulation with: [scenario_subsidence::"B1", use_profile_adaptation::true, explo_param::"B1", subsidence_threshold::t];
-			create simulation with: [scenario_subsidence::"B2", use_profile_adaptation::false, use_subsidence_macro::true, explo_param::"macro_subsi_B2", subsidence_threshold::t];
+//			create simulation with: [scenario_subsidence::"M1", use_profile_adaptation::false, use_subsidence_macro::true, explo_param::"macro_subsi_M1", subsidence_threshold::t];
 			create simulation with: [scenario_subsidence::"B2", use_profile_adaptation::true, use_subsidence_macro::true, explo_param::"waterunit_B2", subsidence_threshold::t];
 		}
 
