@@ -199,6 +199,8 @@ global {
 		//write "Tong dt khac:" + tong_khac;
 		write "Tong dt tsl risk:" + area_shrimp_tsl_risk;
 		write "Tong dt lua  risk:" + area_rice_fruit_tree_risk;
+		
+		
 		// Save risk into map
 		if (year mod 10 = 0) {
 		//			string output_filename <- "../result/landuse_sim" + scenario + ".csv";
@@ -275,7 +277,7 @@ experiment "No profile Landuse change" type: gui autorun: true {
 	parameter "Trọng số lợi nhuận" var: w_profit <- 0.8;
 
 	action _init_ {
-		create simulation with: [use_profile_adaptation::false, explo_param::"no_profile"];
+		create simulation with: [use_profile_adaptation::false, explo_param::"Sc1_no_profile"];
 	}
 
 	output {
@@ -375,8 +377,8 @@ experiment "Explore" type: gui autorun: true {
 		loop t over: [0.1, 0.2, 0.5, 1.0] { //, [0.1,0.15, 0.2, 0.3] { [0.007,0.005,0.5]
 		//			create simulation with: [scenario_subsidence::"M1", use_profile_adaptation::true, explo_param::"M1", subsidence_threshold::t];
 		//			create simulation with: [scenario_subsidence::"B1", use_profile_adaptation::true, explo_param::"B1", subsidence_threshold::t];
-//			create simulation with: [scenario_subsidence::"M1", use_profile_adaptation::false, use_subsidence_macro::true, explo_param::"macro_subsi_M1", subsidence_threshold::t];
-			create simulation with: [scenario_subsidence::"B2", use_profile_adaptation::true, use_subsidence_macro::true, explo_param::"waterunit_B2", subsidence_threshold::t];
+//			create simulation with: [scenario_subsidence::"M1", use_profile_adaptation::false, use_subsidence_macro::true, explo_param::"SC2_M1", subsidence_threshold::t];
+			create simulation with: [scenario_subsidence::"B2", use_profile_adaptation::true, use_subsidence_macro::true, explo_param::"SC3_B2", subsidence_threshold::t];
 		}
 
 		//		}
