@@ -5,10 +5,10 @@ import "entities/river.gaml"
 import "entities/road.gaml"
 
 global {
- 
+
 	init {
-		write "use_profile_adaptation "+use_profile_adaptation+" use_subsidence_macro "+use_subsidence_macro+" explo_param "+explo_param;
-	//load ban do tu cac ban do vao tac tu
+		write "use_profile_adaptation " + use_profile_adaptation + " use_subsidence_macro " + use_subsidence_macro + " explo_param " + explo_param;
+		//load ban do tu cac ban do vao tac tu
 		create district from: district_file {
 		}
 
@@ -185,8 +185,8 @@ global {
 				area_rice_fruit_tree_risk <- area_rice_fruit_tree_risk + pixel_size;
 			}
 
-		} 
-		
+		}
+
 		save
 		[year, tong_luc, total_2rice_luk, total_rice_shrimp, tong_tsl, tong_bhk, total_fruit_tree_lnk, climate_maxTAS_shrimp, climate_maxPR_thuysan, climate_maxTAS_caytrong, climate_minPR_caytrong, area_shrimp_tsl_risk, area_rice_fruit_tree_risk]
 		type: "csv" to: "../results/" + explo_param + "_" + subsidence_threshold + "_landuse_sim.csv" rewrite: false;
@@ -199,11 +199,6 @@ global {
 		//write "Tong dt khac:" + tong_khac;
 		write "Tong dt tsl risk:" + area_shrimp_tsl_risk;
 		write "Tong dt lua  risk:" + area_rice_fruit_tree_risk;
-		
-		
-		// Save risk into map
-		if (year mod 10 = 0) {
-		//			string output_filename <- "../result/landuse_sim" + scenario + ".csv";
 
 		//			debt per province
 		//			debt (total)
@@ -211,29 +206,34 @@ global {
 		//			benefits per province
 		//			benefits per AEZ
 		//			benefits total	
-			string s <- "";
-			s <- s + [year, scenario_subsidence, subsidence_threshold];
-			s <- s + province collect each.debt;
-			map<string, list<AEZ>> mm <- (AEZ group_by each.aezone);
-			s <- s + mm.values collect sum(each collect each.debt);
-			s <- s + [total_debt];
-			s <- s + [total_wu];
-			s <- (s replace ("][", ",") replace ("[", "") replace ("]", ""));
-			//			write s;
-			save s to: "../results/" + explo_param + "_debt.csv" type: text rewrite: false;
-			s <- "";
-			s <- s + [year, scenario_subsidence, subsidence_threshold];
-			s <- s + province collect (each.benefit);
-			s <- s + mm.values collect sum(each collect (each.benefit));
-			s <- s + [total_benefit];
-			s <- (s replace ("][", ",") replace ("[", "") replace ("]", ""));
-			//			write s;
-			save s to: "../results/" + explo_param + "_benefit.csv" type: text rewrite: false;
-			//			ask active_cell {
-			//				grid_value <- float(risk);
-			//			}
-			//
-			//			save farming_unit to: "../results/" + explo_param + "_" + subsidence_threshold + "_risk_" + year + ".tif" type: "geotiff";
+		string s <- "";
+		s <- s + [year, scenario_subsidence, subsidence_threshold];
+		s <- s + province collect each.debt;
+		map<string, list<AEZ>> mm <- (AEZ group_by each.aezone);
+		s <- s + mm.values collect sum(each collect each.debt);
+		s <- s + [total_debt];
+		s <- s + [total_wu];
+		s <- (s replace ("][", ",") replace ("[", "") replace ("]", ""));
+		//			write s;
+		save s to: "../results/" + explo_param + "_debt.csv" type: text rewrite: false;
+		s <- "";
+		s <- s + [year, scenario_subsidence, subsidence_threshold];
+		s <- s + province collect (each.benefit);
+		s <- s + mm.values collect sum(each collect (each.benefit));
+		s <- s + [total_benefit];
+		s <- (s replace ("][", ",") replace ("[", "") replace ("]", ""));
+		//			write s;
+		save s to: "../results/" + explo_param + "_benefit.csv" type: text rewrite: false;
+
+		// Save risk into map
+		if (year mod 10 = 0) {
+		//			string output_filename <- "../result/landuse_sim" + scenario + ".csv";
+
+		//			ask active_cell {
+		//				grid_value <- float(risk);
+		//			}
+		//
+		//			save farming_unit to: "../results/" + explo_param + "_" + subsidence_threshold + "_risk_" + year + ".tif" type: "geotiff";
 			ask active_cell {
 				grid_value <- float(landuse);
 			}
@@ -374,11 +374,11 @@ experiment "Explore" type: gui autorun: true {
 	//	parameter "Subsidence threshold" var: subsidence_threshold among: [0.1, 0.15, 0.2, 0.3] <- 0.3;
 	action _init_ {
 	//		loop s over: ["M1", "B1", "B2"] {
-		loop t over: [0.1, 0.2, 0.5, 1.0] { //, [0.1,0.15, 0.2, 0.3] { [0.007,0.005,0.5]
-		//			create simulation with: [scenario_subsidence::"M1", use_profile_adaptation::true, explo_param::"M1", subsidence_threshold::t];
-		//			create simulation with: [scenario_subsidence::"B1", use_profile_adaptation::true, explo_param::"B1", subsidence_threshold::t];
-//			create simulation with: [scenario_subsidence::"M1", use_profile_adaptation::false, use_subsidence_macro::true, explo_param::"SC2_M1", subsidence_threshold::t];
-			create simulation with: [scenario_subsidence::"B2", use_profile_adaptation::true, use_subsidence_macro::true, explo_param::"SC3_B2", subsidence_threshold::t];
+		loop t over: [0.1, 0.2, 0.5, 1.0] { //, [0.1,0.15, 0.2, 0.3] { [0.007,0.005,0.5] 
+					create simulation with: [scenario_subsidence::"M1", use_profile_adaptation::false, use_subsidence_macro::true, explo_param::"SC2_M1", subsidence_threshold::t];
+//					create simulation with: [scenario_subsidence::"M1", use_profile_adaptation::true, use_subsidence_macro::true, explo_param::"SC3_M1", subsidence_threshold::t];
+//			create simulation with: [scenario_subsidence::"B2", use_profile_adaptation::false, use_subsidence_macro::true, explo_param::"SC2_B2", subsidence_threshold::t];
+			//			create simulation with: [scenario_subsidence::"B2", use_profile_adaptation::true, use_subsidence_macro::true, explo_param::"SC3_B2", subsidence_threshold::t];
 		}
 
 		//		}
