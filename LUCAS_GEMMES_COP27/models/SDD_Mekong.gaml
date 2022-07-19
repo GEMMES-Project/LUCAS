@@ -304,7 +304,7 @@ experiment "Baseline 1 - No strategies, no subsidence" type: gui autorun: true p
 
 	action _init_ {
 	//create simulation with: [use_profile_adaptation::false, explo_param::"SC1noSubsi"];
-		create simulation with: [use_profile_adaptation::false, use_subsidence_macro::false, explo_param::"EXP1-Baseline1"];
+		create simulation with: [use_profile_adaptation::false, use_subsidence_macro::false, explo_param::"Baseline1"];
 	}
 
 }
@@ -312,42 +312,55 @@ experiment "Baseline 1 - No strategies, no subsidence" type: gui autorun: true p
 experiment "Baseline 2 - No strategies, only MacroEco impacted by Subsidence" type: gui autorun: true parent: "Abstract" {
 
 	action _init_ {
-		create simulation with: [use_profile_adaptation::false, use_subsidence_macro::true, explo_param::"SC1noSubsi"];
+		create simulation with: [use_profile_adaptation::false, use_subsidence_macro::true, explo_param::"Baseline2"];
 	}
 
 }
 
-experiment "Exp No strategies, FU impacted by Subsidence" type: gui autorun: true parent: "Abstract" {
+experiment "Exp 3 No strategies, FU impacted by Subsidence" type: gui autorun: true parent: "Abstract" {
 
 	action _init_ {
-		create simulation with: [use_profile_adaptation::false, use_subsidence_macro::true, use_subsidence::true, explo_param::"SC1noSubsi"];
+		create simulation with: [use_profile_adaptation::false, use_subsidence_macro::true, use_subsidence::true, explo_param::"EXP3_individual"];
 	}
 
 }
 
-experiment "Exp with strategies, FU impacted by Subsidence" type: gui autorun: true parent: "Abstract" {
+experiment "Exp 4 with strategies, FU impacted by Subsidence" type: gui autorun: true parent: "Abstract" {
 
 	action _init_ {
 		create simulation with: [use_profile_adaptation::true, use_subsidence_macro::true, use_subsidence::true, explo_param::scenario_subsidence];
 	}
 
 }
-
-experiment "Explore EXP2" type: gui autorun: true {
+experiment "Explore EXP3" type: gui autorun: true {
 	parameter "Scenarios" var: scenario <- 0;
 	//	parameter "Scenario subsidence" var: scenario_subsidence among: ["M1", "B1", "B2"] <- "B2";
 	//	parameter "Subsidence threshold" var: subsidence_threshold among: [0.1, 0.15, 0.2, 0.3] <- 0.3;
 	action _init_ {
 	//		loop s over: ["M1", "B1", "B2"] {
 		loop t over: [0.1, 0.2, 0.5, 1.0] { //, [0.1,0.15, 0.2, 0.3] { [0.007,0.005,0.5] 
-			create simulation with: [scenario_subsidence::"M1", use_profile_adaptation::false, use_subsidence_macro::true, explo_param::"SC2_M1", subsidence_threshold::t];
+//			create simulation with: [scenario_subsidence::"M1", use_profile_adaptation::false, use_subsidence_macro::true, explo_param::"EXP_M1", subsidence_threshold::t];
 			//					create simulation with: [scenario_subsidence::"M1", use_profile_adaptation::true, use_subsidence_macro::true, explo_param::"SC3_M1", subsidence_threshold::t];
-			//			create simulation with: [scenario_subsidence::"B2", use_profile_adaptation::false, use_subsidence_macro::true, explo_param::"SC2_B2", subsidence_threshold::t];
-			//			create simulation with: [scenario_subsidence::"B2", use_profile_adaptation::true, use_subsidence_macro::true, explo_param::"SC3_B2", subsidence_threshold::t];
+//						create simulation with: [scenario_subsidence::"B2", use_profile_adaptation::false, use_subsidence_macro::true, explo_param::"SC2_B2", subsidence_threshold::t];
+						//create simulation with: [scenario_subsidence::"B2", use_profile_adaptation::true, use_subsidence_macro::true, explo_param::"EXP4_B2", subsidence_threshold::t];
+						create simulation with: [scenario_subsidence::"B2",use_profile_adaptation::false, use_subsidence_macro::true, use_subsidence::true, explo_param::"EXP3_B2",subsidence_threshold::t];
 		}
+	}
 
-		//		}
-
+}
+experiment "Explore EXP4" type: gui autorun: true {
+	parameter "Scenarios" var: scenario <- 0;
+	//	parameter "Scenario subsidence" var: scenario_subsidence among: ["M1", "B1", "B2"] <- "B2";
+	//	parameter "Subsidence threshold" var: subsidence_threshold among: [0.1, 0.15, 0.2, 0.3] <- 0.3;
+	action _init_ {
+	//		loop s over: ["M1", "B1", "B2"] {
+		loop t over: [0.1, 0.2, 0.5, 1.0] { //, [0.1,0.15, 0.2, 0.3] { [0.007,0.005,0.5] 
+//			create simulation with: [scenario_subsidence::"M1", use_profile_adaptation::false, use_subsidence_macro::true, explo_param::"EXP_M1", subsidence_threshold::t];
+			//					create simulation with: [scenario_subsidence::"M1", use_profile_adaptation::true, use_subsidence_macro::true, explo_param::"SC3_M1", subsidence_threshold::t];
+//						create simulation with: [scenario_subsidence::"B2", use_profile_adaptation::false, use_subsidence_macro::true, explo_param::"SC2_B2", subsidence_threshold::t];
+						//create simulation with: [scenario_subsidence::"B2", use_profile_adaptation::true, use_subsidence_macro::true, explo_param::"EXP4_B2", subsidence_threshold::t];
+						create simulation with: [scenario_subsidence::"B2",use_profile_adaptation::true, use_subsidence_macro::true, use_subsidence::true, explo_param::"EXP4_B2",subsidence_threshold::t];
+		}
 	}
 
 }
