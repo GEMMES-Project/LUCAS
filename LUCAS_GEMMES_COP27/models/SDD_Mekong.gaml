@@ -269,15 +269,46 @@ global {
 	}
 
 }
-
-experiment "No profile Landuse change" type: gui autorun: true {
+experiment "Baseline 1 - No strtegies, no subsidence" type: gui autorun: true {
 	parameter "Trong số lân cận" var: w_neighbor_density <- 0.6;
 	parameter "Trọng số khó khăn" var: w_ability <- 0.5;
 	parameter "Trọng số thích nghi" var: w_suitability <- 0.7;
 	parameter "Trọng số lợi nhuận" var: w_profit <- 0.8;
 
 	action _init_ {
-		create simulation with: [use_profile_adaptation::false, explo_param::"Sc1_no_profile"];
+		//create simulation with: [use_profile_adaptation::false, explo_param::"SC1noSubsi"];
+		create simulation with: [use_profile_adaptation::false, use_subsidence_macro::false, explo_param::"EXP1-Baseline1"];
+	}
+
+	output {
+		display LU_sim type: opengl axes: false {
+			mesh field_farming_unit color: scale(lu_color) smooth: false;
+		}
+
+		display "Benefit - Debt" type: java2D {
+			chart "Layer" type: series {
+				data "Benefit" style: line value: total_benefit color: #blue;
+				data "Debt" style: line value: total_debt color: #red;
+			}
+
+		}
+
+		display risk_cell type: opengl axes: false {
+			mesh field_risk_farming_unit color: scale([#white::0, #blue::1, #red::2]) smooth: false; //  
+			species province;
+		}
+
+	}
+
+}
+experiment "Baseline 2 - No strtegies, impacted by Subsidence" type: gui autorun: true {
+	parameter "Trong số lân cận" var: w_neighbor_density <- 0.6;
+	parameter "Trọng số khó khăn" var: w_ability <- 0.5;
+	parameter "Trọng số thích nghi" var: w_suitability <- 0.7;
+	parameter "Trọng số lợi nhuận" var: w_profit <- 0.8;
+
+	action _init_ {
+		create simulation with: [use_profile_adaptation::false, explo_param::"SC1noSubsi"];
 	}
 
 	output {
@@ -302,7 +333,7 @@ experiment "No profile Landuse change" type: gui autorun: true {
 
 }
 
-experiment "Landuse change" type: gui autorun: true {
+experiment "Landuse change " type: gui autorun: true {
 	parameter "Trong số lân cận" var: w_neighbor_density <- 0.6;
 	parameter "Trọng số khó khăn" var: w_ability <- 0.5;
 	parameter "Trọng số thích nghi" var: w_suitability <- 0.7;
@@ -368,7 +399,7 @@ experiment "Landuse change" type: gui autorun: true {
 
 }
 
-experiment "Explore" type: gui autorun: true {
+experiment "Explore EXP2" type: gui autorun: true {
 	parameter "Scenarios" var: scenario <- 0;
 	//	parameter "Scenario subsidence" var: scenario_subsidence among: ["M1", "B1", "B2"] <- "B2";
 	//	parameter "Subsidence threshold" var: subsidence_threshold among: [0.1, 0.15, 0.2, 0.3] <- 0.3;
