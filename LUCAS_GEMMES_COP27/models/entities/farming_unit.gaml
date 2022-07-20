@@ -433,16 +433,16 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 
 	action economic_compute {
 		if (my_province != nil) {
-			float old_wu <- water_unit;
-			water_unit <- water_unit + landuse;
+//			float old_wu <- water_unit;
+			water_unit <- water_unit + wu_cost[landuse]*25;
 			float coefficient <- 1.0;
 			if (use_subsidence_macro and sub > my_province.subsi_threshold) {
 				coefficient <- 0.8;
 			}
 
-			if (use_profile_adaptation and sub > my_province.subsi_threshold) {
-				water_unit <- water_unit - landuse;
-			}
+//			if (use_profile_adaptation and sub > my_province.subsi_threshold) {
+//				water_unit <- water_unit - landuse;
+//			}
 
 			//
 			// tinh benefit, debt pump
@@ -461,14 +461,14 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 			}
 
 			float tmp <- benefit / 1000; //* coefficient has involve in lu_benefit
-			my_province.wu <- my_province.wu + (water_unit - old_wu) / 10;
+			my_province.wu <- my_province.wu + (water_unit) / 10;
 			my_province.debt <- my_province.debt + debt / 1E3; //convert to Milillard
 			my_province.benefit <- my_province.benefit + tmp;
-			total_wu <- total_wu + (water_unit - old_wu) / 10;
+			total_wu <- total_wu + (water_unit) / 10;
 			total_debt <- total_debt + debt / 1E3;
 			total_benefit <- total_benefit + tmp;
 			if (my_aez != nil) {
-				my_aez.wu <- my_aez.wu + (water_unit - old_wu) / 10;
+				my_aez.wu <- my_aez.wu + (water_unit) / 10;
 				my_aez.debt <- my_aez.debt + debt / 1E3;
 				my_aez.benefit <- my_aez.benefit + tmp; //convert to Milillard
 			}

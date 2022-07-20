@@ -21,6 +21,7 @@ global {
 		write "gis loaded";
 		do load_suitability_data;
 		do load_cost_benefit_data;
+		do load_WU_data;
 		do load_ability_data;
 		do load_profile_adaptation;
 		do load_macroeconomic_data;
@@ -287,6 +288,7 @@ experiment "Abstract" virtual: true {
 			chart "Layer" type: series {
 				data "Benefit" style: line value: total_benefit color: #blue;
 				data "Debt" style: line value: total_debt color: #red;
+				data "WU" style: line value: total_wu color: #green;
 			}
 
 		}
@@ -304,7 +306,7 @@ experiment "Baseline 1 - No strategies, no subsidence" type: gui autorun: true p
 
 	action _init_ {
 	//create simulation with: [use_profile_adaptation::false, explo_param::"SC1noSubsi"];
-		create simulation with: [use_profile_adaptation::false, use_subsidence_macro::false, explo_param::"Baseline1"];
+		create simulation with: [use_profile_adaptation::false, use_subsidence_macro::false, explo_param::"Baseline1",subsidence_threshold::0.1];
 	}
 
 }
@@ -328,7 +330,7 @@ experiment "Exp 3 No strategies, FU impacted by Subsidence" type: gui autorun: t
 experiment "Exp 4 with strategies, FU impacted by Subsidence" type: gui autorun: true parent: "Abstract" {
 
 	action _init_ {
-		create simulation with: [use_profile_adaptation::true, use_subsidence_macro::true, use_subsidence::true, explo_param::scenario_subsidence];
+		create simulation with: [use_profile_adaptation::true, use_subsidence_macro::true, use_subsidence::true, explo_param::scenario_subsidence,subsidence_threshold::0.1];
 	}
 
 }

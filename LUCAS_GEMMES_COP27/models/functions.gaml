@@ -112,7 +112,16 @@ global {
 
 		max_lu_benefit <- max(lu_benefit collect each);
 		write "max_lu_benefit " + max_lu_benefit;
-		write "cost benefit " + lu_cost + lu_benefit;
+		write "cost benefit " + lu_cost + lu_benefit; 
+	}
+	
+	action load_WU_data {
+		matrix cb_matrix <- matrix(csv_file("../includes/water_need_landuse.csv", true));
+		loop i from: 0 to: cb_matrix.rows - 1 {
+			int yy <- int(cb_matrix[0, i]);
+			wu_cost <+ (yy)::float(cb_matrix[2, i]); 
+		} 
+		write wu_cost;
 	}
 	
 	action load_macroeconomic_data {
