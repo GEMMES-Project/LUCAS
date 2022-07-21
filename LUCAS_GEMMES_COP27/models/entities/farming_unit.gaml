@@ -439,6 +439,9 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 			if (use_subsidence_macro and sub > my_province.subsi_threshold) {
 				coefficient <- 0.8;
 			}
+//			if (not use_profile_adaptation and use_subsidence_macro and sub > my_province.subsi_threshold) {
+//				coefficient <- 1.0 *;
+//			}
 
 //			if (use_profile_adaptation and sub > my_province.subsi_threshold) {
 //				water_unit <- water_unit - landuse;
@@ -461,14 +464,14 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 			}
 
 			float tmp <- benefit / 1000; //* coefficient has involve in lu_benefit
-			my_province.wu <- my_province.wu + (water_unit) / 10;
+			my_province.wu <- my_province.wu + (water_unit) / 1000;
 			my_province.debt <- my_province.debt + debt / 1E3; //convert to Milillard
 			my_province.benefit <- my_province.benefit + tmp;
-			total_wu <- total_wu + (water_unit) / 10;
+			total_wu <- total_wu + (water_unit) / 1000;// unit 1000 m3
 			total_debt <- total_debt + debt / 1E3;
 			total_benefit <- total_benefit + tmp;
 			if (my_aez != nil) {
-				my_aez.wu <- my_aez.wu + (water_unit) / 10;
+				my_aez.wu <- my_aez.wu + (water_unit) / 1000;
 				my_aez.debt <- my_aez.debt + debt / 1E3;
 				my_aez.benefit <- my_aez.benefit + tmp; //convert to Milillard
 			}
@@ -608,12 +611,12 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 		candluc << chiso_luc_lancan;
 		candluc << xet_khokhanchuyendoi(landuse, 5);
 		candluc << xet_thichnghi(madvdd, 5);
-		candluc << 34 / 389;
+		candluc << (my_lu_benefit[5] / max_lu_benefit);
 		//dua dac tinh ung vien tsl
 		candtsl << chiso_tsl_lancan;
 		candtsl << xet_khokhanchuyendoi(landuse, 34);
 		candtsl << xet_thichnghi(madvdd, 34);
-		candtsl << 389 / 389;
+		candtsl << (my_lu_benefit[34] / max_lu_benefit);
 		//		if landuse=101{
 		//			write "kk:" +xet_khokhanchuyendoi(landuse, 34)+ "tn:"+xet_thichnghi(madvdd, 34);
 		//		}
@@ -622,22 +625,22 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 		candbhk << chiso_bhk_lancan;
 		candbhk << xet_khokhanchuyendoi(landuse, 12);
 		candbhk << xet_thichnghi(madvdd, 12);
-		candbhk << 180 / 389;
+		candbhk << (my_lu_benefit[12] / max_lu_benefit);
 		//dua dac tinh ung vien lnk
 		candluk << chiso_luk_lancan;
 		candluk << xet_khokhanchuyendoi(landuse, 6);
 		candluk << xet_thichnghi(madvdd, 6);
-		candluk << 98 / 389;
+		candluk << (my_lu_benefit[6] / max_lu_benefit);
 		//dua dac tinh ung vien rst
 		candlnk << chiso_lnk_lancan;
 		candlnk << xet_khokhanchuyendoi(landuse, 14);
 		candlnk << xet_thichnghi(madvdd, 14);
-		candlnk << 294 / 389;
+		candlnk << (my_lu_benefit[14] / max_lu_benefit);
 		// bổ sung thêm ứng viên lua-tom
 		cand_luatom << chiso_lua_tom_lancan;
 		cand_luatom << xet_khokhanchuyendoi(landuse, 101);
 		cand_luatom << xet_thichnghi(madvdd, 101);
-		cand_luatom << 150 / 389; // tamj thowi
+		cand_luatom << (my_lu_benefit[101] / max_lu_benefit);
 		//nap cac ung vien vao danh sach candidates
 		candidates << candluc;
 		candidates << candtsl;
