@@ -436,7 +436,7 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 //			float old_wu <- water_unit;
 			water_unit <- water_unit + wu_cost[landuse]*25;
 			float coefficient <- 1.0;
-			if (use_subsidence_macro and sub > my_province.subsi_threshold) {
+			if (use_subsidence_macro and sub >= 0.5){//my_province.subsi_threshold) {// set subsi level impacts profit: 0.5m 
 				coefficient <- 0.8;
 			}
 //			if (not use_profile_adaptation and use_subsidence_macro and sub > my_province.subsi_threshold) {

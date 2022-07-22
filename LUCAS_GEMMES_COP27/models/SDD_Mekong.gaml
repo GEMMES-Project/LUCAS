@@ -306,7 +306,7 @@ experiment "Baseline 1 - No strategies, no subsidence" type: gui autorun: true p
 
 	action _init_ {
 	//create simulation with: [use_profile_adaptation::false, explo_param::"SC1noSubsi"];
-		create simulation with: [scenario_subsidence::"B2", use_profile_adaptation::false, use_subsidence_macro::false, explo_param::"Baseline1_B2", subsidence_threshold::0.1];
+		create simulation with: [scenario_subsidence::"B2", use_profile_adaptation::false, use_subsidence_macro::false, explo_param::"Baseline1_B2", subsidence_threshold::0.5];
 	}
 
 }
@@ -315,7 +315,7 @@ experiment "Baseline 2 - No strategies, only MacroEco impacted by Subsidence" ty
 
 	action _init_ {
 	//	create simulation with: [use_profile_adaptation::false, use_subsidence_macro::true, explo_param::"Baseline2"];
-		create simulation with: [scenario_subsidence::"B2", use_profile_adaptation::false, use_subsidence_macro::true, explo_param::"Baseline2_B2", subsidence_threshold::0.1];
+		create simulation with: [scenario_subsidence::"B2", use_profile_adaptation::false, use_subsidence_macro::true, explo_param::"Baseline2_B2", subsidence_threshold::0.5];
 	}
 
 }
