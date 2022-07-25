@@ -324,7 +324,7 @@ experiment "Exp 3 No strategies, FU impacted by Subsidence" type: gui autorun: t
 
 	action _init_ {
 		// check scenario_subsidence::"B2" ; subsidence_threshold::0.1'
-		create simulation with: [scenario_subsidence::"B2",use_profile_adaptation::false, use_subsidence_macro::true, use_subsidence::true, explo_param::"EXP3_B2",subsidence_threshold::0.1];
+		create simulation with: [scenario_subsidence::"B2",use_profile_adaptation::false, use_subsidence_macro::true, use_subsidence::true, explo_param::"EXP3_B2",subsidence_threshold::0.1,subsidence_macro_threshold::0.2];
 	}
 
 }
