@@ -75,6 +75,8 @@ global {
 		s <- s + province collect (each.NAME_1);
 		s <- s + (AEZ group_by (each.aezone)).keys;
 		s <- s + ["total_debt"];
+		s <- s + ["total_debt_5"];
+		s <- s + ["total_debt_34"];
 		s <- s + ["total_wu"];
 		s <- (s replace ("][", ",") replace ("[", "") replace ("]", ""));
 		write s;
@@ -87,6 +89,8 @@ global {
 		s <- s + province collect (each.NAME_1);
 		s <- s + (AEZ group_by (each.aezone)).keys;
 		s <- s + ["total_benefit"];
+		s <- s + ["total_benefit_5"];
+		s <- s + ["total_benefit_34"];
 		s <- (s replace ("][", ",") replace ("[", "") replace ("]", ""));
 		write s;
 		if (int(world) = 0) {
@@ -213,6 +217,8 @@ global {
 		map<string, list<AEZ>> mm <- (AEZ group_by each.aezone);
 		s <- s + mm.values collect sum(each collect each.debt);
 		s <- s + [total_debt];
+		s <- s + [total_debt_lu[5]];
+		s <- s + [total_debt_lu[34]];
 		s <- s + [total_wu];
 		s <- (s replace ("][", ",") replace ("[", "") replace ("]", ""));
 		//			write s;
@@ -222,6 +228,8 @@ global {
 		s <- s + province collect (each.benefit);
 		s <- s + mm.values collect sum(each collect (each.benefit));
 		s <- s + [total_benefit];
+		s <- s + [total_benefit_lu[5]];
+		s <- s + [total_benefit_lu[34]];
 		s <- (s replace ("][", ",") replace ("[", "") replace ("]", ""));
 		//			write s;
 		save s to: "../results/" + explo_param + "_benefit.csv" type: text rewrite: false;
@@ -287,7 +295,7 @@ experiment "Abstract" virtual: true {
 		display "Benefit - Debt" type: java2D {
 			chart "Layer" type: series {
 				data "Benefit" style: line value: total_benefit color: #blue;
-				data "Debt" style: line value: total_debt color: #red;
+				data "Debt" style: line value: total_debt  color: #red; 
 				data "WU" style: line value: total_wu color: #green;
 			}
 

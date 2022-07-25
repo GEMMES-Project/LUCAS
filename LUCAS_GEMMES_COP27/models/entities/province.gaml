@@ -24,6 +24,9 @@ species province {
 //	bool agreed_aez <- true;
 	float debt<-0.0;
 	float benefit<-0.0;
+	map<int,float> debt_lu<-[5::0.0,34::0.0,12::0.0,6::0.0,14::0.0,101::0.0];
+	
+	map<int,float> benefit_lu<-[5::0.0,34::0.0,12::0.0,6::0.0,14::0.0,101::0.0];
 	float wu;
 	float subsi_threshold<-0.0;
 	init { 

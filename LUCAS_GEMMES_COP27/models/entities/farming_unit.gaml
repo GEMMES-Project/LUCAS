@@ -7,7 +7,9 @@ global {
 	field field_farming_unit <- field(cell_file);
 	field field_risk_farming_unit <- field(515, 546);
 	float total_debt <- 0.0;
+	map<int,float> total_debt_lu<-[5::0.0,34::0.0,12::0.0,6::0.0,14::0.0,101::0.0];
 	float total_benefit <- 0.0;
+	map<int,float> total_benefit_lu<-[5::0.0,34::0.0,12::0.0,6::0.0,14::0.0,101::0.0];
 	float total_wu <- 0.0;
 	map<int, int> lu_total_benefit <- [5::0, 34::0, 12::0, 6::0, 14::0, 101::0];
 }
@@ -467,13 +469,19 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 			my_province.wu <- my_province.wu + (water_unit) / 1000;
 			my_province.debt <- my_province.debt + debt / 1E3; //convert to Milillard
 			my_province.benefit <- my_province.benefit + tmp;
+			my_province.debt_lu[landuse] <- my_province.debt_lu[landuse] + debt / 1E3; //convert to Milillard
+			my_province.benefit_lu[landuse] <- my_province.benefit_lu[landuse] + tmp;
 			total_wu <- total_wu + (water_unit) / 1000;// unit 1000 m3
 			total_debt <- total_debt + debt / 1E3;
+			total_debt_lu[landuse] <- total_debt_lu[landuse] + debt / 1E3;
 			total_benefit <- total_benefit + tmp;
+			total_benefit_lu[landuse] <- total_benefit_lu[landuse] + tmp;
 			if (my_aez != nil) {
 				my_aez.wu <- my_aez.wu + (water_unit) / 1000;
 				my_aez.debt <- my_aez.debt + debt / 1E3;
 				my_aez.benefit <- my_aez.benefit + tmp; //convert to Milillard
+				my_aez.debt_lu[landuse] <- my_aez.debt_lu[landuse] + debt / 1E3;
+				my_aez.benefit_lu[landuse] <- my_aez.benefit_lu[landuse] + tmp; //convert to Milillard
 			}
 
 		}
