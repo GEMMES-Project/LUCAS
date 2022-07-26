@@ -31,6 +31,7 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 	// 1: risk thuy san; 2 : risk lua
 	int vul_rice <- 0;
 	int vul_aqua <- 0;
+	bool aqua_adapted <- false;  //// the F.U shrimp adapted to c.c based on provincial strategies
 	// moi vong lap gan lai bang false de xet lai cho nam khac.
 	rgb color;
 	int dyke <- 1; //1: inside; 2: outside of dyke
@@ -304,6 +305,9 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 			//	if (xet_thichnghi(madvdd, 34) > 0) { // Suitability > S3
 			//	if flip(w_flip) {
 				landuse <- 34;
+				if (profile != nil){  // the F.U adapted to c.c based on provincial strategies
+					aqua_adapted<- true;
+				}
 				//	}
 
 				//	}
@@ -364,23 +368,25 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 		//nap cac ung vien vao danh sach candidates
 		candidates << candtsl;
 		candidates << cand_luatom;
-		int choicetsl <- 0;
-		if (landuse = 34 or landuse = 101) {
+		int choicetsl <- 1;
+		if (landuse = 101) {
 			choicetsl <- weighted_means_DM(candidates, criteria);
 			if (choicetsl = 0) {
 			//if (xet_thichnghi(madvdd, 14) > 0.33) {
 			//if flip(0.40) {
 				landuse <- 34;
+				if (profile != nil){ // the F.U adapted to c.c based on provincial strategies
+					aqua_adapted<- true;
+				}
 				//}
-
 			}
-
-			if (choicetsl = 1) {
-			//	if (xet_thichnghi(madvdd, 101) > 0) {
-				landuse <- 101;
-				//}
-
-			}
+//
+//			if (choicetsl = 1) {
+//			//	if (xet_thichnghi(madvdd, 101) > 0) {
+//				landuse <- 101;
+//				//}
+//
+//			}
 
 		}
 
@@ -407,9 +413,11 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 		// Nhiet do cao nhat > nguong hoac luong mua max >nguong
 			if (get_climate_maxTAS(cycle) > climate_maxTAS_shrimp or get_climate_maxPR(cycle) > climate_maxPR_thuysan) {
 				if (flip(0.3)) {
-					risk <- 1; // risk aqua
-					vul_aqua <- vul_aqua + 1;
-					risk_suitab_34 <- 0.33;
+					if not aqua_adapted {
+						risk <- 1; // risk aqua						
+						vul_aqua <- vul_aqua + 1;
+						risk_suitab_34 <- 0.33;					
+					}
 				}
 
 			}
