@@ -81,11 +81,11 @@ global {
 		s <- (s replace ("][", ",") replace ("[", "") replace ("]", ""));
 		write s;
 		if (int(world) = 0) {
-			save s to: "../results/" + explo_param + "_debt.csv" type: text rewrite: true;
+			save s to: "../results/" + explo_param + "_" + subsidence_threshold + "_debt.csv" type: text rewrite: true;
 		}
 
 		s <- "";
-		s <- s + ["year", "subsidence_threshold"];
+		s <- s + ["year", "sc","subsidence_threshold"];
 		s <- s + province collect (each.NAME_1);
 		s <- s + (AEZ group_by (each.aezone)).keys;
 		s <- s + ["total_benefit"];
@@ -94,7 +94,10 @@ global {
 		s <- (s replace ("][", ",") replace ("[", "") replace ("]", ""));
 		write s;
 		if (int(world) = 0) {
-			save s to: "../results/" + explo_param + "_benefit.csv" type: text rewrite: true;
+			save s to: "../results/" + explo_param + "_" + subsidence_threshold + "_benefit.csv" type: text rewrite: true;
+			save
+		["year", 'tong_luc', 'total_2rice_luk', 'total_rice_shrimp', 'tong_tsl', 'tong_bhk', 'total_fruit_tree_lnk', 'climate_maxTAS_shrimp', 'climate_maxPR_thuysan', 'climate_maxTAS_caytrong', 'climate_minPR_caytrong', 'area_shrimp_tsl_risk', 'area_rice_fruit_tree_risk']
+		type: "csv" to: "../results/" + explo_param + "_" + subsidence_threshold + "_landuse_sim.csv" rewrite: true;
 		}
 
 		write "ready";
@@ -129,6 +132,7 @@ global {
 		area_fruit_tree_risk <- 0.0;
 		//	budget_supported <-0.0; // reset support budget every year.
 		total_income_lost <- 0.0;
+		total_debt_lu<-[5::0.0,34::0.0,12::0.0,6::0.0,14::0.0,101::0.0];
 		if (year mod 10 = 0) {
 			do load_subsidence((year - 2020) / 10);
 			ask active_cell parallel: true {
@@ -222,7 +226,7 @@ global {
 		s <- s + [total_wu];
 		s <- (s replace ("][", ",") replace ("[", "") replace ("]", ""));
 		//			write s;
-		save s to: "../results/" + explo_param + "_debt.csv" type: text rewrite: false;
+		save s to: "../results/" + explo_param + "_" + subsidence_threshold  + "_debt.csv" type: text rewrite: false;
 		s <- "";
 		s <- s + [year, scenario_subsidence, subsidence_threshold];
 		s <- s + province collect (each.benefit);
@@ -232,7 +236,7 @@ global {
 		s <- s + [total_benefit_lu[34]];
 		s <- (s replace ("][", ",") replace ("[", "") replace ("]", ""));
 		//			write s;
-		save s to: "../results/" + explo_param + "_benefit.csv" type: text rewrite: false;
+		save s to: "../results/" + explo_param + "_" + subsidence_threshold + "_benefit.csv" type: text rewrite: false;
 
 		// Save risk into map
 		if (year mod 10 = 0) {
@@ -352,9 +356,9 @@ experiment "Explore EXP3" type: gui autorun: true {
 	action _init_ {
 	//		loop s over: ["M1", "B1", "B2"] {
 		loop t over: [0.1, 0.2, 0.5, 1.0] { //, [0.1,0.15, 0.2, 0.3] { [0.007,0.005,0.5] 
-			create simulation with:	[scenario_subsidence::"M1",use_profile_adaptation::false, use_subsidence_macro::true, use_subsidence::true, explo_param::"EXP3_M1",subsidence_threshold::t];
+//			create simulation with:	[scenario_subsidence::"M1",use_profile_adaptation::false, use_subsidence_macro::true, use_subsidence::true, explo_param::"EXP3_M1",subsidence_threshold::t];
 //			create simulation with: [scenario_subsidence::"B1",use_profile_adaptation::false, use_subsidence_macro::true, use_subsidence::true, explo_param::"EXP3_B1",subsidence_threshold::t];
-//		    create simulation with: [scenario_subsidence::"B2",use_profile_adaptation::false, use_subsidence_macro::true, use_subsidence::true, explo_param::"EXP3_B2",subsidence_threshold::t];
+		    create simulation with: [scenario_subsidence::"B2",use_profile_adaptation::false, use_subsidence_macro::true, use_subsidence::true, explo_param::"EXP3_B2",subsidence_threshold::t];
 		}
 
 	}
@@ -369,11 +373,11 @@ experiment "Explore EXP4" type: gui autorun: true {
 	//		loop s over: ["M1", "B1", "B2"] {
 		loop t over: [0.1, 0.2, 0.5, 1.0] { //, [0.1,0.15, 0.2, 0.3] { [0.007,0.005,0.5] 
 			create simulation with:
-			[scenario_subsidence::"M1", use_profile_adaptation::true, use_subsidence_macro::true, use_subsidence::true, explo_param::"EXP4_M1", subsidence_threshold::t];
+//			[scenario_subsidence::"M1", use_profile_adaptation::true, use_subsidence_macro::true, use_subsidence::true, explo_param::"EXP4_M1", subsidence_threshold::t];
 //			create simulation with:
 //			[scenario_subsidence::"B1", use_profile_adaptation::true, use_subsidence_macro::true, use_subsidence::true, explo_param::"EXP4_B1", subsidence_threshold::t];
 //			create simulation with:
-//			[scenario_subsidence::"B2", use_profile_adaptation::true, use_subsidence_macro::true, use_subsidence::true, explo_param::"EXP4_B2", subsidence_threshold::t];
+			[scenario_subsidence::"B2", use_profile_adaptation::true, use_subsidence_macro::true, use_subsidence::true, explo_param::"EXP4_B2", subsidence_threshold::t];
 		}
 
 	}

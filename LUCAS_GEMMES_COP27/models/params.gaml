@@ -83,7 +83,7 @@ global {
 	//float w_risky_climate <- 1.0;
 	float w_flip <- 0.3;  // xã suát chuyen doi lua tom - tom
 //	date the_date <- date([2010, 1, 1]);
-	float pixel_size <-500*500/10000;
+	float pixel_size <- 25.0;  //  500*500/10000 ha
 	float budget_supported; // budget need for support to farmer to adapt (Decision 62/2019): 1 Milion VND /ha
 	float total_income_lost; // lost income  shrimp 50% and 30% 3rice
 	

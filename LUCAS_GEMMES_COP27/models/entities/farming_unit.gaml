@@ -444,7 +444,7 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 	action economic_compute {
 		if (my_province != nil) {
 //			float old_wu <- water_unit;
-			water_unit <- water_unit + wu_cost[landuse]*25;
+			water_unit <- water_unit + wu_cost[landuse]*pixel_size ;
 			float coefficient <- 1.0;
 			if (use_subsidence_macro and sub >= subsidence_macro_threshold){//my_province.subsi_threshold) {// set subsi level impacts profit: 0.5m 
 				coefficient <- 0.8;
@@ -456,12 +456,11 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 //			if (use_profile_adaptation and sub > my_province.subsi_threshold) {
 //				water_unit <- water_unit - landuse;
 //			}
-
-			//
 			// tinh benefit, debt pump
-			my_lu_benefit[landuse] <- my_lu_benefit[landuse] = nil ? lu_benefit[landuse] * coefficient : my_lu_benefit[landuse] * coefficient;
+//			my_lu_benefit[landuse] <- my_lu_benefit[landuse] = nil ? lu_benefit[landuse] * coefficient : my_lu_benefit[landuse] * coefficient;
+			my_lu_benefit[landuse] <- lu_benefit[landuse] * coefficient ;
 			investment <- (lu_cost[landuse] * (shape.area / 10000) + lu_cost[landuse] * (shape.area / 1E4) * lending_rate["" + (2015 + cycle)] * lending_rate["" + (2015 + cycle)]) / 100;
-			benefit <- my_lu_benefit[landuse] * 25; // 25ha - size of the cell 500*500/10000
+			benefit <- my_lu_benefit[landuse] * pixel_size; // 25ha - size of the cell 500*500/10000
 			if (risk > 0) {
 			//			if (my_province != nil and my_province.pumping >= 0) {
 			//				risk <- 0;
