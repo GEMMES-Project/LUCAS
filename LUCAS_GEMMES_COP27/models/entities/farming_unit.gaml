@@ -360,11 +360,11 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 		candtsl << chiso_tsl_lancan;
 		candtsl << xet_khokhanchuyendoi(landuse, 34);
 		candtsl << xet_thichnghi(madvdd, 34);
-		candtsl << 389 / 389;
+		candtsl <<  lu_benefit[34] / max_lu_benefit; 
 		cand_luatom << chiso_lua_tom_lancan;
 		cand_luatom << xet_khokhanchuyendoi(landuse, 101);
 		cand_luatom << xet_thichnghi(madvdd, 101);
-		cand_luatom << 150 / 389; // tamj thowi
+		cand_luatom <<  lu_benefit[101] / max_lu_benefit; 
 		//nap cac ung vien vao danh sach candidates
 		candidates << candtsl;
 		candidates << cand_luatom;
@@ -572,12 +572,12 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 		candluc << chiso_luc_lancan;
 		candluc << xet_khokhanchuyendoi(landuse, 5);
 		candluc << max([0, xet_thichnghi(madvdd, 5) - risk_suitab_5]);
-		candluc << (my_lu_benefit[5] / max_lu_benefit);
+		candluc << my_lu_benefit[5] / max_lu_benefit;
 		//dua dac tinh ung vien tsl
 		candtsl << chiso_tsl_lancan;
 		candtsl << xet_khokhanchuyendoi(landuse, 34);
 		candtsl << max([0, xet_thichnghi(madvdd, 34) - risk_suitab_34]);
-		candtsl << (my_lu_benefit[34] / max_lu_benefit);
+		candtsl << my_lu_benefit[34] / max_lu_benefit;
 		//		if landuse=101{
 		//			write "kk:" +xet_khokhanchuyendoi(landuse, 34)+ "tn:"+xet_thichnghi(madvdd, 34);
 		//		}
@@ -586,22 +586,22 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 		candbhk << chiso_bhk_lancan;
 		candbhk << xet_khokhanchuyendoi(landuse, 12);
 		candbhk << xet_thichnghi(madvdd, 12);
-		candbhk << (my_lu_benefit[12] / max_lu_benefit);
+		candbhk << my_lu_benefit[12] / max_lu_benefit;
 		//dua dac tinh ung vien lnk
 		candluk << chiso_luk_lancan;
 		candluk << xet_khokhanchuyendoi(landuse, 6);
 		candluk << xet_thichnghi(madvdd, 6);
-		candluk << (my_lu_benefit[6] / max_lu_benefit);
+		candluk << my_lu_benefit[6] / max_lu_benefit;
 		//dua dac tinh ung vien rst
 		candlnk << chiso_lnk_lancan;
 		candlnk << xet_khokhanchuyendoi(landuse, 14);
 		candlnk << xet_thichnghi(madvdd, 14);
-		candlnk << (my_lu_benefit[14] / max_lu_benefit);
+		candlnk << my_lu_benefit[14] / max_lu_benefit;
 		// bổ sung thêm ứng viên lua-tom
 		cand_luatom << chiso_lua_tom_lancan;
 		cand_luatom << xet_khokhanchuyendoi(landuse, 101);
 		cand_luatom << xet_thichnghi(madvdd, 101);
-		cand_luatom << (my_lu_benefit[101] / max_lu_benefit); // tamj thowi
+		cand_luatom << my_lu_benefit[101] / max_lu_benefit; 
 		//nap cac ung vien vao danh sach candidates
 		candidates << candluc;
 		candidates << candtsl;
@@ -626,12 +626,12 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 		candluc << chiso_luc_lancan;
 		candluc << xet_khokhanchuyendoi(landuse, 5);
 		candluc << xet_thichnghi(madvdd, 5);
-		candluc << (my_lu_benefit[5] / max_lu_benefit);
+		candluc << lu_benefit[5] / max_lu_benefit;
 		//dua dac tinh ung vien tsl
 		candtsl << chiso_tsl_lancan;
 		candtsl << xet_khokhanchuyendoi(landuse, 34);
 		candtsl << xet_thichnghi(madvdd, 34);
-		candtsl << (my_lu_benefit[34] / max_lu_benefit);
+		candtsl << lu_benefit[34] / max_lu_benefit;
 		//		if landuse=101{
 		//			write "kk:" +xet_khokhanchuyendoi(landuse, 34)+ "tn:"+xet_thichnghi(madvdd, 34);
 		//		}
@@ -640,22 +640,22 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 		candbhk << chiso_bhk_lancan;
 		candbhk << xet_khokhanchuyendoi(landuse, 12);
 		candbhk << xet_thichnghi(madvdd, 12);
-		candbhk << (my_lu_benefit[12] / max_lu_benefit);
+		candbhk << lu_benefit[12] / max_lu_benefit;
 		//dua dac tinh ung vien lnk
 		candluk << chiso_luk_lancan;
 		candluk << xet_khokhanchuyendoi(landuse, 6);
 		candluk << xet_thichnghi(madvdd, 6);
-		candluk << (my_lu_benefit[6] / max_lu_benefit);
+		candluk << lu_benefit[6] / max_lu_benefit;
 		//dua dac tinh ung vien rst
 		candlnk << chiso_lnk_lancan;
 		candlnk << xet_khokhanchuyendoi(landuse, 14);
 		candlnk << xet_thichnghi(madvdd, 14);
-		candlnk << (my_lu_benefit[14] / max_lu_benefit);
+		candlnk << lu_benefit[14] / max_lu_benefit;
 		// bổ sung thêm ứng viên lua-tom
 		cand_luatom << chiso_lua_tom_lancan;
 		cand_luatom << xet_khokhanchuyendoi(landuse, 101);
 		cand_luatom << xet_thichnghi(madvdd, 101);
-		cand_luatom << (my_lu_benefit[101] / max_lu_benefit);
+		cand_luatom << my_lu_benefit[101] / max_lu_benefit;
 		//nap cac ung vien vao danh sach candidates
 		candidates << candluc;
 		candidates << candtsl;
