@@ -444,7 +444,7 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 	action economic_compute {
 		if (my_province != nil) {
 //			float old_wu <- water_unit;
-			water_unit <- water_unit + wu_cost[landuse]*pixel_size ;
+			water_unit <- water_unit + wu_cost[landuse]*pixel_size /1E9; // biliion m3
 			float coefficient <- 1.0;
 			if (use_subsidence_macro and sub >= subsidence_macro_threshold){//my_province.subsi_threshold) {// set subsi level impacts profit: 0.5m 
 				coefficient <- 0.8;
@@ -473,18 +473,18 @@ grid farming_unit file: cell_file neighbors: 8 schedules: [] use_individual_shap
 			}
 
 			float tmp <- benefit / 1000; //* coefficient has involve in lu_benefit
-			my_province.wu <- my_province.wu + (water_unit) / 1000;
+			my_province.wu <- my_province.wu + (water_unit) ; //unit billion m3
 			my_province.debt <- my_province.debt + debt / 1E3; //convert to Milillard
 			my_province.benefit <- my_province.benefit + tmp;
 			my_province.debt_lu[landuse] <- my_province.debt_lu[landuse] + debt / 1E3; //convert to Milillard
 			my_province.benefit_lu[landuse] <- my_province.benefit_lu[landuse] + tmp;
-			total_wu <- total_wu + (water_unit) / 1000;// unit 1000 m3
+			total_wu <- total_wu + (water_unit) ;
 			total_debt <- total_debt + debt / 1E3;
 			total_debt_lu[landuse] <- total_debt_lu[landuse] + debt / 1E3;
 			total_benefit <- total_benefit + tmp;
 			total_benefit_lu[landuse] <- total_benefit_lu[landuse] + tmp;
 			if (my_aez != nil) {
-				my_aez.wu <- my_aez.wu + (water_unit) / 1000;
+				my_aez.wu <- my_aez.wu + (water_unit);
 				my_aez.debt <- my_aez.debt + debt / 1E3;
 				my_aez.benefit <- my_aez.benefit + tmp; //convert to Milillard
 				my_aez.debt_lu[landuse] <- my_aez.debt_lu[landuse] + debt / 1E3;
