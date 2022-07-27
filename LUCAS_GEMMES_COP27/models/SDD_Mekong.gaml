@@ -348,7 +348,7 @@ experiment "Exp 4 with strategies, FU impacted by Subsidence" type: gui autorun:
 
 }
 
-experiment "Exp 1,2,3" type: gui autorun: true parent: "Abstract" {
+experiment "Exp 1,2,3" type: gui autorun: true {
 
 	action _init_ {
 		create simulation with: [scenario_subsidence::"B2", use_profile_adaptation::false, use_subsidence_macro::false, use_subsidence::false,explo_param::"Baseline1_B2", subsidence_threshold::10,subsidence_macro_threshold::0.2];
